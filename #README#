@@ -1,0 +1,6 @@
+x1. clean.sh to clean workspace
+2. workspace.sh to create a workspace.
+3. design.sh to pull in design
+4. compile.sh to compile design.
+5. prove.sh to run formal.
+6. gui.sh to visualize results, need to manually open Output_Results/formal_verify.db in gui due to weird licensing issue

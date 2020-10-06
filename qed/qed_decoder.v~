@@ -1,0 +1,492 @@
+// decoder for SPARCv9
+
+module qed_decoder (/*AUTOARG*/
+   // Outputs
+   is_branch, is_mem_op, rd, rs1, rs2, simm13, shcnt32, shcnt64,
+   simm11, format_major, format2_minor, format3_minor, format4_minor,
+   // Inputs
+   ifu_qed_instruction, clk
+   );
+
+                         
+//   input [32:0]  ifu_qed_instruction; // instruction
+  input [31:0] ifu_qed_instruction;
+   wire [31:0]   instruction;
+   assign instruction = ifu_qed_instruction[31:0];
+   
+   input         clk;
+   
+   output        is_branch;
+   output        is_mem_op;
+   
+   output [4:0]  rd;
+   output [4:0]  rs1;
+   output [4:0]  rs2;
+   output [12:0] simm13;
+   output [4:0]  shcnt32;
+   output [5:0]  shcnt64;
+   output [10:0] simm11;
+   
+   // determine which format to use
+   output [3:0]  format_major;
+   output [3:0]  format2_minor;
+   output [18:0] format3_minor;
+   output [7:0]  format4_minor;
+                
+   // op, for all formats
+   wire [1:0]             op;
+   wire [2:0]             op2;
+   wire [5:0]             op3;
+   wire [29:0]            disp30;
+   //wire [4:0]             rd;
+   wire [21:0]            imm22;
+   wire                   a;
+   wire [3:0]             cond_format2;
+   wire [21:0]            disp22;
+   wire                   cc1_format2;
+   wire                   cc0_format2;
+   wire                   p;
+   wire [18:0]            disp19;
+   wire [2:0]             rcond_format2;
+   wire [1:0]             d16hi;
+   //wire [4:0]             rs1;
+   wire [13:0]            d16lo;
+   wire                   i;
+   //wire [4:0]             rs2;
+   //wire [12:0]            simm13;
+   wire [2:0]             rcond_format3;
+   wire [9:0]             simm10;
+   wire [2:0]             cmask;
+   wire [3:0]             mmask;
+   wire [7:0]             imm_asi;
+   wire                   x;
+   //wire [4:0]             shcnt32;
+   //wire [5:0]             shcnt64;
+   wire [8:0]             opf;
+   wire                   cc1_format3;
+   wire                   cc0_format3;
+   wire [4:0]             fcn;
+   wire                   cc1_format4;
+   wire                   cc0_format4;
+   //wire [10:0]            simm11;
+   wire                   cc2;
+   wire [3:0]             cond_format4_1;
+   wire [2:0]             rcond_format4;
+   wire [4:0]             opf_low_5;
+   wire [5:0]             opf_low_6;
+   wire [2:0]             opf_cc;
+   wire [6:0]             sw_trap;
+
+   wire                   CALL;                  
+   wire                   BPcc;
+   wire                   Bicc;
+   wire                   BPr;
+   wire                   SETHI;
+   wire                   FBPfcc;
+   wire                   FBfcc;
+   wire                   ADD;      
+   wire                   AND;      
+   wire                   OR;      
+   wire                   XOR;      
+   wire                   SUB;      
+   wire                   ANDN;     
+   wire                   ORN;      
+   wire                   XNOR;     
+   wire                   ADDC;     
+   wire                   MULX;     
+   wire                   UMUL;     
+   wire                   SMUL;     
+   wire                   SUBC;     
+   wire                   UDIVX;    
+   wire                   UDIV;     
+   wire                   SDIV;     
+   
+   wire                   ADDcc;    
+   wire                   ANDcc;    
+   wire                   ORcc;     
+   wire                   XORcc;    
+   wire                   SUBcc;    
+   wire                   ANDNcc;   
+   wire                   ORNcc;    
+   wire                   XNORcc;   
+   wire                   ADDCcc;   
+   //              
+   wire                   UMULcc;   
+   wire                   SMULcc;   
+   wire                   SUBCcc;   
+   //              
+   wire                   UDIVcc;   
+   wire                   SDIVcc;   
+   
+   wire                   TADDcc;   
+   wire                   TSUBcc;   
+   wire                   TADDccTV; 
+   wire                   TSUBccTV;
+   wire                   MULScc;   
+   wire                   SLL;      
+   wire                   SRL;      
+   wire                   SRA;      
+   //              
+   //              
+   wire                   RDPR;     
+   wire                   FLUSHW;   
+   wire                   MOVcc;    
+   wire                   SDIVX;    
+   wire                   POPC;     
+   wire                   MOVr;     
+   
+   //              
+   //              
+   wire                   WRPR;     
+   //              
+   wire                   FPop1;    
+   wire                   FPop2;    
+   wire                   IMPDEP1;  
+   wire                   IMPDEP2;  
+   wire                   JMPL;     
+   wire                   RETURN;   
+   wire                   Tcc;      
+   wire                   FLUSH;    
+   wire                   SAVE;     
+   wire                   RESTORE;  
+   //              
+   //              
+   
+   wire                   LDUW;     
+   wire                   LDUB;     
+   wire                   LDUH;     
+   wire                   LDD;      
+   wire                   STW;      
+   wire                   STB;      
+   wire                   STH;      
+   wire                   STD;      
+   wire                   LDSW;     
+   wire                   LDSB;     
+   wire                   LDSH;     
+   wire                   LDX;      
+   //              
+   wire                   LDSTUB;   
+   wire                   STX;      
+   wire                   SWAP;     
+   
+   wire                   LDUWA;    
+   wire                   LDUBA;    
+   wire                   LDUHA;    
+   wire                   LDDA;     
+   wire                   STWA;     
+   wire                   STBA;     
+   wire                   STHA;     
+   wire                   STDA;     
+   wire                   LDSWA;    
+   wire                   LDSBA;    
+   wire                   LDSHA;    
+   wire                   LDXA;     
+   //              
+   wire                   LDSTUBA;  
+   wire                   STXA;     
+   wire                   SWAPA;    
+   
+   wire                   LDF;      
+   //              
+   wire                   LDQF;     
+   wire                   LDDF;     
+   wire                   STF;      
+   //              
+   wire                   STQF;     
+   wire                   STDF;     
+   //              
+   //              
+   //              
+   //              
+   //              
+   wire                   PREFETCH; 
+   //              
+   //              
+   
+   wire                   LDFA;     
+   //              
+   wire                   LDQFA;    
+   wire                   LDDFA;    
+   wire                   STFA;    
+   //              
+   wire                   STQFA;    
+   wire                   STDFA;    
+   //              
+   //              
+   //              
+   //              
+   wire                   CASA;     
+   wire                   PREFETCHA;
+   wire                   CASXA;    
+   //              
+   
+   // op, for all formats
+   assign op = instruction[31:30];
+   assign op2 = instruction[24:22];
+   assign op3 = instruction[24:19];
+   assign disp30 = instruction[29:0];
+   assign rd = instruction[29:25];
+   assign op2 = instruction[24:22];
+   assign imm22 = instruction[21:0];
+   assign a = instruction[29];
+   assign cond_format2 = instruction[28:25];
+   assign disp22 = instruction[21:0];
+   assign cc1_format2 = instruction[21];
+   assign cc0_format2 = instruction[20];
+   assign p = instruction[19];
+   assign disp19 = instruction[18:0];
+   assign rcond_format2 = instruction[27:25];
+   assign d16hi = instruction[21:20];
+   assign rs1 = instruction[18:14];
+   assign d16lo = instruction[13:0];
+   assign i = instruction[13];
+   assign rs2 = instruction[4:0];
+   assign simm13 = instruction[12:0];
+   assign rcond_format3 = instruction[12:10];
+   assign simm10 = instruction[9:0];
+   assign cmask = instruction[6:4];
+   assign mmask = instruction[3:0];
+   assign imm_asi = instruction[12:5];
+   assign x = instruction[12];
+   assign shcnt32 = instruction[4:0];
+   assign shcnt64 = instruction[5:0];
+   assign opf = instruction[13:5];
+   assign cc1_format3 = instruction[26];
+   assign cc0_format3 = instruction[25];
+   assign fcn = instruction[29:25];
+   assign cc1_format4 = instruction[12];
+   assign cc0_format4 = instruction[11];
+   assign simm11 = instruction[10:0];
+   assign cc2 = instruction[18];
+   assign cond_format4_1 = instruction[17:14];
+   assign rcond_format4 = instruction[12:10];
+   assign opf_low_5 = instruction[9:5];
+   assign opf_low_6 = instruction[10:5];
+   assign opf_cc = instruction[13:11];
+   assign sw_trap = instruction[6:0];
+
+   assign CALL      = (op == 2'b01); // CALL
+   
+   assign BPcc      = (op == 2'b00) && (op2 == 3'b001); // BPcc (table 39)
+   assign Bicc      = (op == 2'b00) && (op2 == 3'b010); // Bicc (table 39)
+   assign BPr       = (op == 2'b00) && (op2 == 3'b011); // BPr (bit 28 == 0) see table 40 (bit 28 == 1)
+   assign SETHI     = (op == 2'b00) && (op2 == 3'b100); // SETHI, NOP
+   assign FBPfcc    = (op == 2'b00) && (op2 == 3'b101); // FBPfcc (table 39)
+   assign FBfcc     = (op == 2'b00) && (op2 == 3'b110); // FBfcc (table 39)
+   
+   assign ADD       = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0000)); // ADD
+   assign AND       = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0001)); // AND
+   assign OR        = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0010)); // OR
+   assign XOR       = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0011)); // XOR
+   assign SUB       = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0100)); // SUB
+   assign ANDN      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0101)); // ANDN
+   assign ORN       = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0110)); // ORN
+   assign XNOR      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0111)); // XNOR
+   assign ADDC      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1000)); // ADDC
+   assign MULX      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1001)); // MULX
+   assign UMUL      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1010)); // UMUL
+   assign SMUL      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1011)); // SMUL
+   assign SUBC      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1100)); // SUBC
+   assign UDIVX     = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1101)); // UDIVX
+   assign UDIV      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1110)); // UDIV
+   assign SDIV      = (op == 2'b10) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1111)); // SDIV
+   
+   assign ADDcc     = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0000)); // ADDcc
+   assign ANDcc     = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0001)); // ANDcc
+   assign ORcc      = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0010)); // ORcc
+   assign XORcc     = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0011)); // XORcc
+   assign SUBcc     = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0100)); // SUBcc
+   assign ANDNcc    = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0101)); // ANDNcc
+   assign ORNcc     = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0110)); // ORNcc
+   assign XNORcc    = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0111)); // XNORcc
+   assign ADDCcc    = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1000)); // ADDCcc
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1001)); // --- 
+   assign UMULcc    = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1010)); // UMULcc
+   assign SMULcc    = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1011)); // SMULcc
+   assign SUBCcc    = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1100)); // SUBCcc
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1101)); // ---   
+   assign UDIVcc    = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1110)); // UDIVcc
+   assign SDIVcc    = (op == 2'b10) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1111)); // SDIVcc
+
+   assign TADDcc    = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0000)); // TADDcc
+   assign TSUBcc    = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0001)); // TSUBcc
+   assign TADDccTV  = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0010)); // TADDccTV
+   assign TSUBccTV  = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0011)); // TSUBccTV
+   assign MULScc    = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0100)); // MULScc
+   assign SLL       = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0101)); // SLL, SLLX
+   assign SRL       = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0110)); // SRL, SRLX
+   assign SRA       = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0111));    // SRA, SRAX
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1000)); // RDY, ---, RDCCR, RDASI, RDTICK, RDPC, RDFPRS, RDASR, MEMBAR, STBAR
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1001)); // ---
+   assign RDPR      = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1010)); // RDPR
+   assign FLUSHW    = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1011)); // FLUSHW
+   assign MOVcc     = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1100)); // MOVcc
+   assign SDIVX     = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1101)); // SDIVX
+   assign POPC      = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1110)); // POPC
+   assign MOVr      = (op == 2'b10) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1111)); // MOVr
+
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0000)); // WRY, ---, WRCCR, WRASI, WRASR, WRFPRS, SIR
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0001)); // SAVED, RESTORED
+   assign WRPR      = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0010)); // WRPR
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0011)); // ---  
+   assign FPop1     = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0100)); // FPop1 (table 37)
+   assign FPop2     = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0101)); // FPop2 (table 38)
+   assign IMPDEP1   = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0110)); // IMPDEP1
+   assign IMPDEP2   = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0111)); // IMPDEP2
+   assign JMPL      = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1000)); // JMPL
+   assign RETURN    = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1001)); // RETURN
+   assign Tcc       = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1010)); // Tcc (table 39) (bit 29 = 1)
+   assign FLUSH     = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1011)); // FLUSH
+   assign SAVE      = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1100)); // SAVE
+   assign RESTORE   = (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1101)); // RESTORE
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1110)); // DONE (fcn = 0), RETRY (fcn = 1)
+   //                 (op == 2'b10) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1111)); // ---   
+                          
+   assign LDUW      = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0000)); // LDUW
+   assign LDUB      = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0001)); // LDUB
+   assign LDUH      = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0010)); // LDUH
+   assign LDD       = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0011)); // LDD
+   assign STW       = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0100)); // STW
+   assign STB       = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0101)); // STB 
+   assign STH       = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0110)); // STH
+   assign STD       = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b0111)); // STD 
+   assign LDSW      = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1000)); // LDSW
+   assign LDSB      = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1001)); // LDSB
+   assign LDSH      = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1010)); // LDSH
+   assign LDX       = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1011)); // LDX 
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1100)); // --- 
+   assign LDSTUB    = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1101)); // LDSTUB
+   assign STX       = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1110)); // STX 
+   assign SWAP      = (op == 2'b11) && ((op3[5:4] == 2'b00) && (op3[3:0] == 4'b1111)); // SWAP 
+
+   assign LDUWA     = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0000)); // LDUWA
+   assign LDUBA     = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0001)); // LDUBA
+   assign LDUHA     = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0010)); // LDUHA
+   assign LDDA      = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0011)); // LDDA 
+   assign STWA      = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0100)); // STWA 
+   assign STBA      = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0101)); // STBA  
+   assign STHA      = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0110)); // STHA 
+   assign STDA      = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b0111)); // STDA  
+   assign LDSWA     = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1000)); // LDSWA 
+   assign LDSBA     = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1001)); // LDSBA
+   assign LDSHA     = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1010)); // LDSHA 
+   assign LDXA      = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1011)); // LDXA  
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1100)); // ---   
+   assign LDSTUBA   = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1101)); // LDSTUBA 
+   assign STXA      = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1110)); // STXA  
+   assign SWAPA     = (op == 2'b11) && ((op3[5:4] == 2'b01) && (op3[3:0] == 4'b1111)); // SWAPA 
+
+   assign LDF       = (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0000)); // LDF   
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0001)); // LDFSR, LDXFSR
+   assign LDQF      = (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0010)); // LDQF     
+   assign LDDF      = (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0011)); // LDDF    
+   assign STF       = (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0100)); // STF   
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0101)); // STFSR, STXFSR 
+   assign STQF      = (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0110)); // STQF     
+   assign STDF      = (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b0111)); // STDF     
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1000)); // ---
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1001)); // ---
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1010)); // ---
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1011)); // ---
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1100)); // ---
+   assign PREFETCH  = (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1101)); // PREFETCH
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1110)); // ---
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b10) && (op3[3:0] == 4'b1111)); // ---
+   
+   assign LDFA      = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0000)); // LDFA
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0001)); // ---
+   assign LDQFA     = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0010)); // LDQFA
+   assign LDDFA     = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0011)); // LDDFA 
+   assign STFA      = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0100)); // STFA
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0101)); // ---
+   assign STQFA     = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0110)); // STQFA
+   assign STDFA     = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b0111)); // STDFA
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1000)); // ---
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1001)); // ---
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1010)); // ---
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1011)); // ---
+   assign CASA      = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1100)); // CASA
+   assign PREFETCHA = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1101)); // PREFETCHA
+   assign CASXA     = (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1110)); // CASXA
+   //                 (op == 2'b11) && ((op3[5:4] == 2'b11) && (op3[3:0] == 4'b1111)); // ---   
+  
+   assign format_major[0] = (op == 2'b01);
+   assign format_major[1] = (op == 2'b00);
+   assign format_major[2] = ADD    || AND    || OR     || XOR    || SUB    || ANDN   || ORN    || XNOR   || ADDC   || MULX   || UMUL   || SMUL   || SUBC   ||
+                            ADDcc  || ANDcc  || ORcc   || XORcc  || SUBcc  || ANDNcc || ORNcc  || XNORcc || ADDCcc ||           UMULcc || SMULcc || SUBCcc ||
+                            SLL    || SRL    || SRA    || 
+                            LDUW   || LDUB   || LDUH   || LDD    || STW    || STB    || STH    || STD    || LDSW   || LDSB   || LDSH   || LDX    || LDSTUB || STX    || SWAP; 
+   assign format_major[3] = MOVcc;
+   
+
+   assign format2_minor[0] = SETHI;
+   assign format2_minor[1] = Bicc || FBfcc;
+   assign format2_minor[2] = BPcc || FBPfcc;
+   assign format2_minor[3] = BPr;
+   
+   assign format3_minor[0] = (i == 1'b0) && (ADD    || AND    || OR     || XOR    || SUB    || ANDN   || ORN    || XNOR   || ADDC   || MULX   || UMUL   || SMUL   || SUBC   ||
+                                             ADDcc  || ANDcc  || ORcc   || XORcc  || SUBcc  || ANDNcc || ORNcc  || XNORcc || ADDCcc ||           UMULcc || SMULcc || SUBCcc ||
+                                             LDUW   || LDUB   || LDUH   || LDD    || STW    || STB    || STH    || STD    || LDSW   || LDSB   || LDSH   || LDX    || LDSTUB || STX    || SWAP); 
+   
+   assign format3_minor[1] = (i == 1'b1) && (ADD    || AND    || OR     || XOR    || SUB    || ANDN   || ORN    || XNOR   || ADDC   || MULX   || UMUL   || SMUL   || SUBC   ||
+                                             ADDcc  || ANDcc  || ORcc   || XORcc  || SUBcc  || ANDNcc || ORNcc  || XNORcc || ADDCcc ||           UMULcc || SMULcc || SUBCcc ||
+                                             LDUW   || LDUB   || LDUH   || LDD    || STW    || STB    || STH    || STD    || LDSW   || LDSB   || LDSH   || LDX    || LDSTUB || STX    || SWAP); 
+   assign format3_minor[2]  = 1'b0;
+   assign format3_minor[3]  = 1'b0;
+   assign format3_minor[4]  = 1'b0;
+   assign format3_minor[5]  = 1'b0;
+   assign format3_minor[6]  = 1'b0;
+   assign format3_minor[7]  = 1'b0;
+   assign format3_minor[8]  = 1'b0;
+   assign format3_minor[9]  = 1'b0;
+   assign format3_minor[10] = (i == 1'b0) &&                (SLL || SRL || SRA);
+   assign format3_minor[11] = (i == 1'b1) && (x == 1'b0) && (SLL || SRL || SRA);
+   assign format3_minor[12] = (i == 1'b1) && (x == 1'b1) && (SLL || SRL || SRA);
+   assign format3_minor[13] = 1'b0;
+   assign format3_minor[14] = 1'b0;
+   assign format3_minor[15] = 1'b0;
+   assign format3_minor[16] = 1'b0;
+   assign format3_minor[17] = 1'b0;
+   assign format3_minor[18] = 1'b0;
+
+   assign format4_minor[0] = 1'b0;
+   assign format4_minor[1] = 1'b0;
+   assign format4_minor[2] = 1'b0;
+   assign format4_minor[3] = (i == 1'b0) && MOVcc;
+   assign format4_minor[4] = (i == 1'b1) && MOVcc;
+   assign format4_minor[5] = 1'b0;
+   assign format4_minor[6] = 1'b0;
+   assign format4_minor[7] = 1'b0;
+
+   assign is_branch = CALL || BPcc || Bicc || BPr || FBfcc || FBPfcc;
+   assign is_mem_op = LDUW   || LDUB   || LDUH   || LDD    || STW    || STB    || STH    || STD    || LDSW   || LDSB   || LDSH   || LDX    || LDSTUB || STX    || SWAP; 
+                     
+   // assign rd_ = rd;
+   // assign rs1_ = rs1;
+   // assign rs2_ = rs2;
+   // assign simm13_ = simm13;
+   // assign shcnt32_ = shcnt32;
+   // assign shcnt64_ = shcnt64;
+   // assign simm11_ = simm11;
+      
+   // sigext s13 -> s64
+   task sigext_simm13;
+      input [12:0]  simm13;
+      output [63:0] simm64;
+      begin
+         simm64 <= {{50{simm13[12]}}, simm13};
+      end
+   endtask // sigext_simm13
+
+   // sigext s10 -> s64
+   task sigext_simm10;
+      input [9:0]  simm10;
+      output [63:0] simm64;
+      begin
+         simm64 <= {{54{simm10[9]}}, simm10};
+      end
+   endtask // sigext_simm10
+        
+endmodule // qed_decoder
+
+

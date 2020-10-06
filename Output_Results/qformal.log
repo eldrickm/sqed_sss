@@ -1,0 +1,102 @@
+# 
+# Copyright 1995-2016 Mentor Graphics Corporation.
+# All Rights Reserved.
+# 
+# THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION 
+# WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# 
+# THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION
+# 552.  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE
+# UNDER THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# 
+# 
+# Command-line arguments:
+# 	-jobs 4 \
+# 	-od Output_Results \
+# 	-tool prove \
+# 	-init test.init \
+# 	-rtl_init_values \
+# 	-effort unlimited \
+# 	-import_db Output_Results/formal_compile.db  \
+# 	-netcache /rsgs/pool0/esingh/trojan_demos/vscale_counter_sss/Output_Results/qcache/FORMAL/NET \
+# 	-mode master 
+# 
+# Warning : The '-effort' option is an obsolete argument for this executable.  To terminate an analysis session gracefully (and save pending results) use the -timeout option or CTRL-C.  [formal-278]
+#         : Option will be ignored
+# Info    : Using initialization sequence file to initialize design state.  File 'test.init'.
+# Info    : Applying initial assume properties in initial cycle for formal analysis.  Initial cycle can be adjusted using '-justify_initial_x'.
+# Info    : Applying synthesis semantics.
+# [00:00:01] Established connection with process, Hostname=rsg9.stanford.edu, pid=19188.
+# [00:00:01] Established connection with process, Hostname=rsg9.stanford.edu, pid=19179.
+# [00:00:01] Status: Done 0/15, Update 0/15, Proof radius min=0, avg=0.00, Mem=0GB
+# [00:00:01] Established connection with process, Hostname=rsg9.stanford.edu, pid=19196.
+# [00:00:01] Status: Done 0/15, Update 1/15, Proof radius min=0, avg=0.27, Mem=1GB
+# [00:00:01] Status: Done 0/15, Update 0/15, Proof radius min=0, avg=0.27, Mem=1GB
+# [00:00:02] Established connection with process, Hostname=rsg9.stanford.edu, pid=19205.
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[3].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[4].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[5].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[6].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[7].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[8].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[10].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[11].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[12].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[13].assert_ireg_match
+# [00:00:02] Fired @5: vpipe.regfile.chk0.genblk2[14].assert_ireg_match
+# [00:00:03] Fired @5: vpipe.regfile.chk0.genblk2[15].assert_ireg_match
+# [00:00:03] Status: Done 12/15, Update 14/15, Proof radius min=4, avg=4.0, Mem=1GB
+# [00:00:03] Fired @5: vpipe.regfile.chk0.genblk2[1].assert_ireg_match
+# [00:00:03] Fired @5: vpipe.regfile.chk0.genblk2[2].assert_ireg_match
+# [00:00:03] Status: Done 14/15, Update 2/3, Proof radius min=4, avg=4, Mem=1GB
+# [00:00:03] Fired @5: vpipe.regfile.chk0.genblk2[9].assert_ireg_match
+# [00:00:03] Status: Done 15/15, Update 1/1, Proof radius min=N/A, avg=N/A, Mem=1GB
+# 
+# ---------------------------------------
+# Property Summary                  Count
+# ---------------------------------------
+# Assumed                              19
+# Proven                                0
+# Inconclusive                          0
+# Fired                                15
+# ---------------------------------------
+# Total                                34
+# ---------------------------------------
+# 
+# 
+# --------- Process Statistics ----------
+# Elapsed Time                       3 s 
+# -------- Orchestration Process --------
+# ------- rsg9.stanford.edu:19158 -------
+# CPU Time                           1 s 
+# Peak Memory                      0.3 GB
+# ---------- Engine Processes -----------
+# ------- rsg9.stanford.edu:19179 -------
+# CPU Time                           2 s 
+# Peak Memory                      0.3 GB
+# CPU Utilization                    100 % 
+# ------- rsg9.stanford.edu:19188 -------
+# CPU Time                           2 s 
+# Peak Memory                      0.1 GB
+# CPU Utilization                    100 % 
+# ------- rsg9.stanford.edu:19196 -------
+# CPU Time                           1 s 
+# Peak Memory                      0.2 GB
+# CPU Utilization                    100 % 
+# ------- rsg9.stanford.edu:19205 -------
+# CPU Time                           1 s 
+# Peak Memory                      0.2 GB
+# CPU Utilization                    100 % 
+# ---------------------------------------
+# 
+# Final Process Statistics: Peak Memory 0.29GB, Cumulative CPU Time 7s, Elapsed Time 3s
+# 
+# To see results in the GUI run:
+# qverify /rsgs/pool0/esingh/trojan_demos/vscale_counter_sss/Output_Results/formal_verify.db
+# 
+# End of log Wed Apr 29 13:37:57 2020
+# 
+# 

@@ -1,0 +1,35 @@
+QuestaSim-64 vlog 10.5c Compiler 2016.07 Jul 20 2016
+Start time: 13:37:41 on Apr 29,2020
+vlog "+define+FORMAL_TOOL" "+define+NOINITMEM" "+define+INITIALIZERO" toppipe.v vscale_checker_bind.sv vscale_checker.sv -f ./vscale.flist -l Output_Results/vlog.rpt 
+-- Compiling module toppipe
+-- Compiling module vscale_pipeline
+-- Compiling module vscale_checker_bind
+-- Compiling module vscale_checker
+-- Compiling module knockout_trigger
+-- Compiling module vscale_alu
+-- Compiling module vscale_core
+-- Compiling module vscale_csr_file
+-- Compiling module vscale_ctrl
+-- Compiling module vscale_hasti_bridge
+-- Compiling module vscale_imm_gen
+-- Compiling module vscale_mul_div
+-- Compiling module vscale_PC_mux
+-- Compiling module vscale_regfile
+-- Compiling module vscale_src_a_mux
+-- Compiling module vscale_src_b_mux
+-- Compiling module inst_constraint
+-- Compiling module modify_instruction
+-- Compiling module qed_decoder
+-- Compiling module qed_i_cache
+-- Compiling module qed_instruction_mux
+-- Compiling module qed
+
+Top level modules:
+	toppipe
+	vscale_checker_bind
+	knockout_trigger
+	vscale_core
+	vscale_csr_file
+	vscale_PC_mux
+End time: 13:37:41 on Apr 29,2020, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

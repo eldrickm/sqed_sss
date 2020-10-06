@@ -1,0 +1,7 @@
+#!/bin/sh
+
+qverify -c -od Output_Results -do "\
+    formal load db Output_Results/formal_compile.db; \
+    formal verify -jobs 4 -engines 19  -init test.init -rtl_init_values -effort unlimited -timeout 24h ; \
+    exit"
+

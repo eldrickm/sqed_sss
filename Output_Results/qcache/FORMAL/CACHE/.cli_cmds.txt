@@ -1,0 +1,3 @@
+
+# /rsgs/pool0/esingh/trojan_demos/vscale_counter_sss/Output_Results/qformal_cmds.tcl : 2
+/cad/mentor/qformal/linux_x86_64/bin/qf_verifyDynamicGrid -mpiportfile  /rsgs/pool0/esingh/trojan_demos/vscale_counter_sss/Output_Results/qcache/FORMAL/NET/mpiport -mpicompletefile /rsgs/pool0/esingh/trojan_demos/vscale_counter_sss/Output_Results/qcache/FORMAL/NET/mpiportfiledone -wd /rsgs/pool0/esingh/trojan_demos/vscale_counter_sss/Output_Results/qcache -netcache /rsgs/pool0/esingh/trojan_demos/vscale_counter_sss/Output_Results/qcache/FORMAL/NET  -od Output_Results -tool prove -j 4    -init test.init -rtl_init_values -effort unlimited -import_db Output_Results/formal_compile.db 

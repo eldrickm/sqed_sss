@@ -1,0 +1,2 @@
+-- qed_i_cache has been modified to have a shift-on-pop implementation of the queue instead of a circular buffer
+as suggested by Aaron (from mentor)

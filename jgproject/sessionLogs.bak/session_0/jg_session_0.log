@@ -1,0 +1,604 @@
+#----------------------------------------
+# JasperGold Version Info
+# tool      : JasperGold 2016.09
+# platform  : Linux 3.10.0-957.21.3.el7.x86_64
+# version   : 2016.09p002 64 bits
+# build date: 2016.11.28 18:08:41 PST
+#----------------------------------------
+# started Tue Apr 28 15:52:47 PDT 2020
+# hostname  : rsg24.stanford.edu
+# pid       : 31225
+# arguments : '-label' 'session_0' '-console' 'rsg24.stanford.edu:38338' '-style' 'windows' '-use_native_tcl' '-proj' '/rsgs/pool0/esingh/trojan_demos/vscale_counter/jgproject/sessionLogs/session_0' '-init' '-hidden' '/rsgs/pool0/esingh/trojan_demos/vscale_counter/jgproject/.tmp/.initCmds.tcl'
+
+Any disclosure about the Cadence Design Systems software or its use
+model to any third party violates the written Non-Disclosure Agreement
+between Cadence Design Systems, Inc. and the customer.
+
+THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF
+CADENCE DESIGN SYSTEMS, INC. USE, DISCLOSURE, OR REPRODUCTION IS
+PROHIBITED WITHOUT THE PRIOR EXPRESS WRITTEN PERMISSION OF CADENCE
+DESIGN SYSTEMS, INC.
+
+Copyright (C) 2000-2016 Cadence Design Systems, Inc. All Rights
+Reserved.  Unpublished -- rights reserved under the copyright laws of
+the United States.
+
+This product includes software developed by others and redistributed
+according to license agreement. See doc/third_party_readme.txt for
+further details.
+
+RESTRICTED RIGHTS LEGEND
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) (1) (ii) of the Rights in
+Technical Data and Computer Software clause at DFARS 252.227-7013 or
+subparagraphs (c) (1) and (2) of Commercial Computer Software -- Restricted
+Rights at 48 CFR 52.227-19, as applicable.
+
+
+                          Cadence Design Systems, Inc. 
+                          2655 Seely Avenue
+                          San Jose, CA 95134
+                          Phone: 408.943.1234
+
+For technical assistance visit http://support.cadence.com.
+
+JasperGold Apps Analysis Session - /rsgs/pool0/esingh/trojan_demos/vscale_counter/jgproject/sessionLogs/session_0
+
+INFO: successfully checked out licenses "jasper_interactive" and "jasper_fpv".
+INFO: reading configuration file "/rsghome/esingh/.config/jasper/jaspergold.conf".
+INFO (IPL003): This JasperGold instance uses a new interpreter implementation for Tcl evaluation.
+    Launch JasperGold using the "-use_jtcl" command-line switch to restore it to the old implementation.
+% source jasper.tcl
+[-- (VERI-1482)] Analyzing Verilog file /hd/cad/cadence/JASPERGOLD16.09.002.lnx86/lib/verilog/packages/std/std.sv into library std
+[-- (VERI-1482)] Analyzing Verilog file knockout_trigger.v
+[INFO (VERI-1328)] knockout_trigger.v(1): analyzing included file constants.vh
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1372)] toppipe.v(14): redeclaration of ansi port clk is not allowed
+[WARN (VERI-1372)] toppipe.v(15): redeclaration of ansi port reset is not allowed
+[ERROR (VERI-1197)] toppipe.v(14): port declaration not allowed in toppipe with formal port declaration list
+[ERROR (VERI-1197)] toppipe.v(15): port declaration not allowed in toppipe with formal port declaration list
+[ERROR (VERI-1072)] toppipe.v(87): module toppipe ignored due to previous errors
+[ERROR (VERI-1072)] toppipe.v(622): module vscale_pipeline ignored due to previous errors
+Summary of errors detected:
+	[ERROR (VERI-1197)] toppipe.v(14): port declaration not allowed in toppipe with formal port declaration list
+	[ERROR (VERI-1197)] toppipe.v(15): port declaration not allowed in toppipe with formal port declaration list
+	[ERROR (VERI-1072)] toppipe.v(87): module toppipe ignored due to previous errors
+	[ERROR (VERI-1072)] toppipe.v(622): module vscale_pipeline ignored due to previous errors
+ERROR (ENL034): 4 errors detected in the design file(s).
+
+% source jasper.tcl
+[-- (VERI-1482)] Analyzing Verilog file knockout_trigger.v
+[INFO (VERI-1328)] knockout_trigger.v(1): analyzing included file constants.vh
+[WARN (VERI-1206)] knockout_trigger.v(39): overwriting previous definition of module knockout_trigger
+[INFO (VERI-2142)] knockout_trigger.v(39): previous definition of module knockout_trigger is here
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker_bind.sv
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker.sv
+[ERROR (VERI-1137)] vscale_checker.sv(119): syntax error near endproperty
+[ERROR (VERI-1072)] vscale_checker.sv(145): module vscale_checker ignored due to previous errors
+Summary of errors detected:
+	[ERROR (VERI-1137)] vscale_checker.sv(119): syntax error near endproperty
+	[ERROR (VERI-1072)] vscale_checker.sv(145): module vscale_checker ignored due to previous errors
+ERROR (ENL034): 2 errors detected in the design file(s).
+
+% source jasper.tcl
+[-- (VERI-1482)] Analyzing Verilog file knockout_trigger.v
+[INFO (VERI-1328)] knockout_trigger.v(1): analyzing included file constants.vh
+[WARN (VERI-1206)] knockout_trigger.v(39): overwriting previous definition of module knockout_trigger
+[INFO (VERI-2142)] knockout_trigger.v(39): previous definition of module knockout_trigger is here
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] toppipe.v(85): overwriting previous definition of module toppipe
+[INFO (VERI-2142)] toppipe.v(85): previous definition of module toppipe is here
+[WARN (VERI-1206)] toppipe.v(620): overwriting previous definition of module vscale_pipeline
+[INFO (VERI-2142)] toppipe.v(620): previous definition of module vscale_pipeline is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker_bind.sv
+[WARN (VERI-1206)] vscale_checker_bind.sv(39): overwriting previous definition of module vscale_checker_bind
+[INFO (VERI-2142)] vscale_checker_bind.sv(39): previous definition of module vscale_checker_bind is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker.sv
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_alu.v
+[INFO (VERI-1328)] vscale_verilog/vscale_alu.v(1): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_alu.v(2): analyzing included file rv32_opcodes.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_core.v
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(1): analyzing included file vscale_hasti_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(2): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(3): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(4): analyzing included file vscale_platform_constants.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_csr_file.v
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(1): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(2): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(3): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(4): analyzing included file vscale_platform_constants.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_ctrl.v
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(5): analyzing included file vscale_md_constants.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_hasti_bridge.v
+[INFO (VERI-1328)] vscale_verilog/vscale_hasti_bridge.v(1): analyzing included file vscale_hasti_constants.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_imm_gen.v
+[INFO (VERI-1328)] vscale_verilog/vscale_imm_gen.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_imm_gen.v(2): analyzing included file rv32_opcodes.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_mul_div.v
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(1): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(2): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(3): analyzing included file rv32_opcodes.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_PC_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_PC_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_PC_mux.v(2): analyzing included file rv32_opcodes.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_pipeline.v
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_pipeline.v(370): overwriting previous definition of module vscale_pipeline
+[INFO (VERI-2142)] toppipe.v(620): previous definition of module vscale_pipeline is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_regfile.v
+[INFO (VERI-1328)] vscale_verilog/vscale_regfile.v(1): analyzing included file rv32_opcodes.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_src_a_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_src_a_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_src_a_mux.v(2): analyzing included file rv32_opcodes.vh
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_src_b_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_src_b_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_src_b_mux.v(2): analyzing included file rv32_opcodes.vh
+[-- (VERI-1482)] Analyzing Verilog file qed/inst_constraint_bind.sv
+[-- (VERI-1482)] Analyzing Verilog file qed/inst_constraint.sv
+[-- (VERI-1482)] Analyzing Verilog file qed/modify_instruction.v
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_decoder.v
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_i_cache.v
+[INFO (VERI-1328)] qed/qed_i_cache.v(1): analyzing included file qed.vh
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_instruction_mux.v
+[INFO (VERI-1328)] qed/qed_instruction_mux.v(1): analyzing included file qed.vh
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_sm.v
+[INFO (VERI-1328)] qed/qed_sm.v(1): analyzing included file qed.vh
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_tb.v
+[ERROR (VERI-1137)] qed/qed_tb.v(2): syntax error near timeunit
+Summary of errors detected:
+	[ERROR (VERI-1137)] qed/qed_tb.v(2): syntax error near timeunit
+ERROR (ENL034): 1 errors detected in the design file(s).
+
+% source jasper.tcl
+[-- (VERI-1482)] Analyzing Verilog file knockout_trigger.v
+[INFO (VERI-1328)] knockout_trigger.v(1): analyzing included file constants.vh
+[WARN (VERI-1206)] knockout_trigger.v(39): overwriting previous definition of module knockout_trigger
+[INFO (VERI-2142)] knockout_trigger.v(39): previous definition of module knockout_trigger is here
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] toppipe.v(85): overwriting previous definition of module toppipe
+[INFO (VERI-2142)] toppipe.v(85): previous definition of module toppipe is here
+[WARN (VERI-1206)] toppipe.v(620): overwriting previous definition of module vscale_pipeline
+[INFO (VERI-2142)] vscale_verilog/vscale_pipeline.v(370): previous definition of module vscale_pipeline is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker_bind.sv
+[WARN (VERI-1206)] vscale_checker_bind.sv(39): overwriting previous definition of module vscale_checker_bind
+[INFO (VERI-2142)] vscale_checker_bind.sv(39): previous definition of module vscale_checker_bind is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker.sv
+[WARN (VERI-1206)] vscale_checker.sv(145): overwriting previous definition of module vscale_checker
+[INFO (VERI-2142)] vscale_checker.sv(145): previous definition of module vscale_checker is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_alu.v
+[INFO (VERI-1328)] vscale_verilog/vscale_alu.v(1): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_alu.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_alu.v(36): overwriting previous definition of module vscale_alu
+[INFO (VERI-2142)] vscale_verilog/vscale_alu.v(36): previous definition of module vscale_alu is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_core.v
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(1): analyzing included file vscale_hasti_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(2): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(3): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(4): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_core.v(140): overwriting previous definition of module vscale_core
+[INFO (VERI-2142)] vscale_verilog/vscale_core.v(140): previous definition of module vscale_core is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_csr_file.v
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(1): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(2): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(3): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(4): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_csr_file.v(358): overwriting previous definition of module vscale_csr_file
+[INFO (VERI-2142)] vscale_verilog/vscale_csr_file.v(358): previous definition of module vscale_csr_file is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_ctrl.v
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(5): analyzing included file vscale_md_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_ctrl.v(501): overwriting previous definition of module vscale_ctrl
+[INFO (VERI-2142)] vscale_verilog/vscale_ctrl.v(501): previous definition of module vscale_ctrl is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_hasti_bridge.v
+[INFO (VERI-1328)] vscale_verilog/vscale_hasti_bridge.v(1): analyzing included file vscale_hasti_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_hasti_bridge.v(38): overwriting previous definition of module vscale_hasti_bridge
+[INFO (VERI-2142)] vscale_verilog/vscale_hasti_bridge.v(38): previous definition of module vscale_hasti_bridge is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_imm_gen.v
+[INFO (VERI-1328)] vscale_verilog/vscale_imm_gen.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_imm_gen.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_imm_gen.v(20): overwriting previous definition of module vscale_imm_gen
+[INFO (VERI-2142)] vscale_verilog/vscale_imm_gen.v(20): previous definition of module vscale_imm_gen is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_mul_div.v
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(1): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(2): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(3): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_mul_div.v(120): overwriting previous definition of module vscale_mul_div
+[INFO (VERI-2142)] vscale_verilog/vscale_mul_div.v(120): previous definition of module vscale_mul_div is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_PC_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_PC_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_PC_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_PC_mux.v(58): overwriting previous definition of module vscale_PC_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_PC_mux.v(58): previous definition of module vscale_PC_mux is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_pipeline.v
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_pipeline.v(370): overwriting previous definition of module vscale_pipeline
+[INFO (VERI-2142)] toppipe.v(620): previous definition of module vscale_pipeline is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_regfile.v
+[INFO (VERI-1328)] vscale_verilog/vscale_regfile.v(1): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_regfile.v(57): overwriting previous definition of module vscale_regfile
+[INFO (VERI-2142)] vscale_verilog/vscale_regfile.v(57): previous definition of module vscale_regfile is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_src_a_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_src_a_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_src_a_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_src_a_mux.v(20): overwriting previous definition of module vscale_src_a_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_src_a_mux.v(20): previous definition of module vscale_src_a_mux is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_src_b_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_src_b_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_src_b_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_src_b_mux.v(21): overwriting previous definition of module vscale_src_b_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_src_b_mux.v(21): previous definition of module vscale_src_b_mux is here
+[-- (VERI-1482)] Analyzing Verilog file qed/inst_constraint_bind.sv
+[WARN (VERI-1206)] qed/inst_constraint_bind.sv(7): overwriting previous definition of module inst_constraint_bind
+[INFO (VERI-2142)] qed/inst_constraint_bind.sv(7): previous definition of module inst_constraint_bind is here
+[-- (VERI-1482)] Analyzing Verilog file qed/inst_constraint.sv
+[WARN (VERI-1206)] qed/inst_constraint.sv(122): overwriting previous definition of module inst_constraint
+[INFO (VERI-2142)] qed/inst_constraint.sv(122): previous definition of module inst_constraint is here
+[-- (VERI-1482)] Analyzing Verilog file qed/modify_instruction.v
+[WARN (VERI-1206)] qed/modify_instruction.v(72): overwriting previous definition of module modify_instruction
+[INFO (VERI-2142)] qed/modify_instruction.v(72): previous definition of module modify_instruction is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_decoder.v
+[WARN (VERI-1206)] qed/qed_decoder.v(68): overwriting previous definition of module qed_decoder
+[INFO (VERI-2142)] qed/qed_decoder.v(68): previous definition of module qed_decoder is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_i_cache.v
+[INFO (VERI-1328)] qed/qed_i_cache.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_i_cache.v(92): overwriting previous definition of module qed_i_cache
+[INFO (VERI-2142)] qed/qed_i_cache.v(92): previous definition of module qed_i_cache is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_instruction_mux.v
+[INFO (VERI-1328)] qed/qed_instruction_mux.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_instruction_mux.v(30): overwriting previous definition of module qed_instruction_mux
+[INFO (VERI-2142)] qed/qed_instruction_mux.v(30): previous definition of module qed_instruction_mux is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_sm.v
+[INFO (VERI-1328)] qed/qed_sm.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_sm.v(108): overwriting previous definition of module qed_sm
+[INFO (VERI-2142)] qed/qed_sm.v(108): previous definition of module qed_sm is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_tb.v
+[WARN (VERI-9025)] qed/qed_tb.v(2): Empty Port in Module Declaration
+[WARN (VERI-9025)] qed/qed_tb.v(7): Empty Port in Module Declaration
+[-- (VERI-1482)] Analyzing Verilog file qed/qed.v
+[INFO (VERI-1328)] qed/qed.v(1): analyzing included file qed.vh
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[INFO (VERI-2142)] toppipe.v(85): previous definition of module toppipe is here
+[INFO (VERI-2142)] vscale_verilog/vscale_pipeline.v(370): previous definition of module vscale_pipeline is here
+INFO (ISW003): Top module name is "toppipe".
+[ERROR (VERI-2094)] qed/inst_constraint_bind.sv(3): target pipe_if not found, bind not done
+[ERROR] Module toppipe could not be elaborated
+Summary of errors detected:
+	[ERROR (VERI-2094)] qed/inst_constraint_bind.sv(3): target pipe_if not found, bind not done
+	[ERROR] Module toppipe could not be elaborated
+ERROR (ENL034): 2 errors detected in the design file(s).
+
+% source jasper.tcl
+[-- (VERI-1482)] Analyzing Verilog file knockout_trigger.v
+[INFO (VERI-1328)] knockout_trigger.v(1): analyzing included file constants.vh
+[WARN (VERI-1206)] knockout_trigger.v(39): overwriting previous definition of module knockout_trigger
+[INFO (VERI-2142)] knockout_trigger.v(39): previous definition of module knockout_trigger is here
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] toppipe.v(85): overwriting previous definition of module toppipe
+[INFO (VERI-2142)] toppipe.v(85): previous definition of module toppipe is here
+[WARN (VERI-1206)] toppipe.v(620): overwriting previous definition of module vscale_pipeline
+[INFO (VERI-2142)] toppipe.v(620): previous definition of module vscale_pipeline is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker_bind.sv
+[WARN (VERI-1206)] vscale_checker_bind.sv(39): overwriting previous definition of module vscale_checker_bind
+[INFO (VERI-2142)] vscale_checker_bind.sv(39): previous definition of module vscale_checker_bind is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker.sv
+[WARN (VERI-1206)] vscale_checker.sv(145): overwriting previous definition of module vscale_checker
+[INFO (VERI-2142)] vscale_checker.sv(145): previous definition of module vscale_checker is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_alu.v
+[INFO (VERI-1328)] vscale_verilog/vscale_alu.v(1): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_alu.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_alu.v(36): overwriting previous definition of module vscale_alu
+[INFO (VERI-2142)] vscale_verilog/vscale_alu.v(36): previous definition of module vscale_alu is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_core.v
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(1): analyzing included file vscale_hasti_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(2): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(3): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(4): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_core.v(140): overwriting previous definition of module vscale_core
+[INFO (VERI-2142)] vscale_verilog/vscale_core.v(140): previous definition of module vscale_core is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_csr_file.v
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(1): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(2): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(3): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(4): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_csr_file.v(358): overwriting previous definition of module vscale_csr_file
+[INFO (VERI-2142)] vscale_verilog/vscale_csr_file.v(358): previous definition of module vscale_csr_file is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_ctrl.v
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(5): analyzing included file vscale_md_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_ctrl.v(501): overwriting previous definition of module vscale_ctrl
+[INFO (VERI-2142)] vscale_verilog/vscale_ctrl.v(501): previous definition of module vscale_ctrl is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_hasti_bridge.v
+[INFO (VERI-1328)] vscale_verilog/vscale_hasti_bridge.v(1): analyzing included file vscale_hasti_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_hasti_bridge.v(38): overwriting previous definition of module vscale_hasti_bridge
+[INFO (VERI-2142)] vscale_verilog/vscale_hasti_bridge.v(38): previous definition of module vscale_hasti_bridge is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_imm_gen.v
+[INFO (VERI-1328)] vscale_verilog/vscale_imm_gen.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_imm_gen.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_imm_gen.v(20): overwriting previous definition of module vscale_imm_gen
+[INFO (VERI-2142)] vscale_verilog/vscale_imm_gen.v(20): previous definition of module vscale_imm_gen is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_mul_div.v
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(1): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(2): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(3): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_mul_div.v(120): overwriting previous definition of module vscale_mul_div
+[INFO (VERI-2142)] vscale_verilog/vscale_mul_div.v(120): previous definition of module vscale_mul_div is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_PC_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_PC_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_PC_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_PC_mux.v(58): overwriting previous definition of module vscale_PC_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_PC_mux.v(58): previous definition of module vscale_PC_mux is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_pipeline.v
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_pipeline.v(370): overwriting previous definition of module vscale_pipeline
+[INFO (VERI-2142)] toppipe.v(620): previous definition of module vscale_pipeline is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_regfile.v
+[INFO (VERI-1328)] vscale_verilog/vscale_regfile.v(1): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_regfile.v(57): overwriting previous definition of module vscale_regfile
+[INFO (VERI-2142)] vscale_verilog/vscale_regfile.v(57): previous definition of module vscale_regfile is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_src_a_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_src_a_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_src_a_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_src_a_mux.v(20): overwriting previous definition of module vscale_src_a_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_src_a_mux.v(20): previous definition of module vscale_src_a_mux is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_src_b_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_src_b_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_src_b_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_src_b_mux.v(21): overwriting previous definition of module vscale_src_b_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_src_b_mux.v(21): previous definition of module vscale_src_b_mux is here
+[-- (VERI-1482)] Analyzing Verilog file qed/inst_constraint.sv
+[WARN (VERI-1206)] qed/inst_constraint.sv(122): overwriting previous definition of module inst_constraint
+[INFO (VERI-2142)] qed/inst_constraint.sv(122): previous definition of module inst_constraint is here
+[-- (VERI-1482)] Analyzing Verilog file qed/modify_instruction.v
+[WARN (VERI-1206)] qed/modify_instruction.v(72): overwriting previous definition of module modify_instruction
+[INFO (VERI-2142)] qed/modify_instruction.v(72): previous definition of module modify_instruction is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_decoder.v
+[WARN (VERI-1206)] qed/qed_decoder.v(68): overwriting previous definition of module qed_decoder
+[INFO (VERI-2142)] qed/qed_decoder.v(68): previous definition of module qed_decoder is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_i_cache.v
+[INFO (VERI-1328)] qed/qed_i_cache.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_i_cache.v(92): overwriting previous definition of module qed_i_cache
+[INFO (VERI-2142)] qed/qed_i_cache.v(92): previous definition of module qed_i_cache is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_instruction_mux.v
+[INFO (VERI-1328)] qed/qed_instruction_mux.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_instruction_mux.v(30): overwriting previous definition of module qed_instruction_mux
+[INFO (VERI-2142)] qed/qed_instruction_mux.v(30): previous definition of module qed_instruction_mux is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_sm.v
+[INFO (VERI-1328)] qed/qed_sm.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_sm.v(108): overwriting previous definition of module qed_sm
+[INFO (VERI-2142)] qed/qed_sm.v(108): previous definition of module qed_sm is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_tb.v
+[WARN (VERI-9025)] qed/qed_tb.v(2): Empty Port in Module Declaration
+[WARN (VERI-1206)] qed/qed_tb.v(5): overwriting previous definition of module timeuniti
+[INFO (VERI-2142)] qed/qed_tb.v(5): previous definition of module timeuniti is here
+[WARN (VERI-9025)] qed/qed_tb.v(7): Empty Port in Module Declaration
+[WARN (VERI-1206)] qed/qed_tb.v(164): overwriting previous definition of module qed_testbench
+[INFO (VERI-2142)] qed/qed_tb.v(164): previous definition of module qed_testbench is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed.v
+[INFO (VERI-1328)] qed/qed.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed.v(141): overwriting previous definition of module qed
+[INFO (VERI-2142)] qed/qed.v(141): previous definition of module qed is here
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[INFO (VERI-2142)] toppipe.v(85): previous definition of module toppipe is here
+[INFO (VERI-2142)] vscale_verilog/vscale_pipeline.v(370): previous definition of module vscale_pipeline is here
+INFO (ISW003): Top module name is "toppipe".
+[ERROR (VERI-2094)] qed/inst_constraint_bind.sv(3): target pipe_if not found, bind not done
+[ERROR] Module toppipe could not be elaborated
+Summary of errors detected:
+	[ERROR (VERI-2094)] qed/inst_constraint_bind.sv(3): target pipe_if not found, bind not done
+	[ERROR] Module toppipe could not be elaborated
+ERROR (ENL034): 2 errors detected in the design file(s).
+
+% source jasper.tcl
+[-- (VERI-1482)] Analyzing Verilog file knockout_trigger.v
+[INFO (VERI-1328)] knockout_trigger.v(1): analyzing included file constants.vh
+[WARN (VERI-1206)] knockout_trigger.v(39): overwriting previous definition of module knockout_trigger
+[INFO (VERI-2142)] knockout_trigger.v(39): previous definition of module knockout_trigger is here
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] toppipe.v(85): overwriting previous definition of module toppipe
+[INFO (VERI-2142)] toppipe.v(85): previous definition of module toppipe is here
+[WARN (VERI-1206)] toppipe.v(620): overwriting previous definition of module vscale_pipeline
+[INFO (VERI-2142)] toppipe.v(620): previous definition of module vscale_pipeline is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker_bind.sv
+[WARN (VERI-1206)] vscale_checker_bind.sv(39): overwriting previous definition of module vscale_checker_bind
+[INFO (VERI-2142)] vscale_checker_bind.sv(39): previous definition of module vscale_checker_bind is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_checker.sv
+[WARN (VERI-1206)] vscale_checker.sv(145): overwriting previous definition of module vscale_checker
+[INFO (VERI-2142)] vscale_checker.sv(145): previous definition of module vscale_checker is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_alu.v
+[INFO (VERI-1328)] vscale_verilog/vscale_alu.v(1): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_alu.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_alu.v(36): overwriting previous definition of module vscale_alu
+[INFO (VERI-2142)] vscale_verilog/vscale_alu.v(36): previous definition of module vscale_alu is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_core.v
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(1): analyzing included file vscale_hasti_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(2): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(3): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_core.v(4): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_core.v(140): overwriting previous definition of module vscale_core
+[INFO (VERI-2142)] vscale_verilog/vscale_core.v(140): previous definition of module vscale_core is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_csr_file.v
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(1): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(2): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(3): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_csr_file.v(4): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_csr_file.v(358): overwriting previous definition of module vscale_csr_file
+[INFO (VERI-2142)] vscale_verilog/vscale_csr_file.v(358): previous definition of module vscale_csr_file is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_ctrl.v
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_ctrl.v(5): analyzing included file vscale_md_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_ctrl.v(501): overwriting previous definition of module vscale_ctrl
+[INFO (VERI-2142)] vscale_verilog/vscale_ctrl.v(501): previous definition of module vscale_ctrl is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_hasti_bridge.v
+[INFO (VERI-1328)] vscale_verilog/vscale_hasti_bridge.v(1): analyzing included file vscale_hasti_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_hasti_bridge.v(38): overwriting previous definition of module vscale_hasti_bridge
+[INFO (VERI-2142)] vscale_verilog/vscale_hasti_bridge.v(38): previous definition of module vscale_hasti_bridge is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_imm_gen.v
+[INFO (VERI-1328)] vscale_verilog/vscale_imm_gen.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_imm_gen.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_imm_gen.v(20): overwriting previous definition of module vscale_imm_gen
+[INFO (VERI-2142)] vscale_verilog/vscale_imm_gen.v(20): previous definition of module vscale_imm_gen is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_mul_div.v
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(1): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(2): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_mul_div.v(3): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_mul_div.v(120): overwriting previous definition of module vscale_mul_div
+[INFO (VERI-2142)] vscale_verilog/vscale_mul_div.v(120): previous definition of module vscale_mul_div is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_PC_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_PC_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_PC_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_PC_mux.v(58): overwriting previous definition of module vscale_PC_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_PC_mux.v(58): previous definition of module vscale_PC_mux is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_pipeline.v
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_pipeline.v(6): analyzing included file vscale_platform_constants.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_pipeline.v(370): overwriting previous definition of module vscale_pipeline
+[INFO (VERI-2142)] toppipe.v(620): previous definition of module vscale_pipeline is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_regfile.v
+[INFO (VERI-1328)] vscale_verilog/vscale_regfile.v(1): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_regfile.v(57): overwriting previous definition of module vscale_regfile
+[INFO (VERI-2142)] vscale_verilog/vscale_regfile.v(57): previous definition of module vscale_regfile is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_src_a_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_src_a_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_src_a_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_src_a_mux.v(20): overwriting previous definition of module vscale_src_a_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_src_a_mux.v(20): previous definition of module vscale_src_a_mux is here
+[-- (VERI-1482)] Analyzing Verilog file vscale_verilog/vscale_src_b_mux.v
+[INFO (VERI-1328)] vscale_verilog/vscale_src_b_mux.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] vscale_verilog/vscale_src_b_mux.v(2): analyzing included file rv32_opcodes.vh
+[WARN (VERI-1206)] vscale_verilog/vscale_src_b_mux.v(21): overwriting previous definition of module vscale_src_b_mux
+[INFO (VERI-2142)] vscale_verilog/vscale_src_b_mux.v(21): previous definition of module vscale_src_b_mux is here
+[-- (VERI-1482)] Analyzing Verilog file qed/inst_constraint.sv
+[WARN (VERI-1206)] qed/inst_constraint.sv(122): overwriting previous definition of module inst_constraint
+[INFO (VERI-2142)] qed/inst_constraint.sv(122): previous definition of module inst_constraint is here
+[-- (VERI-1482)] Analyzing Verilog file qed/modify_instruction.v
+[WARN (VERI-1206)] qed/modify_instruction.v(72): overwriting previous definition of module modify_instruction
+[INFO (VERI-2142)] qed/modify_instruction.v(72): previous definition of module modify_instruction is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_decoder.v
+[WARN (VERI-1206)] qed/qed_decoder.v(68): overwriting previous definition of module qed_decoder
+[INFO (VERI-2142)] qed/qed_decoder.v(68): previous definition of module qed_decoder is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_i_cache.v
+[INFO (VERI-1328)] qed/qed_i_cache.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_i_cache.v(92): overwriting previous definition of module qed_i_cache
+[INFO (VERI-2142)] qed/qed_i_cache.v(92): previous definition of module qed_i_cache is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_instruction_mux.v
+[INFO (VERI-1328)] qed/qed_instruction_mux.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_instruction_mux.v(30): overwriting previous definition of module qed_instruction_mux
+[INFO (VERI-2142)] qed/qed_instruction_mux.v(30): previous definition of module qed_instruction_mux is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_sm.v
+[INFO (VERI-1328)] qed/qed_sm.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed_sm.v(108): overwriting previous definition of module qed_sm
+[INFO (VERI-2142)] qed/qed_sm.v(108): previous definition of module qed_sm is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed_tb.v
+[WARN (VERI-9025)] qed/qed_tb.v(2): Empty Port in Module Declaration
+[WARN (VERI-1206)] qed/qed_tb.v(5): overwriting previous definition of module timeuniti
+[INFO (VERI-2142)] qed/qed_tb.v(5): previous definition of module timeuniti is here
+[WARN (VERI-9025)] qed/qed_tb.v(7): Empty Port in Module Declaration
+[WARN (VERI-1206)] qed/qed_tb.v(164): overwriting previous definition of module qed_testbench
+[INFO (VERI-2142)] qed/qed_tb.v(164): previous definition of module qed_testbench is here
+[-- (VERI-1482)] Analyzing Verilog file qed/qed.v
+[INFO (VERI-1328)] qed/qed.v(1): analyzing included file qed.vh
+[WARN (VERI-1206)] qed/qed.v(141): overwriting previous definition of module qed
+[INFO (VERI-2142)] qed/qed.v(141): previous definition of module qed is here
+[-- (VERI-1482)] Analyzing Verilog file toppipe.v
+[INFO (VERI-1328)] toppipe.v(1): analyzing included file vscale_ctrl_constants.vh
+[INFO (VERI-1328)] toppipe.v(2): analyzing included file vscale_alu_ops.vh
+[INFO (VERI-1328)] toppipe.v(3): analyzing included file rv32_opcodes.vh
+[INFO (VERI-1328)] toppipe.v(4): analyzing included file vscale_csr_addr_map.vh
+[INFO (VERI-1328)] toppipe.v(5): analyzing included file vscale_md_constants.vh
+[INFO (VERI-1328)] toppipe.v(6): analyzing included file vscale_platform_constants.vh
+[INFO (VERI-2142)] toppipe.v(85): previous definition of module toppipe is here
+[INFO (VERI-2142)] vscale_verilog/vscale_pipeline.v(370): previous definition of module vscale_pipeline is here
+INFO (ISW003): Top module name is "toppipe".
+[ERROR (VERI-2094)] qed/inst_constraint_bind.sv(3): target pipe_if not found, bind not done
+[ERROR] Module toppipe could not be elaborated
+Summary of errors detected:
+	[ERROR (VERI-2094)] qed/inst_constraint_bind.sv(3): target pipe_if not found, bind not done
+	[ERROR] Module toppipe could not be elaborated
+ERROR (ENL034): 2 errors detected in the design file(s).
+
+INFO: delete ampa start in Shell
+INFO: delete ampa end in Shell
+INFO: Waiting for proof threads to stop...
+INFO: Proof threads stopped.

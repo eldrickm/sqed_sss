@@ -1,0 +1,2 @@
+-f /rsgs/pool0/esingh/trojan_demos/vscale_counter_sss/Output_Results/qcache/FORMAL/SEARCH/SIM/vsim_tb_replay_top_modules.arg \
+-voptargs="+acc"
