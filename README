@@ -4,3 +4,6 @@
 4. compile.sh to compile design.
 5. prove.sh to run formal.
 6. gui.sh to visualize results, need to manually open Output_Results/formal_verify.db in gui due to weird licensing issue
+
+-- qed_i_cache has been modified to have a shift-on-pop implementation of the queue instead of a circular buffer
+as suggested by Aaron (from mentor)
