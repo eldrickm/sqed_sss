@@ -1,15 +1,14 @@
-./knockout_trigger.v
-./vscale_verilog/vscale_alu.v
-./vscale_verilog/vscale_core.v
-./vscale_verilog/vscale_csr_file.v
-./vscale_verilog/vscale_ctrl.v
-./vscale_verilog/vscale_hasti_bridge.v
-./vscale_verilog/vscale_imm_gen.v
-./vscale_verilog/vscale_mul_div.v
-./vscale_verilog/vscale_PC_mux.v
-./vscale_verilog/vscale_regfile.v
-./vscale_verilog/vscale_src_a_mux.v
-./vscale_verilog/vscale_src_b_mux.v
+./vscale/vscale_alu.v
+./vscale/vscale_core.v
+./vscale/vscale_csr_file.v
+./vscale/vscale_ctrl.v
+./vscale/vscale_hasti_bridge.v
+./vscale/vscale_imm_gen.v
+./vscale/vscale_mul_div.v
+./vscale/vscale_PC_mux.v
+./vscale/vscale_regfile.v
+./vscale/vscale_src_a_mux.v
+./vscale/vscale_src_b_mux.v
 
 ./qed/inst_constraint.sv
 ./qed/modify_instruction.v
@@ -17,3 +16,5 @@
 ./qed/qed_i_cache.v
 ./qed/qed_instruction_mux.v
 ./qed/qed.v
+
+./triggers/knockout_trigger.v

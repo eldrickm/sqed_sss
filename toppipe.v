@@ -1,9 +1,9 @@
-`include "vscale_ctrl_constants.vh"
-`include "vscale_alu_ops.vh"
-`include "rv32_opcodes.vh"
-`include "vscale_csr_addr_map.vh"
-`include "vscale_md_constants.vh"
-`include "vscale_platform_constants.vh"
+`include "vscale/vscale_ctrl_constants.vh"
+`include "vscale/vscale_alu_ops.vh"
+`include "vscale/rv32_opcodes.vh"
+`include "vscale/vscale_csr_addr_map.vh"
+`include "vscale/vscale_md_constants.vh"
+`include "vscale/vscale_platform_constants.vh"
 
 
 module toppipe (
