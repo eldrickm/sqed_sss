@@ -26,7 +26,7 @@ prove: compile
 		formal verify -init test.init -rtl_init_values -effort unlimited ; \
 		exit"
 
-gui: prove
+gui:
 	echo "Launching GUI"
 	qverify $(OUT_DIR)/formal_verify.db
 
