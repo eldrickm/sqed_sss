@@ -237,14 +237,30 @@ module vscale_pipeline(
     assign inst2_trig = 32'h89ABCDEF;
     assign inst3_trig = 32'hBAD1BAD1;
 
-    reg [127:0] tcount;
+    // D-Heterogeneous = Distributed SSC, Different Sub-Components
+    wire [127:0] tcount;
+    reg [63:0] tcount_msb;
+    reg [63:0] tcount_lsb;
+    assign tcount = {tcount_msb, tcount_lsb};
+
+    // CUS Sub-counter
     always @(posedge clk) begin
-     if (reset) begin
-      tcount <= 0;
-       end
-       else begin
-     tcount <= tcount + 1;
-       end
+        if (reset) begin
+            tcount_lsb <= 0;
+        end else begin
+            if (cmp_true) begin
+                tcount_lsb <= tcount_lsb + 1;
+            end
+        end
+    end
+
+    // CNP Subcounter
+    always @(posedge clk) begin
+        if (reset) begin
+            tcount_msb <= 0;
+        end else begin
+            tcount_msb <= tcount_msb + alu_src_a;
+        end
     end
 
     assign trig1_1 = (inst0_trig == tcount[31:0]);
