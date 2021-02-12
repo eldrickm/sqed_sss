@@ -1,0 +1,44 @@
+alloc_issue_ino.v
+-v search_be.v
+-v srcsel.v 
+alu_ops.vh
+arf.v
+-v ram_sync.v
+-v ram_sync_nolatch.v 
+brimm_gen.v
+constants.vh
+decoder.v
+dmem.v
+exunit_alu.v
+exunit_branch.v
+exunit_ldst.v
+exunit_mul.v
+imem.v
+imm_gen.v
+mpft.v
+oldest_finder.v
+pipeline_if.v
+-v gshare.v
+pipeline.v
+-v rs_reqgen.v
+-v srcopr_manager.v
+-v oldest_finder.v
+-v btb.v
+-v prioenc.v
+-v mpft.v
+reorderbuf.v
+ridecore.flist
+rrf_freelistmanager.v
+rrf.v
+rs_alu.v
+rs_branch.v
+rs_ldst.v
+rs_mul.v
+rs_reqgen.v
+rv32_opcodes.vh
+src_manager.v
+srcopr_manager.v
+storebuf.v
+tag_generator.v
+topsim.v
+-v imem.v

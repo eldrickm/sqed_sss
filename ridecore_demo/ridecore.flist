@@ -1,0 +1,54 @@
+./triggers/knockout_trigger.v
+./ridecore/alloc_issue_ino.v
+-v ./ridecore/search_be.v
+-v ./ridecore/srcsel.v 
+./ridecore/alu_ops.vh
+./ridecore/arf.v
+-v ./ridecore/ram_sync.v
+-v ./ridecore/ram_sync_nolatch.v 
+./ridecore/brimm_gen.v
+./ridecore/constants.vh
+./ridecore/decoder.v
+./ridecore/dmem.v
+./ridecore/exunit_alu.v
+./ridecore/exunit_branch.v
+./exunit_ldst_my.v
+./ridecore/exunit_mul.v
+./ridecore/imem.v
+./ridecore/imm_gen.v
+./ridecore/mpft.v
+./ridecore/oldest_finder.v
+./ridecore/pipeline_if.v
+-v ./ridecore/gshare.v
+./ridecore/pipeline.v
+-v ./ridecore/rs_reqgen.v
+-v ./ridecore/srcopr_manager.v
+-v ./ridecore/oldest_finder.v
+-v ./ridecore/btb.v
+-v ./ridecore/prioenc.v
+-v ./ridecore/mpft.v
+./ridecore/reorderbuf.v
+./ridecore/rrf_freelistmanager.v
+./ridecore/rrf.v
+./ridecore/rs_alu.v
+./ridecore/rs_branch.v
+./ridecore/rs_ldst.v
+./ridecore/rs_mul.v
+./ridecore/rs_reqgen.v
+./ridecore/rv32_opcodes.vh
+./ridecore/src_manager.v
+./ridecore/srcopr_manager.v
+./ridecore/storebuf.v
+./ridecore/tag_generator.v
+./ridecore/dualport_ram.v
+./ridecore/alu.v
+./ridecore/multiplier.v
+-v ./ridecore/imem.v
+
+./qed/inst_constraint.sv
+./qed/modify_instruction.v
+./qed/qed_decoder.v
+./qed/qed_i_cache.v
+./qed/qed_instruction_mux.v
+./qed/qed.v
+./qed/qed.vh
