@@ -13,9 +13,9 @@ demos on a variety of processor designs along with supplemental resources.
 
 ## Overview
 
-`ridecore/` and `vscale` contain demos.
+`ridecore_demo/` and `vscale_demo/` contain the SQED + SSS demo
 
-`presentaions/` contains slides and graphics related to this work.
+`presentations/` contains slides and graphics related to this work.
 
 `papers/` contains published papers and drafts related to this work.
 
