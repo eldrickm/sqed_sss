@@ -2,7 +2,6 @@
 
 module vscale_regfile(
                       input                       clk,
-//		      input rst,
                       input [`REG_ADDR_WIDTH-1:0] ra1,
                       output [`XPR_LEN-1:0]       rd1,
                       input [`REG_ADDR_WIDTH-1:0] ra2,
@@ -21,37 +20,19 @@ module vscale_regfile(
    assign rd1 = |ra1 ? data[ra1] : 0;
    assign rd2 = |ra2 ? data[ra2] : 0;
 
-   // shashank edit
    always @(posedge clk) begin
       if (wen_internal) begin
          data[wa] <= wd;
       end
    end
 
-   // integer 					  i;
-   
-   // always @(posedge clk) begin
-   //    if (rst) begin
-   //    for (i = 0; i < 32; i = i + 1) begin
-   //       data[i] <= 0;
-   //    end
-   //    end
-   //    else if (wen_internal) begin
-   //       data[wa] <= wd;
-   //    end
-   // end
-
-   // shashank end
-
-   // shashank edit
-// `ifndef SYNTHESIS
-//    integer i;
-//    initial begin
-//       for (i = 0; i < 32; i = i + 1) begin
-//          data[i] = $random;
-//       end
-//    end
-// `endif
-   // shashank end
+`ifndef SYNTHESIS
+   integer i;
+   initial begin
+      for (i = 0; i < 32; i = i + 1) begin
+         data[i] = $random;
+      end
+   end
+`endif
 
 endmodule // vscale_regfile

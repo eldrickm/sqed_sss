@@ -10,19 +10,19 @@ module vscale_csr_file(
                        input [`CSR_ADDR_WIDTH-1:0]  addr,
                        input [`CSR_CMD_WIDTH-1:0]   cmd,
                        input [`XPR_LEN-1:0] 	    wdata,
-                       output wire [`PRV_WIDTH-1:0] prv, // shouldn't matter
-                       output 			    illegal_access, // shouldn't matter
-                       output reg [`XPR_LEN-1:0]    rdata, // toppipe.v changed to not consider this for data forwarding
+                       output wire [`PRV_WIDTH-1:0] prv,
+                       output 			    illegal_access,
+                       output reg [`XPR_LEN-1:0]    rdata,
                        input 			    retire,
                        input 			    exception,
                        input [`ECODE_WIDTH-1:0]     exception_code,
                        input 			    eret,
                        input [`XPR_LEN-1:0] 	    exception_load_addr,
                        input [`XPR_LEN-1:0] 	    exception_PC,
-                       output [`XPR_LEN-1:0] 	    handler_PC, // shouldn't matter
-                       output [`XPR_LEN-1:0] 	    epc, // shouldn't matter
-		       output 			    interrupt_pending, // shouldn't matter
-		       output reg 		    interrupt_taken, // shouldn't matter
+                       output [`XPR_LEN-1:0] 	    handler_PC,
+                       output [`XPR_LEN-1:0] 	    epc,
+		       output 			    interrupt_pending,
+		       output reg 		    interrupt_taken,
                        input 			    htif_reset,
                        input 			    htif_pcr_req_valid,
                        output 			    htif_pcr_req_ready,

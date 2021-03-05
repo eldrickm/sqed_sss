@@ -204,7 +204,7 @@ module vscale_pipeline(
     wire                     interrupt_pending;
     wire                     interrupt_taken;
     wire [`XPR_LEN-1:0]                          csr_wdata;
-    wire [`XPR_LEN-1:0]                          csr_rdata;
+    wire [`XPR_LEN-1:0]                          csr_rdata; // toppipe.v changed to not consider this for data forwarding
     wire                                         retire_WB;
     wire                                         exception_WB;
     wire [`ECODE_WIDTH-1:0]                      exception_code_WB;
@@ -286,10 +286,10 @@ module vscale_pipeline(
                      .bypass_rs1(bypass_rs1),
                      .bypass_rs2(bypass_rs2),
                      .alu_op(alu_op),
-                     .dmem_en(dmem_en1),
-                     .dmem_wen(dmem_wen1),
-                     .dmem_size(dmem_size),
-                     .dmem_type(dmem_type),
+                     .dmem_en(dmem_en1), // no lw/sw : always zero
+                     .dmem_wen(dmem_wen1), // no lw/sw : always zero
+                     .dmem_size(dmem_size), // shouldn't matter
+                     .dmem_type(dmem_type), // shouldn't matter
                      .md_req_valid(md_req_valid),
                      .md_req_ready(md_req_ready),
                      .md_req_op(md_req_op),
@@ -297,7 +297,7 @@ module vscale_pipeline(
                      .md_req_in_2_signed(md_req_in_2_signed),
                      .md_req_out_sel(md_req_out_sel),
                      .md_resp_valid(md_resp_valid),
-                     .wr_reg_WB(wr_reg_WB),
+                     .wr_reg_WB(wr_reg_WB), // imp signal for WB to register
                      .reg_to_wr_WB(reg_to_wr_WB),
                      .wb_src_sel_WB(wb_src_sel_WB),
                      .stall_IF(stall_IF),
@@ -306,11 +306,11 @@ module vscale_pipeline(
                      .kill_DX(kill_DX),
                      .stall_WB(stall_WB),
                      .kill_WB(kill_WB),
-                     .exception_WB(exception_WB1),
-                     .exception_code_WB(exception_code_WB),
-                     .retire_WB(retire_WB),
-                     .csr_cmd(csr_cmd),
-                     .csr_imm_sel(csr_imm_sel),
+                     .exception_WB(exception_WB1), // no lw/sw : should be zero
+                     .exception_code_WB(exception_code_WB), // shouldn't matter b/c of above signal, but should always have value `ECODE_INST_ADDR_MISALIGNED
+                     .retire_WB(retire_WB), // an important signal when WB is waiting on a multi cycle Mult instruction.
+                     .csr_cmd(csr_cmd), // tied to zero in toppipe.v
+                     .csr_imm_sel(csr_imm_sel), // shouldn't matter
                      //.illegal_csr_access(illegal_csr_access),
                      //.interrupt_pending(interrupt_pending),
                      //.interrupt_taken(interrupt_taken),
@@ -319,8 +319,11 @@ module vscale_pipeline(
                      .interrupt_pending(1'b0),
                      .interrupt_taken(1'b0),
                      .prv(2'b0),
-                     .eret(eret1)
+                     .eret(eret1) // no lw/sw : always zero
                      );
+   // shashank : with lw/sw inputs tied down, replay_IF is 1'b0 (within
+   // vscale_ctrl)
+   // load_in_WB - no lw/sw : always zero
 
     assign exception_WB = 0;
     assign dmem_en = 0;

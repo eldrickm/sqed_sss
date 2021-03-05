@@ -21,10 +21,10 @@ module vscale_ctrl(
                    output reg [`SRC_A_SEL_WIDTH-1:0]  src_a_sel,
                    output reg [`SRC_B_SEL_WIDTH-1:0]  src_b_sel,
                    output reg [`ALU_OP_WIDTH-1:0]     alu_op,
-                   output wire                        dmem_en, // no lw/sw : always zero
-                   output wire                        dmem_wen, // no lw/sw : always zero
-                   output wire [2:0]                  dmem_size, // shouldn't matter
-                   output wire [`MEM_TYPE_WIDTH-1:0]  dmem_type, // shouldn't matter
+                   output wire                        dmem_en,
+                   output wire                        dmem_wen,
+                   output wire [2:0]                  dmem_size,
+                   output wire [`MEM_TYPE_WIDTH-1:0]  dmem_type,
                    output                             md_req_valid,
                    input                              md_req_ready,
                    output reg                         md_req_in_1_signed,
@@ -32,13 +32,13 @@ module vscale_ctrl(
                    output reg [`MD_OP_WIDTH-1:0]      md_req_op,
                    output reg [`MD_OUT_SEL_WIDTH-1:0] md_req_out_sel,
                    input                              md_resp_valid,
-                   output wire                        eret, // no lw/sw : always zero
-                   output [`CSR_CMD_WIDTH-1:0]        csr_cmd, // tied to zero in toppipe.v
-                   output reg                         csr_imm_sel, // shouldn't matter
+                   output wire                        eret,
+                   output [`CSR_CMD_WIDTH-1:0]        csr_cmd,
+                   output reg                         csr_imm_sel,
                    input                              illegal_csr_access,
 		   input                              interrupt_pending,
 		   input                              interrupt_taken,
-                   output wire                        wr_reg_WB, // imp signal for WB to register
+                   output wire                        wr_reg_WB,
                    output reg [`REG_ADDR_WIDTH-1:0]   reg_to_wr_WB,
                    output reg [`WB_SRC_SEL_WIDTH-1:0] wb_src_sel_WB,
                    output wire                        stall_IF,
@@ -47,9 +47,9 @@ module vscale_ctrl(
                    output wire                        kill_DX,
                    output wire                        stall_WB,
                    output wire                        kill_WB,
-                   output wire                        exception_WB, // no lw/sw : should be zero
-                   output wire [`ECODE_WIDTH-1:0]     exception_code_WB, // shouldn't matter b/c of above signal, but should always have value `ECODE_INST_ADDR_MISALIGNED
-                   output wire                        retire_WB // an important signal when WB is waiting on a multi cycle Mult instruction.
+                   output wire                        exception_WB,
+                   output wire [`ECODE_WIDTH-1:0]     exception_code_WB,
+                   output wire                        retire_WB
                    );
 
    // IF stage ctrl pipeline registers
@@ -136,7 +136,6 @@ module vscale_ctrl(
          replay_IF <= (redirect && imem_wait) || (fence_i && store_in_WB);
       end
    end
-   // shashank : with lw/sw inputs tied down, replay_IF is 1'b0
 
    // interrupts kill IF, DX instructions -- WB may commit
    assign kill_IF = stall_IF || ex_IF || ex_DX || ex_WB || redirect || replay_IF || interrupt_taken;
@@ -463,7 +462,7 @@ module vscale_ctrl(
 
    assign kill_WB = stall_WB || ex_WB;
    assign stall_WB = ((dmem_wait && dmem_en_WB) || (uses_md_WB && !md_resp_valid) || active_wfi_WB) && !exception;
-   assign dmem_access_exception = dmem_badmem_e; 
+   assign dmem_access_exception = dmem_badmem_e;
    assign ex_WB = had_ex_WB || dmem_access_exception;
    assign killed_WB = prev_killed_WB || kill_WB;
 
@@ -485,7 +484,7 @@ module vscale_ctrl(
 
    // Hazard logic
 
-   assign load_in_WB = dmem_en_WB && !store_in_WB; // no lw/sw : always zero
+   assign load_in_WB = dmem_en_WB && !store_in_WB;
 
    assign raw_rs1 = wr_reg_WB && (rs1_addr == reg_to_wr_WB)
      && (rs1_addr != 0) && uses_rs1;
