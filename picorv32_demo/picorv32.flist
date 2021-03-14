@@ -1,0 +1,8 @@
+./picorv32/picorv32.v
+
+./qed/inst_constraint.sv
+./qed/modify_instruction.v
+./qed/qed_decoder.v
+./qed/qed_i_cache.v
+./qed/qed_instruction_mux.v
+./qed/qed.v
