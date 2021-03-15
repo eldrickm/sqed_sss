@@ -1,4 +1,4 @@
-module vscale_checker_bind;
+module picorv32_checker_bind;
 
     bind picorv32 picorv32_checker chk0 (.clk(clk),
                                          .rst(1'b0),

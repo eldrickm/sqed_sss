@@ -1,4 +1,4 @@
-./picorv32/picorv32.v
+./picorv32_qed.v
 
 ./qed/inst_constraint.sv
 ./qed/modify_instruction.v

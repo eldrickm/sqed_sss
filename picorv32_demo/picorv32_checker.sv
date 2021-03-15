@@ -89,7 +89,6 @@ module picorv32_checker (clk, rst,
     assign wait_for_commit_reg = picorv32.wait_till_commit_reg;
     assign ena = picorv32.chk_en;
   
-// ============================================================================
 // =========================== START ASSUMES ==================================
     // register 0 always contains 0
     assume_reg0: assume property (
@@ -105,8 +104,8 @@ module picorv32_checker (clk, rst,
 	    end
     endgenerate
 
-    # TODO: What does this assume exactly?
-    # Assume QED module properly reset
+    // TODO: What does this assume exactly?
+    // Assume QED module properly reset
     property assume_init_mem;
         @(posedge clk) 
 	    (   (picorv32.qed0.qic.i_cache == 0)
@@ -121,15 +120,13 @@ module picorv32_checker (clk, rst,
         assume_mem: assume property (assume_init_mem);
     end
 
-    # TODO: Find Instruction wire for PicoRV32
-    # Assume valid instruction (only certain instructions allowed)
-    # Can be found in qed/inst_constraint.sv
+    // TODO: Find Instruction wire for PicoRV32
+    // Assume valid instruction (only certain instructions allowed)
+    // Can be found in qed/inst_constraint.sv
     inst_constraint inst_constraint_0 (.clk(clk),
                                        .instruction(picorv32.imem_rdata));
 // ============================ END ASSUMES ===================================
-// ============================================================================
    
-// ============================================================================
 // =========================== START ASSERTIONS ===============================
     generate
         for (j = 1; j < 16; j++) begin
@@ -139,7 +136,5 @@ module picorv32_checker (clk, rst,
    	    end
     endgenerate
 // =========================== END ASSERTIONS =================================
-// ============================================================================
-
 
 endmodule

@@ -10,13 +10,13 @@ workspace:
 design: workspace
 	echo "Compiling Design"
 	mkdir $(OUT_DIR)
-	${VLOG} +define+FORMAL_TOOL +define+NOINITMEM +define+INITIALIZERO toppipe.v picorv32_checker_bind.sv picorv32_checker.sv  -f ./picorv32.flist -l $(OUT_DIR)/vlog.rpt
+	${VLOG} +define+FORMAL_TOOL +define+NOINITMEM +define+INITIALIZERO picorv32_qed.v picorv32_checker_bind.sv picorv32_checker.sv  -f ./picorv32.flist -l $(OUT_DIR)/vlog.rpt
 
 compile: design
 	echo "Compiling Design"
 	qformal -c -od $(OUT_DIR) -do "\
    		do directives.tcl; \
-    	formal compile -d toppipe  -cuname picorv32_checker_bind -target_cover_statements ; \
+    	formal compile -d picorv32 -cuname picorv32_checker_bind -target_cover_statements ; \
     	exit"
 
 prove: compile

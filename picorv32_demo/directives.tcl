@@ -1,6 +1,6 @@
 # Define clocks
 netlist clock clk -period 10 -waveform {0 5}
-netlist constant toppipe.reset 1'b0
+netlist constant picorv32.reset 1'b0
 #netlist constant top.pipe.pipe_if.predict_cond 1'b0
 #netlist constant top.pipe.pipe_if.invalid2 1'b1
 #netlist memory mem -exact -module top.datamemory
@@ -17,7 +17,7 @@ netlist constant toppipe.reset 1'b0
 # formal netlist constraint cluster_arst_l 1'b1
 
 # cut at instruction
-netlist cutpoint toppipe.vpipe.imem_rdata
-netlist cutpoint toppipe.vpipe.qed_exec_dup
+netlist cutpoint picorv32.imem_rdata
+netlist cutpoint picorv32.qed_exec_dup
 
 report directives

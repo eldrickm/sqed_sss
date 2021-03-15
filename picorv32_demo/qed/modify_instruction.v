@@ -70,5 +70,3 @@ module modify_instruction (qic_qimux_instruction,
    
    
 endmodule // modify_instruction
-
-                           
