@@ -9,13 +9,11 @@ workspace:
 	@echo "========== Intializing Questa Workspace =========="
 	${VLIB} work
 	${VMAP} work work
-	mkdir $(OUT_DIR)
+	mkdir -p $(OUT_DIR)
 
-patch: workspace
-	@echo "========== Applying Patches to Source Files =========="
-
-design: patch
+design: workspace
 	@echo "========== Compiling Design =========="
+	./patches/patch.sh
 	${VLOG} -f $(DESIGN_DIR)/design.flist -f $(FORMAL_DIR)/formal.flist -l $(OUT_DIR)/vlog.rpt
 
 compile: design
@@ -29,7 +27,7 @@ prove: compile
 	@echo "========== Proving Formal Properties =========="
 	qformal -c -od $(OUT_DIR) -do "\
 		formal load db $(OUT_DIR)/formal_compile.db; \
-		formal verify -init formal.init -rtl_init_values -effort unlimited; \
+		formal verify -init $(FORMAL_DIR)/formal.init -rtl_init_values -effort unlimited; \
 		exit"
 
 gui:
@@ -44,5 +42,8 @@ clean:
 	\rm -f visualizer.log
 	\rm -rf results
 	\rm -rf $(OUT_DIR)
+	\rm -rf $(DESIGN_DIR)/*.v
+	\rm -rf $(DESIGN_DIR)/*.vh
+	\rm -rf $(DESIGN_DIR)/*.flist
 
 all: clean workspace design compile prove gui
