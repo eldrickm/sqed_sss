@@ -493,4 +493,70 @@ module steel_top #(
     assign D_ADDR = SU_D_ADDR;
     assign DATA_OUT = SU_DATA_OUT;
     
+    // Start QED Edit - QED and SIF Instruction Commit Tracking
+
+    // Enable QED property check after Symbolic In-Flight (SIF) Instructions
+    // have committed
+    // TODO: Handle stalls?
+    reg [1:0] sif_state;
+    reg sif_commit;
+
+    always @(posedge CLK) begin
+        if (RESET) begin
+            sif_state <= 0;
+            sif_commit <= 0;
+        end else begin
+            if ((sif_state == 0)) begin
+                sif_state <= 1;
+            end
+
+            if ((sif_state == 1)) begin
+                sif_state <= 2;
+            end
+
+            if ((sif_state == 2)) begin
+                sif_commit <= 1;
+            end
+        end
+    end
+
+    // Enable QED property check after equal number of original and duplicate
+    // instructions have committed
+    // Bit width must correspond to width in formal/formal_spec.sv
+    reg [4:0] qed_num_orig;
+    reg [4:0] qed_num_dup;
+
+    wire qed_orig_commit;
+    wire qed_dup_commit;
+
+    wire dst_is_original;
+    wire dst_is_zero_reg;
+    wire rf_wb_is_en;
+
+    assign dst_is_original = (RD_ADDR_reg < 'd16);
+    assign dst_is_zero_reg = (RD_ADDR_reg == 'd0);
+    assign rf_wb_is_en = (RF_WR_EN_reg);
+
+    // We ignore instructions with destination register 5'b0 (NOP)
+    assign qed_orig_commit = (rf_wb_is_en && dst_is_original
+                              && ~dst_is_zero_reg);
+    // Instructions with destination register 5'b0 remain the same for
+    // original and duplicate instructions
+    assign qed_dup_commit = (rf_wb_is_en && ~dst_is_original);
+
+    // Logic to track committed instructions
+    // We keep this in reset until SIF Instructions have committed
+    always @(posedge CLK) begin
+        if (RESET || ~sif_commit) begin
+            qed_num_orig <= 'b0;
+            qed_num_dup <= 'b0;
+        end else begin
+            qed_num_orig <= qed_num_orig + {4'b0, qed_orig_commit};
+            qed_num_dup <= qed_num_dup + {4'b0, qed_dup_commit};
+        end
+    end
+
+    wire qed_check_valid;
+    assign qed_check_valid = (qed_num_orig == qed_num_dup);
+    // End QED Edit - QED and SIF Instruction Commit Tracking
 endmodule
