@@ -27,7 +27,7 @@ prove: compile
 	@echo "========== Proving Formal Properties =========="
 	qformal -c -od $(OUT_DIR) -do "\
 		formal load db $(OUT_DIR)/formal_compile.db; \
-		formal verify -init $(FORMAL_DIR)/formal.init -rtl_init_values -effort unlimited; \
+		formal verify -init $(FORMAL_DIR)/formal.init -rtl_init_values; \
 		exit"
 
 gui:

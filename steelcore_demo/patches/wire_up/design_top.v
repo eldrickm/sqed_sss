@@ -63,4 +63,14 @@ module design_top (input clk, input reset);
         .S_IRQ(S_IRQ)
     );
 
+    ram mem (
+        .CLK(CLK),
+        .ADDRA(D_ADDR[12:2]),
+        .ADDRB(I_ADDR[12:2]),
+        .DINA(DATA_OUT),
+        .WEA(WR_MASK),
+        .DOUTA(DATA_IN),
+        .DOUTB()
+    );    
+
 endmodule

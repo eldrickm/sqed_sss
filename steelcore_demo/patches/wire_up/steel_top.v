@@ -196,14 +196,16 @@ module steel_top #(
     wire [31:0] qed_ifu_instruction;
 
     wire qed_ena;
-    wire qed_exec_dup;
     wire qed_stall_IF;
 
     assign qed_ena = 1'b1;
-    assign qed_exec_dup = 1'b0;
     assign qed_stall_IF = 1'b0;
 
-    qed qed_inst (
+    // exec_dup is a cutpoint - given to the formal tool
+    wire qed_exec_dup;
+    assign qed_exec_dup = 1'b0;
+
+    qed qed0 (
         // Outputs
         .vld_out(qed_vld_out),
         .qed_ifu_instruction(qed_ifu_instruction),

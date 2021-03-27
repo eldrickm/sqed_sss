@@ -1,6 +1,7 @@
 # Copy relevant source files to the design folder
 cp ./steelcore/rtl/*.v design/
 cp ./steelcore/rtl/*.vh design/
+cp ./steelcore/soc/ram.v design/
 
 # Patch design files
 cp ./patches/wire_up/design_top.v design/
