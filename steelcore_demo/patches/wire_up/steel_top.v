@@ -224,7 +224,6 @@ module steel_top #(
     // TODO: Is the flush signal the same as kill_IF?
     // TODO: How do I handle vld_out?
     wire [31:0] INSTR_mux;
-    // assign INSTR_mux = FLUSH == 1'b1 ? 32'h00000013 : INSTR;
     assign INSTR_mux = ((FLUSH == 1'b1) | (qed_vld_out == 1'b0)) ? 32'h00000013 : qed_ifu_instruction;
     // End QED Edit - Override Instruction Signal
     
