@@ -80,7 +80,7 @@ Generally this occurs in the following steps:
 1. Instantiate the `qed` module in the pipeline
 2. Disconnect the instruction signal at starting at the decode stage.
 3. Connect the `qed_ifu_instruction` from the QED module to the decode stage
-4. Ensure that `qed_vld_out` is properly handled in the design
+4. Ensure that `vld_out` is properly handled in the design
 5. Add logic for tracking the committed number of instructions in the design.
 6. Add logic for tracking when Symbolic-In-Flight (SIF) instructions have
    committed.
