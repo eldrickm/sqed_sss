@@ -19,8 +19,6 @@ Setup and usage details can be found in the directory README.
 
 - `steelcore_demo` contains a work-in-progress demo on steel
 
-- `picorv32_demo` contains a work-in-progress demo on picorv32
-
 - `ridecore_demo` - contains a demo on ridecore
 
 - `vscale_demo` containts a SQED + SSS demo on vscale
