@@ -2,3 +2,4 @@
 - (steel_top.v) - Account for pipeline flushes!
 - (steel_top.v) - Account for vld_out
 - (instr_constraint.sv) - Remove MUL\* instructions
+- (sqed-generator) - Modify the ISA constraints from RideCore template
