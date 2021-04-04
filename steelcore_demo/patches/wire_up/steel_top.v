@@ -199,7 +199,7 @@ module steel_top #(
     wire qed_stall_IF;
 
     assign qed_ena = 1'b1;
-    assign qed_stall_IF = 1'b0;
+    assign qed_stall_IF = FLUSH;
 
     // exec_dup is a cutpoint - given to the formal tool
     wire qed_exec_dup;
@@ -217,14 +217,13 @@ module steel_top #(
         .stall_IF(qed_stall_IF),
         .rst(RESET)
     );
+
+    wire qed_kill = FLUSH | (~qed_vld_out);
     // End QED Edit - Add QED Module
 
     // Start QED Edit - Override Instruction Signal
-    // TODO: How do I handle the flush signal?
-    // TODO: Is the flush signal the same as kill_IF?
-    // TODO: How do I handle vld_out?
     wire [31:0] INSTR_mux;
-    assign INSTR_mux = ((FLUSH == 1'b1) | (qed_vld_out == 1'b0)) ? 32'h00000013 : qed_ifu_instruction;
+    assign INSTR_mux = (qed_kill) ? 32'h00000013 : qed_ifu_instruction;
     // End QED Edit - Override Instruction Signal
     
     assign OPCODE = INSTR_mux[6:0];
@@ -540,10 +539,10 @@ module steel_top #(
 
     // We ignore instructions with destination register 5'b0 (NOP)
     assign qed_orig_commit = (rf_wb_is_en && dst_is_original
-                              && ~dst_is_zero_reg);
+                              && ~dst_is_zero_reg && ~FLUSH);
     // Instructions with destination register 5'b0 remain the same for
     // original and duplicate instructions
-    assign qed_dup_commit = (rf_wb_is_en && ~dst_is_original);
+    assign qed_dup_commit = (rf_wb_is_en && ~dst_is_original && ~FLUSH);
 
     // Logic to track committed instructions
     // We keep this in reset until SIF Instructions have committed
