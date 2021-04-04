@@ -25,6 +25,11 @@ Setup and usage details can be found in the directory README.
 
 ### Supplemental Resources
 
+- `demo_templates/` contains a directory and file structure template for use
+   deploying on new designs
+
+- `utilities` contains helpful scripts for parsing output data
+
 - `presentations/` contains slides and graphics related to this work
 
 - `papers/` contains published papers and drafts related to this work
