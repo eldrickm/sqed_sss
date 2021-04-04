@@ -1,4 +1,7 @@
 work/
 output/
+.visualizer/
 
+.qverify_ui_local_prefs
 modelsim.ini
+transcript

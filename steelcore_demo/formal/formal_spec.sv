@@ -94,7 +94,7 @@ module formal_spec(
     // Constraint C-2: At T_C, the processer is QED Consistent
     genvar j;
     generate
-    for (j = 0; j < 16; j++) begin
+    for (j = 1; j < 16; j++) begin
         assume_consistent_pipeline1: assume property (
 							         @(posedge sif_commit)
 							         (iregs[j] == iregs[j+16])
@@ -122,7 +122,7 @@ module formal_spec(
        for (j = 1; j < 16; j++) begin
    	  assert_ireg_match : assert property (
    		@(posedge clk)
-   		 (qed_check_valid && sif_commit) |-> (iregs[j] == iregs[j+16])  );
+   		 (qed_check_valid && sif_commit) |-> (iregs[j] == iregs[j+16]));
    	 end
    endgenerate
 
