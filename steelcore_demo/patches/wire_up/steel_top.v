@@ -508,10 +508,12 @@ module steel_top #(
         end else begin
             if ((sif_state == 0)) begin
                 sif_state <= 1;
+                sif_commit <= 0;
             end
 
             if ((sif_state == 1)) begin
                 sif_state <= 2;
+                sif_commit <= 1;
             end
 
             if ((sif_state == 2)) begin
@@ -533,9 +535,9 @@ module steel_top #(
     wire dst_is_zero_reg;
     wire rf_wb_is_en;
 
-    assign dst_is_original = (RD_ADDR_reg < 'd16);
-    assign dst_is_zero_reg = (RD_ADDR_reg == 'd0);
-    assign rf_wb_is_en = (RF_WR_EN_reg);
+    assign dst_is_original = (RD_ADDR < 'd16);
+    assign dst_is_zero_reg = (RD_ADDR == 'd0);
+    assign rf_wb_is_en = (RF_WR_EN);
 
     // We ignore instructions with destination register 5'b0 (NOP)
     assign qed_orig_commit = (rf_wb_is_en && dst_is_original
@@ -547,7 +549,7 @@ module steel_top #(
     // Logic to track committed instructions
     // We keep this in reset until SIF Instructions have committed
     always @(posedge CLK) begin
-        if (RESET || ~sif_commit) begin
+        if (RESET || sif_state <) begin
             qed_num_orig <= 'b0;
             qed_num_dup <= 'b0;
         end else begin

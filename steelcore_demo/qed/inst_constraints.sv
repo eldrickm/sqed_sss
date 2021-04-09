@@ -114,7 +114,8 @@ clk);
   assign ALLOWED_NOP = NOP;
 
   always @(posedge clk) begin
-    assume property (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_SW || ALLOWED_NOP);
+    //assume property (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_SW || ALLOWED_NOP);
+    assume property (ADDI || ALLOWED_NOP);
   end
 
 endmodule

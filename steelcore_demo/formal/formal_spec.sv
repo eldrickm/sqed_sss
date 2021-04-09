@@ -76,10 +76,17 @@ module formal_spec(
     assign iregs[30] = reg30;
     assign iregs[31] = reg31;
 
-    wire qed_check_valid;
     wire sif_commit;
-
     assign sif_commit = design_top.dut.sif_commit;
+
+    reg sif_commit_q;
+    always @(posedge clk) begin
+        sif_commit_q <= sif_commit;
+    end
+    wire sif_commit_pulsed = sif_commit & ~sif_commit_q;
+
+
+    wire qed_check_valid;
     assign qed_check_valid = design_top.dut.qed_check_valid;
       
 
@@ -88,17 +95,17 @@ module formal_spec(
     // Assume r0 and it's corresponding duplicate register is always 0
     assume_reg0: assume property (
                  @(posedge clk)
-				 (iregs[0] == 0) && (iregs[16] == 0)
-				 );
+                 (iregs[0] == 0) && (iregs[16] == 0)
+                 );
 
     // Constraint C-2: At T_C, the processer is QED Consistent
     genvar j;
     generate
     for (j = 1; j < 16; j++) begin
         assume_consistent_pipeline1: assume property (
-							         @(posedge sif_commit)
-							         (iregs[j] == iregs[j+16])
-						             );
+                                     @(posedge clk)
+                                     sif_commit_pulsed |-> (iregs[j] == iregs[j+16])
+                                     );
     end
     endgenerate
     
@@ -120,10 +127,10 @@ module formal_spec(
    // QED Consistency Check
    generate
        for (j = 1; j < 16; j++) begin
-   	  assert_ireg_match : assert property (
-   		@(posedge clk)
-   		 (qed_check_valid && sif_commit) |-> (iregs[j] == iregs[j+16]));
-   	 end
+      assert_ireg_match : assert property (
+        @(posedge clk)
+         (qed_check_valid && sif_commit) |-> (iregs[j] == iregs[j+16]));
+     end
    endgenerate
 
    // Constrain to allowed instructions only
