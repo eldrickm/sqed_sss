@@ -77,14 +77,9 @@ module formal_spec(
     assign iregs[31] = reg31;
 
     wire sif_commit;
+    wire sif_commit_pulsed;
     assign sif_commit = design_top.dut.sif_commit;
-
-    reg sif_commit_q;
-    always @(posedge clk) begin
-        sif_commit_q <= sif_commit;
-    end
-    wire sif_commit_pulsed = sif_commit & ~sif_commit_q;
-
+    assign sif_commit_pulsed = design_top.dut.sif_commit_pulsed;
 
     wire qed_check_valid;
     assign qed_check_valid = design_top.dut.qed_check_valid;

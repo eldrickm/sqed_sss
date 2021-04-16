@@ -44,7 +44,7 @@ clean:
 	\rm -rf hnl_const_prop.rpt
 	\rm -rf transcript
 	\rm -rf .qverify_ui_local_prefs
-	\rm -rf .visualizer/
+	# \rm -rf .visualizer/
 	\rm -rf $(OUT_DIR)
 	\rm -rf $(DESIGN_DIR)/*.v
 	\rm -rf $(DESIGN_DIR)/*.vh

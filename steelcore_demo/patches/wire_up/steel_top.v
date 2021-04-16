@@ -508,7 +508,7 @@ module steel_top #(
         end else begin
             if ((sif_state == 0)) begin
                 sif_state <= 1;
-                sif_commit <= 0;
+                sif_commit <= 1;
             end
 
             if ((sif_state == 1)) begin
@@ -521,6 +521,12 @@ module steel_top #(
             end
         end
     end
+
+    reg sif_commit_q;
+    always @(posedge CLK) begin
+        sif_commit_q <= sif_commit;
+    end
+    wire sif_commit_pulsed = sif_commit & ~sif_commit_q;
 
     // Enable QED property check after equal number of original and duplicate
     // instructions have committed
@@ -535,9 +541,9 @@ module steel_top #(
     wire dst_is_zero_reg;
     wire rf_wb_is_en;
 
-    assign dst_is_original = (RD_ADDR < 'd16);
-    assign dst_is_zero_reg = (RD_ADDR == 'd0);
-    assign rf_wb_is_en = (RF_WR_EN);
+    assign dst_is_original = (RD_ADDR_reg < 'd16);
+    assign dst_is_zero_reg = (RD_ADDR_reg == 'd0);
+    assign rf_wb_is_en = (RF_WR_EN_reg);
 
     // We ignore instructions with destination register 5'b0 (NOP)
     assign qed_orig_commit = (rf_wb_is_en && dst_is_original
@@ -549,7 +555,7 @@ module steel_top #(
     // Logic to track committed instructions
     // We keep this in reset until SIF Instructions have committed
     always @(posedge CLK) begin
-        if (RESET || sif_state <) begin
+        if (RESET || (sif_state == 0)) begin
             qed_num_orig <= 'b0;
             qed_num_dup <= 'b0;
         end else begin
