@@ -340,7 +340,9 @@ module steel_top #(
         .MIE_CLEAR(MIE_CLEAR),
         .MIE_SET(MIE_SET),
         .MISALIGNED_EXCEPTION(MISALIGNED_EXCEPTION),
-        .MIE(MIE),
+        // Start QED Edit - Disable Machine Interrupts (1 / 2)
+        // .MIE(MIE),
+        // End QED Edit - Disable Machine Interrupts (1 / 2)
         .MEIE_OUT(MEIE_OUT),
         .MTIE_OUT(MTIE_OUT),
         .MSIE_OUT(MSIE_OUT),
@@ -354,6 +356,10 @@ module steel_top #(
         .TRAP_ADDRESS(TRAP_ADDRESS)
 
     );
+
+    // Start QED Edit - Disable Machine Interrupts (2 / 2)
+    assign MIE = 'b0;
+    // End QED Edit - Disable Machine Interrupts (2 / 2)
         
     machine_control mc(
 

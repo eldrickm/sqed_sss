@@ -41,7 +41,6 @@ module formal_spec(
     input [31:0] reg30;
     input [31:0] reg31;
 
-    
     wire [31:0]  iregs[31:0];
     assign iregs[0] = reg0;
     assign iregs[1] = reg1;
@@ -76,6 +75,9 @@ module formal_spec(
     assign iregs[30] = reg30;
     assign iregs[31] = reg31;
 
+    // =========================================================================
+    // Bind Commit Tracking Signals
+    // =========================================================================
     wire sif_commit;
     wire sif_commit_pulsed;
     assign sif_commit = design_top.dut.sif_commit;
@@ -83,29 +85,43 @@ module formal_spec(
 
     wire qed_check_valid;
     assign qed_check_valid = design_top.dut.qed_check_valid;
-      
+    // =========================================================================
 
+    // =========================================================================
     // Assumptions
-    
+    // =========================================================================
+    // Constrain R0 == 0
     // Assume r0 and it's corresponding duplicate register is always 0
     assume_reg0: assume property (
                  @(posedge clk)
                  (iregs[0] == 0) && (iregs[16] == 0)
                  );
 
-    // Constraint C-2: At T_C, the processer is QED Consistent
+    // Constraint C-2:
+    // C-2A: At T_C, the registers are QED Consistent
     genvar j;
     generate
     for (j = 1; j < 16; j++) begin
-        assume_consistent_pipeline1: assume property (
-                                     @(posedge clk)
-                                     sif_commit_pulsed |-> (iregs[j] == iregs[j+16])
-                                     );
+        assume_c2a_consistent_register: assume property (
+                                 @(posedge clk)
+                                 sif_commit_pulsed |-> (iregs[j] == iregs[j+16])
+                                 );
     end
     endgenerate
-    
-    // Constraint initial state of QED module and relevant signals
-    property assume_init_mem;
+    // C-2B: At T_C, the memory are QED Consistent
+    // generate
+    // for (j = 0; j < 4096; j++) begin
+    //     assume_c2b_consistent_memory: assume property (
+    //                            @(posedge clk)
+    //                            sif_commit_pulsed |->
+    //                            (design_top.mem.ram[j] ==
+    //                             design_top.mem.ram[j + 4096])
+    //                            );
+    // end
+    // endgenerate
+
+    // Constrain Initial QED Module and Signal State
+    property qed_module_init;
         @(posedge clk)
         ((design_top.dut.qed0.qic.i_cache == 0)
         && (design_top.dut.qed0.qic.address_tail == 0)
@@ -115,20 +131,27 @@ module formal_spec(
         && (design_top.dut.qed_num_orig == 0)
         && (design_top.dut.qed_num_dup == 0))
     endproperty
-   initial begin
-      assume_mem: assume property (assume_init_mem);
-   end
-   
-   // QED Consistency Check
-   generate
-       for (j = 1; j < 16; j++) begin
-      assert_ireg_match : assert property (
-        @(posedge clk)
-         (qed_check_valid && sif_commit) |-> (iregs[j] == iregs[j+16]));
-     end
-   endgenerate
 
-   // Constrain to allowed instructions only
-   inst_constraint inst_constraint_0 (.clk(clk), .instruction(design_top.INSTR));
+    initial begin
+        assume_qed_module_init: assume property (qed_module_init);
+    end
+
+    // Constrain Allowed Instructions:
+    inst_constraint inst_constraint_0 (.clk(clk),
+                                       .instruction(design_top.INSTR));
+    // =========================================================================
+
+    // =========================================================================
+    // Assertions
+    // =========================================================================
+    // QED Consistency Check
+    generate
+        for (j = 1; j < 16; j++) begin
+        assert_qed_consistent : assert property (
+        @(posedge clk)
+        (qed_check_valid && sif_commit) |-> (iregs[j] == iregs[j+16]));
+        end
+    endgenerate
+    // =========================================================================
 
 endmodule
