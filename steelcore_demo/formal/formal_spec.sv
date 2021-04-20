@@ -109,16 +109,16 @@ module formal_spec(
     end
     endgenerate
     // C-2B: At T_C, the memory are QED Consistent
-    // generate
-    // for (j = 0; j < 4096; j++) begin
-    //     assume_c2b_consistent_memory: assume property (
-    //                            @(posedge clk)
-    //                            sif_commit_pulsed |->
-    //                            (design_top.mem.ram[j] ==
-    //                             design_top.mem.ram[j + 4096])
-    //                            );
-    // end
-    // endgenerate
+    generate
+    for (j = 0; j < 16; j++) begin
+        assume_c2b_consistent_memory: assume property (
+                               @(posedge clk)
+                               sif_commit_pulsed |->
+                               (design_top.mem.ram[j] ==
+                                design_top.mem.ram[j+16])
+                               );
+    end
+    endgenerate
 
     // Constrain Initial QED Module and Signal State
     property qed_module_init;

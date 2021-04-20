@@ -190,7 +190,7 @@ module steel_top #(
     // ---------------------------------
     // PIPELINE STAGE 2
     // ---------------------------------       
-
+    
     // Start QED Edit - Add QED Module
     wire qed_vld_out;
     wire [31:0] qed_ifu_instruction;
@@ -341,7 +341,7 @@ module steel_top #(
         .MIE_SET(MIE_SET),
         .MISALIGNED_EXCEPTION(MISALIGNED_EXCEPTION),
         // Start QED Edit - Disable Machine Interrupts (1 / 2)
-        // .MIE(MIE),
+        .MIE(),
         // End QED Edit - Disable Machine Interrupts (1 / 2)
         .MEIE_OUT(MEIE_OUT),
         .MTIE_OUT(MTIE_OUT),
@@ -503,7 +503,6 @@ module steel_top #(
 
     // Enable QED property check after Symbolic In-Flight (SIF) Instructions
     // have committed
-    // TODO: Handle stalls?
     reg [1:0] sif_state;
     reg sif_commit;
 
@@ -547,16 +546,32 @@ module steel_top #(
     wire dst_is_zero_reg;
     wire rf_wb_is_en;
 
+    reg [3:0] SU_WR_MASK_reg;
+    always @(posedge CLK)
+    begin
+        if(RESET)
+        begin
+            SU_WR_MASK_reg <= 1'b0;
+        end
+        else
+        begin
+            SU_WR_MASK_reg <= SU_WR_MASK;
+        end
+    end
+
     assign dst_is_original = (RD_ADDR_reg < 'd16);
     assign dst_is_zero_reg = (RD_ADDR_reg == 'd0);
     assign rf_wb_is_en = (RF_WR_EN_reg);
+    // TODO: Add dst original flags for memory addresses
+    assign mem_wea_is_en = (SU_WR_MASK);
 
     // We ignore instructions with destination register 5'b0 (NOP)
-    assign qed_orig_commit = (rf_wb_is_en && dst_is_original
+    assign qed_orig_commit = (mem_wea_is_en && rf_wb_is_en && dst_is_original
                               && ~dst_is_zero_reg && ~FLUSH);
     // Instructions with destination register 5'b0 remain the same for
     // original and duplicate instructions
-    assign qed_dup_commit = (rf_wb_is_en && ~dst_is_original && ~FLUSH);
+    assign qed_dup_commit = (mem_wea_is_en && rf_wb_is_en && ~dst_is_original
+                             && ~FLUSH);
 
     // Logic to track committed instructions
     // We keep this in reset until SIF Instructions have committed

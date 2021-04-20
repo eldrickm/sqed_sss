@@ -17,7 +17,7 @@ module design_top (input clk, input reset);
     wire [31:0] I_ADDR;
     wire [31:0] INSTR;
 
-    // TODO: Make Cutpoint
+    // Cutpoint
     assign INSTR = 'b0;
     
     // connections with Data Memory
@@ -27,9 +27,6 @@ module design_top (input clk, input reset);
     wire [3:0] WR_MASK;
     wire [31:0] DATA_IN;
 
-    // TODO: Wire up to memory
-    assign DATA_IN = 'b0;
-    
     // connections with Interrupt Controller - hard-wired to 0
     wire E_IRQ;
     wire T_IRQ;
@@ -63,10 +60,13 @@ module design_top (input clk, input reset);
         .S_IRQ(S_IRQ)
     );
 
-    ram mem (
+    // Memory is 4 byte aligned - hence the indexing starts at bit 2
+    ram #(
+        .DEPTH(32)
+    ) mem (
         .CLK(CLK),
-        .ADDRA(D_ADDR[12:2]),
-        .ADDRB(I_ADDR[12:2]),
+        .ADDRA(D_ADDR[6:2]),
+        .ADDRB(I_ADDR[6:2]),
         .DINA(DATA_OUT),
         .WEA(WR_MASK),
         .DOUTA(DATA_IN),

@@ -6,6 +6,8 @@ cp ./steelcore/soc/ram.v design/
 # Patch design files
 cp ./patches/wire_up/design_top.v design/
 cp ./patches/wire_up/steel_top.v design/
+cp ./patches/optimization/ram.v design/
+cp ./patches/optimization/integer_file.v design/
 
 # Write design files to design file list
 ls ./design/ | sed 's/^/.\/design\//; s/$//' > ./design/design.flist

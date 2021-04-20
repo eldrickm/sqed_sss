@@ -59,8 +59,14 @@ imm7);
   assign NEW_rd = (rd == 5'b00000) ? rd : {1'b1, rd[3:0]};
   assign NEW_rs1 = (rs1 == 5'b00000) ? rs1 : {1'b1, rs1[3:0]};
   assign NEW_rs2 = (rs2 == 5'b00000) ? rs2 : {1'b1, rs2[3:0]};
-  assign NEW_imm12 = {2'b01, imm12[9:0]};
-  assign NEW_imm7 = {2'b01, imm7[4:0]};
+  // Start Edit: Shrink RAM Depth
+  // RAM Depth Shrunk to 32-deep
+  // Memory accesses are 4 byte aligned, hence we keep the lower 6 bits
+  // and only change the 7th bit for 2 16-deep partitions
+  assign NEW_imm12 = {6'b000001, imm12[5:0]};
+  assign NEW_imm7  = {6'b000001, imm7[0]};
+  // assign NEW_imm5 = {1'b1, imm5[3:0]};
+  // End Edit: Shrink RAM Depth
 
   assign INS_I = {imm12, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_LW = {NEW_imm12, NEW_rs1, funct3, NEW_rd, opcode};
