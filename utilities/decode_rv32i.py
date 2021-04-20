@@ -35,7 +35,7 @@ def decode_rv32i_hex(hex_instruction: str):
     ALLOWED_I = ANDI or SLTIU or SRLI or SLTI or SRAI or SLLI or ORI or XORI or ADDI
 
     # Decode LW Instructions
-    FORMAT_LW = (instruction[31:30] == '00')
+    FORMAT_LW = True #(instruction[32 - 31 - 1:32 - 30] == '00')
     LW = FORMAT_LW and (funct3 == '010') and (opcode == '0000011') and (rs1 == '00000')
     ALLOWED_LW = LW
 
@@ -59,7 +59,7 @@ def decode_rv32i_hex(hex_instruction: str):
         MULHU or SRL or SLL or ADD or MUL or OR
 
     # Decode SW Instructions
-    FORMAT_SW = (instruction[31:30] == '00')
+    FORMAT_SW = (instruction[32 - 31 - 1:32 - 30] == '00')
     SW = FORMAT_SW and (funct3 == '010') and (opcode == '0100011') and (rs1 == '00000')
     ALLOWED_SW = SW
 
@@ -93,10 +93,10 @@ def decode_rv32i_hex(hex_instruction: str):
         print('%s dst: %d src1: %d src2: %d' % (asm_op, int(rd, 2), int(rs1, 2), int(rs2, 2)))
 
     elif ALLOWED_LW:
-        print(asm_op)
+        print('%s dst: %d base: %d offset: %d' % (asm_op, int(rd, 2), int(rs1, 2), int(imm12, 2)))
 
     elif ALLOWED_SW:
-        print(asm_op)
+        print('%s src: %d base: %d offset: %d' % (asm_op, int(rs2, 2), int(rs1, 2), int(imm7 + imm5, 2)))
 
     elif ALLOWED_NOP:
         print(asm_op)
@@ -104,6 +104,6 @@ def decode_rv32i_hex(hex_instruction: str):
         print("Error - Invalid Instruction")
 
 
-hex_inst_list = ['404480b3', '40c480b3', '40c4f093']
+hex_inst_list = ['2802603', '6402423', '6802e03', '40005413', '5413']
 for hex_inst in hex_inst_list:
     decode_rv32i_hex(hex_inst)
