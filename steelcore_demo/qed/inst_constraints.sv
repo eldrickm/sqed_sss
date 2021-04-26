@@ -88,7 +88,7 @@ clk);
   assign ADDI = FORMAT_I && (funct3 == 3'b000) && (opcode == 7'b0010011);
   assign ALLOWED_I = ANDI || SLTIU || SRLI || SLTI || SRAI || SLLI || ORI || XORI || ADDI;
 
-  assign FORMAT_LW = (instruction[31:30] == 00) && (rs1 < 16) && (rd < 16);
+  assign FORMAT_LW = (instruction[31:30] == 00) && (rs1 < 16) && (rd < 16) && (imm12 < 64);
   assign LW = FORMAT_LW && (funct3 == 3'b010) && (opcode == 7'b0000011) && (rs1 == 5'b00000);
   assign ALLOWED_LW = LW;
 
@@ -106,7 +106,7 @@ clk);
   assign OR = FORMAT_R && (funct3 == 3'b110) && (opcode == 7'b0110011) && (funct7 == 7'b0000000);
   assign ALLOWED_R = AND || SLTU || SRA || XOR || SUB || SLT || SRL || SLL || ADD || OR;
 
-  assign FORMAT_SW = (instruction[31:30] == 00) && (rs2 < 16) && (rs1 < 16);
+  assign FORMAT_SW = (instruction[31:30] == 00) && (rs2 < 16) && (rs1 < 16) && (imm7 < 2);
   assign SW = FORMAT_SW && (funct3 == 3'b010) && (opcode == 7'b0100011) && (rs1 == 5'b00000);
   assign ALLOWED_SW = SW;
 
@@ -114,7 +114,8 @@ clk);
   assign ALLOWED_NOP = NOP;
 
   always @(posedge clk) begin
-    assume property (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_SW || ALLOWED_NOP);
+    // assume property (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_SW || ALLOWED_NOP);
+    assume property (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_NOP);
   end
 
 endmodule

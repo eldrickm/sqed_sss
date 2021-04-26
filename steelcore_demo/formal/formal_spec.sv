@@ -144,12 +144,22 @@ module formal_spec(
     // =========================================================================
     // Assertions
     // =========================================================================
-    // QED Consistency Check
+    // QED Consistency Check - Registers
     generate
         for (j = 1; j < 16; j++) begin
-        assert_qed_consistent : assert property (
+        assert_qed_consistent_registers : assert property (
         @(posedge clk)
         (qed_check_valid && sif_commit) |-> (iregs[j] == iregs[j+16]));
+        end
+    endgenerate
+
+    // QED Consistency Check - Memory
+    generate
+        for (j = 0; j < 16; j++) begin
+        assert_qed_consistent_memory : assert property (
+        @(posedge clk)
+        (qed_check_valid && sif_commit) |-> (design_top.mem.ram[j] ==
+                                             design_top.mem.ram[j+16]));
         end
     endgenerate
     // =========================================================================

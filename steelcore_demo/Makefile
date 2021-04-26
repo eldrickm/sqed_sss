@@ -30,7 +30,7 @@ prove: compile
 		formal verify -init $(FORMAL_DIR)/formal.init -rtl_init_values; \
 		exit"
 
-gui: prove
+gui:
 	@echo "========== Launching Questa GUI =========="
 	qverify $(OUT_DIR)/formal_verify.db
 
