@@ -14,6 +14,24 @@ The design, ISA, and codebase is relatively simple to use.
 We use the following commit snapshot of Steel for this demo:
 [Steel - bc75810 oin Feb 15](https://github.com/rafaelcalcada/steel-core/commit/bc7581015cd35d0a7eabffcee2bfe04957a9d734)
 
+### Key Takeaways from the Deployment Process
+- Shrink Memory: Having large memories leads to slower runtimes and also leads
+  to the tool abstracting away the memory.
+
+- Disable CSR MIE: Disable the MIE output from the CSR to disable machine
+  interrupts. This lead to un-duplicatable flushes in the counterexamples
+  if not disabled.
+
+- Account for `SW` commit time: Make sure to check when instructions commit.
+  In steel, `SW` commits in 1 cycle due to its position in the pipeline.
+  We had to prevent `SW` from being issued before SIF commit at `Tc` in order to
+  satisfy Constraint C2.
+
+- Account for multiple commits in one cycle: This can happen when a regular
+  register instruction issues in cycle T-2, a `SW` issues in T-1, and both
+  commit at T-0. This means we need a way to increment the number of commited
+  instructions by more than just one bit.
+
 
 ## Toolchain
 This codebase uses the Questa toolchain.
@@ -225,5 +243,5 @@ the formal tool to apply to the design.
 - `directives.tcl` contains the directives for Questa Formal analysis.
    In this file we typically specify properties of the clock and reset,
    as well as detail our "cutpoints" for the formal tool to treat as inputs
-   over time. Typically we should have two cutpoints for SQED + SSS - 
+   over time. Typically we should have two cutpoints for SQED + SSS -
    the instruction signal and the `exec_dup` signal.
