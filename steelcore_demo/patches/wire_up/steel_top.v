@@ -539,9 +539,19 @@ module steel_top #(
     reg [4:0] qed_num_orig;
     reg [4:0] qed_num_dup;
 
-    wire qed_orig_commit;
-    wire qed_dup_commit;
+    // tracking QED instruction commits which update the integer register file
+    wire qed_orig_commit_reg;
+    wire qed_dup_commit_reg;
 
+    // tracking QED instruction commits which update memory
+    wire qed_orig_commit_mem;
+    wire qed_dup_commit_mem;
+
+    // allows tracking of multiple commits at a single time step
+    wire [1:0] qed_orig_commit;
+    wire [1:0] qed_dup_commit;
+
+    // logic to track integer register file commits - original or duplicate
     wire dst_is_original;
     wire dst_is_zero_reg;
     wire rf_wb_is_en;
@@ -550,20 +560,28 @@ module steel_top #(
     assign dst_is_zero_reg = (RD_ADDR_reg == 'd0);
     assign rf_wb_is_en = (RF_WR_EN_reg);
 
+    // logic to track memory commits - original or duplicate
+    wire mem_dst_is_original;
+    wire mem_wea_is_en;
+
     assign mem_dst_is_original = (SU_D_ADDR < 'd64);
     assign mem_wea_is_en = |(SU_WR_MASK);
 
     // We ignore instructions with destination register 5'b0 (NOP)
-    assign qed_orig_commit = ((mem_wea_is_en && mem_dst_is_original)
-                              || (rf_wb_is_en
-                                  && dst_is_original
-                                  && ~dst_is_zero_reg))
-                             && ~FLUSH;
+    assign qed_orig_commit_reg = rf_wb_is_en
+                                 && dst_is_original
+                                 && ~dst_is_zero_reg
+                                 && ~FLUSH;
+    assign qed_orig_commit_mem = mem_wea_is_en && mem_dst_is_original && ~FLUSH;
+
     // Instructions with destination register 5'b0 remain the same for
     // original and duplicate instructions
-    assign qed_dup_commit = ((mem_wea_is_en && ~mem_dst_is_original)
-                             || (rf_wb_is_en && ~dst_is_original))
-                            && ~FLUSH;
+    assign qed_dup_commit_reg = rf_wb_is_en && ~dst_is_original && ~FLUSH;
+    assign qed_dup_commit_mem = mem_wea_is_en && ~mem_dst_is_original && ~FLUSH;
+
+    // sum all commits that happen in a cycle
+    assign qed_orig_commit = qed_orig_commit_mem + qed_orig_commit_reg;
+    assign qed_dup_commit = qed_dup_commit_mem + qed_dup_commit_reg;
 
     // Logic to track committed instructions
     // We keep this in reset until SIF Instructions have committed
@@ -572,8 +590,8 @@ module steel_top #(
             qed_num_orig <= 'b0;
             qed_num_dup <= 'b0;
         end else begin
-            qed_num_orig <= qed_num_orig + {4'b0, qed_orig_commit};
-            qed_num_dup <= qed_num_dup + {4'b0, qed_dup_commit};
+            qed_num_orig <= qed_num_orig + {3'b0, qed_orig_commit};
+            qed_num_dup <= qed_num_dup + {3'b0, qed_dup_commit};
         end
     end
 

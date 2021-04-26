@@ -112,10 +112,21 @@ clk);
 
   assign NOP = (opcode == 7'b1111111);
   assign ALLOWED_NOP = NOP;
-
-  always @(posedge clk) begin
-    // assume property (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_SW || ALLOWED_NOP);
-    assume property (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_NOP);
-  end
+  
+  wire sif_commit;
+  assign sif_commit = design_top.dut.sif_commit;
+  // only allow certain instructions before SIF commit
+  // in this case, prevent SW from occuring before SIF commit since it will
+  // commit only 1 cycle after issue, leading to a violation of constraint C2
+  assume_allowed_instructions_before_tc: assume property (
+                         @(posedge clk)
+                         ~sif_commit |->
+                         (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_NOP)
+                         );
+  assume_allowed_instructions_after_tc: assume property (
+                         @(posedge clk)
+                         sif_commit |->
+                         (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_SW || ALLOWED_NOP)
+                         );
 
 endmodule
