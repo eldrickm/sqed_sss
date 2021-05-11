@@ -9,6 +9,9 @@ cp ./patches/wire_up/steel_top.v design/
 cp ./patches/optimization/ram.v design/
 cp ./patches/optimization/integer_file.v design/
 
+# Uncomment to insert buggy design files
+# cp ./patches/bug/steel_top.v design/
+
 # Write design files to design file list
 ls ./design/ | sed 's/^/.\/design\//; s/$//' > ./design/design.flist
 sed -i '/.\/design\/design.flist/d' ./design/design.flist
