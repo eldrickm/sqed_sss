@@ -51,6 +51,7 @@ The demo's directory structure is arranged as follows:
 	 |- wire_up/
 	 |- optimization/
 	 |- fix/
+	 |- bug/
 |- design/
 	 |- design.flist
 	 |- design_top.v
@@ -142,6 +143,7 @@ DUV.
 	 |- wire_up/
 	 |- optimization/
 	 |- fix/
+	 |- bug/
 ```
 
 - `patch.sh` - Script which applies the patches to the original design
@@ -152,6 +154,8 @@ DUV.
    of the formal analysis
 
 - `fix/` - Patches which fix found bugs in the DUV
+
+- `bug/` - Patches which add deliberate bugs
 
 Our recommended workflow recommends copying the relevant design files from the
 original design directory into the `patches/` directory and edit them directly.
