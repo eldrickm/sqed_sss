@@ -42,6 +42,5 @@ clean:
 	\rm -f visualizer.log
 	\rm -rf results
 	\rm -rf $(OUT_DIR)
-	\rm -rf $(DESIGN_DIR)/*
 
 all: clean workspace design compile prove gui

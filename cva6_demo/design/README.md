@@ -1,0 +1,2 @@
+- flist modified to include design/path
+- bootrom and bootrom_linux taken from cva6/bootrom - not representative. Dummy for cimpliationonly - we dont need it
