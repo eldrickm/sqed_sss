@@ -43,4 +43,4 @@ clean:
 	\rm -rf results
 	\rm -rf $(OUT_DIR)
 
-all: clean workspace design compile prove gui
+all: workspace design compile prove gui
