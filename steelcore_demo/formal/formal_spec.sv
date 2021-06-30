@@ -126,7 +126,7 @@ module formal_spec(
         ((design_top.qed0.qic.i_cache == 0)
         && (design_top.qed0.qic.address_tail == 0)
         && (design_top.qed0.qic.address_head == 0)
-        && (design_top.shim0.qed_instr_q == 0)
+        && (design_top.shim0.qed_instr_q == 'h13)
         && (design_top.shim0.mem_addr == 0)
         && (design_top.shim0.mem_w_en == 0)
         && (design_top.dut.sif_commit == 0)
