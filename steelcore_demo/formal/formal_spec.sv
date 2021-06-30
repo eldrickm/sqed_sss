@@ -114,8 +114,8 @@ module formal_spec(
         assume_c2b_consistent_memory: assume property (
                                @(posedge clk)
                                sif_commit_pulsed |->
-                               (design_top.mem.ram[j] ==
-                                design_top.mem.ram[j+16])
+                               (design_top.d_mem.ram[j] ==
+                                design_top.d_mem.ram[j+16])
                                );
     end
     endgenerate
@@ -137,6 +137,16 @@ module formal_spec(
 
     initial begin
         assume_qed_module_init: assume property (qed_module_init);
+    end
+
+    // Constrain initial address since there is no reset
+    property boot_addr_init;
+        @(posedge clk)
+        (design_top.dut.PC_MUX_OUT == 32'h0)
+    endproperty
+
+    initial begin
+        assume_boot_addr: assume property (boot_addr_init);
     end
 
     // Constrain Allowed Instructions:
@@ -161,8 +171,8 @@ module formal_spec(
         for (j = 0; j < 16; j++) begin
         assert_qed_consistent_memory : assert property (
         @(posedge clk)
-        (qed_check_valid && sif_commit) |-> (design_top.mem.ram[j] ==
-                                             design_top.mem.ram[j+16]));
+        (qed_check_valid && sif_commit) |-> (design_top.d_mem.ram[j] ==
+                                             design_top.d_mem.ram[j+16]));
         end
     endgenerate
     // =========================================================================

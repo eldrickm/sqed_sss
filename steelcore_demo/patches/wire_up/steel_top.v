@@ -471,7 +471,7 @@ module steel_top #(
 
     // Enable QED property check after Symbolic In-Flight (SIF) Instructions
     // have committed
-    reg [1:0] sif_state;
+    reg [2:0] sif_state;
     reg sif_commit;
 
     always @(posedge CLK) begin
@@ -481,15 +481,21 @@ module steel_top #(
         end else begin
             if ((sif_state == 0)) begin
                 sif_state <= 1;
-                sif_commit <= 1;
             end
 
             if ((sif_state == 1)) begin
                 sif_state <= 2;
-                sif_commit <= 1;
             end
 
             if ((sif_state == 2)) begin
+                sif_state <= 3;
+            end
+
+            if ((sif_state == 3)) begin
+                sif_state <= 4;
+            end
+
+            if ((sif_state == 4)) begin
                 sif_commit <= 1;
             end
         end

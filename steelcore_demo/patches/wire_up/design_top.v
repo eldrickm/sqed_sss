@@ -119,7 +119,7 @@ module design_top (input clk, input reset);
         .DEPTH(32)
     ) i_mem (
         .CLK(CLK),
-        .ADDRA(qed_mem_addr_o),
+        .ADDRA(qed_mem_addr_o[6:2]),
         .ADDRB(I_ADDR[6:2]),
         .DINA(qed_mem_data_o),
         .WEA({4{qed_mem_w_en_o}}),
