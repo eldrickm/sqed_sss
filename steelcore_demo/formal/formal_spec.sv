@@ -123,9 +123,12 @@ module formal_spec(
     // Constrain Initial QED Module and Signal State
     property qed_module_init;
         @(posedge clk)
-        ((design_top.dut.qed0.qic.i_cache == 0)
-        && (design_top.dut.qed0.qic.address_tail == 0)
-        && (design_top.dut.qed0.qic.address_head == 0)
+        ((design_top.qed0.qic.i_cache == 0)
+        && (design_top.qed0.qic.address_tail == 0)
+        && (design_top.qed0.qic.address_head == 0)
+        && (design_top.shim0.qed_instr_q == 0)
+        && (design_top.shim0.mem_addr == 0)
+        && (design_top.shim0.mem_w_en == 0)
         && (design_top.dut.sif_commit == 0)
         && (design_top.dut.sif_state ==  0)
         && (design_top.dut.qed_num_orig == 0)

@@ -191,40 +191,8 @@ module steel_top #(
     // PIPELINE STAGE 2
     // ---------------------------------       
     
-    // Start QED Edit - Add QED Module
-    wire qed_vld_out;
-    wire [31:0] qed_ifu_instruction;
-
-    wire qed_ena;
-    wire qed_stall_IF;
-
-    assign qed_ena = 1'b1;
-    assign qed_stall_IF = FLUSH;
-
-    // exec_dup is a cutpoint - given to the formal tool
-    wire qed_exec_dup;
-    assign qed_exec_dup = 1'b0;
-
-    qed qed0 (
-        // Outputs
-        .vld_out(qed_vld_out),
-        .qed_ifu_instruction(qed_ifu_instruction),
-        // Inputs
-        .ena(qed_ena),
-        .ifu_qed_instruction(INSTR),
-        .clk(CLK),
-        .exec_dup(qed_exec_dup),
-        .stall_IF(qed_stall_IF),
-        .rst(RESET)
-    );
-
-    wire qed_kill = FLUSH | (~qed_vld_out);
-    // End QED Edit - Add QED Module
-
-    // Start QED Edit - Override Instruction Signal
     wire [31:0] INSTR_mux;
-    assign INSTR_mux = (qed_kill) ? 32'h00000013 : qed_ifu_instruction;
-    // End QED Edit - Override Instruction Signal
+    assign INSTR_mux = FLUSH == 1'b1 ? 32'h00000013 : INSTR;
     
     assign OPCODE = INSTR_mux[6:0];
     assign FUNCT3 = INSTR_mux[14:12];
