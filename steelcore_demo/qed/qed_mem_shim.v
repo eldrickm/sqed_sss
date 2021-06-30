@@ -36,7 +36,8 @@ module qed_mem_shim (
                 // increment 4 bytes since we have 1 word = 4 bytes
                 mem_addr <= mem_addr + 'h4;
                 mem_w_en <= 'b1;
-                qed_instr_q <= qed_instr_i;
+                // no-op if qed instruction is not valid
+                qed_instr_q <= (qed_vld_i) ? qed_instr_i : 32'h13;
             end
         end
     end

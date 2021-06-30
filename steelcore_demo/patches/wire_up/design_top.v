@@ -32,6 +32,8 @@ module design_top (input clk, input reset);
     assign E_IRQ = 'b0;
     assign T_IRQ = 'b0;
     assign S_IRQ = 'b0;
+
+    wire FLUSH_O;
     
     steel_top dut (
         .CLK(CLK),
@@ -54,7 +56,9 @@ module design_top (input clk, input reset);
         //connections with Interrupt Controller
         .E_IRQ(E_IRQ),
         .T_IRQ(T_IRQ),
-        .S_IRQ(S_IRQ)
+        .S_IRQ(S_IRQ),
+
+        .FLUSH_O(FLUSH_O)
     );
 
     // Memory is 4 byte aligned - hence the indexing starts at bit 2
@@ -89,7 +93,7 @@ module design_top (input clk, input reset);
         .ifu_qed_instruction(instr_cutpoint),
         .clk(CLK),
         .exec_dup(qed_exec_dup),
-        .stall_IF(1'b0),
+        .stall_IF(FLUSH_O),
         .rst(RESET)
     );
 

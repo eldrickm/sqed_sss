@@ -76,7 +76,11 @@ module steel_top #(
     //connections with Interrupt Controller
     input wire E_IRQ,
     input wire T_IRQ,
-    input wire S_IRQ
+    input wire S_IRQ,
+
+    // Start QED Edit - Break out FLUSH
+    output wire FLUSH_O
+    // End QED Edit - Break out FLUSH
 
     );
     
@@ -572,4 +576,8 @@ module steel_top #(
     wire qed_check_valid;
     assign qed_check_valid = (qed_num_orig == qed_num_dup);
     // End QED Edit - QED and SIF Instruction Commit Tracking
+
+    // Start QED Edit - Assign FLUSH_O
+    assign FLUSH_O = FLUSH;
+    // End QED Edit - Assign FLUSH_O
 endmodule
