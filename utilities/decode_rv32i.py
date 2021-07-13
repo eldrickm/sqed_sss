@@ -20,6 +20,11 @@ def decode_rv32i_hex(hex_instruction: str):
     imm5   = instruction[32 - 11 - 1:32 - 7]
     rs1    = instruction[32 - 19 - 1:32 - 15]
     rs2    = instruction[32 - 24 - 1:32 - 20]
+    jimm10 = instruction[32 - 30 - 1:32 - 21]
+    jimm11 = instruction[32 - 20 - 1:32 - 20]
+    jimm19 = instruction[32 - 19 - 1:32 - 12]
+    jimm20 = instruction[32 - 31 - 1:32 - 31]
+    uimm31 = instruction[32 - 31 - 1:32 - 12]
 
     # Decode I Instructions
     FORMAT_I = True
@@ -67,15 +72,27 @@ def decode_rv32i_hex(hex_instruction: str):
     NOP = (opcode == '1111111')
     ALLOWED_NOP = NOP
 
+    # Decode JAL
+    JAL = (opcode == '1101111')
+    ALLOWED_JAL = JAL
+
+    # Decode AUIPC
+    AUIPC = (opcode == '0010111')
+    ALLOWED_AUIPC = AUIPC
+
+    # Decode LUI
+    LUI = (opcode == '0110111')
+    ALLOWED_LUI = LUI
+
     # Find Assembly Opcode
     ASSEMBLY_OPS = ["ANDI", "SLTIU", "SRLI", "SLTI", "SRAI", "SLLI", "ORI", "XORI",
                     "ADDI", "LW", "AND", "SLTU", "MULH", "SRA", "XOR", "SUB",
                     "SLT", "MULHSU", "MULHU", "SRL", "SLL", "ADD", "MUL", "OR",
-                    "SW"]
+                    "SW", "JAL", "AUIPC", "LUI"]
     decoded_ops = [ANDI, SLTIU, SRLI, SLTI, SRAI, SLLI, ORI, XORI,
                    ADDI, LW, AND, SLTU, MULH, SRA, XOR, SUB,
                    SLT, MULHSU, MULHU, SRL, SLL, ADD, MUL, OR,
-                   SW]
+                   SW, JAL, AUIPC, LUI]
     asm_op = None
     for i in range(len(decoded_ops)):
         if decoded_ops[i]:
@@ -100,10 +117,17 @@ def decode_rv32i_hex(hex_instruction: str):
 
     elif ALLOWED_NOP:
         print(asm_op)
+
+    elif ALLOWED_JAL:
+        print('%s dst: %d imm: %d' % (asm_op, int(rd, 2), int(jimm20 + jimm19 + jimm11 + jimm10, 2)))
+
+    elif ALLOWED_AUIPC or ALLOWED_LUI:
+        print('%s dst: %d imm: %d' % (asm_op, int(rd, 2), int(uimm31 + "000000000000", 2)))
+
     else:
         print("Error - Invalid Instruction")
 
 
-hex_inst_list = ['2802603', '6402423', '6802e03', '40005413', '5413']
+hex_inst_list = ['a4097', 'a4897', 'b020a3', '13', 'b020b3']
 for hex_inst in hex_inst_list:
     decode_rv32i_hex(hex_inst)
