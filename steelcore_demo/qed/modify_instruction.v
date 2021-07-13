@@ -29,6 +29,9 @@ jimm11,
 jimm19,
 jimm20,
 IS_J,
+IS_LUI,
+IS_AUIPC,
+uimm31,
 imm7);
 
   input [4:0] shamt;
@@ -51,6 +54,9 @@ imm7);
   input jimm20;
   input IS_J;
   input [6:0] imm7;
+  input IS_AUIPC;
+  input [19:0] uimm31;
+  input IS_LUI;
 
   output [31:0] qed_instruction;
 
@@ -59,6 +65,9 @@ imm7);
   wire [31:0] INS_R;
   wire [31:0] INS_SW;
   wire [31:0] INS_CONSTRAINT;
+  wire [31:0] INS_J;
+  wire [31:0] INS_AUIPC;
+  wire [31:0] INS_LUI;
 
   wire [4:0] NEW_rd;
   wire [4:0] NEW_rs1;
@@ -83,7 +92,9 @@ imm7);
   assign INS_R = {funct7, NEW_rs2, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_SW = {NEW_imm7, NEW_rs2, NEW_rs1, funct3, imm5, opcode};
   assign INS_J = {jimm20, jimm10, jimm11, jimm19, NEW_rd, opcode};
+  assign INS_AUIPC = {uimm31, NEW_rd, opcode};
+  assign INS_LUI = {uimm31, NEW_rd, opcode};
 
-  assign qed_instruction = IS_I ? INS_I : (IS_LW ? INS_LW : (IS_R ? INS_R : (IS_SW ? INS_SW : (IS_J ? INS_J : qic_qimux_instruction))));
+  assign qed_instruction = IS_I ? INS_I : (IS_J ? INS_J : (IS_SW ? INS_SW : (IS_LW ? INS_LW : (IS_R ? INS_R : (IS_AUIPC ? INS_AUIPC : (IS_LUI ? INS_LUI : qic_qimux_instruction))))));
 
 endmodule

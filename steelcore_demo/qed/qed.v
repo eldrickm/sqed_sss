@@ -41,12 +41,15 @@ rst);
   wire jimm11;
   wire [7:0] jimm19;
   wire jimm20;
+  wire [19:0] uimm31;
 
   wire IS_I;
   wire IS_LW;
   wire IS_R;
   wire IS_SW;
   wire IS_J;
+  wire IS_AUIPC;
+  wire IS_LUI;
 
   wire [31:0] qed_instruction;
   wire [31:0] qic_qimux_instruction;
@@ -66,11 +69,14 @@ rst);
                    .jimm11(jimm11),
                    .jimm19(jimm19),
                    .jimm20(jimm20),
+                   .uimm31(uimm31),
                    .IS_I(IS_I),
                    .IS_LW(IS_LW),
                    .IS_R(IS_R),
                    .IS_SW(IS_SW),
-                   .IS_J(IS_J));
+                   .IS_J(IS_J),
+                   .IS_AUIPC(IS_AUIPC),
+                   .IS_LUI(IS_LUI));
 
   modify_instruction minst (.qed_instruction(qed_instruction),
                             .qic_qimux_instruction(qic_qimux_instruction),
@@ -88,11 +94,14 @@ rst);
                             .jimm11(jimm11),
                             .jimm19(jimm19),
                             .jimm20(jimm20),
+                            .uimm31(uimm31),
                             .IS_I(IS_I),
                             .IS_LW(IS_LW),
                             .IS_R(IS_R),
                             .IS_SW(IS_SW),
-                            .IS_J(IS_J));
+                            .IS_J(IS_J),
+                            .IS_AUIPC(IS_AUIPC),
+                            .IS_LUI(IS_LUI));
 
   qed_instruction_mux imux (.qed_ifu_instruction(qed_ifu_instruction),
                             .ifu_qed_instruction(ifu_qed_instruction),

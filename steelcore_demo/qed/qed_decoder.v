@@ -27,6 +27,9 @@ jimm11,
 jimm19,
 jimm20,
 IS_J,
+uimm31,
+IS_LUI,
+IS_AUIPC,
 // Inputs
 ifu_qed_instruction);
 
@@ -51,6 +54,9 @@ ifu_qed_instruction);
   output [7:0] jimm19;
   output jimm20;
   output IS_J;
+  output [19:0] uimm31;
+  output IS_LUI;
+  output IS_AUIPC;
 
   assign shamt = ifu_qed_instruction[24:20];
   assign imm12 = ifu_qed_instruction[31:20];
@@ -66,11 +72,14 @@ ifu_qed_instruction);
   assign jimm11 = ifu_qed_instruction[20:20];
   assign jimm19 = ifu_qed_instruction[19:12];
   assign jimm20 = ifu_qed_instruction[31:31];
+  assign uimm31 = ifu_qed_instruction[31:12];
 
   assign IS_I = (opcode == 7'b0010011);
   assign IS_LW = (funct3 == 3'b010) && (opcode == 7'b0000011);
   assign IS_R = (opcode == 7'b0110011);
   assign IS_SW = (funct3 == 3'b010) && (opcode == 7'b0100011);
   assign IS_J = (opcode == 7'b1101111);
+  assign IS_AUIPC = (opcode == 7'b0010111);
+  assign IS_LUI = (opcode == 7'b0110111);
 
 endmodule
