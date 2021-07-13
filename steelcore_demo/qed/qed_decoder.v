@@ -22,6 +22,11 @@ IS_LW,
 imm5,
 rs1,
 imm7,
+jimm10,
+jimm11,
+jimm19,
+jimm20,
+IS_J,
 // Inputs
 ifu_qed_instruction);
 
@@ -41,6 +46,11 @@ ifu_qed_instruction);
   output [4:0] imm5;
   output [4:0] rs1;
   output [6:0] imm7;
+  output [9:0] jimm10;
+  output jimm11;
+  output [7:0] jimm19;
+  output jimm20;
+  output IS_J;
 
   assign shamt = ifu_qed_instruction[24:20];
   assign imm12 = ifu_qed_instruction[31:20];
@@ -52,10 +62,15 @@ ifu_qed_instruction);
   assign imm5 = ifu_qed_instruction[11:7];
   assign rs1 = ifu_qed_instruction[19:15];
   assign rs2 = ifu_qed_instruction[24:20];
+  assign jimm10 = ifu_qed_instruction[30:21];
+  assign jimm11 = ifu_qed_instruction[20:20];
+  assign jimm19 = ifu_qed_instruction[19:12];
+  assign jimm20 = ifu_qed_instruction[31:31];
 
   assign IS_I = (opcode == 7'b0010011);
   assign IS_LW = (funct3 == 3'b010) && (opcode == 7'b0000011);
   assign IS_R = (opcode == 7'b0110011);
   assign IS_SW = (funct3 == 3'b010) && (opcode == 7'b0100011);
+  assign IS_J = (opcode == 7'b1101111);
 
 endmodule

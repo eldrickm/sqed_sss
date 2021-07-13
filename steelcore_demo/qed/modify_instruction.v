@@ -24,6 +24,11 @@ IS_I,
 IS_LW,
 imm5,
 rs1,
+jimm10,
+jimm11,
+jimm19,
+jimm20,
+IS_J,
 imm7);
 
   input [4:0] shamt;
@@ -40,6 +45,11 @@ imm7);
   input IS_LW;
   input [4:0] imm5;
   input [4:0] rs1;
+  input [9:0] jimm10;
+  input jimm11;
+  input [7:0] jimm19;
+  input jimm20;
+  input IS_J;
   input [6:0] imm7;
 
   output [31:0] qed_instruction;
@@ -72,7 +82,8 @@ imm7);
   assign INS_LW = {NEW_imm12, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_R = {funct7, NEW_rs2, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_SW = {NEW_imm7, NEW_rs2, NEW_rs1, funct3, imm5, opcode};
+  assign INS_J = {jimm20, jimm10, jimm11, jimm19, NEW_rd, opcode};
 
-  assign qed_instruction = IS_I ? INS_I : (IS_LW ? INS_LW : (IS_R ? INS_R : (IS_SW ? INS_SW : qic_qimux_instruction)));
+  assign qed_instruction = IS_I ? INS_I : (IS_LW ? INS_LW : (IS_R ? INS_R : (IS_SW ? INS_SW : (IS_J ? INS_J : qic_qimux_instruction))));
 
 endmodule

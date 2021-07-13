@@ -24,6 +24,10 @@ clk);
   wire [4:0] imm5;
   wire [4:0] rs1;
   wire [4:0] rs2;
+  wire [9:0] jimm10;
+  wire jimm11;
+  wire [7:0] jimm19;
+  wire jimm20;
 
   wire FORMAT_I;
   wire ALLOWED_I;
@@ -36,6 +40,10 @@ clk);
   wire ORI;
   wire XORI;
   wire ADDI;
+
+  wire FORMAT_J;
+  wire ALLOWED_J;
+  wire JAL;
 
   wire FORMAT_LW;
   wire ALLOWED_LW;
@@ -75,6 +83,10 @@ clk);
   assign imm5 = instruction[11:7];
   assign rs1 = instruction[19:15];
   assign rs2 = instruction[24:20];
+  assign jimm10 = instruction[30:21];
+  assign jimm11 = instruction[20:20];
+  assign jimm19 = instruction[19:12];
+  assign jimm20 = instruction[31:31];
 
   assign FORMAT_I = (rs1 < 16) && (rd < 16);
   assign ANDI = FORMAT_I && (funct3 == 3'b111) && (opcode == 7'b0010011);
@@ -92,10 +104,13 @@ clk);
   assign LW = FORMAT_LW && (funct3 == 3'b010) && (opcode == 7'b0000011) && (rs1 == 5'b00000);
   assign ALLOWED_LW = LW;
 
+  assign FORMAT_J = (rd < 16);
+  assign JAL = FORMAT_J && (opcode == 7'b1101111);
+  assign ALLOWED_J = JAL;
+
   assign FORMAT_R = (rs2 < 16) && (rs1 < 16) && (rd < 16);
   assign AND = FORMAT_R && (funct3 == 3'b111) && (opcode == 7'b0110011) && (funct7 == 7'b0000000);
   assign SLTU = FORMAT_R && (funct3 == 3'b011) && (opcode == 7'b0110011) && (funct7 == 7'b0000000);
-  assign MULH = FORMAT_R && (funct3 == 3'b001) && (opcode == 7'b0110011) && (funct7 == 7'b0000001);
   assign SRA = FORMAT_R && (funct3 == 3'b101) && (opcode == 7'b0110011) && (funct7 == 7'b0100000);
   assign XOR = FORMAT_R && (funct3 == 3'b100) && (opcode == 7'b0110011) && (funct7 == 7'b0000000);
   assign SUB = FORMAT_R && (funct3 == 3'b000) && (opcode == 7'b0110011) && (funct7 == 7'b0100000);
@@ -121,12 +136,12 @@ clk);
   assume_allowed_instructions_before_tc: assume property (
                          @(posedge clk)
                          ~sif_commit |->
-                         (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_NOP)
+                         (ALLOWED_I || ALLOWED_LW || ALLOWED_J || ALLOWED_R || ALLOWED_NOP)
                          );
   assume_allowed_instructions_after_tc: assume property (
                          @(posedge clk)
                          sif_commit |->
-                         (ALLOWED_I || ALLOWED_LW || ALLOWED_R || ALLOWED_SW || ALLOWED_NOP)
+                         (ALLOWED_I || ALLOWED_LW || ALLOWED_J || ALLOWED_R || ALLOWED_SW || ALLOWED_NOP)
                          );
 
 endmodule
