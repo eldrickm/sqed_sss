@@ -42,6 +42,10 @@ clk);
   wire BEQ;
   wire BNE;
 
+  wire FORMAT_FENCE;
+  wire ALLOWED_FENCE;
+  wire FENCE;
+
   wire FORMAT_I;
   wire ALLOWED_I;
   wire ANDI;
@@ -129,6 +133,10 @@ clk);
   assign BNE = FORMAT_B && (funct3 == 3'b001) && (opcode == 7'b1100011);
   assign ALLOWED_B = BGEU || BGE || BLT || BLTU || BEQ || BNE;
 
+  assign FORMAT_FENCE = (rs1 < 16) && (rd < 16);
+  assign FENCE = FORMAT_FENCE && (funct3 == 3'b000) && (opcode == 7'b0001111);
+  assign ALLOWED_FENCE = FENCE;
+
   assign FORMAT_I = (rs1 < 16) && (rd < 16);
   assign ANDI = FORMAT_I && (funct3 == 3'b111) && (opcode == 7'b0010011);
   assign SLTIU = FORMAT_I && (funct3 == 3'b011) && (opcode == 7'b0010011);
@@ -196,12 +204,12 @@ clk);
   assume_allowed_instructions_before_tc: assume property (
                          @(posedge clk)
                          ~sif_commit |->
-                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_NOP)
+                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_NOP)
                          );
   assume_allowed_instructions_after_tc: assume property (
                          @(posedge clk)
                          sif_commit |->
-                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_SW || ALLOWED_NOP)
+                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_SW || ALLOWED_NOP)
                          );
 
 endmodule

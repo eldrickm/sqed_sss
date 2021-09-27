@@ -9,6 +9,7 @@
 module qed_decoder (
 // Outputs
 IS_R,
+IS_FENCE,
 jimm20,
 IS_LUI,
 IS_B,
@@ -41,6 +42,7 @@ ifu_qed_instruction);
   input [31:0] ifu_qed_instruction;
 
   output IS_R;
+  output IS_FENCE;
   output jimm20;
   output IS_LUI;
   output IS_B;
@@ -88,6 +90,7 @@ ifu_qed_instruction);
   assign jimm19 = ifu_qed_instruction[19:12];
 
   assign IS_B = (opcode == 7'b1100011);
+  assign IS_FENCE = (opcode == 7'b0001111);
   assign IS_I = (opcode == 7'b0010011);
   assign IS_J = (opcode == 7'b1101111);
   assign IS_SW = (opcode == 7'b0100011);
