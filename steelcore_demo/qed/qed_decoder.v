@@ -18,6 +18,7 @@ IS_AUIPC,
 IS_J,
 rs1,
 rs2,
+jimm11,
 rd,
 funct3,
 funct7,
@@ -29,7 +30,7 @@ bimm11,
 bimm12,
 IS_LW,
 jimm10,
-jimm11,
+IS_JALR,
 uimm31,
 opcode,
 bimm4,
@@ -51,6 +52,7 @@ ifu_qed_instruction);
   output IS_J;
   output [4:0] rs1;
   output [4:0] rs2;
+  output jimm11;
   output [4:0] rd;
   output [2:0] funct3;
   output [6:0] funct7;
@@ -62,7 +64,7 @@ ifu_qed_instruction);
   output bimm12;
   output IS_LW;
   output [9:0] jimm10;
-  output jimm11;
+  output IS_JALR;
   output [19:0] uimm31;
   output [6:0] opcode;
   output [3:0] bimm4;
@@ -90,6 +92,7 @@ ifu_qed_instruction);
   assign jimm19 = ifu_qed_instruction[19:12];
 
   assign IS_B = (opcode == 7'b1100011);
+  assign IS_JALR = (opcode == 7'b1100111);
   assign IS_FENCE = (opcode == 7'b0001111);
   assign IS_I = (opcode == 7'b0010011);
   assign IS_J = (opcode == 7'b1101111);

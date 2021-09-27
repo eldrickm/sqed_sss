@@ -21,6 +21,7 @@ IS_AUIPC,
 IS_J,
 rs1,
 rs2,
+jimm11,
 rd,
 funct3,
 funct7,
@@ -32,7 +33,7 @@ bimm11,
 bimm12,
 IS_LW,
 jimm10,
-jimm11,
+IS_JALR,
 uimm31,
 opcode,
 bimm4,
@@ -51,6 +52,7 @@ jimm19);
   input IS_J;
   input [4:0] rs1;
   input [4:0] rs2;
+  input jimm11;
   input [4:0] rd;
   input [2:0] funct3;
   input [6:0] funct7;
@@ -62,7 +64,7 @@ jimm19);
   input bimm12;
   input IS_LW;
   input [9:0] jimm10;
-  input jimm11;
+  input IS_JALR;
   input [19:0] uimm31;
   input [6:0] opcode;
   input [3:0] bimm4;
@@ -73,6 +75,7 @@ jimm19);
   output [31:0] qed_instruction;
 
   wire [31:0] INS_B;
+  wire [31:0] INS_JALR;
   wire [31:0] INS_FENCE;
   wire [31:0] INS_CONSTRAINT;
   wire [31:0] INS_I;
@@ -103,6 +106,7 @@ jimm19);
   // End Edit: Shrink RAM Depth
 
   assign INS_B = {bimm12, bimm10, NEW_rs2, NEW_rs1, funct3, bimm4, bimm11, opcode};
+  assign INS_JALR = {imm12, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_FENCE = {imm12, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_I = {imm12, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_J = {jimm20, jimm10, jimm11, jimm19, NEW_rd, opcode};
@@ -113,6 +117,6 @@ jimm19);
   assign INS_AUIPC = {uimm31, NEW_rd, opcode};
   assign INS_LUI = {uimm31, NEW_rd, opcode};
 
-  assign qed_instruction = IS_B ? INS_B : (IS_FENCE ? INS_FENCE : (IS_I ? INS_I : (IS_J ? INS_J : (IS_SW ? INS_SW : (IS_SYSTEM ? INS_SYSTEM : (IS_LW ? INS_LW : (IS_R ? INS_R : (IS_AUIPC ? INS_AUIPC : (IS_LUI ? INS_LUI : qic_qimux_instruction)))))))));
+  assign qed_instruction = IS_B ? INS_B : (IS_JALR ? INS_JALR : (IS_FENCE ? INS_FENCE : (IS_I ? INS_I : (IS_J ? INS_J : (IS_SW ? INS_SW : (IS_SYSTEM ? INS_SYSTEM : (IS_LW ? INS_LW : (IS_R ? INS_R : (IS_AUIPC ? INS_AUIPC : (IS_LUI ? INS_LUI : qic_qimux_instruction))))))))));
 
 endmodule

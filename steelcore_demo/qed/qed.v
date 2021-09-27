@@ -47,6 +47,7 @@ rst);
   wire [7:0] jimm19;
 
   wire IS_B;
+  wire IS_JALR;
   wire IS_FENCE;
   wire IS_I;
   wire IS_J;
@@ -80,6 +81,7 @@ rst);
                    .rs2(rs2),
                    .jimm19(jimm19),
                    .IS_B(IS_B),
+                   .IS_JALR(IS_JALR),
                    .IS_FENCE(IS_FENCE),
                    .IS_I(IS_I),
                    .IS_J(IS_J),
@@ -111,6 +113,7 @@ rst);
                             .rs2(rs2),
                             .jimm19(jimm19),
                             .IS_B(IS_B),
+                            .IS_JALR(IS_JALR),
                             .IS_FENCE(IS_FENCE),
                             .IS_I(IS_I),
                             .IS_J(IS_J),

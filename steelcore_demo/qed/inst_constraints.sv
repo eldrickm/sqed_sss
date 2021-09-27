@@ -133,6 +133,10 @@ clk);
   assign BNE = FORMAT_B && (funct3 == 3'b001) && (opcode == 7'b1100011);
   assign ALLOWED_B = BGEU || BGE || BLT || BLTU || BEQ || BNE;
 
+  assign FORMAT_JALR = (rs1 < 16) && (rd == 0); // FIXME: rd == 0 or else counterexample - depends on PC
+  assign JALR = FORMAT_JALR && (funct3 == 3'b000) && (opcode == 7'b1100111);
+  assign ALLOWED_JALR = JALR;
+
   assign FORMAT_FENCE = (rs1 < 16) && (rd < 16);
   assign FENCE = FORMAT_FENCE && (funct3 == 3'b000) && (opcode == 7'b0001111);
   assign ALLOWED_FENCE = FENCE;
@@ -204,12 +208,12 @@ clk);
   assume_allowed_instructions_before_tc: assume property (
                          @(posedge clk)
                          ~sif_commit |->
-                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_NOP)
+                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_JALR || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_NOP)
                          );
   assume_allowed_instructions_after_tc: assume property (
                          @(posedge clk)
                          sif_commit |->
-                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_SW || ALLOWED_NOP)
+                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_JALR || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_SW || ALLOWED_NOP)
                          );
 
 endmodule
