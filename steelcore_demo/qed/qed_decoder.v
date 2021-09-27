@@ -22,6 +22,7 @@ funct3,
 funct7,
 IS_SW,
 imm12,
+IS_SYSTEM,
 bimm10,
 bimm11,
 bimm12,
@@ -53,6 +54,7 @@ ifu_qed_instruction);
   output [6:0] funct7;
   output IS_SW;
   output [11:0] imm12;
+  output IS_SYSTEM;
   output [5:0] bimm10;
   output bimm11;
   output bimm12;
@@ -89,6 +91,7 @@ ifu_qed_instruction);
   assign IS_I = (opcode == 7'b0010011);
   assign IS_J = (opcode == 7'b1101111);
   assign IS_SW = (opcode == 7'b0100011);
+  assign IS_SYSTEM = (opcode == 7'b1110011);
   assign IS_LW = (opcode == 7'b0000011);
   assign IS_R = (opcode == 7'b0110011);
   assign IS_AUIPC = (opcode == 7'b0010111);

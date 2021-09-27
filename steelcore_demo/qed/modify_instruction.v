@@ -25,6 +25,7 @@ funct3,
 funct7,
 IS_SW,
 imm12,
+IS_SYSTEM,
 bimm10,
 bimm11,
 bimm12,
@@ -53,6 +54,7 @@ jimm19);
   input [6:0] funct7;
   input IS_SW;
   input [11:0] imm12;
+  input IS_SYSTEM;
   input [5:0] bimm10;
   input bimm11;
   input bimm12;
@@ -73,6 +75,7 @@ jimm19);
   wire [31:0] INS_I;
   wire [31:0] INS_J;
   wire [31:0] INS_SW;
+  wire [31:0] INS_SYSTEM;
   wire [31:0] INS_LW;
   wire [31:0] INS_R;
   wire [31:0] INS_AUIPC;
@@ -100,11 +103,12 @@ jimm19);
   assign INS_I = {imm12, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_J = {jimm20, jimm10, jimm11, jimm19, NEW_rd, opcode};
   assign INS_SW = {NEW_imm7, NEW_rs2, NEW_rs1, funct3, imm5, opcode};
+  assign INS_SYSTEM = {imm12, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_LW = {NEW_imm12, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_R = {funct7, NEW_rs2, NEW_rs1, funct3, NEW_rd, opcode};
   assign INS_AUIPC = {uimm31, NEW_rd, opcode};
   assign INS_LUI = {uimm31, NEW_rd, opcode};
 
-  assign qed_instruction = IS_B ? INS_B : (IS_I ? INS_I : (IS_J ? INS_J : (IS_SW ? INS_SW : (IS_LW ? INS_LW : (IS_R ? INS_R : (IS_AUIPC ? INS_AUIPC : (IS_LUI ? INS_LUI : qic_qimux_instruction)))))));
+  assign qed_instruction = IS_B ? INS_B : (IS_I ? INS_I : (IS_J ? INS_J : (IS_SW ? INS_SW : (IS_SYSTEM ? INS_SYSTEM : (IS_LW ? INS_LW : (IS_R ? INS_R : (IS_AUIPC ? INS_AUIPC : (IS_LUI ? INS_LUI : qic_qimux_instruction))))))));
 
 endmodule

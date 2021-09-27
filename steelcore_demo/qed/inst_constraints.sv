@@ -64,6 +64,11 @@ clk);
   wire SH;
   wire SW;
 
+  wire FORMAT_SYSTEM;
+  wire ALLOWED_SYSTEM;
+  wire ECALL;
+  wire EBREAK;
+
   wire FORMAT_LW;
   wire ALLOWED_LW;
   wire LBU;
@@ -146,6 +151,11 @@ clk);
   assign SW = FORMAT_SW && (funct3 == 3'b010) && (opcode == 7'b0100011) && (rs1 == 5'b00000);
   assign ALLOWED_SW = SB || SH || SW;
 
+  assign FORMAT_SYSTEM = (rs1 < 16) && (rd < 16);
+  assign ECALL = FORMAT_SYSTEM && (imm12 == 12'b000000000000) && (rd == 5'b00000) && (funct3 == 3'b000) && (opcode == 7'b1110011) && (rs1 == 5'b00000);
+  assign EBREAK = FORMAT_SYSTEM && (imm12 == 12'b000000000001) && (rd == 5'b00000) && (funct3 == 3'b000) && (opcode == 7'b1110011) && (rs1 == 5'b00000);
+  assign ALLOWED_SYSTEM = ECALL || EBREAK;
+
   assign FORMAT_LW = (instruction[31:30] == 00) && (rs1 < 16) && (rd < 16) && (imm12 < 64);
   assign LBU = FORMAT_LW && (funct3 == 3'b100) && (opcode == 7'b0000011) && (rs1 == 5'b00000);
   assign LH = FORMAT_LW && (funct3 == 3'b001) && (opcode == 7'b0000011) && (rs1 == 5'b00000);
@@ -186,12 +196,12 @@ clk);
   assume_allowed_instructions_before_tc: assume property (
                          @(posedge clk)
                          ~sif_commit |->
-                         (ALLOWED_R || ALLOWED_I || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_NOP)
+                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_NOP)
                          );
   assume_allowed_instructions_after_tc: assume property (
                          @(posedge clk)
                          sif_commit |->
-                         (ALLOWED_R || ALLOWED_I || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_SW || ALLOWED_NOP)
+                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_SW || ALLOWED_NOP)
                          );
 
 endmodule

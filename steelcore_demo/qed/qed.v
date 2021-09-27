@@ -50,6 +50,7 @@ rst);
   wire IS_I;
   wire IS_J;
   wire IS_SW;
+  wire IS_SYSTEM;
   wire IS_LW;
   wire IS_R;
   wire IS_AUIPC;
@@ -81,6 +82,7 @@ rst);
                    .IS_I(IS_I),
                    .IS_J(IS_J),
                    .IS_SW(IS_SW),
+                   .IS_SYSTEM(IS_SYSTEM),
                    .IS_LW(IS_LW),
                    .IS_R(IS_R),
                    .IS_AUIPC(IS_AUIPC),
@@ -110,6 +112,7 @@ rst);
                             .IS_I(IS_I),
                             .IS_J(IS_J),
                             .IS_SW(IS_SW),
+                            .IS_SYSTEM(IS_SYSTEM),
                             .IS_LW(IS_LW),
                             .IS_R(IS_R),
                             .IS_AUIPC(IS_AUIPC),
