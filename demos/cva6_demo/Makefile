@@ -13,7 +13,6 @@ workspace:
 
 design: workspace
 	@echo "========== Compiling Design =========="
-	./patches/patch.sh
 	${VLOG} -f $(DESIGN_DIR)/design.flist -f $(FORMAL_DIR)/formal.flist -l $(OUT_DIR)/vlog.rpt
 
 compile: design
