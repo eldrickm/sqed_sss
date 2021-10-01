@@ -1,0 +1,1994 @@
+========== Intializing Questa Workspace ==========
+/cad/mentor/qformal/linux_x86_64/modeltech/plat/vlib work
+** Warning: (vlib-34) Library already exists at "work".
+/cad/mentor/qformal/linux_x86_64/modeltech/plat/vmap work work
+QuestaSim-64 vmap 10.5c Lib Mapping Utility 2016.07 Jul 20 2016
+vmap work work 
+Modifying modelsim.ini
+mkdir -p output
+========== Compiling Design ==========
+./patches/patch.sh
+/cad/mentor/qformal/linux_x86_64/modeltech/plat/vlog -f design/design.flist -f formal/formal.flist -l output/vlog.rpt
+QuestaSim-64 vlog 10.5c Compiler 2016.07 Jul 20 2016
+Start time: 01:26:45 on Oct 01,2021
+vlog -f design/design.flist -f formal/formal.flist -l output/vlog.rpt 
+-- Compiling package cva6_config_pkg
+-- Compiling package riscv
+-- Importing package cva6_config_pkg
+-- Compiling package dm
+-- Compiling package ariane_pkg
+-- Importing package riscv
+-- Importing package dm
+-- Compiling package ariane_soc
+-- Importing package ariane_pkg
+-- Compiling package axi_pkg
+-- Compiling module SyncSpRamBeNx64
+-- Compiling package ariane_rvfi_pkg
+-- Compiling package ariane_axi
+-- Importing package axi_pkg
+-- Compiling package wt_cache_pkg
+-- Compiling package std_cache_pkg
+-- Compiling interface AXI_BUS
+-- Compiling interface AXI_BUS_ASYNC
+-- Compiling interface AXI_LITE
+-- Compiling interface AXI_ROUTING_RULES
+-- Compiling interface AXI_ARBITRATION
+-- Compiling package instr_tracer_pkg
+-- Compiling module fifo_v3
+-- Compiling module lzc
+** Warning: ./cva6//common/submodules/common_cells/src/lzc.sv(61): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/lzc.sv(61): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/lzc.sv(62): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module rr_arb_tree
+-- Compiling module shift_reg
+-- Compiling module unread
+-- Compiling module popcount
+-- Compiling module exp_backoff
+-- Compiling package fpnew_pkg
+-- Compiling module fpnew_cast_multi
+-- Importing package fpnew_pkg
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(229): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(230): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(509): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(524): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(525): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(560): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(561): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(564): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(567): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(608): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(611): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(612): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(649): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(650): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(654): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(657): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_cast_multi.sv(658): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module fpnew_classifier
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(52): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(53): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(54): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(55): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(56): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(57): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(58): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(59): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(60): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(62): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(63): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(64): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(65): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(66): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(67): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(68): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_classifier.sv(69): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module fpnew_divsqrt_multi
+-- Compiling module fpnew_fma_multi
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(302): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(303): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(304): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(311): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(312): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(315): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(316): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(319): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(322): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(326): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(330): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(334): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(335): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(731): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(732): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(735): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_fma_multi.sv(736): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module fpnew_fma
+-- Compiling module fpnew_noncomp
+-- Compiling module fpnew_opgroup_block
+-- Compiling module fpnew_opgroup_fmt_slice
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_fmt_slice.sv(94): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_fmt_slice.sv(94): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_fmt_slice.sv(95): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module fpnew_opgroup_multifmt_slice
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_multifmt_slice.sv(173): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_multifmt_slice.sv(173): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_multifmt_slice.sv(174): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_multifmt_slice.sv(181): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_multifmt_slice.sv(186): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_opgroup_multifmt_slice.sv(191): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module fpnew_rounding
+-- Compiling module fpnew_top
+** Warning: ./cva6//core/fpu/src/fpnew_top.sv(101): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_top.sv(101): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpnew_top.sv(102): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling package defs_div_sqrt_mvp
+-- Compiling package control_mvp_sv_unit
+-- Importing package defs_div_sqrt_mvp
+-- Compiling module control_mvp
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3041): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3045): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3049): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3053): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3057): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3061): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3065): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3069): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3079): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3083): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3087): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3091): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3095): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3099): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3103): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3107): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3111): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3115): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3119): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3123): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3127): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3131): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3135): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3139): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3143): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3147): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3157): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3161): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3165): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3169): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3180): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3184): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv(3188): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling package div_sqrt_top_mvp_sv_unit
+-- Importing package defs_div_sqrt_mvp
+-- Compiling module div_sqrt_top_mvp
+-- Compiling module iteration_div_sqrt_mvp
+-- Compiling package norm_div_sqrt_mvp_sv_unit
+-- Importing package defs_div_sqrt_mvp
+-- Compiling module norm_div_sqrt_mvp
+-- Compiling package nrbd_nrsc_mvp_sv_unit
+-- Importing package defs_div_sqrt_mvp
+-- Compiling module nrbd_nrsc_mvp
+-- Compiling package preprocess_mvp_sv_unit
+-- Importing package defs_div_sqrt_mvp
+-- Compiling module preprocess_mvp
+-- Compiling module ariane
+-- Importing package ariane_pkg
+-- Importing package riscv
+-- Importing package cva6_config_pkg
+-- Importing package dm
+-- Importing package ariane_axi
+-- Importing package axi_pkg
+-- Compiling module alu
+-- Compiling module fpu_wrap
+-- Importing package fpnew_pkg
+** Warning: ./cva6//core/fpu_wrap.sv(111): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(112): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(113): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(114): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(115): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(116): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(117): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(118): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(119): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(120): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(121): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(122): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(123): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(127): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(131): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(136): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(138): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(142): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(144): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(147): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(134): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(136): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(138): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(142): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(144): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(147): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(151): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(157): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(158): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(162): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(163): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(164): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(167): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(169): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(172): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(173): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(174): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(177): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(179): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(182): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(183): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(186): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(189): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(190): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(194): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(197): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(198): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(200): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(202): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(203): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(199): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(200): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(202): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(203): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(207): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(209): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(211): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(216): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(219): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(220): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(222): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(224): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(225): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(221): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(222): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(224): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(225): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(229): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(231): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(233): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(238): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(241): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(243): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(244): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(245): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(246): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(242): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(242): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(242): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(243): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(244): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(245): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(246): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(251): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(252): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(253): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(254): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(255): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(250): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(250): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(250): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(251): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(252): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(253): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(254): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(255): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(261): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(262): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(263): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(267): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(268): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(269): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(270): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(271): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(275): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(276): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(277): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(278): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(282): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(283): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(284): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(288): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(289): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(290): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(294): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(295): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(299): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(300): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(304): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(305): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(309): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(310): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(314): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(315): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(319): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(320): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(324): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(325): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(326): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(330): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(331): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(335): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(336): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(337): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(341): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(342): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(346): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(347): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(348): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(352): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(353): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(354): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(355): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(359): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(360): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(361): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(362): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(366): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(367): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(368): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(369): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(373): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(374): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(375): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(376): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(154): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(154): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(154): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(157): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(158): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(162): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(163): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(164): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(167): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(169): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(172): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(173): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(174): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(177): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(179): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(182): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(183): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(186): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(189): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(190): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(194): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(197): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(198): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(199): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(200): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(202): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(203): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(207): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(209): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(211): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(216): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(219): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(220): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(221): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(222): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(224): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(225): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(229): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(231): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(233): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(238): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(241): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(242): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(242): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(243): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(244): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(245): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(246): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(250): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(250): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(251): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(252): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(253): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(254): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(255): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(261): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(262): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(263): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(267): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(268): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(269): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(270): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(271): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(275): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(276): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(277): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(278): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(282): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(283): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(284): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(288): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(289): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(290): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(294): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(295): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(299): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(300): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(304): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(305): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(309): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(310): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(314): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(315): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(319): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(320): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(324): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(325): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(326): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(330): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(331): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(335): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(336): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(337): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(341): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(342): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(346): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(347): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(348): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(352): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(353): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(354): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(355): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(359): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(360): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(361): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(362): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(366): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(367): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(368): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(369): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(373): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(374): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(375): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(376): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(385): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(391): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(393): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(394): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(390): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(391): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(393): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(394): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(398): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(400): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(401): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(397): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(398): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(400): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(401): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(414): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(415): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(416): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(417): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(418): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(424): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(425): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(428): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(429): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(430): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(435): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(436): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(439): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(440): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(421): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(424): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(425): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(428): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(429): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(430): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(435): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(436): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(439): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(440): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/fpu_wrap.sv(449): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module branch_unit
+-- Compiling module compressed_decoder
+-- Compiling module controller
+-- Compiling module csr_buffer
+-- Compiling module csr_regfile
+-- Compiling module decoder
+-- Compiling module ex_stage
+-- Compiling module instr_realign
+** Warning: ./cva6//core/instr_realign.sv(55): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(56): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(57): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(59): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(60): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(61): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(63): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(64): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(65): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(81): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(82): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(83): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(92): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(93): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(94): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(95): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/instr_realign.sv(98): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module id_stage
+-- Compiling module issue_read_operands
+-- Compiling module issue_stage
+-- Compiling module load_unit
+-- Compiling module load_store_unit
+-- Compiling module lsu_bypass
+-- Compiling module mult
+-- Compiling module multiplier
+-- Compiling module serdiv
+-- Compiling module perf_counters
+-- Compiling module ariane_regfile
+-- Compiling module re_name
+-- Compiling module scoreboard
+-- Compiling module store_buffer
+-- Compiling module amo_buffer
+-- Compiling module store_unit
+-- Compiling module commit_stage
+-- Compiling module axi_shim
+-- Compiling module btb
+-- Compiling module bht
+-- Compiling module ras
+-- Compiling module instr_scan
+-- Compiling module instr_queue
+-- Compiling module frontend
+-- Compiling module wt_dcache_ctrl
+-- Importing package wt_cache_pkg
+-- Compiling module wt_dcache_mem
+-- Compiling module wt_dcache_missunit
+-- Compiling module wt_dcache_wbuffer
+-- Compiling module wt_dcache
+-- Compiling module cva6_icache
+-- Compiling module wt_cache_subsystem
+-- Compiling module wt_axi_adapter
+-- Compiling module pmp
+** Warning: ./cva6//core/pmp/src/pmp.sv(54): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/pmp/src/pmp.sv(55): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/pmp/src/pmp.sv(55): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/pmp/src/pmp.sv(60): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/pmp/src/pmp.sv(61): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/pmp/src/pmp.sv(68): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//core/pmp/src/pmp.sv(70): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module pmp_entry
+-- Compiling interface instr_tracer_if
+-- Compiling package instr_tracer_sv_unit
+-- Importing package riscv
+-- Importing package cva6_config_pkg
+-- Importing package ariane_pkg
+-- Importing package dm
+-- Importing package instr_tracer_pkg
+-- Compiling module instr_tracer
+-- Compiling module sram
+-- Compiling module mmu
+-- Compiling module ptw
+-- Compiling module tlb
+-- Compiling module lfsr
+** Warning: ./cva6//common/submodules/common_cells/src/lfsr.sv(253): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/lfsr.sv(254): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/lfsr.sv(254): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/lfsr.sv(255): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/lfsr.sv(257): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module stream_delay
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(54): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(55): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(56): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(57): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(58): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(63): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(64): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(67): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(71): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(72): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(73): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(74): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(81): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(86): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(87): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(88): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(60): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(63): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(64): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(67): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(71): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(72): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(73): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(74): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(81): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(86): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(87): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//common/submodules/common_cells/src/stream_delay.sv(88): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module stream_arbiter_flushable
+-- Compiling module stream_arbiter
+-- Compiling module axi_master_connect
+-- Importing package ariane_axi
+-- Importing package axi_pkg
+-- Compiling module fifo_v2
+-- Compiling package ariane_axi_soc
+-- Importing package ariane_soc
+-- Compiling package rvfi_pkg
+-- Compiling module axi_delayer
+-- Compiling module axi2mem
+-- Compiling module axi_multiplexer
+-- Compiling module axi_node_arbiter
+-- Compiling module axi_address_decoder_AR
+-- Compiling module axi_address_decoder_AW
+-- Compiling module axi_address_decoder_BR
+-- Compiling module axi_address_decoder_BW
+-- Compiling module axi_address_decoder_DW
+-- Compiling module axi_AR_allocator
+-- Compiling module axi_AW_allocator
+-- Compiling module axi_BR_allocator
+-- Compiling module axi_BW_allocator
+-- Compiling module axi_DW_allocator
+-- Compiling module axi_node_intf_wrap
+-- Compiling module axi_node
+-- Compiling module axi_request_block
+-- Compiling module axi_response_block
+-- Compiling module axi_res_tbl
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_res_tbl.sv(42): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_res_tbl.sv(44): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_res_tbl.sv(46): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module axi_riscv_amos
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(930): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(931): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(935): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(936): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(939): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(940): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(945): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(946): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(950): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(951): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(954): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(955): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(957): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(958): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(967): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: ./cva6//corev_apu/src/axi_riscv_atomics/src/axi_riscv_amos.sv(969): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module axi_riscv_amos_alu
+-- Compiling module axi_riscv_atomics
+-- Compiling module axi_riscv_atomics_wrap
+-- Compiling module axi_riscv_lrsc
+-- Compiling module design_top
+-- Importing package ariane_axi_soc
+-- Importing package rvfi_pkg
+-- Compiling module formal_spec
+-- Compiling module formal_bind
+
+Top level modules:
+	design_top
+	formal_spec
+	formal_bind
+End time: 01:26:46 on Oct 01,2021, Elapsed time: 0:00:01
+Errors: 0, Warnings: 489
+========== Compiling Formal Properties ==========
+qformal -c -od output -do "\
+		do formal/directives.tcl; \
+    	formal compile -d design_top -cuname formal_bind -target_cover_statements; \
+    	exit"
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+# 
+# Copyright 1995-2016 Mentor Graphics Corporation.
+# All Rights Reserved.
+# 
+# THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION 
+# WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# 
+# THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION
+# 552.  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE
+# UNDER THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# 
+# netlist clock design_top.clk_i -period 10 -waveform 0 5
+# netlist constant design_top.rst_ni 1'b1
+# netlist cutpoint {design_top.slave[0].r_ready}
+# netlist cutpoint design_top.dram.aw_valid
+# netlist cutpoint design_top.dram.ar_valid
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+# 
+# log created Fri Oct  1 01:26:47 2021 by eldrick on rsg10.stanford.edu
+# 
+# 
+# Command: netlist elaborate
+# Command arguments:
+#     -zdb /rsgs/pool0/eldrick/sqed_sss/demos/cva6_demo/output/qcache/DB/zdb_0
+#     -tool propcheck
+#     -d design_top
+#     -cuname formal_bind
+# 
+# 
+## Elaborating Design...
+# Reading MTI mapping for library mapping
+# Writing all MTI mappings to vmap output ...
+# 
+# Top level modules:
+# 	design_top
+# 	formal_bind
+# 
+# Analyzing design...
+# -- Loading module z0in_work.design_top
+# -- Importing package z0in_work.dm
+# -- Importing package z0in_work.ariane_soc
+# -- Importing package z0in_work.ariane_pkg
+# -- Importing package z0in_work.riscv
+# -- Importing package z0in_work.cva6_config_pkg
+# -- Importing package z0in_work.ariane_axi_soc
+# -- Importing package z0in_work.axi_pkg
+# -- Importing package z0in_work.rvfi_pkg
+# -- Loading interface z0in_work.AXI_BUS
+# -- Loading module z0in_work.axi_riscv_atomics_wrap
+# -- Loading module z0in_work.axi_riscv_atomics
+# -- Loading module z0in_work.axi_riscv_amos
+# -- Loading module z0in_work.axi_riscv_amos_alu
+# -- Loading module z0in_work.axi_riscv_lrsc
+# -- Loading module z0in_work.axi_res_tbl
+# -- Loading module z0in_work.stream_arbiter
+# -- Loading module z0in_work.stream_arbiter_flushable
+# -- Loading module z0in_work.axi_delayer
+# -- Loading module z0in_work.stream_delay
+# -- Loading module z0in_work.axi2mem
+# -- Loading module z0in_work.sram
+# -- Loading module z0in_work.axi_node_intf_wrap
+# -- Loading module z0in_work.axi_node
+# -- Loading module z0in_work.ariane
+# -- Importing package z0in_work.ariane_axi
+# -- Loading module z0in_work.frontend
+# -- Loading module z0in_work.instr_realign
+# -- Loading module z0in_work.ras
+# -- Loading module z0in_work.btb
+# -- Loading module z0in_work.unread
+# -- Loading module z0in_work.bht
+# -- Loading module z0in_work.instr_queue
+# -- Loading module z0in_work.lzc
+# -- Loading module z0in_work.popcount
+# -- Loading module z0in_work.fifo_v3
+# -- Loading module z0in_work.id_stage
+# -- Loading module z0in_work.compressed_decoder
+# -- Loading module z0in_work.decoder
+# -- Loading module z0in_work.issue_stage
+# -- Loading module z0in_work.re_name
+# -- Loading module z0in_work.scoreboard
+# -- Loading module z0in_work.rr_arb_tree
+# -- Loading module z0in_work.issue_read_operands
+# -- Loading module z0in_work.ariane_regfile
+# -- Loading module z0in_work.ex_stage
+# -- Loading module z0in_work.alu
+# -- Loading module z0in_work.branch_unit
+# -- Loading module z0in_work.csr_buffer
+# -- Loading module z0in_work.mult
+# -- Loading module z0in_work.multiplier
+# -- Loading module z0in_work.serdiv
+# -- Loading module z0in_work.load_store_unit
+# -- Loading module z0in_work.store_unit
+# -- Loading module z0in_work.store_buffer
+# -- Loading module z0in_work.amo_buffer
+# -- Loading module z0in_work.load_unit
+# -- Loading module z0in_work.shift_reg
+# -- Loading module z0in_work.lsu_bypass
+# -- Loading module z0in_work.commit_stage
+# -- Loading module z0in_work.csr_regfile
+# -- Loading module z0in_work.perf_counters
+# -- Loading module z0in_work.controller
+# -- Loading module z0in_work.wt_cache_subsystem
+# -- Importing package z0in_work.wt_cache_pkg
+# -- Loading module z0in_work.cva6_icache
+# -- Loading module z0in_work.lfsr
+# -- Loading module z0in_work.wt_dcache
+# -- Loading module z0in_work.wt_dcache_missunit
+# -- Loading module z0in_work.exp_backoff
+# -- Loading module z0in_work.wt_dcache_wbuffer
+# -- Loading module z0in_work.wt_dcache_mem
+# -- Loading module z0in_work.wt_axi_adapter
+# -- Loading module z0in_work.axi_shim
+# -- Loading module z0in_work.axi_master_connect
+# -- Loading module z0in_work.formal_bind
+# -- Loading module z0in_work.SyncSpRamBeNx64
+# -- Loading module z0in_work.axi_request_block
+# -- Loading module z0in_work.axi_AR_allocator
+# -- Loading module z0in_work.axi_node_arbiter
+# -- Loading module z0in_work.axi_AW_allocator
+# -- Loading module z0in_work.axi_DW_allocator
+# -- Loading module z0in_work.fifo_v2
+# -- Loading module z0in_work.axi_multiplexer
+# -- Loading module z0in_work.axi_address_decoder_BW
+# -- Loading module z0in_work.axi_address_decoder_BR
+# -- Loading module z0in_work.axi_response_block
+# -- Loading module z0in_work.axi_BW_allocator
+# -- Loading module z0in_work.axi_BR_allocator
+# -- Loading module z0in_work.axi_address_decoder_AR
+# -- Loading module z0in_work.axi_address_decoder_AW
+# -- Loading module z0in_work.axi_address_decoder_DW
+# -- Loading module z0in_work.instr_scan
+# -- Loading module z0in_work.mmu
+# -- Loading module z0in_work.tlb
+# -- Loading module z0in_work.ptw
+# -- Loading module z0in_work.pmp
+# -- Loading module z0in_work.fpu_wrap
+# -- Importing package z0in_work.fpnew_pkg
+# -- Loading module z0in_work.wt_dcache_ctrl
+# -- Loading module z0in_work.pmp_entry
+# -- Loading module z0in_work.fpnew_top
+# -- Loading module z0in_work.fpnew_opgroup_block
+# -- Loading module z0in_work.fpnew_opgroup_fmt_slice
+# -- Loading module z0in_work.fpnew_opgroup_multifmt_slice
+# -- Loading module z0in_work.fpnew_fma
+# -- Loading module z0in_work.fpnew_classifier
+# -- Loading module z0in_work.fpnew_rounding
+# -- Loading module z0in_work.fpnew_divsqrt_multi
+# -- Loading module z0in_work.div_sqrt_top_mvp
+# -- Loading module z0in_work.preprocess_mvp
+# -- Loading module z0in_work.nrbd_nrsc_mvp
+# -- Loading module z0in_work.control_mvp
+# -- Loading module z0in_work.norm_div_sqrt_mvp
+# -- Loading module z0in_work.fpnew_noncomp
+# -- Loading module z0in_work.fpnew_cast_multi
+# -- Loading module z0in_work.iteration_div_sqrt_mvp
+# Incremental compilation check found no design-units have changed.
+# Optimized design name is zi_opt_csl_1315726808_1
+# -- Restoring module work.design_top(fast)
+# -- Restoring module work.AXI_BUS(fast)
+# -- Restoring module work.AXI_BUS(fast__2)
+# -- Restoring module work.axi_riscv_atomics_wrap(fast)
+# -- Restoring module work.axi_riscv_atomics(fast)
+# -- Restoring module work.axi_riscv_amos(fast)
+# -- Restoring module work.axi_riscv_amos_alu(fast)
+# -- Restoring module work.axi_riscv_lrsc(fast)
+# -- Restoring module work.axi_res_tbl(fast)
+# -- Restoring module work.stream_arbiter(fast)
+# -- Restoring module work.stream_arbiter_flushable(fast)
+# -- Restoring module work.rr_arb_tree(fast)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.axi_delayer(fast)
+# -- Restoring module work.stream_delay(fast)
+# -- Restoring module work.stream_delay(fast__1)
+# -- Restoring module work.stream_delay(fast__2)
+# -- Restoring module work.stream_delay(fast__3)
+# -- Restoring module work.stream_delay(fast__4)
+# -- Restoring module work.axi2mem(fast)
+# -- Restoring module work.sram(fast)
+# -- Restoring module work.SyncSpRamBeNx64(fast)
+# -- Restoring module work.axi_node_intf_wrap(fast)
+# -- Restoring module work.axi_node(fast)
+# -- Restoring module work.axi_request_block(fast)
+# -- Restoring module work.axi_AR_allocator(fast)
+# -- Restoring module work.axi_node_arbiter(fast)
+# -- Restoring module work.stream_arbiter(fast__1)
+# -- Restoring module work.stream_arbiter_flushable(fast__1)
+# -- Restoring module work.rr_arb_tree(fast__1)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.axi_AW_allocator(fast)
+# -- Restoring module work.axi_node_arbiter(fast__1)
+# -- Restoring module work.stream_arbiter(fast__2)
+# -- Restoring module work.stream_arbiter_flushable(fast__2)
+# -- Restoring module work.rr_arb_tree(fast__2)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.axi_DW_allocator(fast)
+# -- Restoring module work.fifo_v2(fast)
+# -- Restoring module work.fifo_v3(fast)
+# -- Restoring module work.axi_multiplexer(fast)
+# -- Restoring module work.axi_address_decoder_BW(fast)
+# -- Restoring module work.axi_address_decoder_BR(fast)
+# -- Restoring module work.axi_response_block(fast)
+# -- Restoring module work.axi_BW_allocator(fast)
+# -- Restoring module work.axi_node_arbiter(fast__20)
+# -- Restoring module work.stream_arbiter(fast__21)
+# -- Restoring module work.stream_arbiter_flushable(fast__21)
+# -- Restoring module work.rr_arb_tree(fast__21)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.axi_BR_allocator(fast)
+# -- Restoring module work.axi_node_arbiter(fast__21)
+# -- Restoring module work.stream_arbiter(fast__22)
+# -- Restoring module work.stream_arbiter_flushable(fast__22)
+# -- Restoring module work.rr_arb_tree(fast__22)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.axi_address_decoder_AR(fast)
+# -- Restoring module work.axi_address_decoder_AW(fast)
+# -- Restoring module work.axi_address_decoder_DW(fast)
+# -- Restoring module work.fifo_v2(fast__1)
+# -- Restoring module work.fifo_v3(fast__1)
+# -- Restoring module work.ariane(fast)
+# -- Restoring module work.frontend(fast)
+# -- Restoring module work.instr_realign(fast)
+# -- Restoring module work.ras(fast)
+# -- Restoring module work.btb(fast)
+# -- Restoring module work.unread(fast)
+# -- Restoring module work.bht(fast)
+# -- Restoring module work.instr_scan(fast)
+# -- Restoring module work.instr_queue(fast)
+# -- Restoring module work.lzc(fast)
+# -- Restoring module work.popcount(fast)
+# -- Restoring module work.fifo_v3(fast__3)
+# -- Restoring module work.fifo_v3(fast__2)
+# -- Restoring module work.id_stage(fast)
+# -- Restoring module work.compressed_decoder(fast)
+# -- Restoring module work.decoder(fast)
+# -- Restoring module work.issue_stage(fast)
+# -- Restoring module work.re_name(fast)
+# -- Restoring module work.scoreboard(fast)
+# -- Restoring module work.rr_arb_tree(fast__26)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.rr_arb_tree(fast__25)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.issue_read_operands(fast)
+# -- Restoring module work.ariane_regfile(fast)
+# -- Restoring module work.ariane_regfile(fast__1)
+# -- Restoring module work.ex_stage(fast)
+# -- Restoring module work.alu(fast)
+# -- Restoring module work.branch_unit(fast)
+# -- Restoring module work.csr_buffer(fast)
+# -- Restoring module work.mult(fast)
+# -- Restoring module work.multiplier(fast)
+# -- Restoring module work.serdiv(fast)
+# -- Restoring module work.lzc(fast__1)
+# -- Restoring module work.fpu_wrap(fast)
+# -- Restoring module work.fpnew_top(fast)
+# -- Restoring module work.fpnew_opgroup_block(fast)
+# -- Restoring module work.fpnew_opgroup_fmt_slice(fast__1)
+# -- Restoring module work.fpnew_fma(fast__1)
+# -- Restoring module work.fpnew_classifier(fast__1)
+# -- Restoring module work.lzc(fast__4)
+# -- Restoring module work.fpnew_rounding(fast__1)
+# -- Restoring module work.rr_arb_tree(fast__27)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]  [parser-235]
+# -- Restoring module work.fpnew_opgroup_block(fast__1)
+# -- Restoring module work.fpnew_opgroup_multifmt_slice(fast)
+# -- Restoring module work.fpnew_divsqrt_multi(fast)
+# -- Restoring module work.div_sqrt_top_mvp(fast)
+# -- Restoring module work.preprocess_mvp(fast)
+# -- Restoring module work.lzc(fast__5)
+# -- Restoring module work.nrbd_nrsc_mvp(fast)
+# -- Restoring module work.control_mvp(fast)
+# -- Restoring module work.iteration_div_sqrt_mvp(fast)
+# -- Restoring module work.norm_div_sqrt_mvp(fast)
+# -- Restoring module work.fpnew_opgroup_block(fast__2)
+# -- Restoring module work.fpnew_opgroup_fmt_slice(fast__2)
+# -- Restoring module work.fpnew_noncomp(fast)
+# -- Restoring module work.fpnew_classifier(fast__2)
+# -- Restoring module work.fpnew_opgroup_fmt_slice(fast__3)
+# -- Restoring module work.fpnew_noncomp(fast__1)
+# -- Restoring module work.fpnew_classifier(fast__3)
+# -- Restoring module work.fpnew_opgroup_block(fast__3)
+# -- Restoring module work.fpnew_opgroup_multifmt_slice(fast__1)
+# -- Restoring module work.fpnew_cast_multi(fast)
+# -- Restoring module work.fpnew_classifier(fast__4)
+# -- Restoring module work.fpnew_classifier(fast__5)
+# -- Restoring module work.fpnew_rounding(fast__2)
+# -- Restoring module work.rr_arb_tree(fast__27)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.load_store_unit(fast)
+# -- Restoring module work.mmu(fast)
+# -- Restoring module work.tlb(fast)
+# -- Restoring module work.ptw(fast)
+# -- Restoring module work.pmp(fast)
+# Illegal bit addressing.  Variable 'conf_addr_i', Module 'pmp', File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//core/pmp/src/pmp.sv', Line 37.  [elaboration-215]  [elaboration-215]
+# -- Restoring module work.pmp_entry(fast)
+# -- Restoring module work.lzc(fast__2)
+# -- Restoring module work.store_unit(fast)
+# -- Restoring module work.store_buffer(fast)
+# -- Restoring module work.amo_buffer(fast)
+# -- Restoring module work.fifo_v3(fast__5)
+# -- Restoring module work.load_unit(fast)
+# -- Restoring module work.shift_reg(fast)
+# -- Restoring module work.shift_reg(fast__1)
+# -- Restoring module work.lsu_bypass(fast)
+# -- Restoring module work.commit_stage(fast)
+# -- Restoring module work.csr_regfile(fast)
+# -- Restoring module work.perf_counters(fast)
+# -- Restoring module work.controller(fast)
+# -- Restoring module work.wt_cache_subsystem(fast)
+# -- Restoring module work.cva6_icache(fast)
+# -- Restoring module work.lzc(fast__6)
+# -- Restoring module work.lfsr(fast)
+# -- Restoring module work.sram(fast__1)
+# -- Restoring module work.SyncSpRamBeNx64(fast__1)
+# -- Restoring module work.sram(fast__2)
+# -- Restoring module work.wt_dcache(fast)
+# -- Restoring module work.wt_dcache_missunit(fast)
+# -- Restoring module work.lzc(fast__7)
+# -- Restoring module work.lzc(fast__8)
+# -- Restoring module work.lfsr(fast__1)
+# -- Restoring module work.exp_backoff(fast)
+# -- Restoring module work.wt_dcache_ctrl(fast)
+# -- Restoring module work.wt_dcache_wbuffer(fast)
+# -- Restoring module work.fifo_v3(fast__6)
+# -- Restoring module work.rr_arb_tree(fast__32)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.rr_arb_tree(fast__33)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.rr_arb_tree(fast__34)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.wt_dcache_mem(fast)
+# -- Restoring module work.rr_arb_tree(fast__35)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.sram(fast__3)
+# -- Restoring module work.wt_axi_adapter(fast)
+# -- Restoring module work.rr_arb_tree(fast__36)
+# Unnamed block inside generate statement.  File '/rsghome/eldrick/sqed_sss/demos/cva6_demo/cva6//common/submodules/common_cells/src/rr_arb_tree.sv', Line 74.  [parser-235]
+# -- Restoring module work.fifo_v3(fast__7)
+# -- Restoring module work.fifo_v3(fast__8)
+# -- Restoring module work.fifo_v3(fast__9)
+# -- Restoring module work.axi_shim(fast)
+# -- Restoring module work.axi_master_connect(fast)
+# Identified prefix 'design_top'.
+# Summary: 15 Warnings in processing "netlist elaborate"
+# End of log Fri Oct  1 01:26:54 2021
+# 
+# 
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+# 
+# log created Fri Oct  1 01:26:54 2021 by eldrick on rsg10.stanford.edu
+# 
+# 
+# Command: netlist create
+# Command arguments:
+#     -zdb /rsgs/pool0/eldrick/sqed_sss/demos/cva6_demo/output/qcache/DB/zdb_0
+#     -tool propcheck
+#     -d design_top
+#     -cuname formal_bind
+#     -tcs
+# 
+# 
+## Synthesizing netlist...
+# Processing module 'AXI_BUS'
+# Info    : Restoring module 'AXI_BUS'.
+# Processing module 'AXI_BUS(2)'
+# Info    : Restoring module 'AXI_BUS(2)'.
+# Processing module 'axi_riscv_amos_alu'
+# Info    : Restoring module 'axi_riscv_amos_alu'.
+# Processing module 'axi_riscv_amos'
+# Info    : Restoring module 'axi_riscv_amos'.
+# Processing module 'axi_res_tbl'
+# Info    : Restoring module 'axi_res_tbl'.
+# Processing module 'rr_arb_tree'
+# Info    : Restoring module 'rr_arb_tree'.
+# Processing module 'stream_arbiter_flushable'
+# Info    : Restoring module 'stream_arbiter_flushable'.
+# Processing module 'stream_arbiter'
+# Info    : Restoring module 'stream_arbiter'.
+# Processing module 'axi_riscv_lrsc'
+# Info    : Restoring module 'axi_riscv_lrsc'.
+# Processing module 'axi_riscv_atomics'
+# Info    : Restoring module 'axi_riscv_atomics'.
+# Processing module 'axi_riscv_atomics_wrap'
+# Info    : Restoring module 'axi_riscv_atomics_wrap'.
+# Processing module 'stream_delay'
+# Info    : Restoring module 'stream_delay'.
+# Processing module 'stream_delay(1)'
+# Info    : Restoring module 'stream_delay(1)'.
+# Processing module 'stream_delay(2)'
+# Info    : Restoring module 'stream_delay(2)'.
+# Processing module 'stream_delay(3)'
+# Info    : Restoring module 'stream_delay(3)'.
+# Processing module 'stream_delay(4)'
+# Info    : Restoring module 'stream_delay(4)'.
+# Processing module 'axi_delayer'
+# Info    : Restoring module 'axi_delayer'.
+# Processing module 'axi2mem'
+# Info    : Restoring module 'axi2mem'.
+# Processing module 'SyncSpRamBeNx64'
+# Info    : Restoring module 'SyncSpRamBeNx64'.
+# Processing module 'sram'
+# Info    : Restoring module 'sram'.
+# Processing module 'rr_arb_tree(1)'
+# Info    : Restoring module 'rr_arb_tree(1)'.
+# Processing module 'stream_arbiter_flushable(1)'
+# Info    : Restoring module 'stream_arbiter_flushable(1)'.
+# Processing module 'stream_arbiter(1)'
+# Info    : Restoring module 'stream_arbiter(1)'.
+# Processing module 'axi_node_arbiter'
+# Info    : Restoring module 'axi_node_arbiter'.
+# Processing module 'axi_AR_allocator'
+# Info    : Restoring module 'axi_AR_allocator'.
+# Processing module 'rr_arb_tree(2)'
+# Info    : Restoring module 'rr_arb_tree(2)'.
+# Processing module 'stream_arbiter_flushable(2)'
+# Info    : Restoring module 'stream_arbiter_flushable(2)'.
+# Processing module 'stream_arbiter(2)'
+# Info    : Restoring module 'stream_arbiter(2)'.
+# Processing module 'axi_node_arbiter(1)'
+# Info    : Restoring module 'axi_node_arbiter(1)'.
+# Processing module 'axi_AW_allocator'
+# Info    : Restoring module 'axi_AW_allocator'.
+# Processing module 'fifo_v3'
+# Info    : Restoring module 'fifo_v3'.
+# Processing module 'fifo_v2'
+# Info    : Restoring module 'fifo_v2'.
+# Processing module 'axi_multiplexer'
+# Info    : Restoring module 'axi_multiplexer'.
+# Processing module 'axi_DW_allocator'
+# Info    : Restoring module 'axi_DW_allocator'.
+# Processing module 'axi_address_decoder_BW'
+# Info    : Restoring module 'axi_address_decoder_BW'.
+# Processing module 'axi_address_decoder_BR'
+# Info    : Restoring module 'axi_address_decoder_BR'.
+# Processing module 'axi_request_block'
+# Info    : Restoring module 'axi_request_block'.
+# Processing module 'rr_arb_tree(21)'
+# Info    : Restoring module 'rr_arb_tree(21)'.
+# Processing module 'stream_arbiter_flushable(21)'
+# Info    : Restoring module 'stream_arbiter_flushable(21)'.
+# Processing module 'stream_arbiter(21)'
+# Info    : Restoring module 'stream_arbiter(21)'.
+# Processing module 'axi_node_arbiter(20)'
+# Info    : Restoring module 'axi_node_arbiter(20)'.
+# Processing module 'axi_BW_allocator'
+# Info    : Restoring module 'axi_BW_allocator'.
+# Processing module 'rr_arb_tree(22)'
+# Info    : Restoring module 'rr_arb_tree(22)'.
+# Processing module 'stream_arbiter_flushable(22)'
+# Info    : Restoring module 'stream_arbiter_flushable(22)'.
+# Processing module 'stream_arbiter(22)'
+# Info    : Restoring module 'stream_arbiter(22)'.
+# Processing module 'axi_node_arbiter(21)'
+# Info    : Restoring module 'axi_node_arbiter(21)'.
+# Processing module 'axi_BR_allocator'
+# Info    : Restoring module 'axi_BR_allocator'.
+# Processing module 'axi_address_decoder_AR'
+# Info    : Restoring module 'axi_address_decoder_AR'.
+# Processing module 'axi_address_decoder_AW'
+# Info    : Restoring module 'axi_address_decoder_AW'.
+# Processing module 'fifo_v3(1)'
+# Info    : Restoring module 'fifo_v3(1)'.
+# Processing module 'fifo_v2(1)'
+# Info    : Restoring module 'fifo_v2(1)'.
+# Processing module 'axi_address_decoder_DW'
+# Info    : Restoring module 'axi_address_decoder_DW'.
+# Processing module 'axi_response_block'
+# Info    : Restoring module 'axi_response_block'.
+# Processing module 'axi_node'
+# Info    : Restoring module 'axi_node'.
+# Processing module 'axi_node_intf_wrap'
+# Info    : Restoring module 'axi_node_intf_wrap'.
+# Processing module 'instr_realign'
+# Info    : Restoring module 'instr_realign'.
+# Processing module 'ras'
+# Info    : Restoring module 'ras'.
+# Processing module 'unread'
+# Info    : Restoring module 'unread'.
+# Processing module 'btb'
+# Info    : Restoring module 'btb'.
+# Processing module 'bht'
+# Info    : Restoring module 'bht'.
+# Processing module 'instr_scan'
+# Info    : Restoring module 'instr_scan'.
+# Processing module 'lzc'
+# Info    : Restoring module 'lzc'.
+# Processing module 'popcount'
+# Info    : Restoring module 'popcount'.
+# Processing module 'fifo_v3(3)'
+# Info    : Restoring module 'fifo_v3(3)'.
+# Processing module 'fifo_v3(2)'
+# Info    : Restoring module 'fifo_v3(2)'.
+# Processing module 'instr_queue'
+# Info    : Restoring module 'instr_queue'.
+# Processing module 'frontend'
+# Info    : Restoring module 'frontend'.
+# Processing module 'compressed_decoder'
+# Info    : Restoring module 'compressed_decoder'.
+# Processing module 'decoder'
+# Info    : Restoring module 'decoder'.
+# Processing module 'id_stage'
+# Info    : Restoring module 'id_stage'.
+# Processing module 're_name'
+# Info    : Restoring module 're_name'.
+# Processing module 'rr_arb_tree(26)'
+# Info    : Restoring module 'rr_arb_tree(26)'.
+# Processing module 'rr_arb_tree(25)'
+# Info    : Restoring module 'rr_arb_tree(25)'.
+# Processing module 'scoreboard'
+# Info    : Restoring module 'scoreboard'.
+# Processing module 'ariane_regfile'
+# Info    : Restoring module 'ariane_regfile'.
+# Processing module 'ariane_regfile(1)'
+# Info    : Restoring module 'ariane_regfile(1)'.
+# Processing module 'issue_read_operands'
+# Info    : Restoring module 'issue_read_operands'.
+# Processing module 'issue_stage'
+# Info    : Restoring module 'issue_stage'.
+# Processing module 'alu'
+# Info    : Restoring module 'alu'.
+# Processing module 'branch_unit'
+# Info    : Restoring module 'branch_unit'.
+# Processing module 'csr_buffer'
+# Info    : Restoring module 'csr_buffer'.
+# Processing module 'multiplier'
+# Info    : Restoring module 'multiplier'.
+# Processing module 'lzc(1)'
+# Info    : Restoring module 'lzc(1)'.
+# Processing module 'serdiv'
+# Info    : Restoring module 'serdiv'.
+# Processing module 'mult'
+# Info    : Restoring module 'mult'.
+# Processing module 'fpnew_classifier(1)'
+# Info    : Restoring module 'fpnew_classifier(1)'.
+# Processing module 'lzc(4)'
+# Info    : Restoring module 'lzc(4)'.
+# Processing module 'fpnew_rounding(1)'
+# Info    : Restoring module 'fpnew_rounding(1)'.
+# Processing module 'fpnew_fma(1)'
+# Info    : Restoring module 'fpnew_fma(1)'.
+# Processing module 'fpnew_opgroup_fmt_slice(1)'
+# Info    : Restoring module 'fpnew_opgroup_fmt_slice(1)'.
+# Processing module 'rr_arb_tree(27)'
+# Info    : Restoring module 'rr_arb_tree(27)'.
+# Processing module 'fpnew_opgroup_block'
+# Info    : Restoring module 'fpnew_opgroup_block'.
+# Processing module 'lzc(5)'
+# Info    : Restoring module 'lzc(5)'.
+# Processing module 'preprocess_mvp'
+# Info    : Restoring module 'preprocess_mvp'.
+# Processing module 'iteration_div_sqrt_mvp'
+# Info    : Restoring module 'iteration_div_sqrt_mvp'.
+# Processing module 'control_mvp'
+# Info    : Restoring module 'control_mvp'.
+# Processing module 'nrbd_nrsc_mvp'
+# Info    : Restoring module 'nrbd_nrsc_mvp'.
+# Processing module 'norm_div_sqrt_mvp'
+# Info    : Restoring module 'norm_div_sqrt_mvp'.
+# Processing module 'div_sqrt_top_mvp'
+# Info    : Restoring module 'div_sqrt_top_mvp'.
+# Processing module 'fpnew_divsqrt_multi'
+# Info    : Restoring module 'fpnew_divsqrt_multi'.
+# Processing module 'fpnew_opgroup_multifmt_slice'
+# Info    : Restoring module 'fpnew_opgroup_multifmt_slice'.
+# Processing module 'fpnew_opgroup_block(1)'
+# Info    : Restoring module 'fpnew_opgroup_block(1)'.
+# Processing module 'fpnew_classifier(2)'
+# Info    : Restoring module 'fpnew_classifier(2)'.
+# Processing module 'fpnew_noncomp'
+# Info    : Restoring module 'fpnew_noncomp'.
+# Processing module 'fpnew_opgroup_fmt_slice(2)'
+# Info    : Restoring module 'fpnew_opgroup_fmt_slice(2)'.
+# Processing module 'fpnew_classifier(3)'
+# Info    : Restoring module 'fpnew_classifier(3)'.
+# Processing module 'fpnew_noncomp(1)'
+# Info    : Restoring module 'fpnew_noncomp(1)'.
+# Processing module 'fpnew_opgroup_fmt_slice(3)'
+# Info    : Restoring module 'fpnew_opgroup_fmt_slice(3)'.
+# Processing module 'fpnew_opgroup_block(2)'
+# Info    : Restoring module 'fpnew_opgroup_block(2)'.
+# Processing module 'fpnew_classifier(4)'
+# Info    : Restoring module 'fpnew_classifier(4)'.
+# Processing module 'fpnew_classifier(5)'
+# Info    : Restoring module 'fpnew_classifier(5)'.
+# Processing module 'fpnew_rounding(2)'
+# Info    : Restoring module 'fpnew_rounding(2)'.
+# Processing module 'fpnew_cast_multi'
+# Info    : Restoring module 'fpnew_cast_multi'.
+# Processing module 'fpnew_opgroup_multifmt_slice(1)'
+# Info    : Restoring module 'fpnew_opgroup_multifmt_slice(1)'.
+# Processing module 'fpnew_opgroup_block(3)'
+# Info    : Restoring module 'fpnew_opgroup_block(3)'.
+# Processing module 'rr_arb_tree(27)'
+# Info    : Restoring module 'rr_arb_tree(27)'.
+# Processing module 'fpnew_top'
+# Info    : Restoring module 'fpnew_top'.
+# Processing module 'fpu_wrap'
+# Info    : Restoring module 'fpu_wrap'.
+# Processing module 'tlb'
+# Info    : Restoring module 'tlb'.
+# Processing module 'lzc(2)'
+# Info    : Restoring module 'lzc(2)'.
+# Processing module 'pmp_entry'
+# Info    : Restoring module 'pmp_entry'.
+# Processing module 'pmp'
+# Info    : Restoring module 'pmp'.
+# Processing module 'ptw'
+# Info    : Restoring module 'ptw'.
+# Processing module 'mmu'
+# Info    : Restoring module 'mmu'.
+# Processing module 'store_buffer'
+# Info    : Restoring module 'store_buffer'.
+# Processing module 'fifo_v3(5)'
+# Info    : Restoring module 'fifo_v3(5)'.
+# Processing module 'amo_buffer'
+# Info    : Restoring module 'amo_buffer'.
+# Processing module 'store_unit'
+# Info    : Restoring module 'store_unit'.
+# Processing module 'load_unit'
+# Info    : Restoring module 'load_unit'.
+# Processing module 'shift_reg'
+# Info    : Restoring module 'shift_reg'.
+# Processing module 'shift_reg(1)'
+# Info    : Restoring module 'shift_reg(1)'.
+# Processing module 'lsu_bypass'
+# Info    : Restoring module 'lsu_bypass'.
+# Processing module 'load_store_unit'
+# Info    : Restoring module 'load_store_unit'.
+# Processing module 'ex_stage'
+# Info    : Restoring module 'ex_stage'.
+# Processing module 'commit_stage'
+# Info    : Restoring module 'commit_stage'.
+# Processing module 'csr_regfile'
+# Info    : Restoring module 'csr_regfile'.
+# Processing module 'perf_counters'
+# Info    : Restoring module 'perf_counters'.
+# Processing module 'controller'
+# Info    : Restoring module 'controller'.
+# Processing module 'lzc(6)'
+# Info    : Restoring module 'lzc(6)'.
+# Processing module 'lfsr'
+# Info    : Restoring module 'lfsr'.
+# Processing module 'SyncSpRamBeNx64(1)'
+# Info    : Restoring module 'SyncSpRamBeNx64(1)'.
+# Processing module 'sram(1)'
+# Info    : Restoring module 'sram(1)'.
+# Processing module 'sram(2)'
+# Info    : Restoring module 'sram(2)'.
+# Processing module 'cva6_icache'
+# Info    : Restoring module 'cva6_icache'.
+# Processing module 'lzc(7)'
+# Info    : Restoring module 'lzc(7)'.
+# Processing module 'lzc(8)'
+# Info    : Restoring module 'lzc(8)'.
+# Processing module 'lfsr(1)'
+# Info    : Restoring module 'lfsr(1)'.
+# Processing module 'exp_backoff'
+# Info    : Restoring module 'exp_backoff'.
+# Processing module 'wt_dcache_missunit'
+# Info    : Restoring module 'wt_dcache_missunit'.
+# Processing module 'wt_dcache_ctrl'
+# Info    : Restoring module 'wt_dcache_ctrl'.
+# Processing module 'fifo_v3(6)'
+# Info    : Restoring module 'fifo_v3(6)'.
+# Processing module 'rr_arb_tree(32)'
+# Info    : Restoring module 'rr_arb_tree(32)'.
+# Processing module 'rr_arb_tree(33)'
+# Info    : Restoring module 'rr_arb_tree(33)'.
+# Processing module 'rr_arb_tree(34)'
+# Info    : Restoring module 'rr_arb_tree(34)'.
+# Processing module 'wt_dcache_wbuffer'
+# Info    : Restoring module 'wt_dcache_wbuffer'.
+# Processing module 'rr_arb_tree(35)'
+# Info    : Restoring module 'rr_arb_tree(35)'.
+# Processing module 'sram(3)'
+# Info    : Restoring module 'sram(3)'.
+# Processing module 'wt_dcache_mem'
+# Info    : Restoring module 'wt_dcache_mem'.
+# Processing module 'wt_dcache'
+# Info    : Restoring module 'wt_dcache'.
+# Processing module 'rr_arb_tree(36)'
+# Info    : Restoring module 'rr_arb_tree(36)'.
+# Processing module 'fifo_v3(7)'
+# Info    : Restoring module 'fifo_v3(7)'.
+# Processing module 'fifo_v3(8)'
+# Info    : Restoring module 'fifo_v3(8)'.
+# Processing module 'fifo_v3(9)'
+# Info    : Restoring module 'fifo_v3(9)'.
+# Processing module 'axi_shim'
+# Info    : Restoring module 'axi_shim'.
+# Processing module 'wt_axi_adapter'
+# Info    : Restoring module 'wt_axi_adapter'.
+# Processing module 'wt_cache_subsystem'
+# Info    : Restoring module 'wt_cache_subsystem'.
+# Processing module 'ariane'
+# Info    : Restoring module 'ariane'.
+# Processing module 'axi_master_connect'
+# Info    : Restoring module 'axi_master_connect'.
+# Processing module 'design_top'
+# Info    : Restoring module 'design_top'.
+# 
+##Time Taken (Synthesis) = 218.000000 ticks = 2.180000 secs
+# 
+# Summary: 15 Warnings in processing "netlist create"
+# End of log Fri Oct  1 01:26:59 2021
+# 
+# 
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+# 
+# log created Fri Oct  1 01:26:59 2021 by eldrick on rsg10.stanford.edu
+# 
+# 
+# Command: formal compile
+# Command arguments:
+#     -zdb /rsgs/pool0/eldrick/sqed_sss/demos/cva6_demo/output/qcache/DB/zdb_0
+#     -d design_top
+#     -cuname formal_bind
+#     -tcs
+# 
+# 
+## Processing Formal Logic...
+# Processing module 'AXI_BUS'
+# Info    : Restoring module 'AXI_BUS'.
+# Processing module 'AXI_BUS(2)'
+# Info    : Restoring module 'AXI_BUS(2)'.
+# Processing module 'axi_riscv_amos_alu'
+# Info    : Restoring module 'axi_riscv_amos_alu'.
+# Processing module 'axi_riscv_amos'
+# Info    : Restoring module 'axi_riscv_amos'.
+# Processing module 'axi_res_tbl'
+# Info    : Restoring module 'axi_res_tbl'.
+# Processing module 'rr_arb_tree'
+# Info    : Restoring module 'rr_arb_tree'.
+# Processing module 'stream_arbiter_flushable'
+# Info    : Restoring module 'stream_arbiter_flushable'.
+# Processing module 'stream_arbiter'
+# Info    : Restoring module 'stream_arbiter'.
+# Processing module 'axi_riscv_lrsc'
+# Info    : Restoring module 'axi_riscv_lrsc'.
+# Processing module 'axi_riscv_atomics'
+# Info    : Restoring module 'axi_riscv_atomics'.
+# Processing module 'axi_riscv_atomics_wrap'
+# Info    : Restoring module 'axi_riscv_atomics_wrap'.
+# Processing module 'stream_delay'
+# Info    : Restoring module 'stream_delay'.
+# Processing module 'stream_delay(1)'
+# Info    : Restoring module 'stream_delay(1)'.
+# Processing module 'stream_delay(2)'
+# Info    : Restoring module 'stream_delay(2)'.
+# Processing module 'stream_delay(3)'
+# Info    : Restoring module 'stream_delay(3)'.
+# Processing module 'stream_delay(4)'
+# Info    : Restoring module 'stream_delay(4)'.
+# Processing module 'axi_delayer'
+# Info    : Restoring module 'axi_delayer'.
+# Processing module 'axi2mem'
+# Info    : Restoring module 'axi2mem'.
+# Processing module 'SyncSpRamBeNx64'
+# Info    : Restoring module 'SyncSpRamBeNx64'.
+# Processing module 'sram'
+# Info    : Restoring module 'sram'.
+# Processing module 'rr_arb_tree(1)'
+# Info    : Restoring module 'rr_arb_tree(1)'.
+# Processing module 'stream_arbiter_flushable(1)'
+# Info    : Restoring module 'stream_arbiter_flushable(1)'.
+# Processing module 'stream_arbiter(1)'
+# Info    : Restoring module 'stream_arbiter(1)'.
+# Processing module 'axi_node_arbiter'
+# Info    : Restoring module 'axi_node_arbiter'.
+# Processing module 'axi_AR_allocator'
+# Info    : Restoring module 'axi_AR_allocator'.
+# Processing module 'rr_arb_tree(2)'
+# Info    : Restoring module 'rr_arb_tree(2)'.
+# Processing module 'stream_arbiter_flushable(2)'
+# Info    : Restoring module 'stream_arbiter_flushable(2)'.
+# Processing module 'stream_arbiter(2)'
+# Info    : Restoring module 'stream_arbiter(2)'.
+# Processing module 'axi_node_arbiter(1)'
+# Info    : Restoring module 'axi_node_arbiter(1)'.
+# Processing module 'axi_AW_allocator'
+# Info    : Restoring module 'axi_AW_allocator'.
+# Processing module 'fifo_v3'
+# Info    : Restoring module 'fifo_v3'.
+# Processing module 'fifo_v2'
+# Info    : Restoring module 'fifo_v2'.
+# Processing module 'axi_multiplexer'
+# Info    : Restoring module 'axi_multiplexer'.
+# Processing module 'axi_DW_allocator'
+# Info    : Restoring module 'axi_DW_allocator'.
+# Processing module 'axi_address_decoder_BW'
+# Info    : Restoring module 'axi_address_decoder_BW'.
+# Processing module 'axi_address_decoder_BR'
+# Info    : Restoring module 'axi_address_decoder_BR'.
+# Processing module 'axi_request_block'
+# Info    : Restoring module 'axi_request_block'.
+# Processing module 'rr_arb_tree(21)'
+# Info    : Restoring module 'rr_arb_tree(21)'.
+# Processing module 'stream_arbiter_flushable(21)'
+# Info    : Restoring module 'stream_arbiter_flushable(21)'.
+# Processing module 'stream_arbiter(21)'
+# Info    : Restoring module 'stream_arbiter(21)'.
+# Processing module 'axi_node_arbiter(20)'
+# Info    : Restoring module 'axi_node_arbiter(20)'.
+# Processing module 'axi_BW_allocator'
+# Info    : Restoring module 'axi_BW_allocator'.
+# Processing module 'rr_arb_tree(22)'
+# Info    : Restoring module 'rr_arb_tree(22)'.
+# Processing module 'stream_arbiter_flushable(22)'
+# Info    : Restoring module 'stream_arbiter_flushable(22)'.
+# Processing module 'stream_arbiter(22)'
+# Info    : Restoring module 'stream_arbiter(22)'.
+# Processing module 'axi_node_arbiter(21)'
+# Info    : Restoring module 'axi_node_arbiter(21)'.
+# Processing module 'axi_BR_allocator'
+# Info    : Restoring module 'axi_BR_allocator'.
+# Processing module 'axi_address_decoder_AR'
+# Info    : Restoring module 'axi_address_decoder_AR'.
+# Processing module 'axi_address_decoder_AW'
+# Info    : Restoring module 'axi_address_decoder_AW'.
+# Processing module 'fifo_v3(1)'
+# Info    : Restoring module 'fifo_v3(1)'.
+# Processing module 'fifo_v2(1)'
+# Info    : Restoring module 'fifo_v2(1)'.
+# Processing module 'axi_address_decoder_DW'
+# Info    : Restoring module 'axi_address_decoder_DW'.
+# Processing module 'axi_response_block'
+# Info    : Restoring module 'axi_response_block'.
+# Processing module 'axi_node'
+# Info    : Restoring module 'axi_node'.
+# Processing module 'axi_node_intf_wrap'
+# Info    : Restoring module 'axi_node_intf_wrap'.
+# Processing module 'instr_realign'
+# Info    : Restoring module 'instr_realign'.
+# Processing module 'ras'
+# Info    : Restoring module 'ras'.
+# Processing module 'unread'
+# Info    : Restoring module 'unread'.
+# Processing module 'btb'
+# Info    : Restoring module 'btb'.
+# Processing module 'bht'
+# Info    : Restoring module 'bht'.
+# Processing module 'instr_scan'
+# Info    : Restoring module 'instr_scan'.
+# Processing module 'lzc'
+# Info    : Restoring module 'lzc'.
+# Processing module 'popcount'
+# Info    : Restoring module 'popcount'.
+# Processing module 'fifo_v3(3)'
+# Info    : Restoring module 'fifo_v3(3)'.
+# Processing module 'fifo_v3(2)'
+# Info    : Restoring module 'fifo_v3(2)'.
+# Processing module 'instr_queue'
+# Info    : Restoring module 'instr_queue'.
+# Processing module 'frontend'
+# Info    : Restoring module 'frontend'.
+# Processing module 'compressed_decoder'
+# Info    : Restoring module 'compressed_decoder'.
+# Processing module 'decoder'
+# Info    : Restoring module 'decoder'.
+# Processing module 'id_stage'
+# Info    : Restoring module 'id_stage'.
+# Processing module 're_name'
+# Info    : Restoring module 're_name'.
+# Processing module 'rr_arb_tree(26)'
+# Info    : Restoring module 'rr_arb_tree(26)'.
+# Processing module 'rr_arb_tree(25)'
+# Info    : Restoring module 'rr_arb_tree(25)'.
+# Processing module 'scoreboard'
+# Info    : Restoring module 'scoreboard'.
+# Processing module 'ariane_regfile'
+# Info    : Restoring module 'ariane_regfile'.
+# Processing module 'ariane_regfile(1)'
+# Info    : Restoring module 'ariane_regfile(1)'.
+# Processing module 'issue_read_operands'
+# Info    : Restoring module 'issue_read_operands'.
+# Processing module 'issue_stage'
+# Info    : Restoring module 'issue_stage'.
+# Processing module 'alu'
+# Info    : Restoring module 'alu'.
+# Processing module 'branch_unit'
+# Info    : Restoring module 'branch_unit'.
+# Processing module 'csr_buffer'
+# Info    : Restoring module 'csr_buffer'.
+# Processing module 'multiplier'
+# Info    : Restoring module 'multiplier'.
+# Processing module 'lzc(1)'
+# Info    : Restoring module 'lzc(1)'.
+# Processing module 'serdiv'
+# Info    : Restoring module 'serdiv'.
+# Processing module 'mult'
+# Info    : Restoring module 'mult'.
+# Processing module 'fpnew_classifier(1)'
+# Info    : Restoring module 'fpnew_classifier(1)'.
+# Processing module 'lzc(4)'
+# Info    : Restoring module 'lzc(4)'.
+# Processing module 'fpnew_rounding(1)'
+# Info    : Restoring module 'fpnew_rounding(1)'.
+# Processing module 'fpnew_fma(1)'
+# Info    : Restoring module 'fpnew_fma(1)'.
+# Processing module 'fpnew_opgroup_fmt_slice(1)'
+# Info    : Restoring module 'fpnew_opgroup_fmt_slice(1)'.
+# Processing module 'rr_arb_tree(27)'
+# Info    : Restoring module 'rr_arb_tree(27)'.
+# Processing module 'fpnew_opgroup_block'
+# Info    : Restoring module 'fpnew_opgroup_block'.
+# Processing module 'lzc(5)'
+# Info    : Restoring module 'lzc(5)'.
+# Processing module 'preprocess_mvp'
+# Info    : Restoring module 'preprocess_mvp'.
+# Processing module 'iteration_div_sqrt_mvp'
+# Info    : Restoring module 'iteration_div_sqrt_mvp'.
+# Processing module 'control_mvp'
+# Info    : Restoring module 'control_mvp'.
+# Processing module 'nrbd_nrsc_mvp'
+# Info    : Restoring module 'nrbd_nrsc_mvp'.
+# Processing module 'norm_div_sqrt_mvp'
+# Info    : Restoring module 'norm_div_sqrt_mvp'.
+# Processing module 'div_sqrt_top_mvp'
+# Info    : Restoring module 'div_sqrt_top_mvp'.
+# Processing module 'fpnew_divsqrt_multi'
+# Info    : Restoring module 'fpnew_divsqrt_multi'.
+# Processing module 'fpnew_opgroup_multifmt_slice'
+# Info    : Restoring module 'fpnew_opgroup_multifmt_slice'.
+# Processing module 'fpnew_opgroup_block(1)'
+# Info    : Restoring module 'fpnew_opgroup_block(1)'.
+# Processing module 'fpnew_classifier(2)'
+# Info    : Restoring module 'fpnew_classifier(2)'.
+# Processing module 'fpnew_noncomp'
+# Info    : Restoring module 'fpnew_noncomp'.
+# Processing module 'fpnew_opgroup_fmt_slice(2)'
+# Info    : Restoring module 'fpnew_opgroup_fmt_slice(2)'.
+# Processing module 'fpnew_classifier(3)'
+# Info    : Restoring module 'fpnew_classifier(3)'.
+# Processing module 'fpnew_noncomp(1)'
+# Info    : Restoring module 'fpnew_noncomp(1)'.
+# Processing module 'fpnew_opgroup_fmt_slice(3)'
+# Info    : Restoring module 'fpnew_opgroup_fmt_slice(3)'.
+# Processing module 'fpnew_opgroup_block(2)'
+# Info    : Restoring module 'fpnew_opgroup_block(2)'.
+# Processing module 'fpnew_classifier(4)'
+# Info    : Restoring module 'fpnew_classifier(4)'.
+# Processing module 'fpnew_classifier(5)'
+# Info    : Restoring module 'fpnew_classifier(5)'.
+# Processing module 'fpnew_rounding(2)'
+# Info    : Restoring module 'fpnew_rounding(2)'.
+# Processing module 'fpnew_cast_multi'
+# Info    : Restoring module 'fpnew_cast_multi'.
+# Processing module 'fpnew_opgroup_multifmt_slice(1)'
+# Info    : Restoring module 'fpnew_opgroup_multifmt_slice(1)'.
+# Processing module 'fpnew_opgroup_block(3)'
+# Info    : Restoring module 'fpnew_opgroup_block(3)'.
+# Processing module 'rr_arb_tree(27)'
+# Info    : Restoring module 'rr_arb_tree(27)'.
+# Processing module 'fpnew_top'
+# Info    : Restoring module 'fpnew_top'.
+# Processing module 'fpu_wrap'
+# Info    : Restoring module 'fpu_wrap'.
+# Processing module 'tlb'
+# Info    : Restoring module 'tlb'.
+# Processing module 'lzc(2)'
+# Info    : Restoring module 'lzc(2)'.
+# Processing module 'pmp_entry'
+# Info    : Restoring module 'pmp_entry'.
+# Processing module 'pmp'
+# Info    : Restoring module 'pmp'.
+# Processing module 'ptw'
+# Info    : Restoring module 'ptw'.
+# Processing module 'mmu'
+# Info    : Restoring module 'mmu'.
+# Processing module 'store_buffer'
+# Info    : Restoring module 'store_buffer'.
+# Processing module 'fifo_v3(5)'
+# Info    : Restoring module 'fifo_v3(5)'.
+# Processing module 'amo_buffer'
+# Info    : Restoring module 'amo_buffer'.
+# Processing module 'store_unit'
+# Info    : Restoring module 'store_unit'.
+# Processing module 'load_unit'
+# Info    : Restoring module 'load_unit'.
+# Processing module 'shift_reg'
+# Info    : Restoring module 'shift_reg'.
+# Processing module 'shift_reg(1)'
+# Info    : Restoring module 'shift_reg(1)'.
+# Processing module 'lsu_bypass'
+# Info    : Restoring module 'lsu_bypass'.
+# Processing module 'load_store_unit'
+# Info    : Restoring module 'load_store_unit'.
+# Processing module 'ex_stage'
+# Info    : Restoring module 'ex_stage'.
+# Processing module 'commit_stage'
+# Info    : Restoring module 'commit_stage'.
+# Processing module 'csr_regfile'
+# Info    : Restoring module 'csr_regfile'.
+# Processing module 'perf_counters'
+# Info    : Restoring module 'perf_counters'.
+# Processing module 'controller'
+# Info    : Restoring module 'controller'.
+# Processing module 'lzc(6)'
+# Info    : Restoring module 'lzc(6)'.
+# Processing module 'lfsr'
+# Info    : Restoring module 'lfsr'.
+# Processing module 'SyncSpRamBeNx64(1)'
+# Info    : Restoring module 'SyncSpRamBeNx64(1)'.
+# Processing module 'sram(1)'
+# Info    : Restoring module 'sram(1)'.
+# Processing module 'sram(2)'
+# Info    : Restoring module 'sram(2)'.
+# Processing module 'cva6_icache'
+# Info    : Restoring module 'cva6_icache'.
+# Processing module 'lzc(7)'
+# Info    : Restoring module 'lzc(7)'.
+# Processing module 'lzc(8)'
+# Info    : Restoring module 'lzc(8)'.
+# Processing module 'lfsr(1)'
+# Info    : Restoring module 'lfsr(1)'.
+# Processing module 'exp_backoff'
+# Info    : Restoring module 'exp_backoff'.
+# Processing module 'wt_dcache_missunit'
+# Info    : Restoring module 'wt_dcache_missunit'.
+# Processing module 'wt_dcache_ctrl'
+# Info    : Restoring module 'wt_dcache_ctrl'.
+# Processing module 'fifo_v3(6)'
+# Info    : Restoring module 'fifo_v3(6)'.
+# Processing module 'rr_arb_tree(32)'
+# Info    : Restoring module 'rr_arb_tree(32)'.
+# Processing module 'rr_arb_tree(33)'
+# Info    : Restoring module 'rr_arb_tree(33)'.
+# Processing module 'rr_arb_tree(34)'
+# Info    : Restoring module 'rr_arb_tree(34)'.
+# Processing module 'wt_dcache_wbuffer'
+# Info    : Restoring module 'wt_dcache_wbuffer'.
+# Processing module 'rr_arb_tree(35)'
+# Info    : Restoring module 'rr_arb_tree(35)'.
+# Processing module 'sram(3)'
+# Info    : Restoring module 'sram(3)'.
+# Processing module 'wt_dcache_mem'
+# Info    : Restoring module 'wt_dcache_mem'.
+# Processing module 'wt_dcache'
+# Info    : Restoring module 'wt_dcache'.
+# Processing module 'rr_arb_tree(36)'
+# Info    : Restoring module 'rr_arb_tree(36)'.
+# Processing module 'fifo_v3(7)'
+# Info    : Restoring module 'fifo_v3(7)'.
+# Processing module 'fifo_v3(8)'
+# Info    : Restoring module 'fifo_v3(8)'.
+# Processing module 'fifo_v3(9)'
+# Info    : Restoring module 'fifo_v3(9)'.
+# Processing module 'axi_shim'
+# Info    : Restoring module 'axi_shim'.
+# Processing module 'wt_axi_adapter'
+# Info    : Restoring module 'wt_axi_adapter'.
+# Processing module 'wt_cache_subsystem'
+# Info    : Restoring module 'wt_cache_subsystem'.
+# Processing module 'ariane'
+# Info    : Restoring module 'ariane'.
+# Processing module 'axi_master_connect'
+# Info    : Restoring module 'axi_master_connect'.
+# Processing module 'design_top'
+# Info    : Restoring module 'design_top'.
+# Info    : Flattening design 'AXI_BUS'.
+# Info    : Flattening design 'AXI_BUS(1)'.
+# Info    : Flattening design 'axi_riscv_amos_alu'.
+# Info    : Flattening design 'axi_riscv_amos'.
+# Info    : Flattening design 'axi_res_tbl'.
+# Info    : Flattening design 'rr_arb_tree'.
+# Info    : Flattening design 'stream_arbiter_flushable'.
+# Info    : Flattening design 'stream_arbiter'.
+# Info    : Flattening design 'axi_riscv_lrsc'.
+# Info    : Flattening design 'axi_riscv_atomics'.
+# Info    : Flattening design 'axi_riscv_atomics_wrap'.
+# Info    : Flattening design 'stream_delay'.
+# Info    : Flattening design 'stream_delay(1)'.
+# Info    : Flattening design 'stream_delay(2)'.
+# Info    : Flattening design 'stream_delay(3)'.
+# Info    : Flattening design 'stream_delay(4)'.
+# Info    : Flattening design 'axi_delayer'.
+# Info    : Flattening design 'axi2mem'.
+# Info    : Flattening design 'SyncSpRamBeNx64'.
+# Info    : Flattening design 'sram'.
+# Info    : Flattening design 'rr_arb_tree(1)'.
+# Info    : Flattening design 'stream_arbiter_flushable(1)'.
+# Info    : Flattening design 'stream_arbiter(1)'.
+# Info    : Flattening design 'axi_node_arbiter'.
+# Info    : Flattening design 'axi_AR_allocator'.
+# Info    : Flattening design 'rr_arb_tree(2)'.
+# Info    : Flattening design 'stream_arbiter_flushable(2)'.
+# Info    : Flattening design 'stream_arbiter(2)'.
+# Info    : Flattening design 'axi_node_arbiter(1)'.
+# Info    : Flattening design 'axi_AW_allocator'.
+# Info    : Flattening design 'fifo_v3'.
+# Info    : Flattening design 'fifo_v2'.
+# Info    : Flattening design 'axi_multiplexer'.
+# Info    : Flattening design 'axi_DW_allocator'.
+# Info    : Flattening design 'axi_address_decoder_BW'.
+# Info    : Flattening design 'axi_address_decoder_BR'.
+# Info    : Flattening design 'axi_request_block'.
+# Info    : Flattening design 'rr_arb_tree(21)'.
+# Info    : Flattening design 'stream_arbiter_flushable(21)'.
+# Info    : Flattening design 'stream_arbiter(21)'.
+# Info    : Flattening design 'axi_node_arbiter(20)'.
+# Info    : Flattening design 'axi_BW_allocator'.
+# Info    : Flattening design 'rr_arb_tree(22)'.
+# Info    : Flattening design 'stream_arbiter_flushable(22)'.
+# Info    : Flattening design 'stream_arbiter(22)'.
+# Info    : Flattening design 'axi_node_arbiter(21)'.
+# Info    : Flattening design 'axi_BR_allocator'.
+# Info    : Flattening design 'axi_address_decoder_AR'.
+# Info    : Flattening design 'axi_address_decoder_AW'.
+# Info    : Flattening design 'fifo_v3(1)'.
+# Info    : Flattening design 'fifo_v2(1)'.
+# Info    : Flattening design 'axi_address_decoder_DW'.
+# Info    : Flattening design 'axi_response_block'.
+# Info    : Flattening design 'axi_node'.
+# Info    : Flattening design 'axi_node_intf_wrap'.
+# Info    : Flattening design 'instr_realign'.
+# Info    : Flattening design 'ras'.
+# Info    : Flattening design 'unread'.
+# Info    : Flattening design 'btb'.
+# Info    : Flattening design 'bht'.
+# Info    : Flattening design 'instr_scan'.
+# Info    : Flattening design 'lzc'.
+# Info    : Flattening design 'popcount'.
+# Info    : Flattening design 'fifo_v3(3)'.
+# Info    : Flattening design 'fifo_v3(2)'.
+# Info    : Flattening design 'instr_queue'.
+# Info    : Flattening design 'frontend'.
+# Info    : Flattening design 'compressed_decoder'.
+# Info    : Flattening design 'decoder'.
+# Info    : Flattening design 'id_stage'.
+# Info    : Flattening design 're_name'.
+# Info    : Flattening design 'rr_arb_tree(25)'.
+# Info    : Flattening design 'rr_arb_tree(24)'.
+# Info    : Flattening design 'scoreboard'.
+# Info    : Flattening design 'ariane_regfile'.
+# Info    : Flattening design 'ariane_regfile(1)'.
+# Info    : Flattening design 'issue_read_operands'.
+# Info    : Flattening design 'issue_stage'.
+# Info    : Flattening design 'alu'.
+# Info    : Flattening design 'branch_unit'.
+# Info    : Flattening design 'csr_buffer'.
+# Info    : Flattening design 'multiplier'.
+# Info    : Flattening design 'lzc(1)'.
+# Info    : Flattening design 'serdiv'.
+# Info    : Flattening design 'mult'.
+# Info    : Flattening design 'fpnew_classifier(1)'.
+# Info    : Flattening design 'lzc(4)'.
+# Info    : Flattening design 'fpnew_rounding(1)'.
+# Info    : Flattening design 'fpnew_fma(1)'.
+# Info    : Flattening design 'fpnew_opgroup_fmt_slice(1)'.
+# Info    : Flattening design 'rr_arb_tree(27)'.
+# Info    : Flattening design 'fpnew_opgroup_block'.
+# Info    : Flattening design 'lzc(5)'.
+# Info    : Flattening design 'preprocess_mvp'.
+# Info    : Flattening design 'iteration_div_sqrt_mvp'.
+# Info    : Flattening design 'control_mvp'.
+# Info    : Flattening design 'nrbd_nrsc_mvp'.
+# Info    : Flattening design 'norm_div_sqrt_mvp'.
+# Info    : Flattening design 'div_sqrt_top_mvp'.
+# Info    : Flattening design 'fpnew_divsqrt_multi'.
+# Info    : Flattening design 'fpnew_opgroup_multifmt_slice'.
+# Info    : Flattening design 'fpnew_opgroup_block(1)'.
+# Info    : Flattening design 'fpnew_classifier(2)'.
+# Info    : Flattening design 'fpnew_noncomp'.
+# Info    : Flattening design 'fpnew_opgroup_fmt_slice(2)'.
+# Info    : Flattening design 'fpnew_classifier(3)'.
+# Info    : Flattening design 'fpnew_noncomp(1)'.
+# Info    : Flattening design 'fpnew_opgroup_fmt_slice(3)'.
+# Info    : Flattening design 'fpnew_opgroup_block(2)'.
+# Info    : Flattening design 'fpnew_classifier(4)'.
+# Info    : Flattening design 'fpnew_classifier(5)'.
+# Info    : Flattening design 'fpnew_rounding(2)'.
+# Info    : Flattening design 'fpnew_cast_multi'.
+# Info    : Flattening design 'fpnew_opgroup_multifmt_slice(1)'.
+# Info    : Flattening design 'fpnew_opgroup_block(3)'.
+# Info    : Flattening design 'rr_arb_tree(27)'.
+# Info    : Flattening design 'fpnew_top'.
+# Info    : Flattening design 'fpu_wrap'.
+# Info    : Flattening design 'tlb'.
+# Info    : Flattening design 'lzc(2)'.
+# Info    : Flattening design 'pmp_entry'.
+# Info    : Flattening design 'pmp'.
+# Info    : Flattening design 'ptw'.
+# Info    : Flattening design 'mmu'.
+# Info    : Flattening design 'store_buffer'.
+# Info    : Flattening design 'fifo_v3(5)'.
+# Info    : Flattening design 'amo_buffer'.
+# Info    : Flattening design 'store_unit'.
+# Info    : Flattening design 'load_unit'.
+# Info    : Flattening design 'shift_reg'.
+# Info    : Flattening design 'shift_reg(1)'.
+# Info    : Flattening design 'lsu_bypass'.
+# Info    : Flattening design 'load_store_unit'.
+# Info    : Flattening design 'ex_stage'.
+# Info    : Flattening design 'commit_stage'.
+# Info    : Flattening design 'csr_regfile'.
+# Info    : Flattening design 'perf_counters'.
+# Info    : Flattening design 'controller'.
+# Info    : Flattening design 'lzc(6)'.
+# Info    : Flattening design 'lfsr'.
+# Info    : Flattening design 'SyncSpRamBeNx64(1)'.
+# Info    : Flattening design 'sram(1)'.
+# Info    : Flattening design 'sram(2)'.
+# Info    : Flattening design 'cva6_icache'.
+# Info    : Flattening design 'lzc(7)'.
+# Info    : Flattening design 'lzc(8)'.
+# Info    : Flattening design 'lfsr(1)'.
+# Info    : Flattening design 'exp_backoff'.
+# Info    : Flattening design 'wt_dcache_missunit'.
+# Info    : Flattening design 'wt_dcache_ctrl'.
+# Info    : Flattening design 'fifo_v3(4)'.
+# Info    : Flattening design 'rr_arb_tree(31)'.
+# Info    : Flattening design 'rr_arb_tree(33)'.
+# Info    : Flattening design 'rr_arb_tree(34)'.
+# Info    : Flattening design 'wt_dcache_wbuffer'.
+# Info    : Flattening design 'rr_arb_tree(34)'.
+# Info    : Flattening design 'sram(3)'.
+# Info    : Flattening design 'wt_dcache_mem'.
+# Info    : Flattening design 'wt_dcache'.
+# Info    : Flattening design 'rr_arb_tree(35)'.
+# Info    : Flattening design 'fifo_v3(7)'.
+# Info    : Flattening design 'fifo_v3(8)'.
+# Info    : Flattening design 'fifo_v3(7)'.
+# Info    : Flattening design 'axi_shim'.
+# Info    : Flattening design 'wt_axi_adapter'.
+# Info    : Flattening design 'wt_cache_subsystem'.
+# Info    : Flattening design 'ariane'.
+# Info    : Flattening design 'axi_master_connect'.
+# Info    : Flattening design 'design_top'.
+# Info    : Flattening design 'design_top'.
+# 
+# Signals replaced by netlist constant
+# -------------------------------------------------------------------------------
+# Signal                         Value
+# -------------------------------------------------------------------------------
+# rst_ni                         1'b1
+# -------------------------------------------------------------------------------
+# 
+# Info    : Detected asynchronous reset 'ndmreset_n' (active low).
+# Info    : Detected posedge clock 'clk_i'.
+# Info    : Design is processed for formal verification.  Design 'design_top'.
+# 
+# Clocks
+# ------------------------------------------------------------------------------
+# Port                                   Period         Waveform    Edges
+# ------------------------------------------------------------------------------
+# clk_i                                      10              0 5    PE NE
+# ------------------------------------------------------------------------------
+# 
+# Blackboxes
+# ------------------------------------------------------------------------------
+# Module name                                                Reason
+# ------------------------------------------------------------------------------
+# <no blackboxed modules>
+# ------------------------------------------------------------------------------
+# 
+# Inferred directives
+# ------------------------------------------------------------------------------
+# <no inferred directives>
+# ------------------------------------------------------------------------------
+# 
+# Info    : Design is linked for formal analysis.  Design 'design_top'.
+# Info    : Formal model has been created.
+# Warning : Cutpoint is not in sequential fanin of any property.  Cutpoint 'dram.aw_valid'.  [formal-220]
+# Warning : Cutpoint is not in sequential fanin of any property.  Cutpoint 'dram.ar_valid'.  [formal-220]
+# Warning : Cutpoint is not in sequential fanin of any property.  Cutpoint 'slave[0].r_ready'.  [formal-220]
+# 
+# Property Summary
+# -------------------------------------------------------------------------------
+# Total  Directives :0
+# Assert Directives :0
+# Assume Directives :0
+# Cover  Directives :0
+# -------------------------------------------------------------------------------
+# 
+# Design Checks Summary
+# -------------------------------------------------------------------------------
+# Check                              Found
+# -------------------------------------------------------------------------------
+# DECLARATION_UNDRIVEN                 123
+# LOGIC_UNDRIVEN                        10
+# PORT_UNDRIVEN                          1
+# -------------------------------------------------------------------------------
+# Total                                134
+# -------------------------------------------------------------------------------
+# 
+# 
+# To see results in the GUI run:
+# qverify /rsgs/pool0/eldrick/sqed_sss/demos/cva6_demo/output/formal_compile.db
+# 
+# 
+# Fatal/Error/Warning Summary
+# -----------------------------------------------------------
+# Count  Type     Message ID         Summary
+# -----------------------------------------------------------
+#     1  Warning  elaboration-215    Illegal bit addressing.
+#     3  Warning  formal-220         Cutpoint is not in sequential fanin of any property.
+#    14  Warning  parser-235         Unnamed block inside generate statement.
+# 
+# Summary: 18 Warnings in formal compile
+# Final Process Statistics: Max memory 1694MB, CPU time 113s, Total time 122s
+# End of log Fri Oct  1 01:28:49 2021
+# 
+# 

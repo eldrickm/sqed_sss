@@ -7,3 +7,5 @@ export VMAP=$QHOME/modeltech/plat/vmap
 export VLOG=$QHOME/modeltech/plat/vlog
 
 export LM_LICENSE_FILE="1717@cadlic0.stanford.edu:${LM_LICENSE_FILE}"
+
+export CVA6_REPO_DIR="./cva6/"

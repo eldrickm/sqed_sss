@@ -1,2 +1,2 @@
-- flist modified to include design/path
-- bootrom and bootrom_linux taken from cva6/bootrom - not representative. Dummy for cimpliationonly - we dont need it
+# design.flist
+../cva6/core/Flist.cv64a6_imafdc_sv39
