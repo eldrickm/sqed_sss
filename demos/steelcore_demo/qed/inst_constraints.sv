@@ -205,15 +205,17 @@ clk);
   // only allow certain instructions before SIF commit
   // in this case, prevent SW from occuring before SIF commit since it will
   // commit only 1 cycle after issue, leading to a violation of constraint C2
-  assume_allowed_instructions_before_tc: assume property (
-                         @(posedge clk)
-                         ~sif_commit |->
-                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_JALR || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_NOP)
-                         );
-  assume_allowed_instructions_after_tc: assume property (
-                         @(posedge clk)
-                         sif_commit |->
-                         (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_JALR || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_SW || ALLOWED_NOP)
-                         );
+  assume_allowed_instructions_before_tc: assume property
+  (
+    @(posedge clk)
+    ~sif_commit |->
+    (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_JALR || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_NOP)
+  );
+  assume_allowed_instructions_after_tc: assume property
+  (
+    @(posedge clk)
+    sif_commit |->
+    (ALLOWED_R || ALLOWED_I || ALLOWED_SYSTEM || ALLOWED_FENCE || ALLOWED_JALR || ALLOWED_LW || ALLOWED_B || ALLOWED_J || ALLOWED_LUI || ALLOWED_AUIPC || ALLOWED_SW || ALLOWED_NOP)
+  );
 
 endmodule
