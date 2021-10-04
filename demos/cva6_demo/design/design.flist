@@ -89,7 +89,6 @@ ${CVA6_REPO_DIR}/core/fpu/src/fpu_div_sqrt_mvp/hdl/preprocess_mvp.sv
 // Top-level source files (not necessarily instantiated at the top of the cva6).
 //${CVA6_REPO_DIR}/core/ariane_wrapper.sv
 //${CVA6_REPO_DIR}/core/ariane.sv
-./design/ariane.sv
 ${CVA6_REPO_DIR}/core/alu.sv
 // Note: depends on fpnew_pkg, above
 ${CVA6_REPO_DIR}/core/fpu_wrap.sv
@@ -106,12 +105,10 @@ ${CVA6_REPO_DIR}/core/issue_read_operands.sv
 ${CVA6_REPO_DIR}/core/issue_stage.sv
 ${CVA6_REPO_DIR}/core/load_unit.sv
 ${CVA6_REPO_DIR}/core/load_store_unit.sv
-//${CVA6_REPO_DIR}/core/mmu.sv
 ${CVA6_REPO_DIR}/core/mult.sv
 ${CVA6_REPO_DIR}/core/multiplier.sv
 ${CVA6_REPO_DIR}/core/serdiv.sv
 ${CVA6_REPO_DIR}/core/perf_counters.sv
-//${CVA6_REPO_DIR}/core/ptw.sv
 ${CVA6_REPO_DIR}/core/ariane_regfile_ff.sv
 ${CVA6_REPO_DIR}/core/re_name.sv
 // NOTE: scoreboard.sv modified for DSIM (unchanged for other simulators)
@@ -119,7 +116,6 @@ ${CVA6_REPO_DIR}/core/scoreboard.sv
 ${CVA6_REPO_DIR}/core/store_buffer.sv
 ${CVA6_REPO_DIR}/core/amo_buffer.sv
 ${CVA6_REPO_DIR}/core/store_unit.sv
-//${CVA6_REPO_DIR}/core/tlb.sv
 ${CVA6_REPO_DIR}/core/commit_stage.sv
 ${CVA6_REPO_DIR}/core/axi_shim.sv
 
@@ -155,6 +151,8 @@ ${CVA6_REPO_DIR}/common/local/util/sram.sv
 ${CVA6_REPO_DIR}/core/mmu_sv39/mmu.sv
 ${CVA6_REPO_DIR}/core/mmu_sv39/ptw.sv
 ${CVA6_REPO_DIR}/core/mmu_sv39/tlb.sv
+
+// end of manifest
 
 // =============================================================================
 // SQED Setup
@@ -203,3 +201,5 @@ ${CVA6_REPO_DIR}/corev_apu/src/axi_riscv_atomics/src/axi_riscv_lrsc.sv
 
 // Custom Test Harness
 design/ariane_testharness.sv
+
+./design/ariane.sv

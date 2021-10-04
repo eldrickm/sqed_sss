@@ -13,13 +13,13 @@ module formal_bind;
         .instruction(design_top.i_ariane.fetch_entry_qed_id.instruction)
     );
 
-    // // Constrain Registers
-    // bind design_top.dut.irf register_constraints reg_con
+    // Constrain Registers
+    // bind design_top.i_ariane.irf register_constraints reg_con
     // (
     //     .clk  (clk_i  ),
-    //     .sif_commit(design_top.dut.sif_commit),
-    //     .sif_commit_pulsed(design_top.dut.sif_commit_pulsed),
-    //     .qed_check_valid(design_top.dut.qed_check_valid),
+    //     .sif_commit(design_top.i_ariane.sif_commit),
+    //     .sif_commit_pulsed(design_top.i_ariane.sif_commit_pulsed),
+    //     .qed_check_valid(design_top.i_ariane.qed_check_valid),
     //     .reg0 ('b0  ),
     //     .reg1 (Q[1] ),
     //     .reg2 (Q[2] ),
