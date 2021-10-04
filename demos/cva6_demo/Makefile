@@ -41,5 +41,6 @@ clean:
 	\rm -f visualizer.log
 	\rm -rf results
 	\rm -rf $(OUT_DIR)
+	\rm -rf hnl_const_prop.rpt
 
 all: workspace design compile prove gui

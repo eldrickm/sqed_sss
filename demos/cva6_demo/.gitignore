@@ -1,4 +1,3 @@
 work/
 output/
-
-modelsim.ini
+.visualizer/

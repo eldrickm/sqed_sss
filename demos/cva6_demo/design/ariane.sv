@@ -971,7 +971,7 @@ module ariane import ariane_pkg::*; #(
 
     // Enable QED property check after Symbolic In-Flight (SIF) Instructions
     // have committed
-    reg [1:0] sif_state;
+    reg [3:0] sif_state;
     reg sif_commit;
 
     always @(posedge clk_i) begin

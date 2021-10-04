@@ -1,3 +1,3 @@
-$default_clock clk
+$default_clock clk_i
 $default_input_value 0 -undriven_wire
 $dump after_init

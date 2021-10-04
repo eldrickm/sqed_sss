@@ -13,46 +13,50 @@ module formal_bind;
         .instruction(design_top.i_ariane.fetch_entry_qed_id.instruction)
     );
 
-    // Constrain Registers
-    // bind design_top.i_ariane.irf register_constraints reg_con
-    // (
-    //     .clk  (clk_i  ),
-    //     .sif_commit(design_top.i_ariane.sif_commit),
-    //     .sif_commit_pulsed(design_top.i_ariane.sif_commit_pulsed),
-    //     .qed_check_valid(design_top.i_ariane.qed_check_valid),
-    //     .reg0 ('b0  ),
-    //     .reg1 (Q[1] ),
-    //     .reg2 (Q[2] ),
-    //     .reg3 (Q[3] ),
-    //     .reg4 (Q[4] ),
-    //     .reg5 (Q[5] ),
-    //     .reg6 (Q[6] ),
-    //     .reg7 (Q[7] ),
-    //     .reg8 (Q[8] ),
-    //     .reg9 (Q[9] ),
-    //     .reg10(Q[10]),
-    //     .reg11(Q[11]),
-    //     .reg12(Q[12]),
-    //     .reg13(Q[13]),
-    //     .reg14(Q[14]),
-    //     .reg15(Q[15]),
-    //     .reg16(Q[16]),
-    //     .reg17(Q[17]),
-    //     .reg18(Q[18]),
-    //     .reg19(Q[19]),
-    //     .reg20(Q[20]),
-    //     .reg21(Q[21]),
-    //     .reg22(Q[22]),
-    //     .reg23(Q[23]),
-    //     .reg24(Q[24]),
-    //     .reg25(Q[25]),
-    //     .reg26(Q[26]),
-    //     .reg27(Q[27]),
-    //     .reg28(Q[28]),
-    //     .reg29(Q[29]),
-    //     .reg30(Q[30]),
-    //     .reg31(Q[31])
-    // );
+    // Constrain Integer Register File
+    bind design_top.i_ariane.issue_stage_i.i_issue_read_operands.i_ariane_regfile register_constraints
+    #(
+        .DATA_WIDTH(64)
+    )
+    reg_con
+    (
+        .clk  (clk_i  ),
+        .sif_commit(design_top.i_ariane.sif_commit),
+        .sif_commit_pulsed(design_top.i_ariane.sif_commit_pulsed),
+        .qed_check_valid(design_top.i_ariane.qed_check_valid),
+        .reg0 (mem[0]),
+        .reg1 (mem[1] ),
+        .reg2 (mem[2] ),
+        .reg3 (mem[3] ),
+        .reg4 (mem[4] ),
+        .reg5 (mem[5] ),
+        .reg6 (mem[6] ),
+        .reg7 (mem[7] ),
+        .reg8 (mem[8] ),
+        .reg9 (mem[9] ),
+        .reg10(mem[10]),
+        .reg11(mem[11]),
+        .reg12(mem[12]),
+        .reg13(mem[13]),
+        .reg14(mem[14]),
+        .reg15(mem[15]),
+        .reg16(mem[16]),
+        .reg17(mem[17]),
+        .reg18(mem[18]),
+        .reg19(mem[19]),
+        .reg20(mem[20]),
+        .reg21(mem[21]),
+        .reg22(mem[22]),
+        .reg23(mem[23]),
+        .reg24(mem[24]),
+        .reg25(mem[25]),
+        .reg26(mem[26]),
+        .reg27(mem[27]),
+        .reg28(mem[28]),
+        .reg29(mem[29]),
+        .reg30(mem[30]),
+        .reg31(mem[31])
+    );
 
     // // Constrain Memory
     // bind design_top.mem memory_constraints mem_con
@@ -65,7 +69,7 @@ module formal_bind;
     //     .mem1 (ram[1] ),
     //     .mem2 (ram[2] ),
     //     .mem3 (ram[3] ),
-    //     .mem4 (ram[4] ),
+    //     .mem4 (32'b0),
     //     .mem5 (ram[5] ),
     //     .mem6 (ram[6] ),
     //     .mem7 (ram[7] ),
