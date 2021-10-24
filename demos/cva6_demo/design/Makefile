@@ -6,3 +6,6 @@ ariane:
 
 harness:
 	vimdiff ../cva6/corev_apu/tb/ariane_testharness.sv  ariane_testharness.sv 
+
+regfile:
+	vimdiff ../cva6/core/ariane_regfile_ff.sv  ariane_regfile_ff.sv 

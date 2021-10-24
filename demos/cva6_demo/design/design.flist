@@ -53,7 +53,7 @@ ${CVA6_REPO_DIR}/core/include/instr_tracer_pkg.sv
 
 // Common Cells
 ${CVA6_REPO_DIR}/common/submodules/common_cells/src/fifo_v3.sv
-${CVA6_REPO_DIR}/common/submodules/common_cells/src/lfsr_8bit.sv
+${CVA6_REPO_DIR}/common/submodules/common_cells/src/lfsr.sv
 ${CVA6_REPO_DIR}/common/submodules/common_cells/src/lzc.sv
 ${CVA6_REPO_DIR}/common/submodules/common_cells/src/rr_arb_tree.sv
 ${CVA6_REPO_DIR}/common/submodules/common_cells/src/shift_reg.sv
@@ -104,7 +104,7 @@ ${CVA6_REPO_DIR}/core/mult.sv
 ${CVA6_REPO_DIR}/core/multiplier.sv
 ${CVA6_REPO_DIR}/core/serdiv.sv
 ${CVA6_REPO_DIR}/core/perf_counters.sv
-${CVA6_REPO_DIR}/core/ariane_regfile_ff.sv
+//${CVA6_REPO_DIR}/core/ariane_regfile_ff.sv
 ${CVA6_REPO_DIR}/core/re_name.sv
 // NOTE: scoreboard.sv modified for DSIM (unchanged for other simulators)
 ${CVA6_REPO_DIR}/core/scoreboard.sv
@@ -162,6 +162,7 @@ ${CVA6_REPO_DIR}/common/local/util/axi_master_connect.sv
 ${CVA6_REPO_DIR}/common/submodules/common_cells/src/deprecated/fifo_v2.sv
 
 // TB Packages
+${CVA6_REPO_DIR}/corev_apu/tb/ariane_soc_pkg.sv
 ${CVA6_REPO_DIR}/corev_apu/tb/ariane_axi_soc_pkg.sv
 ${CVA6_REPO_DIR}/corev_apu/tb/rvfi_pkg.sv
 
@@ -193,8 +194,7 @@ ${CVA6_REPO_DIR}/corev_apu/src/axi_riscv_atomics/src/axi_riscv_atomics.sv
 ${CVA6_REPO_DIR}/corev_apu/src/axi_riscv_atomics/src/axi_riscv_atomics_wrap.sv
 ${CVA6_REPO_DIR}/corev_apu/src/axi_riscv_atomics/src/axi_riscv_lrsc.sv
 
-
-// Custom Test Harness
-design/ariane_testharness.sv
-
+// Modified Files
+./design/ariane_regfile_ff.sv
 ./design/ariane.sv
+./design/ariane_testharness.sv
