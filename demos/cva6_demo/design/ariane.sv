@@ -1018,9 +1018,13 @@ module ariane import ariane_pkg::*; #(
     wire dst_is_zero_reg;
     wire rf_wb_is_en;
 
-    assign dst_is_original = (waddr_commit_id[0] < 'd16);
-    assign dst_is_zero_reg = (waddr_commit_id[0] == 'd0);
-    assign rf_wb_is_en     = (we_gpr_commit_id);
+    assign rf_wb_is_en_0     = (we_gpr_commit_id[0]);
+    assign dst_is_original_0 = (waddr_commit_id[0] < 'd16);
+    assign dst_is_zero_reg_0 = (waddr_commit_id[0] == 'd0);
+
+    assign rf_wb_is_en_1     = (we_gpr_commit_id[1]);
+    assign dst_is_original_1 = (waddr_commit_id[1] < 'd16);
+    assign dst_is_zero_reg_1 = (waddr_commit_id[1] == 'd0);
 
     // logic to track memory commits - original or duplicate
     // wire mem_dst_is_original;
@@ -1030,22 +1034,23 @@ module ariane import ariane_pkg::*; #(
     // assign mem_wea_is_en = |(SU_WR_MASK);
 
     // We ignore instructions with destination register 5'b0 (NOP)
-    assign qed_orig_commit_reg = rf_wb_is_en
-                                 && dst_is_original
-                                 && ~dst_is_zero_reg;
-                                 //&& ~FLUSH;
+    assign qed_orig_commit_reg_0 = rf_wb_is_en_0 && dst_is_original_0 && ~dst_is_zero_reg_0; //&& ~FLUSH;
+    assign qed_orig_commit_reg_1 = rf_wb_is_en_1 && dst_is_original_1 && ~dst_is_zero_reg_1; //&& ~FLUSH;
+
     // assign qed_orig_commit_mem = mem_wea_is_en && mem_dst_is_original && ~FLUSH;
 
     // Instructions with destination register 5'b0 remain the same for
     // original and duplicate instructions
-    assign qed_dup_commit_reg = rf_wb_is_en && ~dst_is_original; //&& ~FLUSH;
+    assign qed_dup_commit_reg_0 = rf_wb_is_en_0 && ~dst_is_original_0; //&& ~FLUSH;
+    assign qed_dup_commit_reg_1 = rf_wb_is_en_1 && ~dst_is_original_1; //&& ~FLUSH;
+
     // assign qed_dup_commit_mem = mem_wea_is_en && ~mem_dst_is_original && ~FLUSH;
 
     // sum all commits that happen in a cycle
     // assign qed_orig_commit = qed_orig_commit_mem + qed_orig_commit_reg;
     // assign qed_dup_commit = qed_dup_commit_mem + qed_dup_commit_reg;
-    assign qed_orig_commit = qed_orig_commit_reg;
-    assign qed_dup_commit  = qed_dup_commit_reg;
+    assign qed_orig_commit = qed_orig_commit_reg_0 + qed_orig_commit_reg_1;
+    assign qed_dup_commit  = qed_dup_commit_reg_0 + qed_dup_commit_reg_1;
 
     // Logic to track committed instructions
     // We keep this in reset until SIF Instructions have committed
