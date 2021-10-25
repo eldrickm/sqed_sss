@@ -2,7 +2,7 @@
 Useful functions to interpret RV32I instructions
 """
 
-def decode_rv32i_hex(hex_instruction: str):
+def decode_rv32i_hex(hex_instruction):
     """
     Prints human readable assembly of hex RV32I instructions
     """
@@ -64,9 +64,11 @@ def decode_rv32i_hex(hex_instruction: str):
         MULHU or SRL or SLL or ADD or MUL or OR
 
     # Decode SW Instructions
-    FORMAT_SW = (instruction[32 - 31 - 1:32 - 30] == '00')
-    SW = FORMAT_SW and (funct3 == '010') and (opcode == '0100011') and (rs1 == '00000')
-    ALLOWED_SW = SW
+    FORMAT_SW = True #(instruction[32 - 31 - 1:32 - 30] == '00')
+    SB = FORMAT_SW and (funct3 == '000') and (opcode == '0100011') and (rs1 == '00000');
+    SH = FORMAT_SW and (funct3 == '001') and (opcode == '0100011') and (rs1 == '00000');
+    SW = FORMAT_SW and (funct3 == '010') and (opcode == '0100011') and (rs1 == '00000');
+    ALLOWED_SW = SB or SH or SW
 
     # Decode NOP
     NOP = (opcode == '1111111')
@@ -88,11 +90,11 @@ def decode_rv32i_hex(hex_instruction: str):
     ASSEMBLY_OPS = ["ANDI", "SLTIU", "SRLI", "SLTI", "SRAI", "SLLI", "ORI", "XORI",
                     "ADDI", "LW", "AND", "SLTU", "MULH", "SRA", "XOR", "SUB",
                     "SLT", "MULHSU", "MULHU", "SRL", "SLL", "ADD", "MUL", "OR",
-                    "SW", "JAL", "AUIPC", "LUI"]
+                    "SB", "SH", "SW", "JAL", "AUIPC", "LUI", "NOP"]
     decoded_ops = [ANDI, SLTIU, SRLI, SLTI, SRAI, SLLI, ORI, XORI,
                    ADDI, LW, AND, SLTU, MULH, SRA, XOR, SUB,
                    SLT, MULHSU, MULHU, SRL, SLL, ADD, MUL, OR,
-                   SW, JAL, AUIPC, LUI]
+                   SB, SH, SW, JAL, AUIPC, LUI, NOP]
     asm_op = None
     for i in range(len(decoded_ops)):
         if decoded_ops[i]:
@@ -128,6 +130,10 @@ def decode_rv32i_hex(hex_instruction: str):
         print("Error - Invalid Instruction")
 
 
-hex_inst_list = ['a4097', 'a4897', 'b020a3', '13', 'b020b3']
-for hex_inst in hex_inst_list:
-    decode_rv32i_hex(hex_inst)
+with open("inst_list.txt") as file:
+    lines = file.readlines()
+    inst_list = [line.rstrip() for line in lines]
+    for inst in inst_list:
+        print("Hex: %s" % inst)
+        decode_rv32i_hex(inst)
+        print("")
