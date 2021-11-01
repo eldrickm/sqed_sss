@@ -10,7 +10,7 @@ This codebases uses Mentor Questa Formal.
 
 Much of this is based on work by Shashank Nuthakki.
 This repository is a cleaned up version of a directory found on the rsg cluster
-`/pool0/esingh/.../`
+`/pool0/esingh/archive/sqed/trojans/ride-with-2QED-sss/results-ride-with-2QED-sss-withlw-srcforw`
 
 ## Setup:
     1. Run on rsg10.stanford.edu. Be sure to use ssh -Y to interact

@@ -666,9 +666,7 @@ module pipeline
 	 // nuthakki : begin
 	 //inst1_if <= inst1; 
 	 inst1_if <= qed_ifu_instruction;
-	 //inst2_if <= inst2;
-	 inst2_if <= qed_ifu_instruction2;
-	 //inv1_if <= 0;  // change to vld_out of qedmodule1
+	 inst2_if <= 'h7f;      // FIXME: Grounding 2nd instruction fetch
 	 inv1_if <= ~qed_vld_out;
 	// inv2_if <= invalid2_pipe;
 	 inv2_if <= ~qed_vld_out2;
@@ -1880,9 +1878,9 @@ module pipeline
 		     .src_b(buf_src_b_alu1),
              // [TROJAN PAYLOAD START]
              // [TROJAN PAYLOAD TYPE] - ALU Op Code Changed
-		     .alu_op({buf_alu_op_alu1[3:1],ftrojan}),
+		     //.alu_op({buf_alu_op_alu1[3:1],ftrojan}),
              // [TROJAN PAYLOAD END]
-  		     //.alu_op(buf_alu_op_alu1),
+  		     .alu_op(buf_alu_op_alu1),
 		     .spectag(buf_spectag_alu1),
 		     .specbit(buf_specbit_alu1),
 		     .issue(issue_alu1),
