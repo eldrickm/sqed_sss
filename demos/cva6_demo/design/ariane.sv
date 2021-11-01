@@ -1000,21 +1000,26 @@ module ariane import ariane_pkg::*; #(
     reg [4:0] qed_num_dup;
 
     // tracking QED instruction commits which update the integer register file
-    wire qed_orig_commit_reg;
-    wire qed_dup_commit_reg;
+    wire qed_orig_commit_reg_0;
+    wire qed_orig_commit_reg_1;
+    wire qed_dup_commit_reg_0;
+    wire qed_dup_commit_reg_1;
 
     // tracking QED instruction commits which update memory
-    wire qed_orig_commit_mem;
-    wire qed_dup_commit_mem;
+    // wire qed_orig_commit_mem;
+    // wire qed_dup_commit_mem;
 
     // allows tracking of multiple commits at a single time step
     wire [1:0] qed_orig_commit;
     wire [1:0] qed_dup_commit;
 
     // logic to track integer register file commits - original or duplicate
-    wire dst_is_original;
-    wire dst_is_zero_reg;
-    wire rf_wb_is_en;
+    wire dst_is_original_0;
+    wire dst_is_original_1;
+    wire dst_is_zero_reg_0;
+    wire dst_is_zero_reg_1;
+    wire rf_wb_is_en_0;
+    wire rf_wb_is_en_1;
 
     assign rf_wb_is_en_0     = (we_gpr_commit_id[0]);
     assign dst_is_original_0 = (waddr_commit_id[0] < 'd16);
