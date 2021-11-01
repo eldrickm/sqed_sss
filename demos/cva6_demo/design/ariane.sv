@@ -279,8 +279,6 @@ module ariane import ariane_pkg::*; #(
   fetch_entry_t             fetch_entry_qed_id; // also a cutpoint
   logic                     fetch_valid_qed_id;
   logic                     fetch_ready_id_qed;
-  // flop to remove combo loop
-  logic                     fetch_ready_id_qed_d;
 
   qed qed0 (
       // Outputs
@@ -980,7 +978,7 @@ module ariane import ariane_pkg::*; #(
             sif_commit <= 0;
         end else begin
             if((sif_state == 5)) begin
-                sif_state <= 5;
+                sif_state <= sif_state;
                 sif_commit <= 1;
             end else begin
                 sif_state <= sif_state + 1;
