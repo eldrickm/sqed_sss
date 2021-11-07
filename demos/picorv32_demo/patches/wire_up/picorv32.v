@@ -48,7 +48,7 @@
 `endif
 
 // uncomment this for register file in extra module
-// `define PICORV32_REGS picorv32_regs
+`define PICORV32_REGS picorv32_regs
 
 // this macro can be used to check if the verilog files in your
 // design are read in the correct order.
@@ -383,9 +383,11 @@ module picorv32 #(
 
 	assign mem_rdata_latched_noshuffle = (mem_xfer || LATCHED_MEM_RDATA) ? mem_rdata : mem_rdata_q;
 
+	// Start QED Edit - Override Instruction Signal
 	assign mem_rdata_latched = COMPRESSED_ISA && mem_la_use_prefetched_high_word ? {16'bx, mem_16bit_buffer} :
 			COMPRESSED_ISA && mem_la_secondword ? {mem_rdata_latched_noshuffle[15:0], mem_16bit_buffer} :
-			COMPRESSED_ISA && mem_la_firstword ? {16'bx, mem_rdata_latched_noshuffle[31:16]} : mem_rdata_latched_noshuffle;
+			COMPRESSED_ISA && mem_la_firstword ? {16'bx, mem_rdata_latched_noshuffle[31:16]} : (qed_kill) ? 32'h00000013 : qed_ifu_instruction;
+	// END QED Edit - Override Instruction Signal
 
 	always @(posedge clk) begin
 		if (!resetn) begin
@@ -640,6 +642,35 @@ module picorv32 #(
 			prefetched_high_word <= 0;
 	end
 
+	// Start QED Edit - Add QED Module
+    wire qed_vld_out;
+    wire [31:0] qed_ifu_instruction;
+
+    wire qed_ena;
+    wire qed_stall_IF;
+
+    assign qed_ena = 1'b1;
+    assign qed_stall_IF = trap;
+
+    // exec_dup is a cutpoint - given to the formal tool
+    wire qed_exec_dup;
+    assign qed_exec_dup = 1'b0;
+
+    qed qed0 (
+        // Outputs
+        .vld_out(qed_vld_out),
+        .qed_ifu_instruction(qed_ifu_instruction),
+        // Inputs
+        .ena(qed_ena),
+        .ifu_qed_instruction(mem_rdata_latched_noshuffle),
+        .clk(clk)),
+        .exec_dup(qed_exec_dup),
+        .stall_IF(qed_stall_IF),
+        .rst(~resetn)
+    );
+
+    wire qed_kill = trap | (~qed_vld_out);
+    // End QED Edit - Add QED Module
 
 	// Instruction Decoder
 

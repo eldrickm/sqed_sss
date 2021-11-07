@@ -3,10 +3,10 @@
 module design_top (input clk, input reset);
     // top module wire declarations
     wire CLK;
-    wire RESET;
+    wire RESETN;
 
     assign CLK = clk;
-    assign RESET = reset;
+    assign RESETN = ~reset;
     
     // connection with Real Time Counter - hard wired to 0
     wire [63:0] REAL_TIME;
@@ -36,30 +36,41 @@ module design_top (input clk, input reset);
     assign T_IRQ = 'b0;
     assign S_IRQ = 'b0;
     
-    steel_top dut (
-        .CLK(CLK),
-        .RESET(RESET),
-
-        // connection with Real Time Counter
-        .REAL_TIME(REAL_TIME),
-
-        // connections with Instruction Memory
-        .I_ADDR(I_ADDR),
-        .INSTR(INSTR),
-
-        // connections with Data Memory
-        .D_ADDR(D_ADDR),
-        .DATA_OUT(DATA_OUT),
-        .WR_REQ(WR_REQ),
-        .WR_MASK(WR_MASK),
-        .DATA_IN(DATA_IN),
-
-        //connections with Interrupt Controller
-        .E_IRQ(E_IRQ),
-        .T_IRQ(T_IRQ),
-        .S_IRQ(S_IRQ)
-    );
-
+    picorv32 #(
+		.ENABLE_COUNTERS(0),
+        .ENABLE_COUNTERS64(0),
+        .ENABLE_REGS_16_31(0),
+        .ENABLE_REGS_DUALPORT(0),
+        .LATCHED_MEM_RDATA(0),
+        .TWO_STAGE_SHIFT(0),
+        .BARREL_SHIFTER(0),
+        .TWO_CYCLE_COMPARE(0),
+        .TWO_CYCLE_ALU(0),
+        .COMPRESSED_ISA(0),
+        .CATCH_MISALIGN(0),
+        .CATCH_ILLINSN(0),
+        .ENABLE_PCPI(0),
+        .ENABLE_MUL(0),
+        .ENABLE_FAST_MUL(0),
+        .ENABLE_DIV(0),
+        .ENABLE_IRQ(0),
+        .ENABLE_IRQ_QREGS(0),
+        .ENABLE_IRQ_TIMER(0),
+        .ENABLE_TRACE(0),
+        .REGS_INIT_ZERO(0),
+	) cpu (
+		.clk         (clk        ),
+		.resetn      (resetn     ),
+		.mem_valid   (mem_valid  ),
+		.mem_instr   (mem_instr  ),
+		.mem_ready   (mem_ready  ),
+		.mem_addr    (mem_addr   ),
+		.mem_wdata   (mem_wdata  ),
+		.mem_wstrb   (mem_wstrb  ),
+		.mem_rdata   (mem_rdata  ),
+		.irq         (irq        )
+	);
+    
     // Memory is 4 byte aligned - hence the indexing starts at bit 2
     ram #(
         .DEPTH(32)
