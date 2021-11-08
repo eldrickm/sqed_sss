@@ -969,7 +969,7 @@ module ariane import ariane_pkg::*; #(
 
     // Enable QED property check after Symbolic In-Flight (SIF) Instructions
     // have committed
-    reg [3:0] sif_state;
+    reg [4:0] sif_state;
     reg sif_commit;
 
     always @(posedge clk_i) begin
@@ -977,7 +977,7 @@ module ariane import ariane_pkg::*; #(
             sif_state <= 0;
             sif_commit <= 0;
         end else begin
-            if((sif_state == 5)) begin
+            if((sif_state == 16)) begin
                 sif_state <= sif_state;
                 sif_commit <= 1;
             end else begin
@@ -1058,7 +1058,7 @@ module ariane import ariane_pkg::*; #(
     // Logic to track committed instructions
     // We keep this in reset until SIF Instructions have committed
     always @(posedge clk_i) begin
-        if (~(rst_ni) || (sif_state == 0)) begin
+        if (~(rst_ni) || ~(sif_commit)) begin
             qed_num_orig <= 'b0;
             qed_num_dup <= 'b0;
         end else begin
