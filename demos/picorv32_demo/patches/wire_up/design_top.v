@@ -47,7 +47,7 @@ module design_top (input clk, input reset);
         .ENABLE_IRQ_TIMER(0),
         .ENABLE_TRACE(0),
         .REGS_INIT_ZERO(0)
-	) cpu (
+	) dut (
 		.clk         (clk        ),
 		.resetn      (resetn     ),
 		.mem_valid   (mem_valid  ),
