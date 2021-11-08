@@ -1,7 +1,7 @@
 # Define clocks
 netlist clock clk -period 10 -waveform {0 5}
-netlist constant top.reset_x 1'b1
-netlist constant top.qed_rst 1'b0
+netlist constant design_top.reset_x 1'b1
+netlist constant design_top.qed_rst 1'b0
 #  pipe.aregfile.regfile.mem (Depth 32)
 #  pipe.qed0.qic.i_cache (Depth 32)
 #  pipe.rob.dst (Depth 64)
@@ -24,8 +24,8 @@ netlist memory i_cache -exact -module qed_i_cache
 
 # cut at instruction
 #netlist cutpoint top.pipe.pipe_if.inst1
-netlist cutpoint top.pipe.inst1
-netlist cutpoint top.pipe.inst2
-netlist cutpoint top.pipe.qed_exec_dup
+netlist cutpoint design_top.pipe.inst1
+netlist cutpoint design_top.pipe.inst2
+netlist cutpoint design_top.pipe.qed_exec_dup
 
 report directives

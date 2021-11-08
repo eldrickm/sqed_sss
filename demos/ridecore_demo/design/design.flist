@@ -12,7 +12,6 @@
 ./ridecore/dmem.v
 ./ridecore/exunit_alu.v
 ./ridecore/exunit_branch.v
-./exunit_ldst_my.v
 ./ridecore/exunit_mul.v
 ./ridecore/imem.v
 ./ridecore/imm_gen.v
@@ -44,11 +43,5 @@
 ./ridecore/alu.v
 ./ridecore/multiplier.v
 -v ./ridecore/imem.v
-
-./qed/inst_constraint.sv
-./qed/modify_instruction.v
-./qed/qed_decoder.v
-./qed/qed_i_cache.v
-./qed/qed_instruction_mux.v
-./qed/qed.v
-./qed/qed.vh
+./design/topsim.v
+./design/exunit_ldst_my.v

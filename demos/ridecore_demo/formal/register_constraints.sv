@@ -1,5 +1,5 @@
 
-module ridecore_checker (/*AUTOARG*/
+module register_constraints (/*AUTOARG*/
    // Inputs
    clk, rst, reg0, reg1, reg2, reg3, reg4, reg5, reg6, reg7,
    reg8, reg9, reg10, reg11, reg12, reg13, reg14, reg15, reg16, reg17,
@@ -83,18 +83,18 @@ module ridecore_checker (/*AUTOARG*/
    assign iregs[31] = reg31;
 
    wire 	ena;
-   assign ena = top.pipe.chk_en;
+   assign ena = design_top.pipe.chk_en;
   
    wire [4:0]	num_orig;
-   assign num_orig = top.pipe.num_orig_insts;
+   assign num_orig = design_top.pipe.num_orig_insts;
 
    wire [4:0]	num_dup;
-   assign num_dup = top.pipe.num_dup_insts;
+   assign num_dup = design_top.pipe.num_dup_insts;
 
    wire 	wait_for_commit;
    wire 	wait_for_commit_reg;
-   assign wait_for_commit = top.pipe.wait_till_commit;
-   assign wait_for_commit_reg = top.pipe.rob.wait_till_commit_reg;
+   assign wait_for_commit = design_top.pipe.wait_till_commit;
+   assign wait_for_commit_reg = design_top.pipe.rob.wait_till_commit_reg;
 
    // assume properties
 
@@ -120,14 +120,14 @@ module ridecore_checker (/*AUTOARG*/
 	  assume_consistent_mem: assume property (
 							@(posedge wait_for_commit_reg)
 //						       (~wait_for_commit_reg) |->
-							 ((top.datamemory.mem[j] == top.datamemory.mem[j+32]) // ##1 (iregs[j] == iregs[j+16]) //##1 (iregs[j] == iregs[j+16]) ##1 (iregs[j] == iregs[j+16])
+							 ((design_top.datamemory.mem[j] == design_top.datamemory.mem[j+32]) // ##1 (iregs[j] == iregs[j+16]) //##1 (iregs[j] == iregs[j+16]) ##1 (iregs[j] == iregs[j+16])
 						 )
 						       );
 	  end
    endgenerate
       
-      wire [63:0] formal_commit = top.pipe.rob.formal_commit;
-      wire 	  commit2 = top.pipe.rob.commit2;
+      wire [63:0] formal_commit = design_top.pipe.rob.formal_commit;
+      wire 	  commit2 = design_top.pipe.rob.commit2;
       wire [5:0]  comptr2;
       assume_consis_mult_commit: assume property (
 						  @(posedge clk)
@@ -140,15 +140,15 @@ module ridecore_checker (/*AUTOARG*/
    wire lt;
    wire gt;
    wire [6:0] freenum;
-   assign eq = (top.pipe.comptr == top.pipe.rrfptr);
-   assign lt = (top.pipe.comptr < top.pipe.rrfptr);
-   assign gt = (top.pipe.comptr > top.pipe.rrfptr);
-   assign freenum = top.pipe.freenum;
+   assign eq = (design_top.pipe.comptr == design_top.pipe.rrfptr);
+   assign lt = (design_top.pipe.comptr < design_top.pipe.rrfptr);
+   assign gt = (design_top.pipe.comptr > design_top.pipe.rrfptr);
+   assign freenum = design_top.pipe.freenum;
    
    property as_freenum;
       @(posedge clk) ((eq && ((freenum == 0)||(freenum == 64))) 
-		      || (lt && (freenum == (64 - (top.pipe.rrfptr - top.pipe.comptr)))) 
-		      || (gt && (freenum == (top.pipe.comptr - top.pipe.rrfptr))) );
+		      || (lt && (freenum == (64 - (design_top.pipe.rrfptr - design_top.pipe.comptr)))) 
+		      || (gt && (freenum == (design_top.pipe.comptr - design_top.pipe.rrfptr))) );
    endproperty
 
    wire [5:0] comptr;
@@ -157,48 +157,48 @@ module ridecore_checker (/*AUTOARG*/
    wire [5:0] rrftag_arr[0:25];
    wire [25:0] rrftag_val;
    wire [63:0] rob_finish;
-   assign rob_finish = top.pipe.rob.finish;
+   assign rob_finish = design_top.pipe.rob.finish;
 
-   assign rrftag_arr[0] = top.pipe.reserv_alu1.rrftag_0;
-   assign rrftag_arr[1] = top.pipe.reserv_alu1.rrftag_1;
-   assign rrftag_arr[2] = top.pipe.reserv_alu1.rrftag_2;
-   assign rrftag_arr[3] = top.pipe.reserv_alu1.rrftag_3;
-   assign rrftag_arr[4] = top.pipe.reserv_alu1.rrftag_4;
-   assign rrftag_arr[5] = top.pipe.reserv_alu1.rrftag_5;
-   assign rrftag_arr[6] = top.pipe.reserv_alu1.rrftag_6;
-   assign rrftag_arr[7] = top.pipe.reserv_alu1.rrftag_7;
-   assign rrftag_arr[8] = top.pipe.buf_rrftag_alu1;
-   assign rrftag_arr[9] = top.pipe.reserv_alu2.rrftag_0;
-   assign rrftag_arr[10] = top.pipe.reserv_alu2.rrftag_1;
-   assign rrftag_arr[11] = top.pipe.reserv_alu2.rrftag_2;
-   assign rrftag_arr[12] = top.pipe.reserv_alu2.rrftag_3;
-   assign rrftag_arr[13] = top.pipe.reserv_alu2.rrftag_4;
-   assign rrftag_arr[14] = top.pipe.reserv_alu2.rrftag_5;
-   assign rrftag_arr[15] = top.pipe.reserv_alu2.rrftag_6;
-   assign rrftag_arr[16] = top.pipe.reserv_alu2.rrftag_7;
-   assign rrftag_arr[17] = top.pipe.buf_rrftag_alu2;
-   assign rrftag_arr[18] = top.pipe.reserv_mul.rrftag_0;
-   assign rrftag_arr[19] = top.pipe.reserv_mul.rrftag_1;
-   assign rrftag_arr[20] = top.pipe.buf_rrftag_mul;
-   assign rrftag_arr[21] = top.pipe.reserv_ldst.rrftag_0;
-   assign rrftag_arr[22] = top.pipe.reserv_ldst.rrftag_1;
-   assign rrftag_arr[23] = top.pipe.reserv_ldst.rrftag_2;
-   assign rrftag_arr[24] = top.pipe.reserv_ldst.rrftag_3;
-   assign rrftag_arr[25] = top.pipe.buf_rrftag_ldst;
+   assign rrftag_arr[0] = design_top.pipe.reserv_alu1.rrftag_0;
+   assign rrftag_arr[1] = design_top.pipe.reserv_alu1.rrftag_1;
+   assign rrftag_arr[2] = design_top.pipe.reserv_alu1.rrftag_2;
+   assign rrftag_arr[3] = design_top.pipe.reserv_alu1.rrftag_3;
+   assign rrftag_arr[4] = design_top.pipe.reserv_alu1.rrftag_4;
+   assign rrftag_arr[5] = design_top.pipe.reserv_alu1.rrftag_5;
+   assign rrftag_arr[6] = design_top.pipe.reserv_alu1.rrftag_6;
+   assign rrftag_arr[7] = design_top.pipe.reserv_alu1.rrftag_7;
+   assign rrftag_arr[8] = design_top.pipe.buf_rrftag_alu1;
+   assign rrftag_arr[9] = design_top.pipe.reserv_alu2.rrftag_0;
+   assign rrftag_arr[10] = design_top.pipe.reserv_alu2.rrftag_1;
+   assign rrftag_arr[11] = design_top.pipe.reserv_alu2.rrftag_2;
+   assign rrftag_arr[12] = design_top.pipe.reserv_alu2.rrftag_3;
+   assign rrftag_arr[13] = design_top.pipe.reserv_alu2.rrftag_4;
+   assign rrftag_arr[14] = design_top.pipe.reserv_alu2.rrftag_5;
+   assign rrftag_arr[15] = design_top.pipe.reserv_alu2.rrftag_6;
+   assign rrftag_arr[16] = design_top.pipe.reserv_alu2.rrftag_7;
+   assign rrftag_arr[17] = design_top.pipe.buf_rrftag_alu2;
+   assign rrftag_arr[18] = design_top.pipe.reserv_mul.rrftag_0;
+   assign rrftag_arr[19] = design_top.pipe.reserv_mul.rrftag_1;
+   assign rrftag_arr[20] = design_top.pipe.buf_rrftag_mul;
+   assign rrftag_arr[21] = design_top.pipe.reserv_ldst.rrftag_0;
+   assign rrftag_arr[22] = design_top.pipe.reserv_ldst.rrftag_1;
+   assign rrftag_arr[23] = design_top.pipe.reserv_ldst.rrftag_2;
+   assign rrftag_arr[24] = design_top.pipe.reserv_ldst.rrftag_3;
+   assign rrftag_arr[25] = design_top.pipe.buf_rrftag_ldst;
 
-   assign rrftag_val[7:0] = top.pipe.reserv_alu1.busyvec;
-   assign rrftag_val[8] =  top.pipe.byakko.busy;
-   assign rrftag_val[16:9] = top.pipe.reserv_alu2.busyvec;
-   assign rrftag_val[17] =  top.pipe.suzaku.busy;
-   assign rrftag_val[19:18] = top.pipe.reserv_mul.busyvec;
-   assign rrftag_val[20] =  top.pipe.genbu.busy;
-   assign rrftag_val[24:21] = top.pipe.reserv_ldst.busyvec;
-   assign rrftag_val[25] =  top.pipe.seiryu.busy;
+   assign rrftag_val[7:0] = design_top.pipe.reserv_alu1.busyvec;
+   assign rrftag_val[8] =  design_top.pipe.byakko.busy;
+   assign rrftag_val[16:9] = design_top.pipe.reserv_alu2.busyvec;
+   assign rrftag_val[17] =  design_top.pipe.suzaku.busy;
+   assign rrftag_val[19:18] = design_top.pipe.reserv_mul.busyvec;
+   assign rrftag_val[20] =  design_top.pipe.genbu.busy;
+   assign rrftag_val[24:21] = design_top.pipe.reserv_ldst.busyvec;
+   assign rrftag_val[25] =  design_top.pipe.seiryu.busy;
 	 
 
-   assign comptr = top.pipe.comptr;
-   assign comptr2 = top.pipe.comptr2;   
-   assign rrfptr = top.pipe.rrfptr;
+   assign comptr = design_top.pipe.comptr;
+   assign comptr2 = design_top.pipe.comptr2;   
+   assign rrfptr = design_top.pipe.rrfptr;
    wire [31:0] busy_master;
    wire [31:0] tag0;
    wire [31:0] tag1;
@@ -206,13 +206,13 @@ module ridecore_checker (/*AUTOARG*/
    wire [31:0] tag3;
    wire [31:0] tag4;
    wire [31:0] tag5;
-   assign busy_master = top.pipe.aregfile.rt.busy_master;
-   assign tag0 = top.pipe.aregfile.rt.tag0_master;
-   assign tag1 = top.pipe.aregfile.rt.tag1_master;
-   assign tag2 = top.pipe.aregfile.rt.tag2_master;
-   assign tag3 = top.pipe.aregfile.rt.tag3_master;
-   assign tag4 = top.pipe.aregfile.rt.tag4_master;
-   assign tag5 = top.pipe.aregfile.rt.tag5_master;   
+   assign busy_master = design_top.pipe.aregfile.rt.busy_master;
+   assign tag0 = design_top.pipe.aregfile.rt.tag0_master;
+   assign tag1 = design_top.pipe.aregfile.rt.tag1_master;
+   assign tag2 = design_top.pipe.aregfile.rt.tag2_master;
+   assign tag3 = design_top.pipe.aregfile.rt.tag3_master;
+   assign tag4 = design_top.pipe.aregfile.rt.tag4_master;
+   assign tag5 = design_top.pipe.aregfile.rt.tag5_master;   
 
    property assume_const_rrftag (entry);
       @(posedge clk)
@@ -288,19 +288,19 @@ wire [63:0] ldsrc_val;
 //wire [5:0] ldsrc_addr[0:63];
 generate
    for (j=0; j < 64; j++) begin
-      assign src1[j] = top.pipe.rob.src1[j];
-      assign src2[j] = top.pipe.rob.src2[j];
-      assign src1_data[j] = top.pipe.rob.src1_data[j];
-      assign src2_data[j] = top.pipe.rob.src2_data[j];
+      assign src1[j] = design_top.pipe.rob.src1[j];
+      assign src2[j] = design_top.pipe.rob.src2[j];
+      assign src1_data[j] = design_top.pipe.rob.src1_data[j];
+      assign src2_data[j] = design_top.pipe.rob.src2_data[j];
    end
 endgenerate
-assign src1_valid = top.pipe.rob.src1_valid;
-assign src2_valid = top.pipe.rob.src2_valid;
-assign src_track = top.pipe.rob.src_track;
-assign src1_datval = top.pipe.rob.src1_datval;
-assign src2_datval = top.pipe.rob.src2_datval;
-assign ldsrc_track = top.pipe.rob.ldsrc_track;
-assign ldsrc_val = top.pipe.rob.ldsrc_val;
+assign src1_valid = design_top.pipe.rob.src1_valid;
+assign src2_valid = design_top.pipe.rob.src2_valid;
+assign src_track = design_top.pipe.rob.src_track;
+assign src1_datval = design_top.pipe.rob.src1_datval;
+assign src2_datval = design_top.pipe.rob.src2_datval;
+assign ldsrc_track = design_top.pipe.rob.ldsrc_track;
+assign ldsrc_val = design_top.pipe.rob.ldsrc_val;
    
 generate
    for (j=0; j<64; j++) begin
@@ -321,7 +321,7 @@ generate
       assume_consist_ldsource_data:   assume property (
 						     @(posedge wait_for_commit_reg)
 						     ( (ldsrc_track[j] == 0)
-						       || ( ((ldsrc_val[j] == 0) || (top.pipe.rob.ldsrc_data[j] == top.datamemory.mem[top.pipe.rob.ldsrc_addr[j][5:0]]))							   )
+						       || ( ((ldsrc_val[j] == 0) || (design_top.pipe.rob.ldsrc_data[j] == design_top.datamemory.mem[design_top.pipe.rob.ldsrc_addr[j][5:0]]))							   )
 						      )
 						     );
    end
@@ -330,26 +330,26 @@ endgenerate
    property assume_init_mem;
       @(posedge clk)
 //	$rose(top.reset_x) |-> 
-	((top.pipe.qed0.qic.i_cache == 0)
-	&& (top.pipe.qed0.qic.address_tail == 0)
-	&& (top.pipe.qed0.qic.address_head == 0)
-	&& (top.pipe.rob.wait_till_commit_reg == 0)
-	&& (top.pipe.rob.state_delay == 0)
-	&& (top.pipe.rob.formal_commit == 0)
-	&& (top.pipe.rob.src_track == 0)
-	&& (top.pipe.rob.src1_valid == 0)
-	&& (top.pipe.rob.src2_valid == 0)	 
-	&& (top.pipe.rob.src1_datval == 0)
-	&& (top.pipe.rob.src2_datval == 0)
-	&& (top.pipe.rob.src1_rrftag_val == 0)
-	&& (top.pipe.rob.src2_rrftag_val == 0)
-	&& (top.pipe.rob.ldsrc_track == 0)
-	&& (top.pipe.rob.ldsrc_val == 0)	 	 	 	 	 
-	&& (top.pipe.num_orig_insts == 0)
-	&& (top.pipe.num_dup_insts == 0)
-	&& (top.pipe.qed1.qic.i_cache == 0)
-	&& (top.pipe.qed1.qic.address_tail == 0)
-	&& (top.pipe.qed1.qic.address_head == 0))
+	((design_top.pipe.qed0.qic.i_cache == 0)
+	&& (design_top.pipe.qed0.qic.address_tail == 0)
+	&& (design_top.pipe.qed0.qic.address_head == 0)
+	&& (design_top.pipe.rob.wait_till_commit_reg == 0)
+	&& (design_top.pipe.rob.state_delay == 0)
+	&& (design_top.pipe.rob.formal_commit == 0)
+	&& (design_top.pipe.rob.src_track == 0)
+	&& (design_top.pipe.rob.src1_valid == 0)
+	&& (design_top.pipe.rob.src2_valid == 0)	 
+	&& (design_top.pipe.rob.src1_datval == 0)
+	&& (design_top.pipe.rob.src2_datval == 0)
+	&& (design_top.pipe.rob.src1_rrftag_val == 0)
+	&& (design_top.pipe.rob.src2_rrftag_val == 0)
+	&& (design_top.pipe.rob.ldsrc_track == 0)
+	&& (design_top.pipe.rob.ldsrc_val == 0)	 	 	 	 	 
+	&& (design_top.pipe.num_orig_insts == 0)
+	&& (design_top.pipe.num_dup_insts == 0)
+	&& (design_top.pipe.qed1.qic.i_cache == 0)
+	&& (design_top.pipe.qed1.qic.address_tail == 0)
+	&& (design_top.pipe.qed1.qic.address_head == 0))
    endproperty
 
 //   ass_mem: assume property (assume_init_mem);
@@ -374,8 +374,8 @@ endgenerate
    // 					@(posedge clk) (num_orig >= num_dup)
    // 					);
    
-   inst_constraint inst_constraint_0 (.clk(clk), .instruction(top.pipe.inst1));
-   inst_constraint inst_constraint_1 (.clk(clk), .instruction(top.pipe.inst2));   
+   inst_constraint inst_constraint_0 (.clk(clk), .instruction(design_top.pipe.inst1));
+   inst_constraint inst_constraint_1 (.clk(clk), .instruction(design_top.pipe.inst2));   
 
    // ASSUMTPIONS
 
@@ -391,28 +391,28 @@ endgenerate
    cover_test_trace_1 : cover property (
 					@(posedge clk)
 					(
-					 (top.pipe.inst1 == 32'h00700093)&&(top.pipe.qed_exec_dup == 1'b0)
+					 (design_top.pipe.inst1 == 32'h00700093)&&(design_top.pipe.qed_exec_dup == 1'b0)
 					 ##1
-					 (top.pipe.inst1 == 32'h00708193)&&(top.pipe.qed_exec_dup == 1'b0)
+					 (design_top.pipe.inst1 == 32'h00708193)&&(design_top.pipe.qed_exec_dup == 1'b0)
 					 ##1
-					 (top.pipe.inst1 == 32'h00f02383)&&(top.pipe.qed_exec_dup == 1'b0)
+					 (design_top.pipe.inst1 == 32'h00f02383)&&(design_top.pipe.qed_exec_dup == 1'b0)
 					 ##2
-					 (top.pipe.qed_exec_dup == 1'b1)
+					 (design_top.pipe.qed_exec_dup == 1'b1)
 					 ##1
-					 (top.pipe.qed_exec_dup == 1'b1)
+					 (design_top.pipe.qed_exec_dup == 1'b1)
 					 ##1
-					 (top.pipe.qed_exec_dup == 1'b1)
+					 (design_top.pipe.qed_exec_dup == 1'b1)
 					 ##8
-					 (top.pipe.qed_exec_dup == 1'b1)
+					 (design_top.pipe.qed_exec_dup == 1'b1)
 					 )
 					);
 
    cover_test_trace_2: cover property (
 				       @(posedge clk)
 					(
-					 (top.pipe.inst1 == 32'h007000f7)&&(top.pipe.qed_exec_dup == 1'b0)
+					 (design_top.pipe.inst1 == 32'h007000f7)&&(design_top.pipe.qed_exec_dup == 1'b0)
 					 ##1
-					 (top.pipe.inst1 == 32'h007081f7)&&(top.pipe.qed_exec_dup == 1'b0)
+					 (design_top.pipe.inst1 == 32'h007081f7)&&(design_top.pipe.qed_exec_dup == 1'b0)
 					 )
 				       );
 

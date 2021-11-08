@@ -1,5 +1,3 @@
-`include "qed.vh"
-
 // Note: change all [32:0] wires to [31:0]
 module qed (/*AUTOARG*/
    // Outputs

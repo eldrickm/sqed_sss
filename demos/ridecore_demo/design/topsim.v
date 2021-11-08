@@ -1,7 +1,7 @@
 //`include "define.v"
 `include "ridecore/constants.vh"
 
-module top
+module design_top
   (
    input clk,
    input reset_x,

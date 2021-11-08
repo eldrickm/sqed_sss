@@ -1,7 +1,6 @@
-module ridecore_checker_bind;
-   
+module formal_bind;
 
-   bind top.pipe.aregfile.regfile  ridecore_checker chk0 (.clk(clk),
+   bind design_top.pipe.aregfile.regfile  register_constraints chk0 (.clk(clk),
                                        .rst(1'b0),
                                        .reg0 (mem[0]),
                                        .reg1 (mem[1]),
