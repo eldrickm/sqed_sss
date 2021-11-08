@@ -1,0 +1,216 @@
+
+Questa Version 10.5 linux_x86_64 23 Jul 2016
+
+-------------------------------------------------------------------------------
+Design Report
+Created Mon Nov  8 11:29:19 2021
+-------------------------------------------------------------------------------
+
+
+Design 'design_top'
+===============================================================================
+
+
+---------------------------------------
+Design Summary                    Count
+---------------------------------------
+Clocks                                1
+  User-specified                      1
+  Inferred                            0
+Control Point Bits                  314
+  DUT Input Bits                      2
+  Cut Point Bits                     64
+  Black Box Output Bits               0
+  Undriven Wire Bits                248
+State Bits                        84188
+  Design Register Bits            84188
+  Design Latch Bits                   0
+Storage Structures       
+  Counters                           10
+  RAMs                               15
+    Abstracted                        5
+Black Boxes                           1
+  User-specified                      0
+  Inferred                            1
+---------------------------------------
+
+Detailed Design Information
+===============================================================================
+
+
+Clocks
+------------------------------------------------------------------------------
+Port                                   Period         Waveform    Edges
+------------------------------------------------------------------------------
+clk                                        10              0 5    PE NE
+------------------------------------------------------------------------------
+Cut Points
+----------
+  pipe.inst1  (32 bits)
+  pipe.inst2  (32 bits)
+
+Black Box Outputs
+-----------------
+  <none>
+
+Undriven Wires
+--------------
+  finish_we  (1 bit)
+  loaded  (1 bit)
+  pipe.ai_branch.b0  (2 bits)
+  pipe.ai_ldst.b0  (2 bits)
+  pipe.aregfile.comreg1_tag  (6 bits)
+  pipe.aregfile.comreg2_tag  (6 bits)
+  pipe.aregfile.rt.tag0  (32 bits)
+  pipe.aregfile.rt.tag1  (32 bits)
+  pipe.aregfile.rt.tag2  (32 bits)
+  pipe.aregfile.rt.tag3  (32 bits)
+  pipe.aregfile.rt.tag4  (32 bits)
+  pipe.aregfile.rt.tag5  (32 bits)
+  pipe.pc_mul  (32 bits)
+  pipe.pipe_if.gsh.prhisttbl.pht0.wdataa  (2 bits)
+  pipe.pipe_if.gsh.prhisttbl.pht1.wdataa  (2 bits)
+  ready_tx  (1 bit)
+  utx_we  (1 bit)
+
+Latches
+-------
+  <none>
+
+Counters
+--------
+  pipe.ai_branch.allocptr  (2 bits)
+  pipe.ai_ldst.allocptr  (2 bits)
+  pipe.pc  (32 bits)
+  pipe.rob.comptr  (6 bits)
+  pipe.rrf_fl.freenum  (7 bits)
+  pipe.rrf_fl.rrfptr  (6 bits)
+  pipe.sb.comptr  (5 bits)
+  pipe.sb.finptr  (5 bits)
+  pipe.sb.retptr  (5 bits)
+  pipe.taggen.brdepth  (5 bits)
+
+RAMs
+----
+  datamemory.mem (Depth 2048)
+  instmemory.mem (Depth 512) (Abstracted)
+  pipe.aregfile.regfile.mem (Depth 32)
+  pipe.pipe_if.brtbl.bia.mem (Depth 512) (Abstracted)
+  pipe.pipe_if.brtbl.bta.mem (Depth 512) (Abstracted)
+  pipe.pipe_if.gsh.prhisttbl.pht0.mem (Depth 1024) (Abstracted)
+  pipe.pipe_if.gsh.prhisttbl.pht1.mem (Depth 1024) (Abstracted)
+  pipe.rob.bhr (Depth 64)
+  pipe.rob.dst (Depth 64)
+  pipe.rob.inst_pc (Depth 64)
+  pipe.rob.jmpaddr (Depth 64)
+  pipe.rregfile.datarr (Depth 64)
+  pipe.sb.addr (Depth 32)
+  pipe.sb.data (Depth 32)
+  pipe.sb.spectag (Depth 32)
+
+Black Boxes (User-specified)
+----------------------------
+  <none>
+
+Black Boxes (Inferred)
+----------------------
+  pipe.aregfile.regfile.chk0 (register_constraints)
+
+
+
+Port Constraints
+-------------------------------------------------------------------------------
+Type                 Clock Domain         Value         Port
+-------------------------------------------------------------------------------
+Clock                <none>               -            'clk'
+Constant             <none>               1'b1         'reset_x'
+-------------------------------------------------------------------------------
+
+Instance Usage
+===============================================================================
+Count  Module          Location
+-------------------------------------------------------------------------------
+   2   alloc_issue_ino /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/alloc_issue_ino.v (Line 5)
+   1   allocateunit    /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/prioenc.v (Line 44)
+   1   allocateunit(1) /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/prioenc.v (Line 44)
+   3   alu             /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/alu.v (Line 6)
+   1   arf             /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/arf.v (Line 3)
+   2   brimm_gen       /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/brimm_gen.v (Line 4)
+   1   btb             /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/btb.v (Line 3)
+   2   decoder         /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/decoder.v (Line 6)
+   1   dmem            /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/dmem.v (Line 4)
+   2   exunit_alu      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/exunit_alu.v (Line 4)
+   1   exunit_branch   /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/exunit_branch.v (Line 5)
+   1   exunit_ldst     /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/exunit_ldst.v (Line 5)
+   1   exunit_mul      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/exunit_mul.v (Line 3)
+   1   gshare_predictor /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/gshare.v (Line 32)
+   1   imem_ld         /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/imem.v (Line 15)
+   2   imm_gen         /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/imm_gen.v (Line 3)
+   1   maskunit        /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/prioenc.v (Line 25)
+   1   maskunit(1)     /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/prioenc.v (Line 25)
+   1   miss_prediction_fix_table /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/mpft.v (Line 22)
+   1   multiplier      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/multiplier.v (Line 32)
+   1   mux_4x1         /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/multiplier.v (Line 5)
+  14   oldest_finder2  /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/oldest_finder.v (Line 3)
+   4   oldest_finder4  /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/oldest_finder.v (Line 25)
+   2   oldest_finder8  /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/oldest_finder.v (Line 68)
+   1   pht             /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/gshare.v (Line 134)
+   1   pipeline        /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/pipeline.v (Line 7)
+   1   pipeline_if     /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/pipeline_if.v (Line 3)
+   2   prioenc         /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/prioenc.v (Line 2)
+   3   prioenc(1)      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/prioenc.v (Line 2)
+   2   ram_sync_1r1w   /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/ram_sync.v (Line 3)
+   1   ram_sync_nolatch_4r2w /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/ram_sync_nolatch.v (Line 111)
+   1   register_constraints /rsghome/eldrick/sqed_sss/demos/ridecore_demo/formal/register_constraints.sv (Line 2)
+   1   renaming_table  /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/arf.v (Line 154)
+   1   reorderbuf      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/reorderbuf.v (Line 3)
+   1   rrf             /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rrf.v (Line 8)
+   1   rrf_freelistmanager /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rrf_freelistmanager.v (Line 3)
+   2   rs_alu          /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_alu.v (Line 153)
+  16   rs_alu_ent      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_alu.v (Line 5)
+   1   rs_branch       /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_branch.v (Line 162)
+   4   rs_branch_ent   /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_branch.v (Line 5)
+   1   rs_ldst         /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_ldst.v (Line 139)
+   4   rs_ldst_ent     /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_ldst.v (Line 3)
+   1   rs_mul          /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_mul.v (Line 144)
+   2   rs_mul_ent      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_mul.v (Line 4)
+   1   rs_requestgenerator /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/rs_reqgen.v (Line 3)
+   6   search_begin    /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/search_be.v (Line 2)
+   2   search_begin(1) /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/search_be.v (Line 2)
+   6   search_end      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/search_be.v (Line 26)
+   2   search_end(1)   /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/search_be.v (Line 26)
+   1   sel_bhrfix      /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/gshare.v (Line 8)
+   1   select_logic    /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/pipeline_if.v (Line 87)
+   4   sourceoperand_manager /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/srcopr_manager.v (Line 3)
+   2   src_a_mux       /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/srcsel.v (Line 4)
+   2   src_b_mux       /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/srcsel.v (Line 23)
+  56   src_manager     /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/src_manager.v (Line 3)
+   1   storebuf        /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/storebuf.v (Line 3)
+   1   tag_decoder     /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/mpft.v (Line 3)
+   1   tag_generator   /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/tag_generator.v (Line 3)
+   2   true_dualport_ram /rsghome/eldrick/sqed_sss/demos/ridecore_demo/ridecore/src/fpga/dualport_ram.v (Line 3)
+
+
+
+Design Checks Details
+===============================================================================
+Type      : REG_MULTIPLY_DRIVEN
+Module    : true_dualport_ram
+Name      : mem[1]
+Instance  : pipe.pipe_if.gsh.prhisttbl.pht0
+
+Type      : REG_MULTIPLY_DRIVEN
+Module    : true_dualport_ram
+Name      : mem[0]
+Instance  : pipe.pipe_if.gsh.prhisttbl.pht0
+
+Type      : REG_MULTIPLY_DRIVEN
+Module    : true_dualport_ram
+Name      : mem[1]
+Instance  : pipe.pipe_if.gsh.prhisttbl.pht1
+
+Type      : REG_MULTIPLY_DRIVEN
+Module    : true_dualport_ram
+Name      : mem[0]
+Instance  : pipe.pipe_if.gsh.prhisttbl.pht1
+

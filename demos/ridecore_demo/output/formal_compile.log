@@ -1,0 +1,598 @@
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Mon Nov  8 11:28:43 2021 by eldrick on rsg10.stanford.edu
+
+
+Command: netlist elaborate
+Command arguments:
+    -zdb
+      /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qcache/DB/zdb_0
+    -tool propcheck
+    -d design_top
+    -cuname formal_bind
+
+
+## Elaborating Design...
+Reading MTI mapping for library mapping
+Writing all MTI mappings to vmap output ...
+
+Top level modules:
+	design_top
+	formal_bind
+
+Analyzing design...
+-- Loading module z0in_work.design_top
+-- Loading module z0in_work.pipeline
+-- Loading module z0in_work.pipeline_if
+-- Loading module z0in_work.select_logic
+-- Loading module z0in_work.btb
+-- Loading module z0in_work.ram_sync_1r1w
+-- Loading module z0in_work.gshare_predictor
+-- Loading module z0in_work.sel_bhrfix
+-- Loading module z0in_work.pht
+-- Loading module z0in_work.true_dualport_ram
+-- Loading module z0in_work.tag_generator
+-- Loading module z0in_work.decoder
+-- Loading module z0in_work.sourceoperand_manager
+-- Loading module z0in_work.rrf_freelistmanager
+-- Loading module z0in_work.arf
+-- Loading module z0in_work.ram_sync_nolatch_4r2w
+-- Loading module z0in_work.renaming_table
+-- Loading module z0in_work.rrf
+-- Loading module z0in_work.src_manager
+-- Loading module z0in_work.imm_gen
+-- Loading module z0in_work.brimm_gen
+-- Loading module z0in_work.rs_requestgenerator
+-- Loading module z0in_work.allocateunit
+-- Loading module z0in_work.prioenc
+-- Loading module z0in_work.maskunit
+-- Loading module z0in_work.oldest_finder8
+-- Loading module z0in_work.oldest_finder4
+-- Loading module z0in_work.oldest_finder2
+-- Loading module z0in_work.rs_alu
+-- Loading module z0in_work.rs_alu_ent
+-- Loading module z0in_work.alloc_issue_ino
+-- Loading module z0in_work.search_begin
+-- Loading module z0in_work.search_end
+-- Loading module z0in_work.rs_ldst
+-- Loading module z0in_work.rs_ldst_ent
+-- Loading module z0in_work.rs_branch
+-- Loading module z0in_work.rs_branch_ent
+-- Loading module z0in_work.rs_mul
+-- Loading module z0in_work.rs_mul_ent
+-- Loading module z0in_work.exunit_alu
+-- Loading module z0in_work.src_a_mux
+-- Loading module z0in_work.src_b_mux
+-- Loading module z0in_work.alu
+-- Loading module z0in_work.storebuf
+-- Loading module z0in_work.exunit_ldst
+-- Loading module z0in_work.exunit_mul
+-- Loading module z0in_work.multiplier
+-- Loading module z0in_work.mux_4x1
+-- Loading module z0in_work.exunit_branch
+-- Loading module z0in_work.miss_prediction_fix_table
+-- Loading module z0in_work.tag_decoder
+-- Loading module z0in_work.reorderbuf
+-- Loading module z0in_work.dmem
+-- Loading module z0in_work.imem_ld
+-- Loading module z0in_work.formal_bind
+-- Loading module z0in_work.register_constraints
+-- Loading module z0in_work.inst_constraint
+Optimizing 62 design-units (inlining 0/186 module instances, 0/0 UDP instances):
+-- Optimizing module z0in_work.formal_bind(fast)
+-- Optimizing module z0in_work.select_logic(fast)
+-- Optimizing module z0in_work.ram_sync_1r1w(fast)
+-- Optimizing module z0in_work.btb(fast)
+-- Optimizing module z0in_work.sel_bhrfix(fast)
+-- Optimizing module z0in_work.true_dualport_ram(fast)
+-- Optimizing module z0in_work.pht(fast)
+-- Optimizing module z0in_work.gshare_predictor(fast)
+-- Optimizing module z0in_work.pipeline_if(fast)
+-- Optimizing module z0in_work.tag_generator(fast)
+-- Optimizing module z0in_work.decoder(fast)
+-- Optimizing module z0in_work.sourceoperand_manager(fast)
+-- Optimizing module z0in_work.rrf_freelistmanager(fast)
+-- Optimizing module z0in_work.inst_constraint(fast)
+-- Optimizing module z0in_work.register_constraints(fast)
+Warning : Cannot resolve hierarchical name.  Name 'design_top.pipe.chk_en', Scope 'register_constraints', Module 'register_constraints', File '/rsghome/eldrick/sqed_sss/demos/ridecore_demo/formal/register_constraints.sv', Line 86.  [parser-256]
+        : Hierarchical name will be ignored
+-- Optimizing module z0in_work.ram_sync_nolatch_4r2w(fast)
+-- Optimizing module z0in_work.renaming_table(fast)
+-- Optimizing module z0in_work.arf(fast)
+-- Optimizing module z0in_work.rrf(fast)
+-- Optimizing module z0in_work.src_manager(fast)
+-- Optimizing module z0in_work.imm_gen(fast)
+-- Optimizing module z0in_work.brimm_gen(fast)
+-- Optimizing module z0in_work.rs_requestgenerator(fast)
+-- Optimizing module z0in_work.prioenc(fast)
+-- Optimizing module z0in_work.maskunit(fast)
+-- Optimizing module z0in_work.allocateunit(fast)
+-- Optimizing module z0in_work.oldest_finder2(fast)
+-- Optimizing module z0in_work.oldest_finder4(fast)
+-- Optimizing module z0in_work.oldest_finder8(fast)
+-- Optimizing module z0in_work.rs_alu_ent(fast)
+-- Optimizing module z0in_work.rs_alu(fast)
+-- Optimizing module z0in_work.search_begin(fast)
+-- Optimizing module z0in_work.search_end(fast)
+-- Optimizing module z0in_work.alloc_issue_ino(fast)
+-- Optimizing module z0in_work.rs_ldst_ent(fast)
+-- Optimizing module z0in_work.rs_ldst(fast)
+-- Optimizing module z0in_work.rs_branch_ent(fast)
+-- Optimizing module z0in_work.rs_branch(fast)
+-- Optimizing module z0in_work.prioenc(fast__1)
+-- Optimizing module z0in_work.maskunit(fast__1)
+-- Optimizing module z0in_work.allocateunit(fast__1)
+-- Optimizing module z0in_work.rs_mul_ent(fast)
+-- Optimizing module z0in_work.rs_mul(fast)
+-- Optimizing module z0in_work.src_a_mux(fast)
+-- Optimizing module z0in_work.src_b_mux(fast)
+-- Optimizing module z0in_work.alu(fast)
+-- Optimizing module z0in_work.exunit_alu(fast)
+-- Optimizing module z0in_work.search_begin(fast__1)
+-- Optimizing module z0in_work.search_end(fast__1)
+-- Optimizing module z0in_work.storebuf(fast)
+-- Optimizing module z0in_work.exunit_ldst(fast)
+-- Optimizing module z0in_work.mux_4x1(fast)
+-- Optimizing module z0in_work.multiplier(fast)
+-- Optimizing module z0in_work.exunit_mul(fast)
+-- Optimizing module z0in_work.exunit_branch(fast)
+-- Optimizing module z0in_work.tag_decoder(fast)
+-- Optimizing module z0in_work.miss_prediction_fix_table(fast)
+-- Optimizing module z0in_work.reorderbuf(fast)
+-- Optimizing module z0in_work.pipeline(fast)
+Warning : Vopt warning.  ./ridecore/src/fpga/pipeline.v(1079): (vopt-2685) [TFMPC] - Too few port connections for 'alloc_alu'.  Expected 7, found 5.  [parser-285]
+        : Elaboration will continue.
+Warning : Vopt warning.  ./ridecore/src/fpga/pipeline.v(1079): (vopt-2718) [TFMPC] - Missing connection for port 'en2'.  [parser-285]
+        : Elaboration will continue.
+Warning : Vopt warning.  ./ridecore/src/fpga/pipeline.v(1079): (vopt-2718) [TFMPC] - Missing connection for port 'en1'.  [parser-285]
+        : Elaboration will continue.
+Warning : Vopt warning.  ./ridecore/src/fpga/pipeline.v(1486): (vopt-2685) [TFMPC] - Too few port connections for 'alloc_mul'.  Expected 7, found 5.  [parser-285]
+        : Elaboration will continue.
+Warning : Vopt warning.  ./ridecore/src/fpga/pipeline.v(1486): (vopt-2718) [TFMPC] - Missing connection for port 'en2'.  [parser-285]
+        : Elaboration will continue.
+Warning : Vopt warning.  ./ridecore/src/fpga/pipeline.v(1486): (vopt-2718) [TFMPC] - Missing connection for port 'en1'.  [parser-285]
+        : Elaboration will continue.
+-- Optimizing module z0in_work.dmem(fast)
+-- Optimizing module z0in_work.imem_ld(fast)
+-- Optimizing module z0in_work.design_top(fast)
+Optimized design name is zi_opt_csl_293415368_1
+Identified prefix 'design_top'.
+Summary: 7 Warnings in processing "netlist elaborate"
+End of log Mon Nov  8 11:28:47 2021
+
+
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Mon Nov  8 11:28:47 2021 by eldrick on rsg10.stanford.edu
+
+
+Command: netlist create
+Command arguments:
+    -zdb
+      /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qcache/DB/zdb_0
+    -tool propcheck
+    -d design_top
+    -cuname formal_bind
+    -tcs
+
+
+## Synthesizing netlist...
+Processing module 'select_logic'
+Info    : Elaborating module 'select_logic'.
+Processing module 'ram_sync_1r1w'
+Info    : Elaborating module 'ram_sync_1r1w'.
+Processing module 'btb'
+Info    : Elaborating module 'btb'.
+Processing module 'sel_bhrfix'
+Info    : Elaborating module 'sel_bhrfix'.
+Processing module 'true_dualport_ram'
+Info    : Elaborating module 'true_dualport_ram'.
+Processing module 'pht'
+Info    : Elaborating module 'pht'.
+Processing module 'gshare_predictor'
+Info    : Elaborating module 'gshare_predictor'.
+Processing module 'pipeline_if'
+Info    : Elaborating module 'pipeline_if'.
+Processing module 'tag_generator'
+Info    : Elaborating module 'tag_generator'.
+Processing module 'decoder'
+Info    : Elaborating module 'decoder'.
+Processing module 'sourceoperand_manager'
+Info    : Elaborating module 'sourceoperand_manager'.
+Processing module 'rrf_freelistmanager'
+Info    : Elaborating module 'rrf_freelistmanager'.
+Processing module 'register_constraints'
+Info    : Considering module 'register_constraints' as a black box.
+Processing module 'ram_sync_nolatch_4r2w'
+Info    : Elaborating module 'ram_sync_nolatch_4r2w'.
+Processing module 'renaming_table'
+Info    : Elaborating module 'renaming_table'.
+Processing module 'arf'
+Info    : Elaborating module 'arf'.
+Processing module 'rrf'
+Info    : Elaborating module 'rrf'.
+Processing module 'src_manager'
+Info    : Elaborating module 'src_manager'.
+Processing module 'imm_gen'
+Info    : Elaborating module 'imm_gen'.
+Processing module 'brimm_gen'
+Info    : Elaborating module 'brimm_gen'.
+Processing module 'rs_requestgenerator'
+Info    : Elaborating module 'rs_requestgenerator'.
+Processing module 'prioenc'
+Info    : Elaborating module 'prioenc'.
+Processing module 'maskunit'
+Info    : Elaborating module 'maskunit'.
+Processing module 'allocateunit'
+Info    : Elaborating module 'allocateunit'.
+Processing module 'oldest_finder2'
+Info    : Elaborating module 'oldest_finder2'.
+Processing module 'oldest_finder4'
+Info    : Elaborating module 'oldest_finder4'.
+Processing module 'oldest_finder8'
+Info    : Elaborating module 'oldest_finder8'.
+Processing module 'rs_alu_ent'
+Info    : Elaborating module 'rs_alu_ent'.
+Processing module 'rs_alu'
+Info    : Elaborating module 'rs_alu'.
+Processing module 'search_begin'
+Info    : Elaborating module 'search_begin'.
+Processing module 'search_end'
+Info    : Elaborating module 'search_end'.
+Processing module 'alloc_issue_ino'
+Info    : Elaborating module 'alloc_issue_ino'.
+Processing module 'rs_ldst_ent'
+Info    : Elaborating module 'rs_ldst_ent'.
+Processing module 'rs_ldst'
+Info    : Elaborating module 'rs_ldst'.
+Processing module 'rs_branch_ent'
+Info    : Elaborating module 'rs_branch_ent'.
+Processing module 'rs_branch'
+Info    : Elaborating module 'rs_branch'.
+Processing module 'prioenc(1)'
+Info    : Elaborating module 'prioenc(1)'.
+Processing module 'maskunit(1)'
+Info    : Elaborating module 'maskunit(1)'.
+Processing module 'allocateunit(1)'
+Info    : Elaborating module 'allocateunit(1)'.
+Processing module 'rs_mul_ent'
+Info    : Elaborating module 'rs_mul_ent'.
+Processing module 'rs_mul'
+Info    : Elaborating module 'rs_mul'.
+Processing module 'src_a_mux'
+Info    : Elaborating module 'src_a_mux'.
+Processing module 'src_b_mux'
+Info    : Elaborating module 'src_b_mux'.
+Processing module 'alu'
+Info    : Elaborating module 'alu'.
+Processing module 'exunit_alu'
+Info    : Elaborating module 'exunit_alu'.
+Processing module 'search_begin(1)'
+Info    : Elaborating module 'search_begin(1)'.
+Processing module 'search_end(1)'
+Info    : Elaborating module 'search_end(1)'.
+Processing module 'storebuf'
+Info    : Elaborating module 'storebuf'.
+Processing module 'exunit_ldst'
+Info    : Elaborating module 'exunit_ldst'.
+Processing module 'mux_4x1'
+Info    : Elaborating module 'mux_4x1'.
+Processing module 'multiplier'
+Info    : Elaborating module 'multiplier'.
+Processing module 'exunit_mul'
+Info    : Elaborating module 'exunit_mul'.
+Processing module 'exunit_branch'
+Info    : Elaborating module 'exunit_branch'.
+Processing module 'tag_decoder'
+Info    : Elaborating module 'tag_decoder'.
+Processing module 'miss_prediction_fix_table'
+Info    : Elaborating module 'miss_prediction_fix_table'.
+Processing module 'reorderbuf'
+Info    : Elaborating module 'reorderbuf'.
+Processing module 'pipeline'
+Info    : Elaborating module 'pipeline'.
+Processing module 'dmem'
+Info    : Elaborating module 'dmem'.
+Processing module 'imem_ld'
+Info    : Elaborating module 'imem_ld'.
+Processing module 'design_top'
+Info    : Elaborating module 'design_top'.
+Warning : Module being treated as a black box.  Module 'register_constraints'.  [netlist-30]
+        : Module will not be elaborated.
+
+##Time Taken (Synthesis) = 2172.000000 ticks = 21.720000 secs
+
+Summary: 8 Warnings in processing "netlist create"
+End of log Mon Nov  8 11:29:13 2021
+
+
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Mon Nov  8 11:29:13 2021 by eldrick on rsg10.stanford.edu
+
+
+Command: formal compile
+Command arguments:
+    -zdb
+      /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qcache/DB/zdb_0
+    -d design_top
+    -cuname formal_bind
+    -tcs
+
+
+## Processing Formal Logic...
+Warning : Signal specified for directive has no match.  Signal 'design_top.pipe.qed_exec_dup', Module 'design_top', Directive 'netlist cutpoint', File '/rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/formal/directives.tcl', Line 29.  [hdl-77]
+        : Signal will be skipped.
+Processing module 'select_logic'
+Info    : Restoring module 'select_logic'.
+Processing module 'ram_sync_1r1w'
+Info    : Restoring module 'ram_sync_1r1w'.
+Processing module 'btb'
+Info    : Restoring module 'btb'.
+Processing module 'sel_bhrfix'
+Info    : Restoring module 'sel_bhrfix'.
+Processing module 'true_dualport_ram'
+Info    : Restoring module 'true_dualport_ram'.
+Processing module 'pht'
+Info    : Restoring module 'pht'.
+Processing module 'gshare_predictor'
+Info    : Restoring module 'gshare_predictor'.
+Processing module 'pipeline_if'
+Info    : Restoring module 'pipeline_if'.
+Processing module 'tag_generator'
+Info    : Restoring module 'tag_generator'.
+Processing module 'decoder'
+Info    : Restoring module 'decoder'.
+Processing module 'sourceoperand_manager'
+Info    : Restoring module 'sourceoperand_manager'.
+Processing module 'rrf_freelistmanager'
+Info    : Restoring module 'rrf_freelistmanager'.
+Processing module 'register_constraints'
+Info    : Restoring module 'register_constraints'.
+Info    : Considering module 'register_constraints' as a black box.
+Processing module 'ram_sync_nolatch_4r2w'
+Info    : Restoring module 'ram_sync_nolatch_4r2w'.
+Processing module 'renaming_table'
+Info    : Restoring module 'renaming_table'.
+Processing module 'arf'
+Info    : Restoring module 'arf'.
+Processing module 'rrf'
+Info    : Restoring module 'rrf'.
+Processing module 'src_manager'
+Info    : Restoring module 'src_manager'.
+Processing module 'imm_gen'
+Info    : Restoring module 'imm_gen'.
+Processing module 'brimm_gen'
+Info    : Restoring module 'brimm_gen'.
+Processing module 'rs_requestgenerator'
+Info    : Restoring module 'rs_requestgenerator'.
+Processing module 'prioenc'
+Info    : Restoring module 'prioenc'.
+Processing module 'maskunit'
+Info    : Restoring module 'maskunit'.
+Processing module 'allocateunit'
+Info    : Restoring module 'allocateunit'.
+Processing module 'oldest_finder2'
+Info    : Restoring module 'oldest_finder2'.
+Processing module 'oldest_finder4'
+Info    : Restoring module 'oldest_finder4'.
+Processing module 'oldest_finder8'
+Info    : Restoring module 'oldest_finder8'.
+Processing module 'rs_alu_ent'
+Info    : Restoring module 'rs_alu_ent'.
+Processing module 'rs_alu'
+Info    : Restoring module 'rs_alu'.
+Processing module 'search_begin'
+Info    : Restoring module 'search_begin'.
+Processing module 'search_end'
+Info    : Restoring module 'search_end'.
+Processing module 'alloc_issue_ino'
+Info    : Restoring module 'alloc_issue_ino'.
+Processing module 'rs_ldst_ent'
+Info    : Restoring module 'rs_ldst_ent'.
+Processing module 'rs_ldst'
+Info    : Restoring module 'rs_ldst'.
+Processing module 'rs_branch_ent'
+Info    : Restoring module 'rs_branch_ent'.
+Processing module 'rs_branch'
+Info    : Restoring module 'rs_branch'.
+Processing module 'prioenc(1)'
+Info    : Restoring module 'prioenc(1)'.
+Processing module 'maskunit(1)'
+Info    : Restoring module 'maskunit(1)'.
+Processing module 'allocateunit(1)'
+Info    : Restoring module 'allocateunit(1)'.
+Processing module 'rs_mul_ent'
+Info    : Restoring module 'rs_mul_ent'.
+Processing module 'rs_mul'
+Info    : Restoring module 'rs_mul'.
+Processing module 'src_a_mux'
+Info    : Restoring module 'src_a_mux'.
+Processing module 'src_b_mux'
+Info    : Restoring module 'src_b_mux'.
+Processing module 'alu'
+Info    : Restoring module 'alu'.
+Processing module 'exunit_alu'
+Info    : Restoring module 'exunit_alu'.
+Processing module 'search_begin(1)'
+Info    : Restoring module 'search_begin(1)'.
+Processing module 'search_end(1)'
+Info    : Restoring module 'search_end(1)'.
+Processing module 'storebuf'
+Info    : Restoring module 'storebuf'.
+Processing module 'exunit_ldst'
+Info    : Restoring module 'exunit_ldst'.
+Processing module 'mux_4x1'
+Info    : Restoring module 'mux_4x1'.
+Processing module 'multiplier'
+Info    : Restoring module 'multiplier'.
+Processing module 'exunit_mul'
+Info    : Restoring module 'exunit_mul'.
+Processing module 'exunit_branch'
+Info    : Restoring module 'exunit_branch'.
+Processing module 'tag_decoder'
+Info    : Restoring module 'tag_decoder'.
+Processing module 'miss_prediction_fix_table'
+Info    : Restoring module 'miss_prediction_fix_table'.
+Processing module 'reorderbuf'
+Info    : Restoring module 'reorderbuf'.
+Processing module 'pipeline'
+Info    : Restoring module 'pipeline'.
+Processing module 'dmem'
+Info    : Restoring module 'dmem'.
+Processing module 'imem_ld'
+Info    : Restoring module 'imem_ld'.
+Processing module 'design_top'
+Info    : Restoring module 'design_top'.
+Info    : Flattening design 'select_logic'.
+Info    : Flattening design 'ram_sync_1r1w'.
+Info    : Flattening design 'btb'.
+Info    : Flattening design 'sel_bhrfix'.
+Info    : Flattening design 'true_dualport_ram'.
+Info    : Flattening design 'pht'.
+Info    : Flattening design 'gshare_predictor'.
+Info    : Flattening design 'pipeline_if'.
+Info    : Flattening design 'tag_generator'.
+Info    : Flattening design 'decoder'.
+Info    : Flattening design 'sourceoperand_manager'.
+Info    : Flattening design 'rrf_freelistmanager'.
+Info    : Flattening design 'register_constraints'.
+Info    : Flattening design 'ram_sync_nolatch_4r2w'.
+Info    : Flattening design 'renaming_table'.
+Info    : Flattening design 'arf'.
+Info    : Flattening design 'rrf'.
+Info    : Flattening design 'src_manager'.
+Info    : Flattening design 'imm_gen'.
+Info    : Flattening design 'brimm_gen'.
+Info    : Flattening design 'rs_requestgenerator'.
+Info    : Flattening design 'prioenc'.
+Info    : Flattening design 'maskunit'.
+Info    : Flattening design 'allocateunit'.
+Info    : Flattening design 'oldest_finder2'.
+Info    : Flattening design 'oldest_finder4'.
+Info    : Flattening design 'oldest_finder8'.
+Info    : Flattening design 'rs_alu_ent'.
+Info    : Flattening design 'rs_alu'.
+Info    : Flattening design 'search_begin'.
+Info    : Flattening design 'search_end'.
+Info    : Flattening design 'alloc_issue_ino'.
+Info    : Flattening design 'rs_ldst_ent'.
+Info    : Flattening design 'rs_ldst'.
+Info    : Flattening design 'rs_branch_ent'.
+Info    : Flattening design 'rs_branch'.
+Info    : Flattening design 'prioenc(1)'.
+Info    : Flattening design 'maskunit(1)'.
+Info    : Flattening design 'allocateunit(1)'.
+Info    : Flattening design 'rs_mul_ent'.
+Info    : Flattening design 'rs_mul'.
+Info    : Flattening design 'src_a_mux'.
+Info    : Flattening design 'src_b_mux'.
+Info    : Flattening design 'alu'.
+Info    : Flattening design 'exunit_alu'.
+Info    : Flattening design 'search_begin(1)'.
+Info    : Flattening design 'search_end(1)'.
+Info    : Flattening design 'storebuf'.
+Info    : Flattening design 'exunit_ldst'.
+Info    : Flattening design 'mux_4x1'.
+Info    : Flattening design 'multiplier'.
+Info    : Flattening design 'exunit_mul'.
+Info    : Flattening design 'exunit_branch'.
+Info    : Flattening design 'tag_decoder'.
+Info    : Flattening design 'miss_prediction_fix_table'.
+Info    : Flattening design 'reorderbuf'.
+Info    : Flattening design 'pipeline'.
+Info    : Flattening design 'dmem'.
+Info    : Flattening design 'imem_ld'.
+Info    : Flattening design 'design_top'.
+Info    : Flattening design 'design_top'.
+
+Signals replaced by netlist constant
+-------------------------------------------------------------------------------
+Signal                         Value
+-------------------------------------------------------------------------------
+reset_x                        1'b1
+-------------------------------------------------------------------------------
+
+Info    : Detected posedge clock 'clk'.
+Info    : Detected negedge clock 'clk'.
+Info    : Design is processed for formal verification.  Design 'design_top'.
+
+Clocks
+------------------------------------------------------------------------------
+Port                                   Period         Waveform    Edges
+------------------------------------------------------------------------------
+clk                                        10              0 5    PE NE
+------------------------------------------------------------------------------
+
+Blackboxes
+------------------------------------------------------------------------------
+Module name                                                Reason
+------------------------------------------------------------------------------
+register_constraints                                       [inferred blackbox]
+------------------------------------------------------------------------------
+
+Inferred directives
+------------------------------------------------------------------------------
+netlist blackbox register_constraints
+------------------------------------------------------------------------------
+
+Info    : Design is linked for formal analysis.  Design 'design_top'.
+Error   : Multiply-driven register/latch found.  Register: 'pipe.pipe_if.gsh.prhisttbl.pht0.mem[1]'.  [formal-280]
+Error   : Multiply-driven register/latch found.  Register: 'pipe.pipe_if.gsh.prhisttbl.pht0.mem[0]'.  [formal-280]
+Error   : Multiply-driven register/latch found.  Register: 'pipe.pipe_if.gsh.prhisttbl.pht1.mem[1]'.  [formal-280]
+Error   : Multiply-driven register/latch found.  Register: 'pipe.pipe_if.gsh.prhisttbl.pht1.mem[0]'.  [formal-280]
+Warning : Abstracting large memory.  Memory 'instmemory.mem', Size 512.  [policy-116]
+Warning : Abstracting large memory.  Memory 'pipe.pipe_if.brtbl.bia.mem', Size 512.  [policy-116]
+Warning : Abstracting large memory.  Memory 'pipe.pipe_if.brtbl.bta.mem', Size 512.  [policy-116]
+Warning : Abstracting large memory.  Memory 'pipe.pipe_if.gsh.prhisttbl.pht0.mem', Size 1024.  [policy-116]
+Warning : Abstracting large memory.  Memory 'pipe.pipe_if.gsh.prhisttbl.pht1.mem', Size 1024.  [policy-116]
+Info    : Formal model has been created.
+Warning : Cutpoint is not in sequential fanin of any property.  Cutpoint 'pipe.inst1'.  [formal-220]
+Warning : Cutpoint is not in sequential fanin of any property.  Cutpoint 'pipe.inst2'.  [formal-220]
+
+Property Summary
+-------------------------------------------------------------------------------
+Total  Directives :0
+Assert Directives :0
+Assume Directives :0
+Cover  Directives :0
+-------------------------------------------------------------------------------
+
+Design Checks Summary
+-------------------------------------------------------------------------------
+Check                              Found
+-------------------------------------------------------------------------------
+DECLARATION_UNDRIVEN                   1
+REG_MULTIPLY_DRIVEN                    4
+-------------------------------------------------------------------------------
+Total                                  5
+-------------------------------------------------------------------------------
+
+
+To see results in the GUI run:
+qverify /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/formal_compile.db
+
+
+Fatal/Error/Warning Summary
+-----------------------------------------------------------
+Count  Type     Message ID         Summary
+-----------------------------------------------------------
+    4  Error    formal-280         Multiply-driven register/latch found.
+    2  Warning  formal-220         Cutpoint is not in sequential fanin of any property.
+    1  Warning  hdl-77             Signal specified for directive has no match.
+    1  Warning  netlist-30         Module being treated as a black box.
+    1  Warning  parser-256         Cannot resolve hierarchical name.
+    6  Warning  parser-285         Vopt warning.
+    5  Warning  policy-116         Abstracting large memory.
+
+Summary: 4 Errors, 16 Warnings in formal compile
+Final Process Statistics: Max memory 498MB, CPU time 29s, Total time 37s
+End of log Mon Nov  8 11:29:20 2021
+
+

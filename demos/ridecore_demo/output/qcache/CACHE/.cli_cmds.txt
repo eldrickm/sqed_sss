@@ -1,0 +1,10 @@
+#Created Wed Dec 31 16:00:00 1969
+
+# /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qformal_cmds.tcl : 11
+/cad/mentor/qformal/linux_x86_64/bin/qverifyek  -od output -l .elab.log  -cli -internal -cmd elab -zdb /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qcache/DB/zdb_0 -tool propcheck -d design_top -cuname formal_bind
+
+# /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qformal_cmds.tcl : 11
+/cad/mentor/qformal/linux_x86_64/bin/qverifyek  -od output -l .createnl.log  -cli -internal -cmd create_netlist -zdb /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qcache/DB/zdb_0 -tool propcheck -d design_top -cuname formal_bind -tcs
+
+# /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qformal_cmds.tcl : 11
+/cad/mentor/qformal/linux_x86_64/bin/qverifyek  -od output -l .csl.log  -cli -internal -cmd csl -zdb /rsgs/pool0/eldrick/sqed_sss/demos/ridecore_demo/output/qcache/DB/zdb_0 -d design_top -cuname formal_bind -tcs
