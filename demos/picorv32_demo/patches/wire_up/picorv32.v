@@ -642,105 +642,35 @@ module picorv32 #(
 			prefetched_high_word <= 0;
 	end
 
-	// Start QED Edit - QED and SIF Instruction Commit Tracking
+	// Start QED Edit - Add QED Module
+    wire qed_vld_out;
+    wire [31:0] qed_ifu_instruction;
 
-	// Enable QED property check after Symbolic In-Flight (SIF) Instructions
-	// have committed
-	reg [1:0] sif_state;
-	reg sif_commit;
-	
-	always @(posedge CLK) begin
-		if (RESET) begin
-			sif_state <= 0;
-			sif_commit <= 0;
-		end else begin
-			if ((sif_state == 0)) begin
-				sif_state <= 1;
-				sif_commit <= 1;
-			end
-	
-			if ((sif_state == 1)) begin
-				sif_state <= 2;
-				sif_commit <= 1;
-			end
-	
-			if ((sif_state == 2)) begin
-				sif_commit <= 1;
-			end
-		end
-	end
-	
-	reg sif_commit_q;
-	always @(posedge CLK) begin
-		sif_commit_q <= sif_commit;
-	end
-	wire sif_commit_pulsed = sif_commit & ~sif_commit_q;
-	
-	// Enable QED property check after equal number of original and duplicate
-	// instructions have committed
-	// Bit width must correspond to width in formal/formal_spec.sv
-	reg [4:0] qed_num_orig;
-	reg [4:0] qed_num_dup;
-	
-	// tracking QED instruction commits which update the integer register file
-	wire qed_orig_commit_reg;
-	wire qed_dup_commit_reg;
-	
-	// tracking QED instruction commits which update memory
-	wire qed_orig_commit_mem;
-	wire qed_dup_commit_mem;
-	
-	// allows tracking of multiple commits at a single time step
-	wire [1:0] qed_orig_commit;
-	wire [1:0] qed_dup_commit;
-	
-	// logic to track integer register file commits - original or duplicate
-	wire dst_is_original;
-	wire dst_is_zero_reg;
-	wire rf_wb_is_en;
-	
-	assign dst_is_original = (cpuregs_waddr < 'd16);
-	assign dst_is_zero_reg = (cpuregs_waddr == 'd0);
-	assign rf_wb_is_en = (resetn && cpuregs_write && latched_rd);
-	
-	// logic to track memory commits - original or duplicate
-	wire mem_dst_is_original;
-	wire mem_wea_is_en;
-	
-	assign mem_dst_is_original = (mem_addr < 'd64);
-	assign mem_wea_is_en = |(mem_wstrb);
-	
-	// We ignore instructions with destination register 5'b0 (NOP)
-	assign qed_orig_commit_reg = rf_wb_is_en
-									&& dst_is_original
-									&& ~dst_is_zero_reg
-									&& ~trap;
-	assign qed_orig_commit_mem = mem_wea_is_en && mem_dst_is_original && ~trap;
-	
-	// Instructions with destination register 5'b0 remain the same for
-	// original and duplicate instructions
-	assign qed_dup_commit_reg = rf_wb_is_en && ~dst_is_original && ~trap;
-	assign qed_dup_commit_mem = mem_wea_is_en && ~mem_dst_is_original && ~trap;
-	
-	// sum all commits that happen in a cycle
-	assign qed_orig_commit = qed_orig_commit_mem + qed_orig_commit_reg;
-	assign qed_dup_commit = qed_dup_commit_mem + qed_dup_commit_reg;
-	
-	// Logic to track committed instructions
-	// We keep this in reset until SIF Instructions have committed
-	always @(posedge CLK) begin
-		if (!resetn || (sif_state == 0)) begin
-			qed_num_orig <= 'b0;
-			qed_num_dup <= 'b0;
-		end else begin
-			qed_num_orig <= qed_num_orig + {3'b0, qed_orig_commit};
-			qed_num_dup <= qed_num_dup + {3'b0, qed_dup_commit};
-		end
-	end
-	
-	wire qed_check_valid;
-	assign qed_check_valid = (qed_num_orig == qed_num_dup);
-// End QED Edit - QED and SIF Instruction Commit Tracking
+    wire qed_ena;
+    wire qed_stall_IF;
+
+    assign qed_ena = 1'b1;
+    assign qed_stall_IF = trap;
+
+    // exec_dup is a cutpoint - given to the formal tool
+    wire qed_exec_dup;
+    assign qed_exec_dup = 1'b0;
+
+    qed qed0 (
+        // Outputs
+        .vld_out(qed_vld_out),
+        .qed_ifu_instruction(qed_ifu_instruction),
+        // Inputs
+        .ena(qed_ena),
+        .ifu_qed_instruction(mem_rdata_latched_noshuffle),
+        .clk(clk)),
+        .exec_dup(qed_exec_dup),
+        .stall_IF(qed_stall_IF),
+        .rst(~resetn)
+    );
+
+    wire qed_kill = trap | (~qed_vld_out);
+    // End QED Edit - Add QED Module
 
 	// Instruction Decoder
 
@@ -2260,6 +2190,107 @@ module picorv32 #(
 		end
 	end
 `endif
+
+	// Start QED Edit - QED and SIF Instruction Commit Tracking
+
+	// Enable QED property check after Symbolic In-Flight (SIF) Instructions
+	// have committed
+	reg [1:0] sif_state;
+	reg sif_commit;
+
+	always @(posedge CLK) begin
+		if (RESET) begin
+			sif_state <= 0;
+			sif_commit <= 0;
+		end else begin
+			if ((sif_state == 0)) begin
+				sif_state <= 1;
+				sif_commit <= 1;
+			end
+
+			if ((sif_state == 1)) begin
+				sif_state <= 2;
+				sif_commit <= 1;
+			end
+
+			if ((sif_state == 2)) begin
+				sif_commit <= 1;
+			end
+		end
+	end
+
+	reg sif_commit_q;
+	always @(posedge CLK) begin
+		sif_commit_q <= sif_commit;
+	end
+	wire sif_commit_pulsed = sif_commit & ~sif_commit_q;
+
+	// Enable QED property check after equal number of original and duplicate
+	// instructions have committed
+	// Bit width must correspond to width in formal/formal_spec.sv
+	reg [4:0] qed_num_orig;
+	reg [4:0] qed_num_dup;
+
+	// tracking QED instruction commits which update the integer register file
+	wire qed_orig_commit_reg;
+	wire qed_dup_commit_reg;
+
+	// tracking QED instruction commits which update memory
+	wire qed_orig_commit_mem;
+	wire qed_dup_commit_mem;
+
+	// allows tracking of multiple commits at a single time step
+	wire [1:0] qed_orig_commit;
+	wire [1:0] qed_dup_commit;
+
+	// logic to track integer register file commits - original or duplicate
+	wire dst_is_original;
+	wire dst_is_zero_reg;
+	wire rf_wb_is_en;
+
+	assign dst_is_original = (cpuregs_waddr < 'd16);
+	assign dst_is_zero_reg = (cpuregs_waddr == 'd0);
+	assign rf_wb_is_en = (resetn && cpuregs_write && latched_rd);
+
+	// logic to track memory commits - original or duplicate
+	wire mem_dst_is_original;
+	wire mem_wea_is_en;
+
+	assign mem_dst_is_original = (mem_addr < 'd64);
+	assign mem_wea_is_en = |(mem_wstrb);
+
+	// We ignore instructions with destination register 5'b0 (NOP)
+	assign qed_orig_commit_reg = rf_wb_is_en
+									&& dst_is_original
+									&& ~dst_is_zero_reg
+									&& ~trap;
+	assign qed_orig_commit_mem = mem_wea_is_en && mem_dst_is_original && ~trap;
+
+	// Instructions with destination register 5'b0 remain the same for
+	// original and duplicate instructions
+	assign qed_dup_commit_reg = rf_wb_is_en && ~dst_is_original && ~trap;
+	assign qed_dup_commit_mem = mem_wea_is_en && ~mem_dst_is_original && ~trap;
+
+	// sum all commits that happen in a cycle
+	assign qed_orig_commit = qed_orig_commit_mem + qed_orig_commit_reg;
+	assign qed_dup_commit = qed_dup_commit_mem + qed_dup_commit_reg;
+
+	// Logic to track committed instructions
+	// We keep this in reset until SIF Instructions have committed
+	always @(posedge CLK) begin
+		if (!resetn || (sif_state == 0)) begin
+			qed_num_orig <= 'b0;
+			qed_num_dup <= 'b0;
+		end else begin
+			qed_num_orig <= qed_num_orig + {3'b0, qed_orig_commit};
+			qed_num_dup <= qed_num_dup + {3'b0, qed_dup_commit};
+		end
+	end
+
+	wire qed_check_valid;
+	assign qed_check_valid = (qed_num_orig == qed_num_dup);
+	// End QED Edit - QED and SIF Instruction Commit Tracking
+
 endmodule
 
 // This is a simple example implementation of PICORV32_REGS.

@@ -5,7 +5,7 @@ module design_top (input clk, input reset);
 
     wire CLK;
     assign CLK = clk;
-    
+
     // not reset signal
     wire resetn;
     assign resetn = ~reset;
@@ -68,7 +68,7 @@ module design_top (input clk, input reset);
         .wen(mem_valid ? mem_wstrb : 4'b0),
         .addr(mem_addr[6:2]),
         .wdata(mem_wdata),
-        .rdate(mem_rdata)
+        .rdata(mem_rdata)
     );    
 
 endmodule
