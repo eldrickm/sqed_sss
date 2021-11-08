@@ -3,6 +3,9 @@
 module design_top (input clk, input reset);
     // top module wire declarations
 
+    wire CLK;
+    assign CLK = clk;
+    
     // not reset signal
     wire resetn;
     assign resetn = ~reset;
