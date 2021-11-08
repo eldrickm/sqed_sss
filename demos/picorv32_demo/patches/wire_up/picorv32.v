@@ -384,6 +384,8 @@ module picorv32 #(
 	assign mem_rdata_latched_noshuffle = (mem_xfer || LATCHED_MEM_RDATA) ? mem_rdata : mem_rdata_q;
 
 	// Start QED Edit - Override Instruction Signal
+	wire qed_kill;
+	wire [31:0] qed_ifu_instruction;
 	assign mem_rdata_latched = COMPRESSED_ISA && mem_la_use_prefetched_high_word ? {16'bx, mem_16bit_buffer} :
 			COMPRESSED_ISA && mem_la_secondword ? {mem_rdata_latched_noshuffle[15:0], mem_16bit_buffer} :
 			COMPRESSED_ISA && mem_la_firstword ? {16'bx, mem_rdata_latched_noshuffle[31:16]} : (qed_kill) ? 32'h00000013 : qed_ifu_instruction;
@@ -644,7 +646,6 @@ module picorv32 #(
 
 	// Start QED Edit - Add QED Module
     wire qed_vld_out;
-    wire [31:0] qed_ifu_instruction;
 
     wire qed_ena;
     wire qed_stall_IF;
@@ -663,13 +664,13 @@ module picorv32 #(
         // Inputs
         .ena(qed_ena),
         .ifu_qed_instruction(mem_rdata_latched_noshuffle),
-        .clk(clk)),
+        .clk(clk),
         .exec_dup(qed_exec_dup),
         .stall_IF(qed_stall_IF),
         .rst(~resetn)
     );
 
-    wire qed_kill = trap | (~qed_vld_out);
+    assign qed_kill = trap | (~qed_vld_out);
     // End QED Edit - Add QED Module
 
 	// Instruction Decoder
@@ -2198,8 +2199,8 @@ module picorv32 #(
 	reg [1:0] sif_state;
 	reg sif_commit;
 
-	always @(posedge CLK) begin
-		if (RESET) begin
+	always @(posedge clk) begin
+		if (!resetn) begin
 			sif_state <= 0;
 			sif_commit <= 0;
 		end else begin
@@ -2220,7 +2221,7 @@ module picorv32 #(
 	end
 
 	reg sif_commit_q;
-	always @(posedge CLK) begin
+	always @(posedge clk) begin
 		sif_commit_q <= sif_commit;
 	end
 	wire sif_commit_pulsed = sif_commit & ~sif_commit_q;
@@ -2277,7 +2278,7 @@ module picorv32 #(
 
 	// Logic to track committed instructions
 	// We keep this in reset until SIF Instructions have committed
-	always @(posedge CLK) begin
+	always @(posedge clk) begin
 		if (!resetn || (sif_state == 0)) begin
 			qed_num_orig <= 'b0;
 			qed_num_dup <= 'b0;
