@@ -2,39 +2,25 @@
 
 module design_top (input clk, input reset);
     // top module wire declarations
-    wire CLK;
-    wire RESETN;
 
-    assign CLK = clk;
-    assign RESETN = ~reset;
-    
-    // connection with Real Time Counter - hard wired to 0
-    wire [63:0] REAL_TIME;
+    // not reset signal
+    wire resetn;
+    assign resetn = ~reset;
 
-    assign REAL_TIME = 'b0;
-    
-    // connections with Instruction Memory
-    wire [31:0] I_ADDR;
-    wire [31:0] INSTR;
+    // irq - hard wired to 0
+    wire [31:0] irq;
+    assign irq = 32'b0;
 
-    // Cutpoint
-    assign INSTR = 'b0;
-    
-    // connections with Data Memory
-    wire [31:0] D_ADDR;
-    wire [31:0] DATA_OUT;
-    wire WR_REQ;
-    wire [3:0] WR_MASK;
-    wire [31:0] DATA_IN;
+	wire mem_valid;
+	wire mem_instr; // floating output - same as picosoc.v
+	wire mem_ready;
+	wire [31:0] mem_addr;
+	wire [31:0] mem_wdata;
+	wire [3:0] mem_wstrb;
+	wire [31:0] mem_rdata;
 
-    // connections with Interrupt Controller - hard-wired to 0
-    wire E_IRQ;
-    wire T_IRQ;
-    wire S_IRQ;
-
-    assign E_IRQ = 'b0;
-    assign T_IRQ = 'b0;
-    assign S_IRQ = 'b0;
+    // ready to read from memory - hard wired to 1 
+    assign mem_ready = 1;
     
     picorv32 #(
 		.ENABLE_COUNTERS(0),
@@ -72,16 +58,35 @@ module design_top (input clk, input reset);
 	);
     
     // Memory is 4 byte aligned - hence the indexing starts at bit 2
-    ram #(
-        .DEPTH(32)
+    picosoc_mem #(
+        .WORDS(32)
     ) mem (
-        .CLK(CLK),
-        .ADDRA(D_ADDR[6:2]),
-        .ADDRB(I_ADDR[6:2]),
-        .DINA(DATA_OUT),
-        .WEA(WR_MASK),
-        .DOUTA(DATA_IN),
-        .DOUTB()
+        .clk(CLK),
+        .wen(mem_valid ? mem_wstrb : 4'b0),
+        .addr(mem_addr[6:2]),
+        .wdata(mem_wdata),
+        .rdate(mem_rdata)
     );    
 
+endmodule
+
+
+module picosoc_mem #(
+	parameter integer WORDS = 256
+) (
+	input clk,
+	input [3:0] wen,
+	input [21:0] addr,
+	input [31:0] wdata,
+	output reg [31:0] rdata
+);
+	reg [31:0] mem [0:WORDS-1];
+
+	always @(posedge clk) begin
+		rdata <= mem[addr];
+		if (wen[0]) mem[addr][ 7: 0] <= wdata[ 7: 0];
+		if (wen[1]) mem[addr][15: 8] <= wdata[15: 8];
+		if (wen[2]) mem[addr][23:16] <= wdata[23:16];
+		if (wen[3]) mem[addr][31:24] <= wdata[31:24];
+	end
 endmodule
