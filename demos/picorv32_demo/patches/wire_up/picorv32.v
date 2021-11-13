@@ -48,7 +48,7 @@
 `endif
 
 // uncomment this for register file in extra module
-`define PICORV32_REGS picorv32_regs
+// `define PICORV32_REGS picorv32_regs
 
 // this macro can be used to check if the verilog files in your
 // design are read in the correct order.
@@ -2206,7 +2206,7 @@ module picorv32 #(
 		end else begin
 			if ((sif_state == 0)) begin
 				sif_state <= 1;
-				sif_commit <= 1;
+				sif_commit <= 0;
 			end
 
 			if ((sif_state == 1)) begin
@@ -2257,8 +2257,8 @@ module picorv32 #(
 	wire mem_dst_is_original;
 	wire mem_wea_is_en;
 
-	assign mem_dst_is_original = (mem_addr < 'd64);
-	assign mem_wea_is_en = |(mem_wstrb);
+	assign mem_dst_is_original = (mem_addr < 'd16);
+	assign mem_wea_is_en = |(mem_valid ? mem_wstrb : 4'b0);
 
 	// We ignore instructions with destination register 5'b0 (NOP)
 	assign qed_orig_commit_reg = rf_wb_is_en
@@ -2279,7 +2279,7 @@ module picorv32 #(
 	// Logic to track committed instructions
 	// We keep this in reset until SIF Instructions have committed
 	always @(posedge clk) begin
-		if (!resetn || (sif_state == 0)) begin
+		if (!resetn || (~sif_commit)) begin
 			qed_num_orig <= 'b0;
 			qed_num_dup <= 'b0;
 		end else begin
