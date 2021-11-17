@@ -96,11 +96,11 @@ module picosoc_mem #(
 ) (
 	input clk,
 	input [3:0] wen,
-	input [21:0] addr,
+	input [31:0] addr,
 	input [31:0] wdata,
 	output reg [31:0] rdata
 );
-	reg [31:0] mem [0:WORDS-1];
+	reg [31:0] mem [WORDS-1:0];
 
 	always @(posedge clk) begin
 		rdata <= mem[addr];

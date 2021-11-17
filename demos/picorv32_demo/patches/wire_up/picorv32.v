@@ -2196,29 +2196,23 @@ module picorv32 #(
 
 	// Enable QED property check after Symbolic In-Flight (SIF) Instructions
 	// have committed
-	reg [1:0] sif_state;
-	reg sif_commit;
+	reg [4:0] sif_state;
+    reg sif_commit;
 
-	always @(posedge clk) begin
-		if (!resetn) begin
-			sif_state <= 0;
-			sif_commit <= 0;
-		end else begin
-			if ((sif_state == 0)) begin
-				sif_state <= 1;
-				sif_commit <= 0;
-			end
-
-			if ((sif_state == 1)) begin
-				sif_state <= 2;
-				sif_commit <= 1;
-			end
-
-			if ((sif_state == 2)) begin
-				sif_commit <= 1;
-			end
-		end
-	end
+    always @(posedge clk) begin
+        if (~(resetn)) begin
+            sif_state <= 0;
+            sif_commit <= 0;
+        end else begin
+            if((sif_state == 16)) begin
+                sif_state <= sif_state;
+                sif_commit <= 1;
+            end else begin
+                sif_state <= sif_state + 1;
+                sif_commit <= 0;
+            end
+        end
+    end
 
 	reg sif_commit_q;
 	always @(posedge clk) begin
@@ -2257,7 +2251,7 @@ module picorv32 #(
 	wire mem_dst_is_original;
 	wire mem_wea_is_en;
 
-	assign mem_dst_is_original = (mem_addr < 'd16);
+	assign mem_dst_is_original = (mem_addr[6:2] < 'd16);
 	assign mem_wea_is_en = |(mem_valid ? mem_wstrb : 4'b0);
 
 	// We ignore instructions with destination register 5'b0 (NOP)
