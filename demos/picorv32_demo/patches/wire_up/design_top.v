@@ -31,7 +31,7 @@ module design_top (input clk, input reset);
         .ENABLE_REGS_16_31(0),
         .ENABLE_REGS_DUALPORT(0),
         .LATCHED_MEM_RDATA(0),
-        .TWO_STAGE_SHIFT(0),
+        .TWO_STAGE_SHIFT(1),
         .BARREL_SHIFTER(0),
         .TWO_CYCLE_COMPARE(0),
         .TWO_CYCLE_ALU(0),
@@ -100,7 +100,7 @@ module picosoc_mem #(
 	input [31:0] wdata,
 	output reg [31:0] rdata
 );
-	reg [31:0] mem [WORDS-1:0];
+	reg [31:0] mem [0:WORDS-1];
 
 	always @(posedge clk) begin
 		rdata <= mem[addr];

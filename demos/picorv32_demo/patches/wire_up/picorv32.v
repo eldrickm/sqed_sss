@@ -2204,7 +2204,7 @@ module picorv32 #(
             sif_state <= 0;
             sif_commit <= 0;
         end else begin
-            if((sif_state == 16)) begin
+            if((sif_state == 5)) begin
                 sif_state <= sif_state;
                 sif_commit <= 1;
             end else begin

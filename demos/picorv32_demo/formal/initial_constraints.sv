@@ -12,7 +12,9 @@ module initial_constraints
         && (design_top.dut.sif_commit == 0)
         && (design_top.dut.sif_state ==  0)
         && (design_top.dut.qed_num_orig == 0)
-        && (design_top.dut.qed_num_dup == 0))
+        && (design_top.dut.qed_num_dup == 0)
+        && (design_top.dut.mem_valid == 0)
+        )
     endproperty
 
     initial begin
