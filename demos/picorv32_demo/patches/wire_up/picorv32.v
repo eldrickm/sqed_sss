@@ -2204,13 +2204,14 @@ module picorv32 #(
             sif_state <= 0;
             sif_commit <= 0;
         end else begin
-            if((sif_state == 5)) begin
-                sif_state <= sif_state;
-                sif_commit <= 1;
-            end else begin
-                sif_state <= sif_state + 1;
-                sif_commit <= 0;
-            end
+            if(sif_state == 0 && cpu_state == cpu_state_fetch) begin
+                sif_state <= 1;
+			end else if(sif_state == 1 && cpu_state != cpu_state_fetch) begin
+				sif_state <= 2;
+			end else if(sif_state == 2 && cpu_state == cpu_state_fetch) begin
+				sif_state <= 3;
+				sif_commit <= 1;
+			end
         end
     end
 
