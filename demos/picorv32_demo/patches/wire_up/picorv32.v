@@ -2210,8 +2210,6 @@ module picorv32 #(
 				sif_state <= 2;
 			end else if(sif_state == 2 && cpu_state == cpu_state_fetch) begin
 				sif_state <= 3;
-			end else if(sif_state == 3 && mem_valid && mem_do_wdata) begin
-				sif_state <= 4;
 				sif_commit <= 1;
 			end
         end

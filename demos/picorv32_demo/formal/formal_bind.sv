@@ -10,7 +10,7 @@ module formal_bind;
     bind design_top inst_constraint inst_con
     (
         .clk(CLK),
-        .instruction(design_top.dut.mem_rdata_latched)
+        .instruction(design_top.dut.mem_rdata_latched_noshuffle)
     );
 
     // Constrain Registers
