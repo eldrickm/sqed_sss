@@ -381,7 +381,7 @@ module picorv32 #(
 			(COMPRESSED_ISA && mem_xfer && (!last_mem_valid ? mem_la_firstword : mem_la_firstword_reg) && !mem_la_secondword && &mem_rdata_latched[1:0]));
 	assign mem_la_addr = (mem_do_prefetch || mem_do_rinst) ? {next_pc[31:2] + mem_la_firstword_xfer, 2'b00} : {reg_op1[31:2], 2'b00};
 
-	assign mem_rdata_latched_noshuffle = (mem_xfer || LATCHED_MEM_RDATA) ? mem_rdata : mem_rdata_q;
+	assign mem_rdata_latched_noshuffle = mem_rdata_q;
 
 	assign mem_rdata_latched = COMPRESSED_ISA && mem_la_use_prefetched_high_word ? {16'bx, mem_16bit_buffer} :
 			COMPRESSED_ISA && mem_la_secondword ? {mem_rdata_latched_noshuffle[15:0], mem_16bit_buffer} :
@@ -651,7 +651,7 @@ module picorv32 #(
     wire qed_ena;
     wire qed_stall_IF;
 
-    assign qed_ena = 1'b1;
+    assign qed_ena = mem_do_rinst;
     assign qed_stall_IF = trap;
 
     // exec_dup is a cutpoint - given to the formal tool
@@ -2207,11 +2207,11 @@ module picorv32 #(
             sif_state <= 0;
             sif_commit <= 0;
         end else begin
-            if(sif_state == 0 && cpu_state == cpu_state_fetch) begin
+            if(sif_state == 0 && mem_do_rinst) begin // Read sif instruction
                 sif_state <= 1;
-			end else if(sif_state == 1 && cpu_state != cpu_state_fetch) begin
+			end else if(sif_state == 1 && mem_do_rinst) begin // Read symbolic instruction
 				sif_state <= 2;
-			end else if(sif_state == 2 && cpu_state == cpu_state_fetch) begin
+			end else if(sif_state == 2 && cpu_state == cpu_state_fetch) begin  // Wait for one additional cycle to write back to memory
 				sif_state <= 3;
 			end else if (sif_state == 3) begin
 				sif_state <= 4;
