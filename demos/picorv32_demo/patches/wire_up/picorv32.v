@@ -383,13 +383,9 @@ module picorv32 #(
 
 	assign mem_rdata_latched_noshuffle = (mem_xfer || LATCHED_MEM_RDATA) ? mem_rdata : mem_rdata_q;
 
-	// Start QED Edit - Override Instruction Signal
-	wire qed_kill;
-	wire [31:0] qed_ifu_instruction;
 	assign mem_rdata_latched = COMPRESSED_ISA && mem_la_use_prefetched_high_word ? {16'bx, mem_16bit_buffer} :
 			COMPRESSED_ISA && mem_la_secondword ? {mem_rdata_latched_noshuffle[15:0], mem_16bit_buffer} :
-			COMPRESSED_ISA && mem_la_firstword ? {16'bx, mem_rdata_latched_noshuffle[31:16]} : (qed_kill) ? 32'h00000013 : qed_ifu_instruction;
-	// END QED Edit - Override Instruction Signal
+			COMPRESSED_ISA && mem_la_firstword ? {16'bx, mem_rdata_latched_noshuffle[31:16]} : mem_rdata_latched_noshuffle;
 
 	always @(posedge clk) begin
 		if (!resetn) begin
@@ -431,9 +427,14 @@ module picorv32 #(
 		endcase
 	end
 
+	// Start QED Edit - Override Instruction Signal
+	wire qed_kill;
+	wire [31:0] qed_ifu_instruction;
+
 	always @(posedge clk) begin
 		if (mem_xfer) begin
-			mem_rdata_q <= COMPRESSED_ISA ? mem_rdata_latched : mem_rdata;
+			mem_rdata_q <= (qed_kill) ? 32'h00000013 : qed_ifu_instruction;
+	// END QED Edit - Override Instruction Signal
 			next_insn_opcode <= COMPRESSED_ISA ? mem_rdata_latched : mem_rdata;
 		end
 
@@ -657,13 +658,15 @@ module picorv32 #(
     wire qed_exec_dup;
     assign qed_exec_dup = 1'b0;
 
+	wire [31:0] INSTR;
+	assign INSTR = 'b0;
     qed qed0 (
         // Outputs
         .vld_out(qed_vld_out),
         .qed_ifu_instruction(qed_ifu_instruction),
         // Inputs
         .ena(qed_ena),
-        .ifu_qed_instruction(mem_rdata_latched_noshuffle),
+        .ifu_qed_instruction(INSTR),
         .clk(clk),
         .exec_dup(qed_exec_dup),
         .stall_IF(qed_stall_IF),
@@ -2210,7 +2213,7 @@ module picorv32 #(
 				sif_state <= 2;
 			end else if(sif_state == 2 && cpu_state == cpu_state_fetch) begin
 				sif_state <= 3;
-			end else if (sif_state == 3 && mem_valid && mem_done) begin
+			end else if (sif_state == 3) begin
 				sif_state <= 4;
 				sif_commit <= 1;
 			end
