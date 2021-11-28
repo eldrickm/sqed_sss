@@ -100,6 +100,11 @@ module design_top #(
 //   // ---------------
 //   // Debug
 //   // ---------------
+
+    // Start QED Edit: Disable debug_req_core
+    assign debug_req_core = 'b0;
+    // End QED Edit: Disable debug_req_core
+
 //   assign init_done = rst_ni;
 // 
 //   logic debug_enable;
@@ -601,6 +606,11 @@ module design_top #(
   logic ipi;
   logic timer_irq;
 
+  // Start QED Edit: Disable ipi and timer_irq
+  assign ipi = 'b0;
+  assign timer_irq = 'b0;
+  // End QED Edit: Disable ipi and timer_irq
+
 //   ariane_axi_soc::req_t    axi_clint_req;
 //   ariane_axi_soc::resp_t   axi_clint_resp;
 // 
@@ -631,6 +641,10 @@ module design_top #(
   // ---------------
   logic tx, rx;
   logic [1:0] irqs;
+
+  // Start QED Edit: Disable irqs
+  assign irqs = 'b0;
+  // End  QED Edit: Disable irqs
 
 //   ariane_peripherals #(
 //     .AxiAddrWidth ( AXI_ADDRESS_WIDTH        ),
@@ -708,11 +722,15 @@ module design_top #(
     .axi_resp_i           ( axi_ariane_resp     )
   );
 
-  axi_master_connect i_axi_master_connect_ariane (
-    .axi_req_i(axi_ariane_req),
-    .axi_resp_o(axi_ariane_resp),
-    .master(slave[0])
-  );
+  // axi_master_connect i_axi_master_connect_ariane (
+  //   .axi_req_i(axi_ariane_req),
+  //   .axi_resp_o(axi_ariane_resp),
+  //   .master(slave[0])
+  // );
+
+  // Start QED Edit: Ground axi_ariane_resp bus
+  assign axi_ariane_resp = 'b0;
+  // End QED Edit: Ground axi_ariane_resp bus
 
   // -------------
   // Simulation Helper Functions

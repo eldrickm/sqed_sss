@@ -1,70 +1,61 @@
-// decoder for RISCV
-// only supports a subset of R,I,S type instructions see riscv-spec-v2.1.pdf
-// used along with strict input constraints to ifu_qed_instruction (specified for the formal tool)
+// Copyright (c) Stanford University
+// 
+// This source code is patent protected and being made available under the
+// terms explained in the ../LICENSE-Academic and ../LICENSE-GOV files.
+//
+// Author: Mario J Srouji
+// Email: msrouji@stanford.edu
 
-module qed_decoder (/*AUTOARG*/
-   // Outputs
-   is_lw, is_sw,is_aluimm,is_alureg, rd, rs1, rs2, opcode, simm12, funct3, funct7,
-   imm5,simm7, shamt,
-   // Inputs
-   ifu_qed_instruction
-   );
+module qed_decoder (
+// Outputs
+shamt,
+IS_SW,
+imm12,
+IS_R,
+rd,
+funct3,
+opcode,
+rs2,
+funct7,
+IS_I,
+IS_LW,
+imm5,
+rs1,
+imm7,
+// Inputs
+ifu_qed_instruction);
 
-                         
-//   input [32:0]  ifu_qed_instruction; // instruction
-   input  [31:0] ifu_qed_instruction;
-   wire   [31:0] instruction;
-   assign instruction = ifu_qed_instruction;
-   
-   output [4:0]  rd;
-   output [4:0]  rs1;
-   output [4:0]  rs2;
-   output [6:0]  opcode;
-   output [11:0] simm12;  // signed imm for I type or instructions using rd, rs1 only like LW 
-   output [2:0] funct3;
-   output [6:0] funct7;
-   output [4:0] imm5;  // lower order imm bits for S type instruction
-   output [6:0] simm7; // higher order bits (including sign bits) of imm operand for S type instruction
-   output [4:0] shamt; // shift amount for immediate shift operations
-   
-  	
-   // determine which format to use
-   output 	is_lw;
-   output 	is_sw;
-   output 	is_aluimm;
-   output 	is_alureg; // includes mult instructions
+  input [31:0] ifu_qed_instruction;
 
-   // wire 	 LW;
-   // wire 	 SW;
+  output [4:0] shamt;
+  output IS_SW;
+  output [11:0] imm12;
+  output IS_R;
+  output [4:0] rd;
+  output [2:0] funct3;
+  output [6:0] opcode;
+  output [4:0] rs2;
+  output [6:0] funct7;
+  output IS_I;
+  output IS_LW;
+  output [4:0] imm5;
+  output [4:0] rs1;
+  output [6:0] imm7;
 
-   // wire 	 ADD;      
-   // wire 	 AND;      
-   // wire 	 OR;      
-   // wire 	 XOR;      
-   // wire 	 SUB;      
-   // wire 	 ADDI;     
-   // wire 	 MUL;     
-   // wire 	 MULH;     
-   // wire 	 MULHU;     
+  assign shamt = ifu_qed_instruction[24:20];
+  assign imm12 = ifu_qed_instruction[31:20];
+  assign rd = ifu_qed_instruction[11:7];
+  assign funct3 = ifu_qed_instruction[14:12];
+  assign opcode = ifu_qed_instruction[6:0];
+  assign imm7 = ifu_qed_instruction[31:25];
+  assign funct7 = ifu_qed_instruction[31:25];
+  assign imm5 = ifu_qed_instruction[11:7];
+  assign rs1 = ifu_qed_instruction[19:15];
+  assign rs2 = ifu_qed_instruction[24:20];
 
-   // op, for all formats
-   assign opcode = instruction[6:0];
-   assign rd = instruction[11:7];
-   assign rs1 = instruction[19:15];
-   assign rs2 = instruction[24:20];
-   assign simm12 = instruction[31:20];
-   assign simm7 = instruction[31:25];
-   assign imm5 = instruction[11:7];
-   assign shamt = instruction[24:20];
-   assign funct3 = instruction[14:12];
-   assign funct7 = instruction[31:25];
+  assign IS_I = (opcode == 7'b0010011);
+  assign IS_LW = (funct3 == 3'b010) && (opcode == 7'b0000011);
+  assign IS_R = (opcode == 7'b0110011);
+  assign IS_SW = (funct3 == 3'b010) && (opcode == 7'b0100011);
 
-   // these constraints taken from riscv-spec-v2.1.pdf (pg. 54)
-   assign is_lw = (opcode == 7'b0000011) && (funct3 == 3'b010);
-   assign is_sw = (opcode == 7'b0100011) && (funct3 == 3'b010);
-   assign is_alureg = (opcode == 7'b0110011);
-   assign is_aluimm = (opcode == 7'b0010011);
-        
-endmodule // qed_decoder
-
-
+endmodule

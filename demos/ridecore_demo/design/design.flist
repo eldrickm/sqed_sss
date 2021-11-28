@@ -16,7 +16,7 @@
 ./ridecore/src/fpga/imm_gen.v
 ./ridecore/src/fpga/pipeline_if.v
 ./ridecore/src/fpga/gshare.v
-./ridecore/src/fpga/pipeline.v
+#./ridecore/src/fpga/pipeline.v
 ./ridecore/src/fpga/srcopr_manager.v
 ./ridecore/src/fpga/oldest_finder.v
 ./ridecore/src/fpga/btb.v
@@ -41,3 +41,4 @@
 #./ridecore/src/fpga/topsim.v
 
 ./design/topsim.v
+./design/pipeline.v
