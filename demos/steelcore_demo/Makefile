@@ -5,7 +5,7 @@ PATCH_DIR = output
 DESIGN_DIR = design
 FORMAL_DIR = formal
 
-workspace: clean
+workspace:
 	@echo "========== Intializing Questa Workspace =========="
 	${VLIB} work
 	${VMAP} work work
@@ -13,7 +13,6 @@ workspace: clean
 
 design: workspace
 	@echo "========== Compiling Design =========="
-	./patches/patch.sh
 	${VLOG} -f $(DESIGN_DIR)/design.flist -f $(FORMAL_DIR)/formal.flist -l $(OUT_DIR)/vlog.rpt
 
 compile: design
@@ -39,16 +38,9 @@ clean:
 	qformal_clean
 	\rm -rf work
 	\rm -f modelsim.ini
-	\rm -f visualizer.*
-	\rm -f visualizerCore.ses
+	\rm -f visualizer.log
 	\rm -rf results
-	\rm -rf hnl_const_prop.rpt
-	\rm -rf transcript
-	\rm -rf .qverify_ui_local_prefs
-	\rm -rf .visualizer/
 	\rm -rf $(OUT_DIR)
-	\rm -rf $(DESIGN_DIR)/*.v
-	\rm -rf $(DESIGN_DIR)/*.vh
-	\rm -rf $(DESIGN_DIR)/*.flist
+	\rm -rf hnl_const_prop.rpt
 
-all: clean workspace design compile prove gui
+all: workspace design compile prove gui

