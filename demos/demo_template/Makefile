@@ -13,7 +13,6 @@ workspace:
 
 design: workspace
 	@echo "========== Compiling Design =========="
-	./patches/patch.sh
 	${VLOG} -f $(DESIGN_DIR)/design.flist -f $(FORMAL_DIR)/formal.flist -l $(OUT_DIR)/vlog.rpt
 
 compile: design
@@ -42,8 +41,6 @@ clean:
 	\rm -f visualizer.log
 	\rm -rf results
 	\rm -rf $(OUT_DIR)
-	\rm -rf $(DESIGN_DIR)/*.v
-	\rm -rf $(DESIGN_DIR)/*.vh
-	\rm -rf $(DESIGN_DIR)/*.flist
+	\rm -rf hnl_const_prop.rpt
 
-all: clean workspace design compile prove gui
+all: workspace design compile prove gui

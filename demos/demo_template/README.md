@@ -46,12 +46,6 @@ The demo's directory structure is arranged as follows:
 	 |- qed_instruction_mux.v
 	 |- modify_instruction.v
 	 |- inst_constraint.sv
-|- patches/
-	 |- patch.sh
-	 |- wire_up/
-	 |- optimization/
-	 |- fix/
-	 |- bug/
 |- design/
 	 |- design.flist
 	 |- design_top.v
@@ -76,11 +70,6 @@ The demo's directory structure is arranged as follows:
 
 - `qed/` is a directory containing the QED module and its supporting files.
    More details can be found in [QED](#qed)
-
-- `patches/` is a directory containing files which facilitate the wire-up of
-   the QED module to the design, various optimizations for run-time performance
-   of formal analysis, and any bug fixes for found bugs.
-   More details can be found in [Patches](#patches)
 
 - `design/` is a directory that contains the patched version of the design
    under verification ready for formal analysis.

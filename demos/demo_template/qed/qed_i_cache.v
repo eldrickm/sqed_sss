@@ -15,7 +15,9 @@ module qed_i_cache (
   ifu_qed_instruction
   );
 
-  parameter ICACHESIZE = 256;
+  // EDIT: Changed to a smaller value
+  // parameter ICACHESIZE = 256;
+  parameter ICACHESIZE = 16;
 
   input clk;
   input rst;
