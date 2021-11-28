@@ -1,0 +1,129 @@
+
+Questa Version 10.5 linux_x86_64 23 Jul 2016
+
+-------------------------------------------------------------------------------
+Design Report
+Created Sat Nov 27 19:21:59 2021
+-------------------------------------------------------------------------------
+
+
+Design 'toppipe'
+===============================================================================
+
+
+---------------------------------------
+Design Summary                    Count
+---------------------------------------
+Clocks                                1
+  User-specified                      1
+  Inferred                            0
+Control Point Bits                  342
+  DUT Input Bits                      2
+  Cut Point Bits                     33
+  Black Box Output Bits               0
+  Undriven Wire Bits                307
+State Bits                         5687
+  Design Register Bits             5687
+  Design Latch Bits                   0
+Storage Structures       
+  Counters                            7
+  RAMs                                2
+Black Boxes                           0
+---------------------------------------
+
+Detailed Design Information
+===============================================================================
+
+
+Clocks
+------------------------------------------------------------------------------
+Port                                   Period         Waveform    Edges
+------------------------------------------------------------------------------
+clk                                        10              0 5    PE   
+------------------------------------------------------------------------------
+Cut Points
+----------
+  vpipe.imem_rdata  (32 bits)
+  vpipe.qed_exec_dup  (1 bit)
+
+Black Box Outputs
+-----------------
+  <none>
+
+Undriven Wires
+--------------
+  vpipe.PC_PIF  (32 bits)
+  vpipe.csr_addr  (12 bits)
+  vpipe.csr_rdata  (32 bits)
+  vpipe.csr_wdata  (32 bits)
+  vpipe.epc  (32 bits)
+  vpipe.handler_PC  (32 bits)
+  vpipe.htif_pcr_req_ready  (1 bit)
+  vpipe.htif_pcr_resp_data  (64 bits)
+  vpipe.htif_pcr_resp_valid  (1 bit)
+  vpipe.illegal_csr_access  (1 bit)
+  vpipe.interrupt_pending  (1 bit)
+  vpipe.interrupt_taken  (1 bit)
+  vpipe.load_data_WB  (32 bits)
+  vpipe.prv  (2 bits)
+  vpipe.regfile.i  (32 bits)
+
+Latches
+-------
+  <none>
+
+Counters
+--------
+  vpipe.md.a  (64 bits)
+  vpipe.md.counter  (5 bits)
+  vpipe.md.result  (64 bits)
+  vpipe.num_dup_insts  (5 bits)
+  vpipe.num_orig_insts  (5 bits)
+  vpipe.qed0.qic.address_tail  (6 bits)
+  vpipe.tcount  (128 bits)
+
+RAMs
+----
+  vpipe.qed0.qic.i_cache (Depth 128)
+  vpipe.regfile.data (Depth 32)
+
+Black Boxes (User-specified)
+----------------------------
+  <none>
+
+Black Boxes (Inferred)
+----------------------
+  <none>
+
+
+
+Port Constraints
+-------------------------------------------------------------------------------
+Type                 Clock Domain         Value         Port
+-------------------------------------------------------------------------------
+Clock                <none>               -            'clk'
+Constant             <none>               1'b0         'reset'
+-------------------------------------------------------------------------------
+
+Instance Usage
+===============================================================================
+Count  Module          Location
+-------------------------------------------------------------------------------
+   1   inst_constraint /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/qed/inst_constraint.sv (Line 3)
+   1   modify_instruction /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/qed/modify_instruction.v (Line 3)
+   1   qed             /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/qed/qed.v (Line 4)
+   1   qed_decoder     /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/qed/qed_decoder.v (Line 5)
+   1   qed_i_cache     /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/qed/qed_i_cache.v (Line 3)
+   1   qed_instruction_mux /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/qed/qed_instruction_mux.v (Line 3)
+   1   vscale_alu      /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_alu.v (Line 4)
+   1   vscale_checker  /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale_checker.sv (Line 2)
+   1   vscale_ctrl     /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v (Line 7)
+   1   vscale_imm_gen  /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_imm_gen.v (Line 4)
+   1   vscale_mul_div  /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v (Line 5)
+   1   vscale_pipeline /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v (Line 77)
+   1   vscale_regfile  /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_regfile.v (Line 3)
+   1   vscale_src_a_mux /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_src_a_mux.v (Line 4)
+   1   vscale_src_b_mux /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_src_b_mux.v (Line 4)
+
+
+

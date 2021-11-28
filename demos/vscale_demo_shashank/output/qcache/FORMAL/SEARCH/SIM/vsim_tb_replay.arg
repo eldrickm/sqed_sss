@@ -1,0 +1,2 @@
+-f /rsgs/pool0/eldrick/sqed_sss/demos/vscale_demo_shashank/output/qcache/FORMAL/SEARCH/SIM/vsim_tb_replay_top_modules.arg \
+-voptargs="+acc"

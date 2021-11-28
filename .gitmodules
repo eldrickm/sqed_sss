@@ -7,3 +7,6 @@
 [submodule "demos/steelcore_demo/steelcore"]
 	path = demos/steelcore_demo/steelcore
 	url = https://github.com/rafaelcalcada/steel-core.git
+[submodule "demos/vscale_demo/vscale"]
+	path = demos/vscale_demo/vscale
+	url = https://github.com/LGTMCU/vscale.git

@@ -1,0 +1,98 @@
+# 
+# Copyright 1995-2016 Mentor Graphics Corporation.
+# All Rights Reserved.
+# 
+# THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION 
+# WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# 
+# THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION
+# 552.  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE
+# UNDER THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# 
+# 
+# Command-line arguments:
+# 	-jobs 4 \
+# 	-od output \
+# 	-tool prove \
+# 	-init test.init \
+# 	-rtl_init_values \
+# 	-effort unlimited \
+# 	-import_db output/formal_compile.db  \
+# 	-netcache /rsgs/pool0/eldrick/sqed_sss/demos/vscale_demo_shashank/output/qcache/FORMAL/NET \
+# 	-mode master 
+# 
+# Warning : The '-effort' option is an obsolete argument for this executable.  To terminate an analysis session gracefully (and save pending results) use the -timeout option or CTRL-C.  [formal-278]
+#         : Option will be ignored
+# Info    : Using initialization sequence file to initialize design state.  File 'test.init'.
+# Info    : Applying initial assume properties in initial cycle for formal analysis.  Initial cycle can be adjusted using '-justify_initial_x'.
+# Info    : Applying synthesis semantics.
+# [00:00:01] Established connection with process, Hostname=rsg10.stanford.edu, pid=4241.
+# [00:00:01] Established connection with process, Hostname=rsg10.stanford.edu, pid=4229.
+# [00:00:01] Status: Done 0/15, Update 0/15, Proof radius min=0, avg=0.00, Mem=0GB
+# [00:00:02] Established connection with process, Hostname=rsg10.stanford.edu, pid=4220.
+# [00:00:02] Status: Done 0/15, Update 1/15, Proof radius min=0, avg=0.20, Mem=1GB
+# [00:00:02] Status: Done 0/15, Update 0/15, Proof radius min=0, avg=0.20, Mem=1GB
+# [00:00:02] Established connection with process, Hostname=rsg10.stanford.edu, pid=4214.
+# [00:00:03] Assumptions Used to Optimize Netlist:
+#     vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+# [00:00:03] Status: Done 0/15, Update 14/15, Proof radius min=3, avg=3.93, Mem=1GB
+# [00:00:06] Status: Done 0/15, Update 1/15, Proof radius min=4, avg=4.00, Mem=1GB
+# [00:00:07] Status: Done 0/15, Update 0/15, Proof radius min=4, avg=4.00, Mem=1GB
+# [00:00:13] Status: Done 0/15, Update 0/15, Proof radius min=4, avg=4.00, Mem=1GB
+# [00:00:23] Status: Done 0/15, Update 0/15, Proof radius min=4, avg=4.00, Mem=1GB
+# [00:00:25] Status: Done 0/15, Update 0/15, Proof radius min=4, avg=4.00, Mem=1GB
+# [00:00:49] Status: Done 0/15, Update 0/15, Proof radius min=4, avg=4.00, Mem=1GB
+# [mpiexec@rsg10.stanford.edu] Sending Ctrl-C to processes as requested
+# [mpiexec@rsg10.stanford.edu] Press Ctrl-C again to force abort
+# Info    : Signal 2 handled.  Formal will terminate.
+# [00:00:53] Status: Done 0/15, Update 0/15, Proof radius min=4, avg=4.00, Mem=1GB
+# 
+# ---------------------------------------
+# Property Summary                  Count
+# ---------------------------------------
+# Assumed                              19
+# Proven                                0
+# Inconclusive                         15
+#   Analysis Incomplete                15
+# Fired                                 0
+# ---------------------------------------
+# Total                                34
+# ---------------------------------------
+# 
+# 
+# --------- Process Statistics ----------
+# Elapsed Time                      53 s 
+# -------- Orchestration Process --------
+# ------- rsg10.stanford.edu:4190 -------
+# CPU Time                           1 s 
+# Peak Memory                      0.3 GB
+# ---------- Engine Processes -----------
+# ------- rsg10.stanford.edu:4214 -------
+# CPU Time                          51 s 
+# Peak Memory                      0.3 GB
+# CPU Utilization                     98 % 
+# ------- rsg10.stanford.edu:4220 -------
+# CPU Time                          51 s 
+# Peak Memory                      0.3 GB
+# CPU Utilization                     98 % 
+# ------- rsg10.stanford.edu:4229 -------
+# CPU Time                          52 s 
+# Peak Memory                      0.3 GB
+# CPU Utilization                    100 % 
+# ------- rsg10.stanford.edu:4241 -------
+# CPU Time                          52 s 
+# Peak Memory                      0.2 GB
+# CPU Utilization                    100 % 
+# ---------------------------------------
+# 
+# Final Process Statistics: Peak Memory 0.32GB, Cumulative CPU Time 207s, Elapsed Time 53s
+# 
+# To see results in the GUI run:
+# qverify /rsgs/pool0/eldrick/sqed_sss/demos/vscale_demo_shashank/output/formal_verify.db
+# 
+# End of log Sat Nov 27 19:22:55 2021
+# 
+# 

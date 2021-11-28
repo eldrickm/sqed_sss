@@ -471,9 +471,9 @@ module vscale_pipeline(
     vscale_alu alu(
                    // [TROJAN PAYLOAD START]
                    // [TROJAN PAYLOAD TYPE] - ALU Op Code Changed
-                   .op((trig) ? {alu_op[3:1],1'b1} : alu_op),
+                   // .op((trig) ? {alu_op[3:1],1'b1} : alu_op),
                    // [TROJAN PAYLOAD END]
-                   //.op(alu_op),
+                   .op(alu_op),
                    .in1(alu_src_a),
                    .in2(alu_src_b),
                    .out(alu_out)

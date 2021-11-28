@@ -1,0 +1,371 @@
+-------------------------------------------------------------------------------
+Questa PropCheck Version 10.5 linux_x86_64 23 Jul 2016
+-------------------------------------------------------------------------------
+Report Generated               : Sat Nov 27 19:22:01 2021
+-------------------------------------------------------------------------------
+
+Command-line arguments:
+	-jobs 4 \
+	-od output \
+	-tool prove \
+	-init test.init \
+	-rtl_init_values \
+	-effort unlimited \
+	-import_db output/formal_compile.db  \
+	-netcache /rsgs/pool0/eldrick/sqed_sss/demos/vscale_demo_shashank/output/qcache/FORMAL/NET \
+	-mode master 
+
+-------------------------------------------------------------------------------
+
+Clock Relationships
+-------------------------------------------------------------------------------
+clk : P
+
+
+Port Constraints
+-------------------------------------------------------------------------------
+Type                 Clock Domain         Value         Port
+-------------------------------------------------------------------------------
+Clock                <none>               -            'clk'
+Constant             <none>               1'b0         'reset'
+-------------------------------------------------------------------------------
+
+
+
+Using user-specified initialization sequence:
+
+---------------- BEGIN RESET SEQUENCE --------------
+$default_clock clk
+$default_input_value 0 -undriven_wire
+$dump after_init
+---------------- END RESET SEQUENCE ----------------
+
+
+-------------------------------------------------------------------------------
+Assumptions (19)
+-------------------------------------------------------------------------------
+vpipe.regfile.chk0.assume_mem
+vpipe.regfile.chk0.assume_reg0
+vpipe.regfile.chk0.genblk1[0].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[10].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[11].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[12].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[13].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[14].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[15].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[1].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[2].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[3].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[4].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[5].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[6].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[7].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[8].assume_consistent_pipeline1
+vpipe.regfile.chk0.genblk1[9].assume_consistent_pipeline1
+vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Active Targets (15)
+-------------------------------------------------------------------------------
+vpipe.regfile.chk0.genblk2[10].assert_ireg_match
+vpipe.regfile.chk0.genblk2[11].assert_ireg_match
+vpipe.regfile.chk0.genblk2[12].assert_ireg_match
+vpipe.regfile.chk0.genblk2[13].assert_ireg_match
+vpipe.regfile.chk0.genblk2[14].assert_ireg_match
+vpipe.regfile.chk0.genblk2[15].assert_ireg_match
+vpipe.regfile.chk0.genblk2[1].assert_ireg_match
+vpipe.regfile.chk0.genblk2[2].assert_ireg_match
+vpipe.regfile.chk0.genblk2[3].assert_ireg_match
+vpipe.regfile.chk0.genblk2[4].assert_ireg_match
+vpipe.regfile.chk0.genblk2[5].assert_ireg_match
+vpipe.regfile.chk0.genblk2[6].assert_ireg_match
+vpipe.regfile.chk0.genblk2[7].assert_ireg_match
+vpipe.regfile.chk0.genblk2[8].assert_ireg_match
+vpipe.regfile.chk0.genblk2[9].assert_ireg_match
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+X Registers in Starting State
+-------------------------------------------------------------------------------
+  189 registers (100.0% of 189 in sequential fanin of properties)
+-------------------------------------------------------------------------------
+  vpipe.PC_DX (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v, Line 150) 
+    32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  vpipe.PC_IF (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v, Line 145) 
+    32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  vpipe.alu_out_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v, Line 184) 
+    32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  vpipe.ctrl.dmem_en_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 108) 1'bx
+  vpipe.ctrl.had_ex_DX (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 62) 1'bx
+  vpipe.ctrl.had_ex_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 105) 1'bx
+  vpipe.ctrl.prev_killed_DX (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 63) 1'bx
+  vpipe.ctrl.prev_killed_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 109) 1'bx
+  vpipe.ctrl.reg_to_wr_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 42) 5'bxxxxx
+  vpipe.ctrl.replay_IF (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 56) 1'bx
+  vpipe.ctrl.store_in_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 107) 1'bx
+  vpipe.ctrl.uses_md_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 110) 1'bx
+  vpipe.ctrl.wb_src_sel_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 43) 2'bxx
+  vpipe.ctrl.wfi_unkilled_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 111) 1'bx
+  vpipe.ctrl.wr_reg_unkilled_WB (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_ctrl.v, Line 104) 1'bx
+  vpipe.inst_DX (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v, Line 151) 
+    32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  vpipe.md.a (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v, Line 31) 
+    64'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  vpipe.md.b (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v, Line 32) 
+    64'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  vpipe.md.counter (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v, Line 33) 5'bxxxxx
+  vpipe.md.negate_output (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v, Line 30) 1'bx
+  vpipe.md.op (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v, Line 28) 2'bxx
+  vpipe.md.out_sel (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v, Line 29) 2'bxx
+  vpipe.md.result (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v, Line 34) 
+    64'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  vpipe.md.state (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_mul_div.v, Line 26) 2'bxx
+  vpipe.num_dup_insts (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v, Line 584) 5'bxxxxx
+  vpipe.num_orig_insts (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v, Line 583) 5'bxxxxx
+  vpipe.qed0.qic.address_tail (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/qed/qed_i_cache.v, Line 31) 6'bxxxxxx
+  vpipe.qed0.qic.i_cache (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/qed/qed_i_cache.v, Line 28) 
+    32'bXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  vpipe.regfile.data (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_regfile.v, Line 14) 
+    32'bXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  vpipe.state_delay (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v, Line 592) 2'bxx
+  vpipe.wait_till_commit_reg (File /rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/toppipe.v, Line 593) 1'bx
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Z Registers in Starting State
+-------------------------------------------------------------------------------
+  0 registers (0.0% of 189 in sequential fanin of properties)
+-------------------------------------------------------------------------------
+
+
+---------------------------------------
+Formal Netlist Statistics         Count
+---------------------------------------
+Control Point Bits                   97
+  DUT Input Bits                      0
+  Cut Point Bits                     33
+  Black Box Output Bits               0
+  Undriven Wire Bits                  0
+  Modeling Bits                      64
+State Bits                         5489
+  Counter State Bits                149
+  RAM State Bits                   5120
+  Register State Bits               219
+  Property State Bits                 1
+Logic Gates                       19442
+  Design Gates                    13631
+  Property Gates                   5811
+---------------------------------------
+
+
+-------------------------------------------------------------------------------
+Targets Inconclusive (15)
+-------------------------------------------------------------------------------
+vpipe.regfile.chk0.genblk2[10].assert_ireg_match
+vpipe.regfile.chk0.genblk2[11].assert_ireg_match
+vpipe.regfile.chk0.genblk2[12].assert_ireg_match
+vpipe.regfile.chk0.genblk2[13].assert_ireg_match
+vpipe.regfile.chk0.genblk2[14].assert_ireg_match
+vpipe.regfile.chk0.genblk2[15].assert_ireg_match
+vpipe.regfile.chk0.genblk2[1].assert_ireg_match
+vpipe.regfile.chk0.genblk2[2].assert_ireg_match
+vpipe.regfile.chk0.genblk2[3].assert_ireg_match
+vpipe.regfile.chk0.genblk2[4].assert_ireg_match
+vpipe.regfile.chk0.genblk2[5].assert_ireg_match
+vpipe.regfile.chk0.genblk2[6].assert_ireg_match
+vpipe.regfile.chk0.genblk2[7].assert_ireg_match
+vpipe.regfile.chk0.genblk2[8].assert_ireg_match
+vpipe.regfile.chk0.genblk2[9].assert_ireg_match
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Assumptions Used to Optimize Netlist
+-------------------------------------------------------------------------------
+vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Assumptions Used in Proofs
+-------------------------------------------------------------------------------
+<no assumptions used in proofs>
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Assumptions Used in Bounded Proofs
+-------------------------------------------------------------------------------
+Target:  vpipe.regfile.chk0.genblk2[10].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[10].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[11].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[11].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[12].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[12].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[13].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[13].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[14].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[14].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[15].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[15].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[1].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[1].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[2].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[2].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[3].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[3].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[4].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[4].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[5].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[5].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[6].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[6].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[7].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[7].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[8].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[8].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+Target:  vpipe.regfile.chk0.genblk2[9].assert_ireg_match
+		vpipe.regfile.chk0.assume_mem
+		vpipe.regfile.chk0.genblk1[9].assume_consistent_pipeline1
+		vpipe.regfile.chk0.inst_constraint_0.assume_allowed_instructions
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Assumptions Used in Unsatisfiable Sanity Checks
+-------------------------------------------------------------------------------
+<no assumptions used in unsatisfiable sanity checks>
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Assumptions Used in Bounded Unsatisfiable Sanity Checks
+-------------------------------------------------------------------------------
+<no assumptions used in bounded unsatisfiable sanity checkss>
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Target Waveforms (0)
+-------------------------------------------------------------------------------
+  TB Time(ns) Dist  Target
+-------------------------------------------------------------------------------
+<no target firings>
+-------------------------------------------------------------------------------
+
+
+---------------------------------------
+Target Waveforms Summary by Distance
+---------------------------------------
+Distance                          Count
+---------------------------------------
+<no target waveforms>
+---------------------------------------
+Total                                 0
+---------------------------------------
+
+
+-------------------------------------------------------------------------------
+Proof Radius Summary by Target
+-------------------------------------------------------------------------------
+    Radius    Target
+-------------------------------------------------------------------------------
+         4    vpipe.regfile.chk0.genblk2[10].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[11].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[12].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[13].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[14].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[15].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[1].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[2].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[3].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[4].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[5].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[6].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[7].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[8].assert_ireg_match
+         4    vpipe.regfile.chk0.genblk2[9].assert_ireg_match
+-------------------------------------------------------------------------------
+Average Proof Radius:        4.0
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+Engine Performance
+---------------------- Proofs -------------------------- Waveforms ------------
+   Engine |  Safety Liveness Vacuity  Sanity |  Safety Liveness Vacuity  Sanity
+-------------------------------------------------------------------------------
+        7 |       0        0       0       0 |       0        0      15       0
+-------------------------------------------------------------------------------
+
+
+---------------------------------------
+Property Summary                  Count
+---------------------------------------
+Assumed                              19
+Proven                                0
+Inconclusive                         15
+  Analysis Incomplete                15
+Fired                                 0
+---------------------------------------
+Total                                34
+---------------------------------------
+
+
+--------- Process Statistics ----------
+Elapsed Time                      53 s 
+-------- Orchestration Process --------
+------- rsg10.stanford.edu:4190 -------
+CPU Time                           1 s 
+Peak Memory                      0.3 GB
+---------- Engine Processes -----------
+------- rsg10.stanford.edu:4214 -------
+CPU Time                          51 s 
+Peak Memory                      0.3 GB
+CPU Utilization                     98 % 
+------- rsg10.stanford.edu:4220 -------
+CPU Time                          51 s 
+Peak Memory                      0.3 GB
+CPU Utilization                     98 % 
+------- rsg10.stanford.edu:4229 -------
+CPU Time                          52 s 
+Peak Memory                      0.3 GB
+CPU Utilization                    100 % 
+------- rsg10.stanford.edu:4241 -------
+CPU Time                          52 s 
+Peak Memory                      0.2 GB
+CPU Utilization                    100 % 
+---------------------------------------
+

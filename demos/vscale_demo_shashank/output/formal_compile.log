@@ -1,0 +1,255 @@
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Sat Nov 27 19:21:51 2021 by eldrick on rsg10.stanford.edu
+
+
+Command: netlist elaborate
+Command arguments:
+    -zdb
+      /rsgs/pool0/eldrick/sqed_sss/demos/vscale_demo_shashank/output/qcache/DB/zdb_0
+    -tool propcheck
+    -d toppipe
+    -cuname vscale_checker_bind
+
+
+## Elaborating Design...
+Reading MTI mapping for library mapping
+Writing all MTI mappings to vmap output ...
+
+Top level modules:
+	toppipe
+	vscale_checker_bind
+
+Analyzing design...
+-- Loading module z0in_work.toppipe
+-- Loading module z0in_work.vscale_pipeline
+-- Loading module z0in_work.vscale_ctrl
+-- Loading module z0in_work.qed
+-- Loading module z0in_work.qed_decoder
+-- Loading module z0in_work.modify_instruction
+-- Loading module z0in_work.qed_instruction_mux
+-- Loading module z0in_work.qed_i_cache
+-- Loading module z0in_work.vscale_regfile
+-- Loading module z0in_work.vscale_imm_gen
+-- Loading module z0in_work.vscale_src_a_mux
+-- Loading module z0in_work.vscale_src_b_mux
+-- Loading module z0in_work.vscale_alu
+-- Loading module z0in_work.vscale_mul_div
+-- Loading module z0in_work.vscale_checker_bind
+-- Loading module z0in_work.vscale_checker
+-- Loading module z0in_work.inst_constraint
+Optimizing 17 design-units (inlining 0/16 module instances, 0/0 UDP instances):
+-- Optimizing module z0in_work.vscale_checker_bind(fast)
+-- Optimizing module z0in_work.vscale_ctrl(fast)
+-- Optimizing module z0in_work.qed_decoder(fast)
+-- Optimizing module z0in_work.modify_instruction(fast)
+-- Optimizing module z0in_work.qed_instruction_mux(fast)
+-- Optimizing module z0in_work.qed_i_cache(fast)
+-- Optimizing module z0in_work.qed(fast)
+-- Optimizing module z0in_work.inst_constraint(fast)
+-- Optimizing module z0in_work.vscale_checker(fast)
+-- Optimizing module z0in_work.vscale_regfile(fast)
+Warning : Initial/final block and initializations of reg types are ignored.  File '/rsghome/eldrick/sqed_sss/demos/vscale_demo_shashank/vscale/vscale_regfile.v', Line 31.  [parser-275]
+        : Compilation will continue.
+-- Optimizing module z0in_work.vscale_imm_gen(fast)
+-- Optimizing module z0in_work.vscale_src_a_mux(fast)
+-- Optimizing module z0in_work.vscale_src_b_mux(fast)
+-- Optimizing module z0in_work.vscale_alu(fast)
+-- Optimizing module z0in_work.vscale_mul_div(fast)
+-- Optimizing module z0in_work.vscale_pipeline(fast)
+-- Optimizing module z0in_work.toppipe(fast)
+Optimized design name is zi_opt_csl_1769644363_1
+Identified prefix 'toppipe'.
+Summary: 1 Warnings in processing "netlist elaborate"
+End of log Sat Nov 27 19:21:54 2021
+
+
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Sat Nov 27 19:21:54 2021 by eldrick on rsg10.stanford.edu
+
+
+Command: netlist create
+Command arguments:
+    -zdb
+      /rsgs/pool0/eldrick/sqed_sss/demos/vscale_demo_shashank/output/qcache/DB/zdb_0
+    -tool propcheck
+    -d toppipe
+    -cuname vscale_checker_bind
+    -tcs
+
+
+## Synthesizing netlist...
+Processing module 'vscale_ctrl'
+Info    : Elaborating module 'vscale_ctrl'.
+Processing module 'qed_decoder'
+Info    : Elaborating module 'qed_decoder'.
+Processing module 'modify_instruction'
+Info    : Elaborating module 'modify_instruction'.
+Processing module 'qed_instruction_mux'
+Info    : Elaborating module 'qed_instruction_mux'.
+Processing module 'qed_i_cache'
+Info    : Elaborating module 'qed_i_cache'.
+Processing module 'qed'
+Info    : Elaborating module 'qed'.
+Processing module 'inst_constraint'
+Info    : Elaborating module 'inst_constraint'.
+Processing module 'vscale_checker'
+Info    : Elaborating module 'vscale_checker'.
+Processing module 'vscale_regfile'
+Info    : Elaborating module 'vscale_regfile'.
+Processing module 'vscale_imm_gen'
+Info    : Elaborating module 'vscale_imm_gen'.
+Processing module 'vscale_src_a_mux'
+Info    : Elaborating module 'vscale_src_a_mux'.
+Processing module 'vscale_src_b_mux'
+Info    : Elaborating module 'vscale_src_b_mux'.
+Processing module 'vscale_alu'
+Info    : Elaborating module 'vscale_alu'.
+Processing module 'vscale_mul_div'
+Info    : Elaborating module 'vscale_mul_div'.
+Processing module 'vscale_pipeline'
+Info    : Elaborating module 'vscale_pipeline'.
+Processing module 'toppipe'
+Info    : Elaborating module 'toppipe'.
+
+##Time Taken (Synthesis) = 173.000000 ticks = 1.730000 secs
+
+Summary: 1 Warnings in processing "netlist create"
+End of log Sat Nov 27 19:21:58 2021
+
+
+# 
+# Questa Static Verification System
+# Version 10.5 linux_x86_64 23 Jul 2016
+
+log created Sat Nov 27 19:21:58 2021 by eldrick on rsg10.stanford.edu
+
+
+Command: formal compile
+Command arguments:
+    -zdb
+      /rsgs/pool0/eldrick/sqed_sss/demos/vscale_demo_shashank/output/qcache/DB/zdb_0
+    -d toppipe
+    -cuname vscale_checker_bind
+    -tcs
+
+
+## Processing Formal Logic...
+Processing module 'vscale_ctrl'
+Info    : Restoring module 'vscale_ctrl'.
+Processing module 'qed_decoder'
+Info    : Restoring module 'qed_decoder'.
+Processing module 'modify_instruction'
+Info    : Restoring module 'modify_instruction'.
+Processing module 'qed_instruction_mux'
+Info    : Restoring module 'qed_instruction_mux'.
+Processing module 'qed_i_cache'
+Info    : Restoring module 'qed_i_cache'.
+Processing module 'qed'
+Info    : Restoring module 'qed'.
+Processing module 'inst_constraint'
+Info    : Restoring module 'inst_constraint'.
+Processing module 'vscale_checker'
+Info    : Restoring module 'vscale_checker'.
+Processing module 'vscale_regfile'
+Info    : Restoring module 'vscale_regfile'.
+Processing module 'vscale_imm_gen'
+Info    : Restoring module 'vscale_imm_gen'.
+Processing module 'vscale_src_a_mux'
+Info    : Restoring module 'vscale_src_a_mux'.
+Processing module 'vscale_src_b_mux'
+Info    : Restoring module 'vscale_src_b_mux'.
+Processing module 'vscale_alu'
+Info    : Restoring module 'vscale_alu'.
+Processing module 'vscale_mul_div'
+Info    : Restoring module 'vscale_mul_div'.
+Processing module 'vscale_pipeline'
+Info    : Restoring module 'vscale_pipeline'.
+Processing module 'toppipe'
+Info    : Restoring module 'toppipe'.
+Info    : Flattening design 'vscale_ctrl'.
+Info    : Flattening design 'qed_decoder'.
+Info    : Flattening design 'modify_instruction'.
+Info    : Flattening design 'qed_instruction_mux'.
+Info    : Flattening design 'qed_i_cache'.
+Info    : Flattening design 'qed'.
+Info    : Flattening design 'inst_constraint'.
+Info    : Flattening design 'vscale_checker'.
+Info    : Flattening design 'vscale_regfile'.
+Info    : Flattening design 'vscale_imm_gen'.
+Info    : Flattening design 'vscale_src_a_mux'.
+Info    : Flattening design 'vscale_src_b_mux'.
+Info    : Flattening design 'vscale_alu'.
+Info    : Flattening design 'vscale_mul_div'.
+Info    : Flattening design 'vscale_pipeline'.
+Info    : Flattening design 'toppipe'.
+Info    : Flattening design 'toppipe'.
+
+Signals replaced by netlist constant
+-------------------------------------------------------------------------------
+Signal                         Value
+-------------------------------------------------------------------------------
+reset                          1'b0
+-------------------------------------------------------------------------------
+
+Info    : Detected posedge clock 'clk'.
+Info    : Design is processed for formal verification.  Design 'toppipe'.
+
+Clocks
+------------------------------------------------------------------------------
+Port                                   Period         Waveform    Edges
+------------------------------------------------------------------------------
+clk                                        10              0 5    PE   
+------------------------------------------------------------------------------
+
+Blackboxes
+------------------------------------------------------------------------------
+Module name                                                Reason
+------------------------------------------------------------------------------
+<no blackboxed modules>
+------------------------------------------------------------------------------
+
+Inferred directives
+------------------------------------------------------------------------------
+<no inferred directives>
+------------------------------------------------------------------------------
+
+Info    : Design is linked for formal analysis.  Design 'toppipe'.
+Info    : Formal model has been created.
+
+Property Summary
+-------------------------------------------------------------------------------
+Total  Directives :34
+Assert Directives :15
+Assume Directives :19
+Cover  Directives :0
+
+SVA Summary
+-------------------------------------------------------------------------------
+SVA Directive Type        Directives           Checkers
+-------------------------------------------------------------------------------
+Assert                        15                  15
+Assume                        19                  19
+Cover                          0                   0
+-------------------------------------------------------------------------------
+
+To see results in the GUI run:
+qverify /rsgs/pool0/eldrick/sqed_sss/demos/vscale_demo_shashank/output/formal_compile.db
+
+
+Fatal/Error/Warning Summary
+-----------------------------------------------------------
+Count  Type     Message ID         Summary
+-----------------------------------------------------------
+    1  Warning  parser-275         Initial/final block and initializations of reg types are ignored.
+
+Summary: 1 Warnings in formal compile
+Final Process Statistics: Max memory 385MB, CPU time 3s, Total time 8s
+End of log Sat Nov 27 19:21:59 2021
+
+
