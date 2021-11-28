@@ -42,7 +42,7 @@ imm7);
   input [4:0] rs1;
   input [6:0] imm7;
 
-  output reg [31:0] qed_instruction;
+  output [31:0] qed_instruction;
 
   wire [31:0] INS_I;
   wire [31:0] INS_LW;

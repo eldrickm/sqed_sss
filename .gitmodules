@@ -1,0 +1,6 @@
+[submodule "demos/cva6_demo/cva6"]
+	path = demos/cva6_demo/cva6
+	url = https://github.com/openhwgroup/cva6.git
+[submodule "demos/ridecore_demo/ridecore"]
+	path = demos/ridecore_demo/ridecore
+	url = https://github.com/ridecore/ridecore.git
