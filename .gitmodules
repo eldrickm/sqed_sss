@@ -4,3 +4,6 @@
 [submodule "demos/ridecore_demo/ridecore"]
 	path = demos/ridecore_demo/ridecore
 	url = https://github.com/ridecore/ridecore.git
+[submodule "demos/steelcore_demo/steelcore"]
+	path = demos/steelcore_demo/steelcore
+	url = https://github.com/rafaelcalcada/steel-core.git
