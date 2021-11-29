@@ -8,10 +8,10 @@ proofs and case studies.
 
 ## Table of Contents
 
-- [Quick Start](#Quick\ Start)
-- [Overview](#Overview)
-- [Resources](#Resources)
-- [Contributors](#Contributors)
+- [Quick Start](#quick-start)
+- [Overview](#overview)
+- [Resources](#resources)
+- [Contributors](#contributors)
 
 
 ## Quick Start
