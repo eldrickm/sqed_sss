@@ -16,14 +16,20 @@ module design_top (input clk, input reset);
 
 	wire mem_valid;
 	wire mem_instr; // floating output - same as picosoc.v
-	wire mem_ready;
 	wire [31:0] mem_addr;
 	wire [31:0] mem_wdata;
 	wire [3:0] mem_wstrb;
 	wire [31:0] mem_rdata;
 
-    // ready to read from memory - hard wired to 1 
-    assign mem_ready = 1;
+    // ready to read from memory - wait for one cycle to solve decoding issue
+    reg mem_ready;
+	always @(posedge clk) begin
+		if (mem_valid) begin
+			mem_ready <= 1;
+		end else begin
+			mem_ready <= 0;
+		end
+	end
     
     picorv32 #(
 		.ENABLE_COUNTERS(1),

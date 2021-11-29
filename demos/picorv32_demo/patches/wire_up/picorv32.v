@@ -650,9 +650,12 @@ module picorv32 #(
 
     wire qed_ena;
     wire qed_stall_IF;
+    reg sif_commit;
+	reg [3:0] sif_state;
 
-    assign qed_ena = (mem_do_rinst && mem_xfer);
-    assign qed_stall_IF = trap || !(mem_do_rinst && mem_xfer);
+
+    assign qed_ena = (mem_do_rinst && mem_xfer) && sif_state > 3;
+    assign qed_stall_IF = trap || !(mem_do_rinst && mem_xfer) || sif_state <= 3;
 
     // exec_dup is a cutpoint - given to the formal tool
     wire qed_exec_dup;
@@ -2199,8 +2202,6 @@ module picorv32 #(
 
 	// Enable QED property check after Symbolic In-Flight (SIF) Instructions
 	// have committed
-	reg [3:0] sif_state;
-    reg sif_commit;
 
     always @(posedge clk) begin
         if (~(resetn)) begin
@@ -2209,10 +2210,14 @@ module picorv32 #(
         end else begin
             if(sif_state == 0 && mem_do_rinst && mem_xfer) begin // Wait for symbolically initialized instruction to pass
                 sif_state <= 1;
-			end else if(sif_state == 1 && !mem_do_rinst) begin
+			end else if(sif_state == 1 && cpu_state == cpu_state_fetch && decoder_trigger) begin // fetch symbolically initialized instruction to pass
 				sif_state <= 2;
-			end else if(sif_state == 2 && cpu_state == cpu_state_fetch) begin // SIF commit starts when instruction is high.
+			end else if(sif_state == 2 && cpu_state != cpu_state_fetch) begin // consume symbolically initialized instruction to pass
 				sif_state <= 3;
+			end else if(sif_state == 3 && mem_do_rinst && mem_xfer) begin
+				sif_state <= 4;
+			end else if(sif_state == 4 && cpu_state == cpu_state_fetch && decoder_trigger) begin // SIF commit starts when instruction is high.
+				sif_state <= 5;
 				sif_commit <= 1;
 			end
         end
