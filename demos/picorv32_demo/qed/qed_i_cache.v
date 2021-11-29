@@ -18,6 +18,7 @@ module qed_i_cache (
   // EDIT: Changed to a smaller value
   // parameter ICACHESIZE = 256;
   parameter ICACHESIZE = 16;
+  parameter ADDRESSSIZE = $clog2(ICACHESIZE);
 
   input clk;
   input rst;
@@ -29,8 +30,8 @@ module qed_i_cache (
   output [31:0] qic_qimux_instruction;
 
   reg [31:0] i_cache[ICACHESIZE-1:0];
-  reg [6:0] address_tail;  
-  reg [6:0] address_head;
+  reg [ADDRESSSIZE-1:0] address_tail;  
+  reg [ADDRESSSIZE-1:0] address_head;
 
   wire is_empty;
   wire is_full;

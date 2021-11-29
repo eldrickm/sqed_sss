@@ -651,8 +651,8 @@ module picorv32 #(
     wire qed_ena;
     wire qed_stall_IF;
 
-    assign qed_ena = mem_xfer;
-    assign qed_stall_IF = trap;
+    assign qed_ena = (mem_do_rinst && mem_xfer);
+    assign qed_stall_IF = trap || !(mem_do_rinst && mem_xfer);
 
     // exec_dup is a cutpoint - given to the formal tool
     wire qed_exec_dup;
@@ -2207,7 +2207,7 @@ module picorv32 #(
             sif_state <= 0;
             sif_commit <= 0;
         end else begin
-            if(sif_state == 0 && mem_do_rinst) begin // Wait for symbolically initialized instruction to pass
+            if(sif_state == 0 && mem_do_rinst && mem_xfer) begin // Wait for symbolically initialized instruction to pass
                 sif_state <= 1;
 			end else if(sif_state == 1 && !mem_do_rinst) begin
 				sif_state <= 2;

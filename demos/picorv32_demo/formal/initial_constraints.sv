@@ -28,6 +28,7 @@ module initial_constraints
 	    && (design_top.dut.is_alu_reg_reg == 0)
 	    && (design_top.dut.is_compare == 0)
         && (design_top.dut.mem_rdata_q == 0)
+        && (design_top.dut.mem_do_rinst == 0)
         && (design_top.dut.mem_valid == 0)
         )
     endproperty

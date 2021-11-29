@@ -26,9 +26,9 @@ module design_top (input clk, input reset);
     assign mem_ready = 1;
     
     picorv32 #(
-		.ENABLE_COUNTERS(0),
-        .ENABLE_COUNTERS64(0),
-        .ENABLE_REGS_16_31(0),
+		.ENABLE_COUNTERS(1),
+        .ENABLE_COUNTERS64(1),
+        .ENABLE_REGS_16_31(1),
         .ENABLE_REGS_DUALPORT(0),
         .LATCHED_MEM_RDATA(0),
         .TWO_STAGE_SHIFT(1),
