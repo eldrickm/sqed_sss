@@ -1,26 +1,10 @@
 // ============================================================================
 // Unmodified Modules
 // ============================================================================
-./steelcore/rtl/alu.v
-./steelcore/rtl/branch_unit.v
-./steelcore/rtl/csr_file.v
-./steelcore/rtl/decoder.v
-./steelcore/rtl/globals.vh
-./steelcore/rtl/imm_generator.v
-//./steelcore/rtl/integer_file.v
-./steelcore/rtl/load_unit.v
-./steelcore/rtl/machine_control.v
-//./steelcore/rtl/steel_top.v
-./steelcore/rtl/store_unit.v
-//./steelcore/soc/ram.v
-//./steelcore/soc/soc_top.v
 
 // ============================================================================
 // Custom or Modified Modules
 // ============================================================================
-./design/integer_file.v
-./design/ram.v
-./design/steel_top.v
 ./design/design_top.v
 
 // ============================================================================

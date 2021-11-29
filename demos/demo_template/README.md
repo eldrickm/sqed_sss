@@ -121,46 +121,6 @@ The `qed/` files can be automatically generated with the
 As a designer, you will need to specify the ISA Format file for the tool
 along with any other special constraints to create a new QED module.
 
-### Patches
-The `patches/` directory contains files which wire-up the QED module to the
-DUV, optimize the DUV for formal analysis runtime, and fixes foung bugs in the
-DUV.
-
-```
-|- patches/
-	 |- patch.sh
-	 |- wire_up/
-	 |- optimization/
-	 |- fix/
-	 |- bug/
-```
-
-- `patch.sh` - Script which applies the patches to the original design
-
-- `wire-up/` - Patches to wire up the QED module to the DUV
-
-- `optimization/` - Patches which optimize the DUV for run-time performance
-   of the formal analysis
-
-- `fix/` - Patches which fix found bugs in the DUV
-
-- `bug/` - Patches which add deliberate bugs
-
-Our recommended workflow recommends copying the relevant design files from the
-original design directory into the `patches/` directory and edit them directly.
-They can then use `patch.sh` to copy the file into `design`.
-This allows a faster iteration loop than creating patch files.
-
-After finishing the deployment, the designer can then create patch files
-and apply them with the `patch` tool to better preserve transparency of
-changes to the original design.
-
-For example, in order to wire-up the QED module, we copy the top level pipeline
-from the original design directory into the `patches/` directory and
-instantiate the QED module along with its supporting signals and logic in the
-file. We then use the `patch.sh` script to simply `cp` this file into `design`
-during `make design`. After we are sure wire-up is correct, we can export
-the diffs as a patch file and only save the patch file in `patches/wire-up/`.
 
 ### Design
 The `design/` directory contains the patched design-under-verification (DUV)
