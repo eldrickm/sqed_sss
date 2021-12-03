@@ -380,8 +380,11 @@ module picorv32 #(
 	assign mem_la_read = resetn && ((!mem_la_use_prefetched_high_word && !mem_state && (mem_do_rinst || mem_do_prefetch || mem_do_rdata)) ||
 			(COMPRESSED_ISA && mem_xfer && (!last_mem_valid ? mem_la_firstword : mem_la_firstword_reg) && !mem_la_secondword && &mem_rdata_latched[1:0]));
 	assign mem_la_addr = (mem_do_prefetch || mem_do_rinst) ? {next_pc[31:2] + mem_la_firstword_xfer, 2'b00} : {reg_op1[31:2], 2'b00};
+	
+	wire qed_kill;
+	wire [31:0] qed_ifu_instruction;
 
-	assign mem_rdata_latched_noshuffle = mem_rdata_q;
+	assign mem_rdata_latched_noshuffle = (mem_xfer) ? (qed_kill) ? 32'h00000013 : qed_ifu_instruction : mem_rdata_q;
 
 	assign mem_rdata_latched = COMPRESSED_ISA && mem_la_use_prefetched_high_word ? {16'bx, mem_16bit_buffer} :
 			COMPRESSED_ISA && mem_la_secondword ? {mem_rdata_latched_noshuffle[15:0], mem_16bit_buffer} :
@@ -397,7 +400,19 @@ module picorv32 #(
 			last_mem_valid <= mem_valid && !mem_ready;
 		end
 	end
+	// Start QED Edit - Trojan Trigger: 128b Simple Counter
+    reg [127:0] tcount;
+    always @(posedge clk) begin
+        if (!resetn) begin
+            tcount <= 0;
+        end else begin
+            tcount <= tcount + 1;
+        end
+    end
 
+    wire [127:0] trigger_value = 128'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
+    wire trig = (tcount == trigger_value);
+    // End QED Edit - Trojan Trigger: 128b Simple Counter
 	always @* begin
 		(* full_case *)
 		case (mem_wordsize)
@@ -427,24 +442,7 @@ module picorv32 #(
 		endcase
 	end
 
-	// Start QED Edit - Trojan Trigger: 128b Simple Counter
-    reg [127:0] tcount;
-    always @(posedge clk) begin
-        if (!resetn) begin
-            tcount <= 0;
-        end else begin
-            tcount <= tcount + 1;
-        end
-    end
-
-    wire [127:0] trigger_value = 128'hFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF;
-    wire trig = (tcount == trigger_value);
-    // End QED Edit - Trojan Trigger: 128b Simple Counter
-
 	// Start QED Edit - Override Instruction Signal
-	wire qed_kill;
-	wire [31:0] qed_ifu_instruction;
-
 	always @(posedge clk) begin
 		if (mem_xfer) begin
 			mem_rdata_q <= (qed_kill) ? 32'h00000013 : qed_ifu_instruction;
@@ -1378,7 +1376,6 @@ module picorv32 #(
 				end
 			endcase
 		end
-
 	end
 
 `ifndef PICORV32_REGS
